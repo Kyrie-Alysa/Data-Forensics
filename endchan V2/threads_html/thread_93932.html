@@ -1,0 +1,351 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - One of the Vermin Speaks Out</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="93932">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=93932">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/93932.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="93932"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/5b96bfecbc95b6280b790713012d2b63-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">28.28 KB</span>
+  <span class="dimensionLabel">280x462</span> <a class="originalNameLink" href="/.media/5b96bfecbc95b6280b790713012d2b63-imagejpeg.jpg" download="the kike himself.jpg">the kike himself.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/5b96bfecbc95b6280b790713012d2b63-imagejpeg.jpg" data-filewidth="280" data-fileheight="462" data-filemime="image/jpeg"><img src="/.media/t_5b96bfecbc95b6280b790713012d2b63-imagejpeg" loading="lazy" width="155" height="255"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-93932">
+    <span class="labelSubject">One of the Vermin Speaks Out</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">06/15/2024 (Sat) 11:36</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #f04a4c">f04a4c</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/93932.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/93932.html#93932">No.</a>
+    <a class="linkQuote" href="/pol/res/93932.html#q93932">93932</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">They like to call Jerry Seinfeld a “funnyman” but what he is most of all is one of the vermin, one of those Jews who metaphorically crawl on their slimy bellies out the sewers and onto the street, there to infect the population with the Jewish plague. They said that <em>Seinfeld</em> was a “show about nothing,” but that was never true; it was the latest in the long line of Jewish entertainment and “art” which hijacked the American sensibility, which put irony in place of sincerity, which put frivolity in place of seriousness — not that we had not been stuck in that mire for a while, but the show was the final nail in the coffin. It put the theory of Snappy Answers to Stupid Questions (A <em>Mad Magazine</em> knock-off; another kike production) into high voltage mode — that is, it saturated the country with filthy Hebrew mores and thought. The fact that, to most, it was just “a clever comedy” shows us how brain-dead most are: It was a weapon in the form of a television series, and those who wielded it had designs on us. It brought the world to it knees by dint of its hyper-Jewishness. Now that the Jews are sailing some rough seas, Mr. Seinfeld is wiping that stupid grin off his face and saying that he can no longer be about nothing. No, he has to be about something and that something is, of course, he has to be about being a Jew. What else would he be about, being a Jew? For if anything is time-tested and time-honored it’s that, whatever else he is, a Jew is always a Jew. And whatever career or incarnation he has, the important thing is that he’s a Jew. And when the Jews are in their time of need (which will be more and more often), Jews the world over run to the defense of themselves, and let the world know they are Jews. <em>Ad nauseam</em>, as always, and <em>reductio ad absurdum</em> as well.<br><br>Apparently after some filthy kikes got killed on October 7, the Jews realized that now was the time for all good Jews to come to the aid of Jews. Seinfeld, who has been living in a senescent retirement, was no exception. He traveled to Israel to much ballyhoo. Had he ridden into Jerusalem on a donkey like Jesus allegedly did, it would not have been more obnoxious. Of course, after the whirlwind tour of the Hebe Homeland he had to give the big interview to sum up and encapsulate the trip, which was a travesty; so the smirking Comedy Jew trotted out all the tired bromides about the Jews; that is, he lied through his Jewish teeth in the only cause that matters to the Jews: the Jews. He started off by saying “we’re Jewish,” which is patently obvious to anyone who sees his ugly mug with its rancid physiognomy. Facial features do not lie and he has the map of evil written all over his. He says that, as a Jew, he feels very close to the “struggle of being Jewish in the world.” A struggle? That’s funny indeed; he is a funnyman! Hitler had his struggle (against Jews), but the Jews have never struggled or, if they did, the necessity was brought on by their own deeds — which is not struggle, but nemesis. And in today’s world the Jews don’t struggle at all, they sail though the world celebrated and worshipped; they are sitting pretty on their perch. That is changing a bit, but, once again, that is their own fault. And if they get knocked off their own self-created pedestal, few of us will mourn. It’s not a struggle if your difficulties are richly deserved. It’s sweet justice a long time coming.<br><br>Mr. Jewish Comedic Genius No. 8,942 then swerves into some soft-pedaling rhetoric wherein he practices the “safe fall” theory of verbal deception; where you seem reasonable by conceding a portion of the truth, only to mitigate it and soften the blow — that is, you camouflage the truth by that seeming show of taking on the negative quality, only to ultimately deflect it. That is, it is Jew language to the core — lies. He says that “people sometimes” think of the Jews as being “very on top of things” and as “being successful for the most part,” and “that’s somewhat true.”</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="93933"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93932-93933">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/15/2024 (Sat) 11:44</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #f04a4c">f04a4c</span></span>
+  <a class="linkPreview" href="/pol/preview/93933.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93932.html#93933">No.</a><a class="linkQuote" href="/pol/res/93932.html#q93933">93933</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/077afe08429b38e8756d05c4789d4347-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">273.73 KB</span>
+  <span class="dimensionLabel">1080x1080</span> <a class="originalNameLink" href="/.media/077afe08429b38e8756d05c4789d4347-imagejpeg.jpg" download="293457435_3238312276441808_3085024634832622655_n.jpg">293457435_3238312276441808_3085024634832622655_n.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/077afe08429b38e8756d05c4789d4347-imagejpeg.jpg" data-filewidth="1080" data-fileheight="1080" data-filemime="image/jpeg"><img src="/.media/t_077afe08429b38e8756d05c4789d4347-imagejpeg" loading="lazy" width="255" height="255"></a></figure></div>
+  <div class="divMessage">How many qualifications can a Jew come up with? — three in this instance, three in the short span of a short sentence: “sometimes,” “for the most part,” “somewhat.” Weasel words, they are. To simply blurt out the truth would be “too shocking”; the truth being that the Jews en masse are greedy bastards, that they sit atop the world of finance and government and education and entertainment and media, that they lord it over their hosts, that they control the money supply, that they solidify their position by a constant flow of lying propaganda, that they miseducate our youth, that they consume all possible attention with their “troubles,” and that they misrule and abuse us without let or reserve. Now those are two descriptions of the same facts, but one is slippery like a Jew, and the other is the radical truth as said by a White man. Base Jews like Jerry Seinfeld recoil from radical truth like a Negroid recoils from hard labor or a vampire from the rising Sun. Jews scurry from the truth like insects do from the light of day when you lift up the rock they were hiding under. And then the Revered Cultural Icon segues once more into what the Jews consider the kill shot of kill shots, their not-so-secret weapon not really held in reserve; that is, he transitions into lachrymose mode, where the old Jews take a break from playing shuffleboard at the Jewish retirement home (gefilte fish dinner, bagels round the clock), pull up their pants to near their chests, and say in unison (in the voice of their favorite son Jerry Seinfeld) that the “struggle of being Jewish” is also ancient and has been going on for “thousands of years.” His voice rises an octave or two on the word thousands.<br><br>Their struggle (such as it is not), he tells us, is one from time immemorial, from time out of mind, from even before the amoebas crawled out from the primordial ooze. Hoo boy, it’s been thousands of years of suffering, they damn near got wiped out any number of times, they survived pitchforks, and arrows, maddened raging mobs, bullets, pogroms, persecutions, shattered glass, and finally gas. But they made it, which is (as they will be the first to tell you) a “testament to their spirit”; that is, they are not just a people like any other, and certainly not like us (and they won’t even allow saying that now on pain of punishment), no; not just an off-the-rack or standard-issue people; they are “the eternal people.” But even if they were (they are not, as the future without them will attest), so are cockroaches. But then cockroaches, though a great nuisance and only slightly better-looking than Jews, never really hurt a soul: Unlike with Jews, no one ever died from allowing cockroaches to dwell among them. Then, near the end of his verbal show, comes the dire denouement: He says that “anti-Semitism has been rekindled.” I object to this, as this noble belief system has always been with us; and always will be with us, until its object is gone and it is no longer needed; that is, when — metaphorically, of course — the fires arise from the kindling lit by the awakened among our Folk; when the sordid likes of Jerry Seinfeld have worn out their welcome, and the Jewish game of dominate and deceive is seen clearly for what it is: a war.  And when that war is joined, the Jews will no longer be the mouse — or the mouths — that roared; but will be what they have always been <em>incognito</em>: history’s pipsqueaks, who will be lucky if, in their winding sheets, we allow them to gibber and squeak through the streets on their destined return to the sewers from whence they came.<br><br><br><a rel="nofollow" target="_blank" href="https://nationalvanguard.org/2024/05/one-of-the-vermin-speaks-out/">https://nationalvanguard.org/2024/05/one-of-the-vermin-speaks-out/</a><br><a rel="nofollow" target="_blank" href="https://archive.is/0J8u4">https://archive.is/0J8u4</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/93932.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

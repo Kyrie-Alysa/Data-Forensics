@@ -1,0 +1,384 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - &gt;&gt;102578
+I am a fan of precise surgical strikes and after knowing about how the jews operate and how their propagand machine works I can say confidently that
+
+&gt;&gt;If you take the jews ability to print money and give it to their favourite puppets the entire s</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="102581">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=102581">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/102581.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell multipleUploads" id="102581"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/795e1889831a4c2df7d2e8864085399a-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">42.94 KB</span>
+  <span class="dimensionLabel">500x500</span> <a class="originalNameLink" href="/.media/795e1889831a4c2df7d2e8864085399a-imagejpeg.jpg" download="bad enough.jpg">bad enough.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/795e1889831a4c2df7d2e8864085399a-imagejpeg.jpg" data-filewidth="500" data-fileheight="500" data-filemime="image/jpeg"><img src="/.media/t_795e1889831a4c2df7d2e8864085399a-imagejpeg" loading="lazy" width="255" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/07cf0dcf24ceb8c1c37a51dbbf4bd0bd-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">92.45 KB</span>
+  <span class="dimensionLabel">410x598</span> <a class="originalNameLink" href="/.media/07cf0dcf24ceb8c1c37a51dbbf4bd0bd-imagejpeg.jpg" download="based department hitler.jpg">based department hitler.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/07cf0dcf24ceb8c1c37a51dbbf4bd0bd-imagejpeg.jpg" data-filewidth="410" data-fileheight="598" data-filemime="image/jpeg"><img src="/.media/t_07cf0dcf24ceb8c1c37a51dbbf4bd0bd-imagejpeg" loading="lazy" width="175" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/8f03f15b5e2e4ff1294d85bf124be139-imagepng.png">Open File</a>(<span class="sizeLabel">906.42 KB</span>
+  <span class="dimensionLabel">1080x1714</span> <a class="originalNameLink" href="/.media/8f03f15b5e2e4ff1294d85bf124be139-imagepng.png" download="propaganda of the deed.png">propaganda of the deed.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/8f03f15b5e2e4ff1294d85bf124be139-imagepng.png" data-filewidth="1080" data-fileheight="1714" data-filemime="image/png"><img src="/.media/t_8f03f15b5e2e4ff1294d85bf124be139-imagepng" loading="lazy" width="161" height="255"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-102581">
+    
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">03/16/2025 (Sun) 12:47</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #d681e8">d681e8</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/102581.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/102581.html#102581">No.</a>
+    <a class="linkQuote" href="/pol/res/102581.html#q102581">102581</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93991.html#102578">&gt;&gt;102578</a><br>I am a fan of precise surgical strikes and after knowing about how the jews operate and how their propagand machine works I can say confidently that<br><br><span class="greenText">&gt;&gt;If you take the jews ability to print money and give it to their favourite puppets the entire system of jewry falls down</span><br><br><span class="greenText">&gt;ESG cancer on corporate giants, massive inflation of stocks, market manipulation and lobbying can only happen because they have control over the money printer. Due to how inflation works. The first people that receive  the newly printed money are the ones that most benefit from it and the last ones the people that get the kick out of inflation.</span><br><br><span class="greenText">&gt;Their funding of trash ass newspapers that no one reads can only happen because of central banking.</span><br><br><span class="greenText">&gt;Right now, Trump is trying to see to provoke a recession to try and pay the massive amount of debt the United State to force the Federal reserve to lower interest rates. This conflict is the opportunity of a lifetime against jewry</span><br><br><span class="greenText">&gt;Inflation and recessions have a real effect on normies and real people if we can gather their attention on the conflict the same way the public's attention was on USAID we can strike a deathly blow to the jews.</span><br><br><span class="greenText">&gt;All of the things that are awful about the jews are conentrated in the financial system their dog awful decisions that promote certain businesses over others, the threats of taking away your bank account and the cronyism that corrupts government are all concentrated in there.</span><br><br><span class="greenText">&gt;ANd you know what the best part of this moment is? We already have a way to replace the financial system.</span><br><br><span class="greenText">&gt;There is already a foundational structure around cryptocoins that can replace the FIAT central banking system. And that we can easily shut the jews out of since most cryptobros are there because they hate the government and sometimes jews.</span><br><br><span class="greenText">&gt;Abd if they try to resist and not play ball, we can use their actions such as debanking to push normal people onto crypto and completely shut down their power! They will be caught between a rock and a hard place. No escape!</span><br><br><span class="greenText">&gt;It is going to be glorious likw that episode of Doctor Who about the Silence Whcih were Aliens that controled everything but were invisible. At the end of the episode the aliens get defeated because The Doctor flashes an image of them as the US plants the flag on the first time they got to the moon making it impossible for everyone to ignore the existence of the aliens!</span></div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell multipleUploads" data-boarduri="pol" id="102603"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-102581-102603">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/20/2025 (Thu) 02:17</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #6d8591">6d8591</span></span>
+  <a class="linkPreview" href="/pol/preview/102603.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/102581.html#102603">No.</a><a class="linkQuote" href="/pol/res/102581.html#q102603">102603</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/d702a9ffded05f4fc775cdddb43c13e1-imagepng.png">Open File</a>(<span class="sizeLabel">391.14 KB</span>
+  <span class="dimensionLabel">662x784</span> <a class="originalNameLink" href="/.media/d702a9ffded05f4fc775cdddb43c13e1-imagepng.png" download="Theodore_Chuang.png">Theodore_Chuang.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/d702a9ffded05f4fc775cdddb43c13e1-imagepng.png" data-filewidth="662" data-fileheight="784" data-filemime="image/png"><img src="/.media/t_d702a9ffded05f4fc775cdddb43c13e1-imagepng" loading="lazy" width="215" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/bb70e51bde84cd907ffd5f49245e3865-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">377.45 KB</span>
+  <span class="dimensionLabel">1395x870</span> <a class="originalNameLink" href="/.media/bb70e51bde84cd907ffd5f49245e3865-imagejpeg.jpg" download="Obama kikes.jpg">Obama kikes.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/bb70e51bde84cd907ffd5f49245e3865-imagejpeg.jpg" data-filewidth="1395" data-fileheight="870" data-filemime="image/jpeg"><img src="/.media/t_bb70e51bde84cd907ffd5f49245e3865-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/1221f9d61cd47b54553571dda63c2e99-imagepng.png">Open File</a>(<span class="sizeLabel">499.50 KB</span>
+  <span class="dimensionLabel">751x556</span> <a class="originalNameLink" href="/.media/1221f9d61cd47b54553571dda63c2e99-imagepng.png" download="(2).png">(2).png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/1221f9d61cd47b54553571dda63c2e99-imagepng.png" data-filewidth="751" data-fileheight="556" data-filemime="image/png"><img src="/.media/t_1221f9d61cd47b54553571dda63c2e99-imagepng" loading="lazy" width="255" height="189"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/3c38156593c8dc396096b0e1fd4754d6-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">555.85 KB</span>
+  <span class="dimensionLabel">3068x2125</span> <a class="originalNameLink" href="/.media/3c38156593c8dc396096b0e1fd4754d6-imagejpeg.jpg" download="3c38156593c8dc396096b0e1fd4754d6-imagejpeg.jpg">3c38156593c8dc396096b0e1fd4754d6-imagejpeg.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/3c38156593c8dc396096b0e1fd4754d6-imagejpeg.jpg" data-filewidth="3068" data-fileheight="2125" data-filemime="image/jpeg"><img src="/.media/t_3c38156593c8dc396096b0e1fd4754d6-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/89c924a2145b61caa484f3a0ad97cbfc-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">1.71 MB</span>
+  <span class="dimensionLabel">3335x1651</span> <a class="originalNameLink" href="/.media/89c924a2145b61caa484f3a0ad97cbfc-imagejpeg.jpg" download="Trump is Ashkenazi.jpg">Trump is Ashkenazi.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/89c924a2145b61caa484f3a0ad97cbfc-imagejpeg.jpg" data-filewidth="3335" data-fileheight="1651" data-filemime="image/jpeg"><img src="/.media/t_89c924a2145b61caa484f3a0ad97cbfc-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage">Let us continue this here where the discussion isn't mired by the sudden hijacking in the other thread.<br><span class="greenText">&gt;if we can gather their attention on the conflict the same way the public's attention was on USAID</span><br>USAID is still in the spotlight. This greasy fuck, U.S. District Judge Theodore Chuang, interloping child of Taiwanese immigrants, prevented the DOGE shuttering of USAID. The piece of shit was appointed by Obama.<br><span class="greenText">&gt;There is already a foundational structure around cryptocoins that can replace the FIAT central banking system.</span><br>Bitcoin crashed in 2018, 2020, 2021 and then bankrupted in 2022. We'll have to see if a federal Bitcoin reserve is actually established, without shitheads like that greasy faced Taiwan femboy judge halting the process. Keep in mind though, currency changes hands among (((the tribe))). If Trump wants this, it's not set up against kikes. He will do everything he can to make sure it benefits jews. This means taking the crypto boys club away, making it a federal institution and basically handing it to ZOG.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/102581.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

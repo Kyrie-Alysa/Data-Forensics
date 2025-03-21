@@ -1,0 +1,699 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - Banking: save or kill ?</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="94187">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=94187">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/94187.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="94187"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/100a0bdd173a776924507216154e75e9-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">106.10 KB</span>
+  <span class="dimensionLabel">512x261</span> <a class="originalNameLink" href="/.media/100a0bdd173a776924507216154e75e9-imagejpeg.jpg" download="1678201998837077.jpg">1678201998837077.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/100a0bdd173a776924507216154e75e9-imagejpeg.jpg" data-filewidth="512" data-fileheight="261" data-filemime="image/jpeg"><img src="/.media/t_100a0bdd173a776924507216154e75e9-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-94187">
+    <span class="labelSubject">Banking: save or kill ?</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">07/24/2024 (Wed) 19:18</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #c8b694">c8b694</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/94187.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/94187.html#94187">No.</a>
+    <a class="linkQuote" href="/pol/res/94187.html#q94187">94187</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">Does the banking system have any good use or good quality, after all the flaws are removed?
+<br>
+<br>Is the banking system, and all banking as a whole, salvageable? Or should all banking be torn down and destroyed, as it's only functional as a tool of destruction and mass control in the hands of the jews?</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell multipleUploads" data-boarduri="pol" id="94188"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94187-94188">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/24/2024 (Wed) 19:27</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #c8b694">c8b694</span></span>
+  <a class="linkPreview" href="/pol/preview/94188.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94187.html#94188">No.</a><a class="linkQuote" href="/pol/res/94187.html#q94188">94188</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/104197ceb58850ac0ec6cdb7ec02ddcd-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">61.80 KB</span>
+  <span class="dimensionLabel">850x400</span> <a class="originalNameLink" href="/.media/104197ceb58850ac0ec6cdb7ec02ddcd-imagejpeg.jpg" download="1708981353213140.jpg">1708981353213140.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/104197ceb58850ac0ec6cdb7ec02ddcd-imagejpeg.jpg" data-filewidth="850" data-fileheight="400" data-filemime="image/jpeg"><img src="/.media/t_104197ceb58850ac0ec6cdb7ec02ddcd-imagejpeg" loading="lazy" width="255" height="120"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/ce3a5bfda19bb2c492cdf66098aa3c15-imagepng.png">Open File</a>(<span class="sizeLabel">175.66 KB</span>
+  <span class="dimensionLabel">932x848</span> <a class="originalNameLink" href="/.media/ce3a5bfda19bb2c492cdf66098aa3c15-imagepng.png" download="elite bunkers.png">elite bunkers.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/ce3a5bfda19bb2c492cdf66098aa3c15-imagepng.png" data-filewidth="932" data-fileheight="848" data-filemime="image/png"><img src="/.media/t_ce3a5bfda19bb2c492cdf66098aa3c15-imagepng" loading="lazy" width="255" height="232"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/7186d3e0bd48b4a7176d99cb9a7b66ae-imagepng.png">Open File</a>(<span class="sizeLabel">109.54 KB</span>
+  <span class="dimensionLabel">813x513</span> <a class="originalNameLink" href="/.media/7186d3e0bd48b4a7176d99cb9a7b66ae-imagepng.png" download="2008 2020 bailouts.png">2008 2020 bailouts.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/7186d3e0bd48b4a7176d99cb9a7b66ae-imagepng.png" data-filewidth="813" data-fileheight="513" data-filemime="image/png"><img src="/.media/t_7186d3e0bd48b4a7176d99cb9a7b66ae-imagepng" loading="lazy" width="255" height="161"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/efc6a4887732e0e498048a290edbe788-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">80.35 KB</span>
+  <span class="dimensionLabel">640x384</span> <a class="originalNameLink" href="/.media/efc6a4887732e0e498048a290edbe788-imagejpeg.jpg" download="1678676608249701.jpg">1678676608249701.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/efc6a4887732e0e498048a290edbe788-imagejpeg.jpg" data-filewidth="640" data-fileheight="384" data-filemime="image/jpeg"><img src="/.media/t_efc6a4887732e0e498048a290edbe788-imagejpeg" loading="lazy" width="255" height="153"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b16ab4fd4d32a45636a375bbbd70501d-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">110.52 KB</span>
+  <span class="dimensionLabel">1088x496</span> <a class="originalNameLink" href="/.media/b16ab4fd4d32a45636a375bbbd70501d-imagejpeg.jpg" download="1651732334158.jpg">1651732334158.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b16ab4fd4d32a45636a375bbbd70501d-imagejpeg.jpg" data-filewidth="1088" data-fileheight="496" data-filemime="image/jpeg"><img src="/.media/t_b16ab4fd4d32a45636a375bbbd70501d-imagejpeg" loading="lazy" width="255" height="116"></a></figure></div>
+  <div class="divMessage">Some other random quotes about banking and finance</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94191"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94187-94191">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/24/2024 (Wed) 23:52</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #82b5c2">82b5c2</span></span>
+  <a class="linkPreview" href="/pol/preview/94191.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94187.html#94191">No.</a><a class="linkQuote" href="/pol/res/94187.html#q94191">94191</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/c100e5c38abac38ba4ee3653bb113170-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">57.74 KB</span>
+  <span class="dimensionLabel">735x245</span> <a class="originalNameLink" href="/.media/c100e5c38abac38ba4ee3653bb113170-imagejpeg.jpg" download="2342353.jpg">2342353.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/c100e5c38abac38ba4ee3653bb113170-imagejpeg.jpg" data-filewidth="735" data-fileheight="245" data-filemime="image/jpeg"><img src="/.media/t_c100e5c38abac38ba4ee3653bb113170-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/85219628dee651e5afcd1dcf9988c2dc-applicationpdf.pdf">Open File</a>(<span class="sizeLabel">1.66 MB</span>
+   <a class="originalNameLink" href="/.media/85219628dee651e5afcd1dcf9988c2dc-applicationpdf.pdf" download="The Collected Writings of Gottfried Feder.pdf">The Collected Writings of Gottfried Feder.pdf</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/85219628dee651e5afcd1dcf9988c2dc-applicationpdf.pdf" data-filemime="application/pdf"><img src="/genericThumb.png" loading="lazy"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94193"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94187-94193">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">07/25/2024 (Thu) 07:59</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #1cbc5e">1cbc5e</span></span>
+  <a class="linkPreview" href="/pol/preview/94193.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94187.html#94193">No.</a><a class="linkQuote" href="/pol/res/94187.html#q94193">94193</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/2cb3b6fcfa2c971c2d6666cbfb3ce46b-videowebm.webm">Open File</a>(<span class="sizeLabel">489.42 KB</span>
+  <span class="dimensionLabel">1024x1024</span> <a class="originalNameLink" href="/.media/2cb3b6fcfa2c971c2d6666cbfb3ce46b-videowebm.webm" download="1720511176943105.webm">1720511176943105.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/2cb3b6fcfa2c971c2d6666cbfb3ce46b-videowebm.webm" data-filewidth="1024" data-fileheight="1024" data-filemime="video/webm"><img src="/.media/t_2cb3b6fcfa2c971c2d6666cbfb3ce46b-videowebm" loading="lazy" width="255" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/41ee3b1915d7bf432afbb1de89193828-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">559.58 KB</span>
+  <span class="dimensionLabel">828x749</span> <a class="originalNameLink" href="/.media/41ee3b1915d7bf432afbb1de89193828-imagejpeg.jpg" download="1657514739042.jpg">1657514739042.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/41ee3b1915d7bf432afbb1de89193828-imagejpeg.jpg" data-filewidth="828" data-fileheight="749" data-filemime="image/jpeg"><img src="/.media/t_41ee3b1915d7bf432afbb1de89193828-imagejpeg" loading="lazy" width="255" height="231"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9911044753ed31ed524653400d47b267-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">695.30 KB</span>
+  <span class="dimensionLabel">2160x3840</span> <a class="originalNameLink" href="/.media/9911044753ed31ed524653400d47b267-imagejpeg.jpg" download="1654405058285.jpg">1654405058285.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9911044753ed31ed524653400d47b267-imagejpeg.jpg" data-filewidth="2160" data-fileheight="3840" data-filemime="image/jpeg"><img src="/.media/t_9911044753ed31ed524653400d47b267-imagejpeg" loading="lazy" width="143" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94187.html#94187">&gt;&gt;94187</a><br><span class="greenText">&gt;Does the banking system have any good use or good quality, after all the flaws are removed</span><br>Elaborate on this aa thats a broad term to ask <br>Money is nothing but a token of compensation for goods produced or work done that shouldnt be able to replicate itself ie having interests on it or be above of what it is ie mammonism or capitalism if you wish or to be the end and not means to end <br><br>Manifesto on abolition of interest slavery from gotfried feder should be enough to explain it to you <br>Work is the king and not the capital</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94216"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94187-94216">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/26/2024 (Fri) 20:58</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #856745">856745</span></span>
+  <a class="linkPreview" href="/pol/preview/94216.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94187.html#94216">No.</a><a class="linkQuote" href="/pol/res/94187.html#q94216">94216</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/c46bd4d6a2009832764b06981e7fb417-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">161.21 KB</span>
+  <span class="dimensionLabel">1000x1000</span> <a class="originalNameLink" href="/.media/c46bd4d6a2009832764b06981e7fb417-imagejpeg.jpg" download="1653013070851.jpg">1653013070851.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/c46bd4d6a2009832764b06981e7fb417-imagejpeg.jpg" data-filewidth="1000" data-fileheight="1000" data-filemime="image/jpeg"><img src="/.media/t_c46bd4d6a2009832764b06981e7fb417-imagejpeg" loading="lazy" width="255" height="255"></a></figure></div>
+  <div class="divMessage">The current main issues with central banks, and all minor banks likewise, are:
+<br>1) private business printing money
+<br>(where such private business follow a set of business interests and goals which differ from the interests and goals of the people of a nation, turning a vital tool for the daily life of any civilian such as money management away or even against the wellbeing of the people of the nation)
+<br>2) interests applied over loans
+<br>(where the beforementioned control over the money supply by the same banks makes it impossible to repay such loans on a bigger scale, leading to the gradual enslavement of the people of a nation, or of more nations)
+<br>3) misownership of the deposits
+<br>(the bank using the money of their creditors against the creditors, the abuse of the middleman position which the banks hold over the money of their creditors, basically the usage of the stored money in the bank to further the interests of the bank at the damage of the creditor who actually owns those money) (a chief example of this is the banks financing the native population lower births and the mass migration initiatives and activities to take advantage of the housing market, financing all done with the money of the native population stored by the banks)
+<br>
+<br>The private business money making is also a problem for a second reason, the issuance of more money into the economy acts as an indirect tax, by the devaluation of the money already in circulation, loss of value which is absorbed by the newly created money.
+<br>
+<br>There is also an extra effect of the interests over loans, that is the interests over state bonds. State bonds meant as those loans a government or nation asks to fulfill their projects.
+<br>Interests over state bonds which can only be paid by the state as a fraction of the whole tax input, part of the taxes which therefore don't go back to the taxpaying people in the form of state services and infrastructures, but part of the taxes which is basically taken away by the banking system. Meaning that by the effect of the interests over state bonds, the people of a nation are directly paying the banks with their own taxes.
+<br>It's also relevant to mention the overwhelming ownership of state bonds by banks and other similar businesses, while the state bonds owned directly by citizens is a minority. This overwhelming ownership of state bonds by the banks further worsens the effects of the interests over state bonds. (whereas it would be a bit more sane to have state bonds to be bought and owned only by citizens and denied to any business, financial or otherwise)
+<br>
+<br>Removing the interests over any transaction alone would not be enough, if also the issuance of money by private institutions isn't also removed.
+<br>If interests is slavery, countervalueless money printing is fraud and falsification.
+<br>
+<br>Then again, a banking system without interests and money printing, can barely be called a bank anymore, but more of a safekeeping money storage, a coffer.
+<br>So in a way, the solutions suggested above seem more leaning on "kill the current banking system"</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94217"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94187-94217">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/26/2024 (Fri) 21:08</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #b551a5">b551a5</span></span>
+  <a class="linkPreview" href="/pol/preview/94217.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94187.html#94217">No.</a><a class="linkQuote" href="/pol/res/94187.html#q94217">94217</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">4) the bank mass tracking all economic activities done by the population
+<br>(tracking which can be reused as profilation for targeted advertising and manipulation of the client of the bank, which becomes mass manipulation of entire populations when all the clients of the banks are considered) (this issue couples with the state mandated obbligation of conducting business exclusively by mediation of a bank, by the obstruction and limitation to the usage of solid money outside of the banks overview)</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94218"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94187-94218">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/26/2024 (Fri) 21:39</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #b551a5">b551a5</span></span>
+  <a class="linkPreview" href="/pol/preview/94218.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94187.html#94218">No.</a><a class="linkQuote" href="/pol/res/94187.html#q94218">94218</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">5) arbitrary freezing of a banking account if the owner doesn't comply with the current anti-european agenda, basically the banks have the state mandate to steal the money of their creditors</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94224"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94187-94224">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/27/2024 (Sat) 08:24</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #1cbc5e">1cbc5e</span></span>
+  <a class="linkPreview" href="/pol/preview/94224.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94187.html#94224">No.</a><a class="linkQuote" href="/pol/res/94187.html#q94224">94224</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94187.html#94216">&gt;&gt;94216</a><br><span class="greenText">&gt;can barely be called a bank anymore, but more of a safekeeping money storage, a coffer</span><br>Thats what banks are supposed to be to begin with, state issues the credit not a private institution with the only desire to do so to profit from it<br><span class="greenText">&gt;So in a way, the solutions suggested above seem more leaning on "kill the current banking system</span><br>Yes as profiteering from printing money supply ie centrsl banking proved to be devastating compared to the state issued credit interest free printed in amount to finance projects and salaries of citizens as again money is nothing but compensation unit for work done or goods produced<br>Just like founding fathers of US printed and nsdap germany with gaddafi or middle age england <br><a rel="nofollow" target="_blank" href="https://odysee.com/@Cultured-Thug:c/Nazi-Economy:a">https://odysee.com/@Cultured-Thug:c/Nazi-Economy:a</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94325"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94187-94325">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/01/2024 (Thu) 10:19</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #82b5c2">82b5c2</span></span>
+  <a class="linkPreview" href="/pol/preview/94325.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94187.html#94325">No.</a><a class="linkQuote" href="/pol/res/94187.html#q94325">94325</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94187.html#94224">&gt;&gt;94224</a><br>Despite the fact the speaker, by both the sound of his voice and the jewish-influenced tendency to call himself "thug", is black: He seems to be trustworthy enough to tell  as much of the truth as possible. As opposed to jews with ulterior motives. I haven't finished the entire video yet though. Do let me know if there's any holocaust fraud bullshit lauded as truth later on.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94809"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94187-94809">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/28/2024 (Sat) 10:45</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #0868a5">0868a5</span></span>
+  <a class="linkPreview" href="/pol/preview/94809.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94187.html#94809">No.</a><a class="linkQuote" href="/pol/res/94187.html#q94809">94809</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/3a5fa2ad145bf2ab923e669e844e599e-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">93.24 KB</span>
+  <span class="dimensionLabel">1024x624</span> <a class="originalNameLink" href="/.media/3a5fa2ad145bf2ab923e669e844e599e-imagejpeg.jpg" download="1727378622523652.jpg">1727378622523652.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/3a5fa2ad145bf2ab923e669e844e599e-imagejpeg.jpg" data-filewidth="1024" data-fileheight="624" data-filemime="image/jpeg"><img src="/.media/t_3a5fa2ad145bf2ab923e669e844e599e-imagejpeg" loading="lazy" width="255" height="155"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="95364"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94187-95364">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/09/2024 (Mon) 12:25</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #474184">474184</span></span>
+  <a class="linkPreview" href="/pol/preview/95364.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94187.html#95364">No.</a><a class="linkQuote" href="/pol/res/94187.html#q95364">95364</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9ab87f585bb3c05e07644098a9619fc7-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">65.79 KB</span>
+  <span class="dimensionLabel">720x688</span> <a class="originalNameLink" href="/.media/9ab87f585bb3c05e07644098a9619fc7-imagejpeg.jpg" download="1727253779332739.jpg">1727253779332739.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9ab87f585bb3c05e07644098a9619fc7-imagejpeg.jpg" data-filewidth="720" data-fileheight="688" data-filemime="image/jpeg"><img src="/.media/t_9ab87f585bb3c05e07644098a9619fc7-imagejpeg" loading="lazy" width="255" height="244"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94187.html#94187">&gt;&gt;94187</a>
+<br>Banks should only be local, not international, not even national, only local on the provincial level.
+<br>Banks should exist only to facilitate the development of the local economy, which means to be at the service of the local people.
+<br>No money should ever enter the local bank from outside, and no money should ever exit the local bank towards outside.
+<br>Banks must be owned and controlled by all their clients, banks should not exist to make a profit, but only to allow different busines and people from the same community to help each other for the wellbeing of everyone.
+<br>
+<br>The current international banking system doesn't fit any of those requirements, so the current banking system must be entirely scrapped.
+<br>Regardless of jews or no jews in there, the current banking system must all be scrapped.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="96996"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94187-96996">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/17/2025 (Fri) 14:28</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #f30173">f30173</span></span>
+  <a class="linkPreview" href="/pol/preview/96996.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94187.html#96996">No.</a><a class="linkQuote" href="/pol/res/94187.html#q96996">96996</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/70828.html#77864">&gt;&gt;77864</a><br><span class="youtube_wrapper">https://youtube.com/watch?v=mzv1EI5gDnE [<a href="https://youtube.com/watch?v=mzv1EI5gDnE">Embed</a>]</span></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/94187.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

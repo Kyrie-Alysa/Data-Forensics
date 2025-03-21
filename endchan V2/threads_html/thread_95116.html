@@ -1,0 +1,521 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - China and kikes</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="95116">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=95116">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/95116.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell multipleUploads" id="95116"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/56c9f3b2b29bfe3cebb456f63f1d0e83-imagepng.png">Open File</a>(<span class="sizeLabel">400.80 KB</span>
+  <span class="dimensionLabel">2560x1492</span> <a class="originalNameLink" href="/.media/56c9f3b2b29bfe3cebb456f63f1d0e83-imagepng.png" download="Censorship_of_Tik_Tok.png">Censorship_of_Tik_Tok.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/56c9f3b2b29bfe3cebb456f63f1d0e83-imagepng.png" data-filewidth="2560" data-fileheight="1492" data-filemime="image/png"><img src="/.media/t_56c9f3b2b29bfe3cebb456f63f1d0e83-imagepng" loading="lazy" width="255" height="149"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/e0c7aa7759c26cb4baab66345663a3dc-videowebm.webm">Open File</a>(<span class="sizeLabel">5.53 MB</span>
+  <span class="dimensionLabel">720x480</span> <a class="originalNameLink" href="/.media/e0c7aa7759c26cb4baab66345663a3dc-videowebm.webm" download="1710337836546846.webm">1710337836546846.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/e0c7aa7759c26cb4baab66345663a3dc-videowebm.webm" data-filewidth="720" data-fileheight="480" data-filemime="video/webm"><img src="/.media/t_e0c7aa7759c26cb4baab66345663a3dc-videowebm" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/690a6a6a432dce68095ef3c0a4b3820c-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">328.68 KB</span>
+  <span class="dimensionLabel">1433x2057</span> <a class="originalNameLink" href="/.media/690a6a6a432dce68095ef3c0a4b3820c-imagejpeg.jpg" download="1668345434007097.jpg">1668345434007097.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/690a6a6a432dce68095ef3c0a4b3820c-imagejpeg.jpg" data-filewidth="1433" data-fileheight="2057" data-filemime="image/jpeg"><img src="/.media/t_690a6a6a432dce68095ef3c0a4b3820c-imagejpeg" loading="lazy" width="178" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/394faa3b22b1928694cfa8d7bace114a-imagepng.png">Open File</a>(<span class="sizeLabel">262.76 KB</span>
+  <span class="dimensionLabel">556x760</span> <a class="originalNameLink" href="/.media/394faa3b22b1928694cfa8d7bace114a-imagepng.png" download="1691479431371266.png">1691479431371266.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/394faa3b22b1928694cfa8d7bace114a-imagepng.png" data-filewidth="556" data-fileheight="760" data-filemime="image/png"><img src="/.media/t_394faa3b22b1928694cfa8d7bace114a-imagepng" loading="lazy" width="187" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a8d9818659ea7ad10ece1012ab9c0895-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">358.80 KB</span>
+  <span class="dimensionLabel">1902x818</span> <a class="originalNameLink" href="/.media/a8d9818659ea7ad10ece1012ab9c0895-imagejpeg.jpg" download="1732012424832149.jpg">1732012424832149.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a8d9818659ea7ad10ece1012ab9c0895-imagejpeg.jpg" data-filewidth="1902" data-fileheight="818" data-filemime="image/jpeg"><img src="/.media/t_a8d9818659ea7ad10ece1012ab9c0895-imagejpeg" loading="lazy" width="255" height="110"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-95116">
+    <span class="labelSubject">China and kikes</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">11/19/2024 (Tue) 13:52</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #9ba9a4">9ba9a4</span></span>
+    
+    
+    
+    <span class="bumpLockIndicator" title="Bumplocked"></span>
+    <a class="linkPreview" href="/pol/preview/95116.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/95116.html#95116">No.</a>
+    <a class="linkQuote" href="/pol/res/95116.html#q95116">95116</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">What do you take of the relationship (positive or negative) between chinese governments and the internationalist/communist jews ?<br><br>Consider this chinese/jew relationship over time, not just in the present time, it's important to keep a long range view on this, things may change in the short term, but it's the long term status which really matters.<br><br>What I truly want to understand is:<br>Are the chinese reliable or not? Reliable in general, maybe not, but at least reliable in removing the jewish cancer from the world?<br>Can the chinese be trusted in the midst of the fight against evil? Would you trust your back to the chinese, while destruction and corruption is attacking you?<br><br>That is, are the chinese: allies against the jews, bystanders about the jews, or enemies with the jews?<br>Or are the chinese just opportunistic in following their small interests?<br>Or are the chinese just jews in disguise, acting fondamentally the same, greedy and parasitic?<br>Or again, are the chinese just more work mules for the jews, not different at all from how the angloids are, so are the chinese just more npc obstructing the way of liberation?<br><br>Are the chinese potential allies in removing the cancerous jewish presence from the world?<br>Or are the chinese just more burden in making that feat of "total kike removal" harder to achieve?</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="95117"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-95116-95117">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">11/19/2024 (Tue) 14:11</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #9ba9a4">9ba9a4</span></span>
+  <a class="linkPreview" href="/pol/preview/95117.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/95116.html#95117">No.</a><a class="linkQuote" href="/pol/res/95116.html#q95117">95117</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6cb8fe5dd7db87936fe28a4a5ea8e688-imagepng.png">Open File</a>(<span class="sizeLabel">24.01 KB</span>
+  <span class="dimensionLabel">462x462</span> <a class="originalNameLink" href="/.media/6cb8fe5dd7db87936fe28a4a5ea8e688-imagepng.png" download="1710050696258894.png">1710050696258894.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6cb8fe5dd7db87936fe28a4a5ea8e688-imagepng.png" data-filewidth="462" data-fileheight="462" data-filemime="image/png"><img src="/.media/t_6cb8fe5dd7db87936fe28a4a5ea8e688-imagepng" loading="lazy"></a></figure></div>
+  <div class="divMessage">The same questions, the same concern about reliability, could be asked about the indians.<br>And truly, it could be asked about any nation of the world.<br><br>("nation" is meant not as government, but nation as group of people sharing the same features, the same blood, the same history, the same fate, the same traditions, the same spirit, the same virtues)<br><br>If the chinese are not reliable, nor good friends, who else could be a good friend.<br>Or if the chinese in spite of everything are deep down reliable, somehow, who else can be as good or even better than them, for the purpose of the fight.<br><br>This thread starts about the chinese, but I also wish for this thread to develop into a thread about <br>"searching for friends among nations".<br>The impulse to do everything on one own, down to closing in oneself, that is a strong impulse when the world around you is horrible and tries to destroy everything of you, and even if the world was better, most things must be done by one own means, without relying on others, overreliance and complacency is also bad, but having friends helps to weather the harshness of the world. Knowing you are not alone in figthing for what is true and good, helps in not giving up to the fatigue.<br><br>It could also be said, that the road to isolation is paved by jews. Because isolated people are weak and easy to corrupt, to enslave, and to destroy.<br>But likewise, friendship based on truth is the bane of the jews.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="95118"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-95116-95118">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">11/19/2024 (Tue) 18:56</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #540484">540484</span></span>
+  <a class="linkPreview" href="/pol/preview/95118.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/95116.html#95118">No.</a><a class="linkQuote" href="/pol/res/95116.html#q95118">95118</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/833d0b487ed5edb2384ffa6a4ed6453d-imagepng.png">Open File</a>(<span class="sizeLabel">1.79 MB</span>
+  <span class="dimensionLabel">1056x2880</span> <a class="originalNameLink" href="/.media/833d0b487ed5edb2384ffa6a4ed6453d-imagepng.png" download="1510724279786.png">1510724279786.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/833d0b487ed5edb2384ffa6a4ed6453d-imagepng.png" data-filewidth="1056" data-fileheight="2880" data-filemime="image/png"><img src="/.media/t_833d0b487ed5edb2384ffa6a4ed6453d-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/34b6ea71ead3d31ef44f7f95a3b97f8c-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">36.44 KB</span>
+  <span class="dimensionLabel">609x343</span> <a class="originalNameLink" href="/.media/34b6ea71ead3d31ef44f7f95a3b97f8c-imagejpeg.jpg" download="3432074547.jpg">3432074547.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/34b6ea71ead3d31ef44f7f95a3b97f8c-imagejpeg.jpg" data-filewidth="609" data-fileheight="343" data-filemime="image/jpeg"><img src="/.media/t_34b6ea71ead3d31ef44f7f95a3b97f8c-imagejpeg" loading="lazy" width="255" height="144"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/503af432a00a29ce5e820f10653d57a4-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">145.50 KB</span>
+  <span class="dimensionLabel">1280x853</span> <a class="originalNameLink" href="/.media/503af432a00a29ce5e820f10653d57a4-imagejpeg.jpg" download="1422707041146.jpg">1422707041146.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/503af432a00a29ce5e820f10653d57a4-imagejpeg.jpg" data-filewidth="1280" data-fileheight="853" data-filemime="image/jpeg"><img src="/.media/t_503af432a00a29ce5e820f10653d57a4-imagejpeg" loading="lazy" width="255" height="170"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9e883760504bddaa3c4a133fc107310d-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">93.16 KB</span>
+  <span class="dimensionLabel">900x598</span> <a class="originalNameLink" href="/.media/9e883760504bddaa3c4a133fc107310d-imagejpeg.jpg" download="liu_yandong_israel.jpg">liu_yandong_israel.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9e883760504bddaa3c4a133fc107310d-imagejpeg.jpg" data-filewidth="900" data-fileheight="598" data-filemime="image/jpeg"><img src="/.media/t_9e883760504bddaa3c4a133fc107310d-imagejpeg" loading="lazy" width="255" height="169"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6641a719e234299d90f018e47fc3d4b8-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">267.27 KB</span>
+  <span class="dimensionLabel">600x700</span> <a class="originalNameLink" href="/.media/6641a719e234299d90f018e47fc3d4b8-imagejpeg.jpg" download="446.jpg">446.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6641a719e234299d90f018e47fc3d4b8-imagejpeg.jpg" data-filewidth="600" data-fileheight="700" data-filemime="image/jpeg"><img src="/.media/t_6641a719e234299d90f018e47fc3d4b8-imagejpeg" loading="lazy" width="219" height="255"></a></figure></div>
+  <div class="divMessage">China is not a nation of allies due to the corrupt government in charge, but Chinese are not "jews in disguise" either. For if traitorous compromise meant "jew in disguise" on the entire race of any government of a nation whose government were traitors for jews, then every single race would be "jews in disguise". Which clearly, the problem is both traitors and kikes.<br><span class="greenText">&gt;("nation" is meant not as government, but nation as group of people sharing the same features, the same blood,</span><br><span class="greenText">&gt;the same history, the same fate, the same traditions, the same spirit, the same virtues)</span><br>That is what jews are trying their best to destroy in every nation they inhabit. While people are not their governments, it's the governments ZOG has compromised worldwide.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="95121"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-95116-95121">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">11/19/2024 (Tue) 21:14</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #afc9b8">afc9b8</span></span>
+  <a class="linkPreview" href="/pol/preview/95121.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/95116.html#95121">No.</a><a class="linkQuote" href="/pol/res/95116.html#q95121">95121</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/95116.html#95118">&gt;&gt;95118</a><br><span class="greenText">&gt;Chinese are not "jews in disguise" either</span><br>Here is a kicker<br>Search the term kaifeng jew and how many kaifeng jews were responsible for various national catastrophes in china including the opium wars against qing dynasty<br>Lets say by that time communist cultural revolution was just a sped up version of that genocide back then</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="95124"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-95116-95124">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">11/19/2024 (Tue) 21:31</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #afc9b8">afc9b8</span></span>
+  <a class="linkPreview" href="/pol/preview/95124.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/95116.html#95124">No.</a><a class="linkQuote" href="/pol/res/95116.html#q95124">95124</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/95116.html#95121">&gt;&gt;95121</a><br>But does it mean i dont trust modern han chinese over it<br>No there are different historico eugenic reasons for which i am not personally a friend of orient and their social, political and human way of thinking and especially how they are maybe first race in history that was sucesfully trough trauma misery and devastattion made to be an perfect goyim<br><br>You think im over saturating this but you really dont want to know what happened to them and feel eternal pity for their misfortune<br><br>Shame i dont have that snippet now describing that because lets say <br>Something like cultural revolution of ccp happened druing qing dynasty and before even then something was happening commonly</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="102304"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-95116-102304">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">02/20/2025 (Thu) 11:00</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #63fc5d">63fc5d</span></span>
+  <a class="linkPreview" href="/pol/preview/102304.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/95116.html#102304">No.</a><a class="linkQuote" href="/pol/res/95116.html#q102304">102304</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/43a6ebc11bfb63d22989e166a398058b-imagepng.png">Open File</a>(<span class="sizeLabel">95.92 KB</span>
+  <span class="dimensionLabel">311x419</span> <a class="originalNameLink" href="/.media/43a6ebc11bfb63d22989e166a398058b-imagepng.png" download="image76-311w419h.png">image76-311w419h.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/43a6ebc11bfb63d22989e166a398058b-imagepng.png" data-filewidth="311" data-fileheight="419" data-filemime="image/png"><img src="/.media/t_43a6ebc11bfb63d22989e166a398058b-imagepng" loading="lazy" width="189" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/e6920c84bff7192ffa8af83ea4f473ed-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">53.52 KB</span>
+  <span class="dimensionLabel">351x520</span> <a class="originalNameLink" href="/.media/e6920c84bff7192ffa8af83ea4f473ed-imagejpeg.jpg" download="image27-351w520h.jpg">image27-351w520h.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/e6920c84bff7192ffa8af83ea4f473ed-imagejpeg.jpg" data-filewidth="351" data-fileheight="520" data-filemime="image/jpeg"><img src="/.media/t_e6920c84bff7192ffa8af83ea4f473ed-imagejpeg" loading="lazy" width="172" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/d222fbf566a00eca26414405fde12d20-imagepng.png">Open File</a>(<span class="sizeLabel">99.66 KB</span>
+  <span class="dimensionLabel">587x414</span> <a class="originalNameLink" href="/.media/d222fbf566a00eca26414405fde12d20-imagepng.png" download="image47-587w414h.png">image47-587w414h.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/d222fbf566a00eca26414405fde12d20-imagepng.png" data-filewidth="587" data-fileheight="414" data-filemime="image/png"><img src="/.media/t_d222fbf566a00eca26414405fde12d20-imagepng" loading="lazy" width="255" height="180"></a></figure></div>
+  <div class="divMessage"><a rel="nofollow" target="_blank" href="https://fitzinfo.net/2021/07/19/how-jews-took-over-china-an-created-chinese-communism/">https://fitzinfo.net/2021/07/19/how-jews-took-over-china-an-created-chinese-communism/</a>
+<br>after finally a long search i found the site containing the snippet with more afterwards
+<br>
+<br>one has to see the jews in order to see how china evolved in modern era
+<br><a rel="nofollow" target="_blank" href="https://www.nli.org.il/en/newspapers/pls/1946/03/31/01/article/13/?e=-------en-20--1--img-txIN%7ctxTI--------------1">https://www.nli.org.il/en/newspapers/pls/1946/03/31/01/article/13/?e=-------en-20--1--img-txIN%7ctxTI--------------1</a>
+<br>also a small bonus on gen chiang kai shek after the ww2
+<br>he donated money to jews</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/95116.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

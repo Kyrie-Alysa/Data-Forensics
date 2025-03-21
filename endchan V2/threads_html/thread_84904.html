@@ -1,0 +1,1837 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - How to survive (((tech)))</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="84904">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=84904">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/84904.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="84904"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9b0636a8d8a310e24e0f23cf3224f641-imagepng.png">Open File</a>(<span class="sizeLabel">2.01 MB</span>
+  <span class="dimensionLabel">2382x1761</span> <a class="originalNameLink" href="/.media/9b0636a8d8a310e24e0f23cf3224f641-imagepng.png" download="stop using your smartphone.png">stop using your smartphone.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9b0636a8d8a310e24e0f23cf3224f641-imagepng.png" data-filewidth="2382" data-fileheight="1761" data-filemime="image/png"><img src="/.media/t_9b0636a8d8a310e24e0f23cf3224f641-imagepng" loading="lazy" width="255" height="189"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-84904">
+    <span class="labelSubject">How to survive (((tech)))</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    <img class="imgFlag" src="/pol/flags/5dc3ef86805fb609cec0b430" title="Nationalist Spain">
+    
+    <span class="labelCreated">06/26/2021 (Sat) 11:11</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #3a6568">3a6568</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/84904.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/84904.html#84904">No.</a>
+    <a class="linkQuote" href="/pol/res/84904.html#q84904">84904</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">Imagine a degenerate wasting 4 hours a day watching youtube, what a waste, a controlled creature of instinct and hedonism. I was this creature years ago and I come to tell you it wasn't nice.
+<br>If you browse image boards for half an hour a day, don't own a smartphone, and understand the degeneracy of modern entertainment, this guide may have a little good information, but it won't change your life.
+<br>
+<br>TL;DR:
+<br>
+<br><span class="greenText">&gt;What do I do?</span>
+<br> * Stop using a smart-phone, this is critical.
+<br> * Stop using social media, or minimize their use.
+<br> * Avoid FAGMANS: Facebook, Apple, Google, Microsoft, Amazon, Netflix, Samsung.
+<br> * Only use secure, encrypted, foss, chat apps for communication. Email is not secure.
+<br> * Get rid of smart-watches, and smart-tvs, etcetera. If it has an internet connection, it is evil.
+<br> * Get rid of supermarket discount cards and membership cards of any kind.
+<br> * Don't get a genetic test.
+<br> * Use uBlock origin to mitigate tracking.
+<br>
+<br><span class="greenText">&gt;What is the problem?</span>
+<br> * You are being data-mined.
+<br> * Your smartphone, smart tv, and smart dildo are all data gatherers.
+<br> * Social media, and cookies are the same. Social media is surveillance, and cookies are trackers. This is re-branding.
+<br> * This data is being used much like weather stations, enough data and a model can be set up that predicts human behavior, this information is in the worst possible hands.
+<br> * This system can also be used to entrap or spy on you.
+<br> * Internet of Things is mass surveillance extended into other appliances.
+<br> * Tech is made addictive on purpose. This includes gaming, porn, etcetera.
+<br>
+<br><span class="greenText">&gt;QUI is behind this?</span>
+<br> * (((Same as always)))
+<br> * Logistics and specifics are implemented through FAGMANS. There are others.
+<br> * The US feds, through the pentagon, and alphabet agencies, mostly NSA.
+<br> * The CCP has Xiaomi and other companies that do mass surveillance.
+<br>
+<br><span class="greenText">&gt;This is difficult weh weh I'm a faggot!</span>
+<br> * Apply /SIG/ principles.
+<br> * Take one thing off of this list, stop watching youtube videos all the time and read instead.
+<br> * Next week, Stop using facebook.
+<br> * Next week after that, replace your smartphone with a dumb phone.
+<br> * Since you still may want to use messaging apps, use them on BlueStacks.
+<br> * Slowly but surely, release yourself of these chains.
+<br>
+<br><span class="greenText">&gt;But I like tech! Is there any virtuous use of technology?</span>
+<br> * Yes, this guide is for people who have a problem with tech.
+<br> * Halfchan's /pol/ is tech, and accidentally redpilled a generation of people, social media allowed for unprecedented spontaneous organization, this was accidental of course, we were never meant to be free to speak.
+<br>
+<br>In all seriousness, if you do not intend to stop using your smartphone, stop reading and kill yourself.</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell multipleUploads" data-boarduri="pol" id="84905"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-84905">
+  <span class="labelSubject">Social media is meant to be an adiction, so is your phone, porn, games, and tv.</span>
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/26/2021 (Sat) 11:16:08</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #3a6568">3a6568</span></span>
+  <a class="linkPreview" href="/pol/preview/84905.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#84905">No.</a><a class="linkQuote" href="/pol/res/84904.html#q84905">84905</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/f66dd8a027633b7c82649bfac1e91686-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">62.64 KB</span>
+  <span class="dimensionLabel">1024x683</span> <a class="originalNameLink" href="/.media/f66dd8a027633b7c82649bfac1e91686-imagejpeg.jpg" download="oh_hi_mark.jpg">oh_hi_mark.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/f66dd8a027633b7c82649bfac1e91686-imagejpeg.jpg" data-filewidth="1024" data-fileheight="683" data-filemime="image/jpeg"><img src="/.media/t_f66dd8a027633b7c82649bfac1e91686-imagejpeg" width="255" height="170"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6c74ea8cc3a0b90b371cf70b6e6ef12f-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">14.14 KB</span>
+  <span class="dimensionLabel">474x321</span> <a class="originalNameLink" href="/.media/6c74ea8cc3a0b90b371cf70b6e6ef12f-imagejpeg.jpg" download="sundar.jpg">sundar.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6c74ea8cc3a0b90b371cf70b6e6ef12f-imagejpeg.jpg" data-filewidth="474" data-fileheight="321" data-filemime="image/jpeg"><img src="/.media/t_6c74ea8cc3a0b90b371cf70b6e6ef12f-imagejpeg" width="255" height="173"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/4eb0cec202699ccedab848ecb2c8e5fc-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">53.69 KB</span>
+  <span class="dimensionLabel">1140x700</span> <a class="originalNameLink" href="/.media/4eb0cec202699ccedab848ecb2c8e5fc-imagejpeg.jpg" download="susan.jpg">susan.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/4eb0cec202699ccedab848ecb2c8e5fc-imagejpeg.jpg" data-filewidth="1140" data-fileheight="700" data-filemime="image/jpeg"><img src="/.media/t_4eb0cec202699ccedab848ecb2c8e5fc-imagejpeg" width="255" height="157"></a></figure></div>
+  <div class="divMessage"><a rel="nofollow" target="_blank" href="https://newspunch.com/pentagon-online-surveillance-facebook/">https://newspunch.com/pentagon-online-surveillance-facebook/</a><br>"Social media" is a re-branding of "mass surveillance". In the same way "Cookies" are "Trackers".<br>Facebook, may in fact be, a US gov surveillance project straight out of the pentagon.<br><br>Social media is designed to be addictive and to keep you using it:<br>Facebook feeds you outrageous news in your feed because rage keeps you glued to the screen.<br>Gab functions in exactly the same way, it is a nest of republicans seething about the last bad thing democrats have done.<br>Youtube had a star system, this was a fairly good and useful rating system. This was replaced with a numberical system of likes and dislikes, the dislikes are rumoured to have their days numbered.<br>With facebook, there is no opposite of the like; There is only "like" and "this makes me angry".<br>Most social media sues an infinite scroll feed of information, you keep scrolling down looking for one bit of dopamine, surrounded by uninteresting drivel. This is more effective than to constantly serve you quality, as it would burn out your dopamine receptors.<br><br>This addictivenes is by design in both social media and entertainment in general.<br>In entertainment the examples are clearer.<br>In porn, Pornhub quite readily admits that they are feeding your porn addiction.<br>In gaming, lootboxes are designed around the same principles of casinos. Android games are even worse, as they are designed from the ground up around perpetual play and revenue streams.<br>Old games are cool tho.<br><br>This addictivenes serves a purpose, after all, it makes no sense to build walls around cattle you don't intend to milk and slaughter.<br>The walls are detailed above, they are your own instincts.<br>The profit however, is huge.<br>It is the knowledge of human group behavior.<br><br>Human beings are influenced by their environment and guided by their genetics.<br>We don't comprehend how exactly this process unfolds...<br>But tech giants have cracked a definite and reliable way of predicting the outcomes of these processes.<br><br>You should ask, why is every corporation looking into AI and Big Data?<br>On the surface, the answer seems to be that it is a corporate meme.<br>Most of it is, as it is implemented by brainless webdevs and pajeets who can't program for shit.<br>But as we've seen, much of it isn't.<br>Further still, how is it that target can tell that a woman is pregnant before she knows it?<br>How can it be that Amazon knows what you want before you tell them?<br><br>Try to remember: Was there any instance in which after mentioning an activity while talking with your friends, google showed store results with that item, and Amazon did too?<br>This is because all your online presence and FAGMANS accounts are linked to exploit you.<br>How this happens behind the doors is quite elaborate:<br><br><br>Firstly, you are more interesting as your demographic than as an individual.<br><br>Secondly, what websites you visit, and what links you click, what products you move your mouse over (and keep it there) are all recorded and associated.<br><br>Thirdly, this information is analyzed. Chiefly, what is a common behavior displayed by this demographic, and is there a relation to time or seasons, etc. This function has a job description: Big Data Analyst, or AI specialist.<br><br>Lastly, this information is sold to the highest bidder. This information is sold as a subscription because trends change.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="84906"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-84906">
+  <span class="labelSubject">How is data harvested?</span>
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/26/2021 (Sat) 11:32:02</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #3a6568">3a6568</span></span>
+  <a class="linkPreview" href="/pol/preview/84906.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#84906">No.</a><a class="linkQuote" href="/pol/res/84904.html#q84906">84906</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b72d7b3dbe7b54fabc73d2a06076d62e-imagepng.png">Open File</a>(<span class="sizeLabel">494.31 KB</span>
+  <span class="dimensionLabel">1200x400</span> <a class="originalNameLink" href="/.media/b72d7b3dbe7b54fabc73d2a06076d62e-imagepng.png" download="facebook kikery.png">facebook kikery.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b72d7b3dbe7b54fabc73d2a06076d62e-imagepng.png" data-filewidth="1200" data-fileheight="400" data-filemime="image/png"><img src="/.media/t_b72d7b3dbe7b54fabc73d2a06076d62e-imagepng" width="255" height="85"></a></figure></div>
+  <div class="divMessage">One concept that you have to understand is that all FAGMANS accounts are linked, there is no difference to the interested agents between your Facebook, and Amazon account, they are all linked to you.<br>Most social media and other apps, services etc, require your phone number or email. Have you used a different one for each?<br><br>The first step is the identification of demographics.<br><span class="greenText">&gt;Pic related</span><br>about a campaign Signal led on facbeook and Instagram (facebook owned) where they showed people directed ads based on facebook's cathegorization.<br>Countrary to what people believe, these ads do not find out information about you.<br>The ads are created and sent for a specific target. Facebook knows you are a pregnant woman with an interest in fitness, but the advertiser merely sends out an ad to pregnant women who have an interest in fitness.<br><br>How this is done is dependent on the site.<br>Facebook has groups. What those groups are about is reported by the users through tags, in the interest of being found by people who want to be a part of a sports group.<br>Then, you go and join those groups. Depending on your interest, which is calculated based on your constancy of participation, your interest is ranked.<br>You have a set of interests derivated likely from group belonging, as well as likes and other mechanisms.<br>Instagram does this mostly through your likes.<br>youtube obviously keeps tracks of what videos you watch. These videos have tags.<br>You can make a weighted accumulation of all tags you've consumed: <br>Take the amount of time you watched a video, and assign that as a weight to a tag, then add those tags together and you get: [ "puppies": 3.6, "metal": 2.4, "republican": 1.2, "democrat": -0.6, ... ]<br>This is known as a profile. These tags are incredibly useful to categorize you. More so if they are weighted. They quite literally are worth their bits in gold.<br><br>It is unknown to me how other social media do it, but every single one without exception does this.<br>There are no arbitrary elements in a social media webpage.<br><br><span class="greenText">&gt;With smartphones</span><br>the issue is darker, and much more crude.<br>Smartphones can tell where you are through GPS or telephone signal towers triangulation.<br>Smartphones never turn off, most have a BIOS battery, meaning removing the battery does nothing for a while.<br>Most don't even have removable batteries.<br>All have bluetooth, which is an absurdly insecure technology.<br>Smartphones are almost always connected to the internet.<br><br>If you install LineageOS with NO google services, you will notice a two week battery life, or one week maybe.<br>This is because (((google services))) are surveillance.<br>Most apps will behave badly and some will stop working.<br>(((Banking))) apps refuse to work on rooted devices or those without google services installed.<br><br><span class="greenText">&gt;Smartwatches </span><br>are the logical next step and are worse.<br>They know how many steps you've taken.<br>Your heartbeat.<br>What notifications you care about and which you won't even open.<br><br>They could predict illnesses.<br><br><span class="greenText">&gt;Smart-tvs</span><br>are less of a menace, as they do two things, provide mind-numbing entertainment, and are aware of what entertainment you watch.<br>Some have cameras though. Most have microphones on the controller. Those are always on.<br><br>In short, a meta-account is created for you out of all accounts and devices you use, including those without an account. <br>Facebook calls them shadow-accounts, for people mentioned on their platform, but who haven't created an account yet.<br>And then, information is linked to it, collected, as if milking a cow. Because you are cattle to them.<br><br>Many services promise anonymity, by telling you your data is anonymized.<br>There exist paid services where data is cross-linked automatically and de-anonymized.<br>Your data may be linked to an anonymous number, but it is still identifying data.<br>After all, there is only one person in this planet with your exact behaviour patterns.<br><br>So, to stop most of the damage, stop using your smartphone for any nu-necessary tasks, stop engaging social media.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="84907"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-84907">
+  <span class="labelSubject">Big data</span>
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/26/2021 (Sat) 11:44:08</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #3a6568">3a6568</span></span>
+  <a class="linkPreview" href="/pol/preview/84907.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#84907">No.</a><a class="linkQuote" href="/pol/res/84904.html#q84907">84907</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/57d837e3856b8a363b22df3b221160d4-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">19.79 KB</span>
+  <span class="dimensionLabel">474x237</span> <a class="originalNameLink" href="/.media/57d837e3856b8a363b22df3b221160d4-imagejpeg.jpg" download="(((big data))).jpg">(((big data))).jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/57d837e3856b8a363b22df3b221160d4-imagejpeg.jpg" data-filewidth="474" data-fileheight="237" data-filemime="image/jpeg"><img src="/.media/t_57d837e3856b8a363b22df3b221160d4-imagejpeg" width="255" height="128"></a></figure></div>
+  <div class="divMessage"><span class="greenText">&gt;pic related</span><br>In case you were wondering.<br><br>This data is analized through AI, and Big Data. Go look up a tutorial on python for how to do this.<br>The tutorials will speak about means, correlations, and patterns.<br>This is a very complex field, so to be short, I will give you its applications instead of how it is done.<br>Also, to be frank, I don't understand half of it myself.<br><br>The best example is weather prediction models, because of how open the whole affair is:<br>Firstly, data is gathered by hundreds of weather stations, many maintained by hobbyists, and students at universities.<br>These gather humidity, air pressure, wind direction and speed data, and many others.<br>This data can be visualized, for wind data in spain: (spain has a lot of wind activity and very interesting as well.)<br><a rel="nofollow" target="_blank" href="https://www.xcweather.co.uk/ES/observations">https://www.xcweather.co.uk/ES/observations</a><br>Wind data can be correlated with seasons, elevation, and the other factors such as pressure. It could also have to do with how much greenery exists in an area.<br>Then along comes a Big Data analyst. with a computer, takes all of this data, and spends weeks trying to find correlations.<br>Such correlations as temperature and presence of trees. Trees keep the area slightly cooler.<br>So from this correlation we can derive that cities should plant trees on walkways, this is better for people!<br>This data can also be used to create a model.<br><span class="greenText">&gt;At any instance in which "this and that" happens, this other thing will also happen 90% of the time.</span><br>When a cold front is observed, certain winds and rains can be predicted in it's wake.<br>Tornadoes are predicted like this as well.<br><br>So how do we jump to predicting the purchase habits of most pregnant women who like fitness?<br><br>Enter the silicon revolution.<br>Your smartphone alone is more powerful than the entirety of computational power of the NASA in the 70s.<br>Dates back in the 90s were stored as a series of numbers. To save space, the year used 2 numbers alone instead of 4.<br>Today, I can store dates in their whole string format and nobody gives a shit; such as "The first of October of the year two thousand and thirty-nine".<br>It would be a stupid idea but I could do it, and if I did go this stupid route, I could parse and use this information with minimal impact to my app.<br>This is because computers are comically overpowered. Most people subestimate how absurdly powerful computers are, it isn't even funny.<br><br>So, couple this capacity to store arbitrary amounts of data, with asburd processing power.<br>Social media harvests lots of data, even the arbitrary kind, and then people with the job description of Big Data anlists come in and tell the executives, "here, I found a pattern, now gibs me the reward."<br>This data is analized real time, packaged, and sold to whoever pays more for it under a convenient subscription model.<br>Imagine as a company that sells shoes, that you know what trends are in vogue, and how many people you can expect to enter your store based on who you appeal to.<br>Or even better yet, who buys the most shoes!<br><br>Apparently, it is this mythical pregnant woman who likes crossfit, for some inane reason.<br>Nobody knows why, they just know that is how it is. The numbers do not lie.<br><br>And AI is a step forwards in this same direction.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="84908"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-84908">
+  <span class="labelSubject">What do I do then?</span>
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/26/2021 (Sat) 12:17:01</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #3a6568">3a6568</span></span>
+  <a class="linkPreview" href="/pol/preview/84908.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#84908">No.</a><a class="linkQuote" href="/pol/res/84904.html#q84908">84908</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/8494a47b014740ee481e3585b405231a-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">24.10 KB</span>
+  <span class="dimensionLabel">474x270</span> <a class="originalNameLink" href="/.media/8494a47b014740ee481e3585b405231a-imagejpeg.jpg" download="ironic that apple has become big brother.jpg">ironic that apple has become big brother.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/8494a47b014740ee481e3585b405231a-imagejpeg.jpg" data-filewidth="474" data-fileheight="270" data-filemime="image/jpeg"><img src="/.media/t_8494a47b014740ee481e3585b405231a-imagejpeg" width="255" height="145"></a></figure></div>
+  <div class="divMessage">Isn't tech good though?<br>There is a virtue to using technology.<br>Technology is indeed freedom, if used right.<br>You can network with fellow /pol/lacks, and create online communities that investigate globopedo together through the power of internet autism.<br>You can also video-conference with your grandmother from across the world. I've never seen them so happy other than when I was personally there.<br><br>The purpose is to use technology, while not letting tech giants use you through technology.<br><br><span class="greenText">&gt;But isn't this fight hopeless?</span><br><span class="greenText">&gt;It's better to be done with 80% than to never deliver 100%.</span><br>Mark Zuckerberg said it himself.<br>Tech is curious, in that computers are very straightforwards, they only do what you tell them to.<br>So it is very complicated and difficult to get them to do everything with perfect adaptability. However, it is easy to get them to solve most of your problem.<br>Inversely, it is impossible to escape ALL surveillance. You will eventually have to do something that involves what we tech people lovingly call the "botnet".<br>But, it is relatively easy to fight the majority of the battle.<br>What's more, fighting most of the battle will make you invisible, because most people don't fight; and because the data harvesters can only ever conduct surveillance on most people, and only on those who are compliant and collaborative.<br>There is very little if any monetary gain in surveillance of someone who doesn't use social media.<br><br>Unless you're labelled a dangerous element to the state. But that's not what we want to do, we want to get rid of the nasty harvesting done off of our backs.<br><br><span class="greenText">&gt;How do I get rid of Zuck's cucking?</span><br>Firstly, adopt a liefstyle approach to no-tech.<br>If you throw your smartphone into a lake, tomorrow you'll be back to using it.<br>Simply put, take baby steps, and then take bigger steps.<br>Purge any negatives of technology while keeping the positives.<br>If you use social media for activism, remember not to lurk, post actively.<br>Lurking on social media is what "leaks" your likes and information.<br><br>Here's an unexhaustive list:<br> * Smartphone<br> * Smart *: watch, tv, fucking fridges for gods sake what the fuck.<br> * IoT, devices which have no need to connect to the internet, but do anyways.<br> * Social media: one at a time.<br> * Send EU GDPR request to delete accounts on social media. Contact support directly.<br> * Same for online games, your blizzard or steam account.<br> * Swirch to linux.<br> * Have a separate windows machine with epic games store, blizzard, steam and game on it, nothing else.<br> * Alternatively, stop gaming and lift.<br> * Switch from Chrome to Ungoogled-Chromium: <a rel="nofollow" target="_blank" href="https://github.com/Eloston/ungoogled-chromium#downloads">https://github.com/Eloston/ungoogled-chromium#downloads</a><br> * Switch from firefox to Librewolf<br> * Use uBlock origin, (never disable the google analitics filter).<br> * Stop storing cookies on your browser, delete history on exit: <a rel="nofollow" target="_blank" href="https://www.tipsdotcom.com/chrome-delete-history-on-exit.html">https://www.tipsdotcom.com/chrome-delete-history-on-exit.html</a><br> * This means you will have to log in to your accounts every time, so use a password manager: <a rel="nofollow" target="_blank" href="https://keepassxc.org/">https://keepassxc.org/</a><br> * Replace your software with foss and or decentralized options: <a rel="nofollow" target="_blank" href="https://www.linuxjournal.com/content/foss-software-alternatives-popular-proprietary-software">https://www.linuxjournal.com/content/foss-software-alternatives-popular-proprietary-software</a><br>There are many more.<br>You could also plant a garden, it will make you more independant, ground you on what is real, instead of the addictive nature of social media and smartphones.<br><br>Whatever you do, remember that drastic changes are difficult to hold on to.<br>Take tiny steps and move your emails to tutanota this week, that is a good first step.<br>Then next week, walk further.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="84909"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-84909">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/27/2021 (Sun) 06:40:08</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #ffc57f">ffc57f</span></span>
+  <a class="linkPreview" href="/pol/preview/84909.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#84909">No.</a><a class="linkQuote" href="/pol/res/84904.html#q84909">84909</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Getting off the internet is most important.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="84911"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-84911">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/27/2021 (Sun) 12:57:09</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #6c24ee">6c24ee</span></span>
+  <a class="linkPreview" href="/pol/preview/84911.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#84911">No.</a><a class="linkQuote" href="/pol/res/84904.html#q84911">84911</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/584955e315e80437458289ec6f4e8876-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">382.00 KB</span>
+  <span class="dimensionLabel">1684x1039</span> <a class="originalNameLink" href="/.media/584955e315e80437458289ec6f4e8876-imagejpeg.jpg" download="social media.jpg">social media.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/584955e315e80437458289ec6f4e8876-imagejpeg.jpg" data-filewidth="1684" data-fileheight="1039" data-filemime="image/jpeg"><img src="/.media/t_584955e315e80437458289ec6f4e8876-imagejpeg"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/2c8d8c2d93b003b8e8d5e86523268d85-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">71.47 KB</span>
+  <span class="dimensionLabel">963x639</span> <a class="originalNameLink" href="/.media/2c8d8c2d93b003b8e8d5e86523268d85-imagejpeg.jpg" download="645.jpg">645.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/2c8d8c2d93b003b8e8d5e86523268d85-imagejpeg.jpg" data-filewidth="963" data-fileheight="639" data-filemime="image/jpeg"><img src="/.media/t_2c8d8c2d93b003b8e8d5e86523268d85-imagejpeg"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#84909">&gt;&gt;84909</a><br>Now, this is the most suspicious post ITT. First, you're being hypocritical by posting on the internet. That part is painfully obvious to anyone. Second, you're here on a National Socialist board trying to convince people here to stop using the internet instead of any of these kike platforms. It makes you seem like another <em>in a long line of actors</em> who have tried to subvert in the past.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="84920"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-84920">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/29/2021 (Tue) 06:03:48</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cb941f">cb941f</span></span>
+  <a class="linkPreview" href="/pol/preview/84920.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#84920">No.</a><a class="linkQuote" href="/pol/res/84904.html#q84920">84920</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/c4d9d69916c6ba1e989463d1b5fb570e-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">241.17 KB</span>
+  <span class="dimensionLabel">1019x703</span> <a class="originalNameLink" href="/.media/c4d9d69916c6ba1e989463d1b5fb570e-imagejpeg.jpg" download="valve_big_data.jpg">valve_big_data.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/c4d9d69916c6ba1e989463d1b5fb570e-imagejpeg.jpg" data-filewidth="1019" data-fileheight="703" data-filemime="image/jpeg"><img src="/.media/t_c4d9d69916c6ba1e989463d1b5fb570e-imagejpeg" width="255" height="176"></a></figure></div>
+  <div class="divMessage">OP, those are a lot of good advises and great info. It'll be a nice walk for those willing to step out of the social media nets and it's worth it, they must realize it ended up becoming an addiction, and the fuckers running the show know it, and don't want users to drop it. About that gaming thing, users are being farmed too, biggest companies in that industry are Sony, Microsoft, Tencent, Nintendo, Activision, Valve Corporation. And what do you think they do? pic related is a position in valve's psychology team, but I doubt anons here play much, so just remember to tell others how shitty that industry is. Make sure you create small communities with people that you know in real life and do your best to take your friends and families out of the social media nets, try to implement your own services, it can be done, it's not easy, but I bet you have a friend or two who are willing to help you out.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="84935"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-84935">
+  
+  <a class="linkName" href="mailto:sage">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/04/2021 (Sun) 03:52:54</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #f2ed9f">f2ed9f</span></span>
+  <a class="linkPreview" href="/pol/preview/84935.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#84935">No.</a><a class="linkQuote" href="/pol/res/84904.html#q84935">84935</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/3fb983b3d2eedda5aeee55d7f8435109-imagegif.gif">Open File</a>(<span class="sizeLabel">915.70 KB</span>
+  <span class="dimensionLabel">250x230</span> <a class="originalNameLink" href="/.media/3fb983b3d2eedda5aeee55d7f8435109-imagegif.gif" download="81420110882d5c325fbb10aa049827f168c62a76a7d188f7e16d17c99884839a.gif">81420110882d5c325fbb10aa049827f168c62a76a7d188f7e16d17c99884839a.gif</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/3fb983b3d2eedda5aeee55d7f8435109-imagegif.gif" data-filewidth="250" data-fileheight="230" data-filemime="image/gif"><img src="/.media/t_3fb983b3d2eedda5aeee55d7f8435109-imagegif"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#84904">&gt;&gt;84904</a><br><span class="greenText">&gt;get off the internet</span><br><span class="greenText">&gt;thinks you can't use a smartphone without using the internet</span><br><span class="greenText">&gt;thinks anons on a board as remote as this need telling not to use facefuck</span><br>op is a fucking faggot</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="84959"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-84959">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/08/2021 (Thu) 17:21:25</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #04e78f">04e78f</span></span>
+  <a class="linkPreview" href="/pol/preview/84959.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#84959">No.</a><a class="linkQuote" href="/pol/res/84904.html#q84959">84959</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Op, watching youtube is fine. I watch tutorial vids and interests. It's part of education. Unless you're watching political shit, and history, it's absolute shit, yes I think we agree. Do not insult us by calling someone a hedonist because they watch car repair tutorials, computer programming, athletic work outs, the list goes on and on. <br><br>Sounds like you just discovered nothing is private and secure anymore. But you're not all wrong. It's good to be aware and up to date with the basics of tech.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86290"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-86290">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/21/2022 (Fri) 07:19:30</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #310c37">310c37</span></span>
+  <a class="linkPreview" href="/pol/preview/86290.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#86290">No.</a><a class="linkQuote" href="/pol/res/84904.html#q86290">86290</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/47b16b1501369d3f23b4a2e1166e6612-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">155.27 KB</span>
+  <span class="dimensionLabel">1280x989</span> <a class="originalNameLink" href="/.media/47b16b1501369d3f23b4a2e1166e6612-imagejpeg.jpg" download="p74.jpg">p74.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/47b16b1501369d3f23b4a2e1166e6612-imagejpeg.jpg" data-filewidth="1280" data-fileheight="989" data-filemime="image/jpeg"><img src="/.media/t_47b16b1501369d3f23b4a2e1166e6612-imagejpeg" width="255" height="197"></a></figure></div>
+  <div class="divMessage">Real, total war has become information war.  it is<br>being fought by suble electric informational media<br>--under cold conditions, and constantly.  The cold<br>war is the real war front--a surround--involving<br>everybody--all the time--everywhere.  Whenever<br>hot wars are necessary these days, we conduct<br>them in the backyards of the world with the old<br>technologies.  These wars are happenings, tragic<br>games,  It is no longer convenient, or suitable, to<br>use the latest technologies for fighting our wars,<br>because the latest technologies have rendered<br>war meaningless.  The hydrogen bomb is history's<br>exclamation point.  It ends an age-long sentence of<br>manifest violence!<br><br>some<br>like<br>it<br>hot<br><br>t. Marshall McLuhan // The Medium is the Massage // 1967</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86292"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-86292">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/21/2022 (Fri) 09:15:40</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #06a93e">06a93e</span></span>
+  <a class="linkPreview" href="/pol/preview/86292.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#86292">No.</a><a class="linkQuote" href="/pol/res/84904.html#q86292">86292</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6edc4f69432454c1ee6e382d48008aa2-applicationepub+zip.undefined">Open File</a>(<span class="sizeLabel">134.44 KB</span>
+   <a class="originalNameLink" href="/.media/6edc4f69432454c1ee6e382d48008aa2-applicationepub+zip.undefined" download="Theodore Kaczynski - Industrial Society and Its Future.epub">Theodore Kaczynski - Industrial Society and Its Future.epub</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6edc4f69432454c1ee6e382d48008aa2-applicationepub+zip.undefined" data-filemime="application/epub+zip"><img src="/genericThumb.png"></a></figure></div>
+  <div class="divMessage">Fucking normies with their moderated efforts and baby steps.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86294"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-86294">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/21/2022 (Fri) 17:29:37</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #9164bb">9164bb</span></span>
+  <a class="linkPreview" href="/pol/preview/86294.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#86294">No.</a><a class="linkQuote" href="/pol/res/84904.html#q86294">86294</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#86292">&gt;&gt;86292</a><br><span class="greenText">&gt;Fucking normies with their moderated efforts and baby steps.</span><br><span class="greenText">&gt;Theodore Kaczynski pdf - the Unabomber</span><br>Ok. So what do you think is going to happen if someone here blows up a synagogue? Or the Federal Reserve, the White House or Hollywood studios. Basically anywhere there's a bunch of jews. Nothing? Fucking kikes will cry crocodile tears, demand Endchan shut down and demand the government passes more laws against "hate speech".</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86295"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-86295">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/21/2022 (Fri) 23:48:20</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #a38368">a38368</span></span>
+  <a class="linkPreview" href="/pol/preview/86295.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#86295">No.</a><a class="linkQuote" href="/pol/res/84904.html#q86295">86295</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#86292">&gt;&gt;86292</a><br><span class="greenText">&gt;Fucking normies with their moderated efforts and baby steps.</span><br><span class="greenText">&gt;Kaczynski pdf</span><br>Shut the fuck up, don't associate the insane Kaczynski with this movement. Acts of terrorism have never and will never work, they certainty didn't work for the lunatic Kaczynski.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86311"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-86311">
+  <span class="labelSubject">sage</span>
+  <a class="linkName" href="mailto:sage">sage</a>
+  
+  
+  <span class="labelCreated">01/25/2022 (Tue) 03:03:12</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #f0b6b9">f0b6b9</span></span>
+  <a class="linkPreview" href="/pol/preview/86311.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#86311">No.</a><a class="linkQuote" href="/pol/res/84904.html#q86311">86311</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a21fc9f32b7954a23dbbbe8a6dc4646a-videomp4.mp4">Open File</a>(<span class="sizeLabel">302.43 KB</span>
+  <span class="dimensionLabel">640x354</span> <a class="originalNameLink" href="/.media/a21fc9f32b7954a23dbbbe8a6dc4646a-videomp4.mp4" download="He's a fagggg .mp4">He's a fagggg .mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a21fc9f32b7954a23dbbbe8a6dc4646a-videomp4.mp4" data-filewidth="640" data-fileheight="354" data-filemime="video/mp4"><img src="/.media/t_a21fc9f32b7954a23dbbbe8a6dc4646a-videomp4" width="255" height="141"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#86292">&gt;&gt;86292</a><br><span class="greenText">&gt;(((Kaczynski)))</span><br><br>Don't care about that yid. Nor do most people here</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86534"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-86534">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">02/22/2022 (Tue) 13:53:05</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #db5482">db5482</span></span>
+  <a class="linkPreview" href="/pol/preview/86534.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#86534">No.</a><a class="linkQuote" href="/pol/res/84904.html#q86534">86534</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#84904">&gt;&gt;84904</a><br><span class="greenText">&gt;Since you still may want to use messaging apps, use them on BlueStacks. </span><br>stopped reading here.<br>these sig-esque posts are massively retarded and unhelpful. suggest things to DO instead of saying what to NOT DO</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86535"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-86535">
+  <span class="labelSubject">sage</span>
+  <a class="linkName" href="mailto:sage">sage</a>
+  
+  
+  <span class="labelCreated">02/22/2022 (Tue) 14:54:19</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #9164bb">9164bb</span></span>
+  <a class="linkPreview" href="/pol/preview/86535.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#86535">No.</a><a class="linkQuote" href="/pol/res/84904.html#q86535">86535</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#86534">&gt;&gt;86534</a><br><span class="greenText">&gt;use them on BlueStacks</span><br><span class="greenText">&gt;Spainflag anon is retarded because I'm bored, respond to threads over a year old and a low wage pajeet farmer paid by Hasbara to start shit</span><br>You're quoting a thing to do, whining there's only "what to NOT DO". Randomly attacking anons here isn't a bright idea. This is not 4chan. Go try your division tactic somewhere else.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86553"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-86553">
+  <span class="labelSubject">sage</span>
+  <a class="linkName" href="mailto:sage">sage</a>
+  
+  
+  <span class="labelCreated">02/24/2022 (Thu) 04:23:00</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #ba8684">ba8684</span></span>
+  <a class="linkPreview" href="/pol/preview/86553.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#86553">No.</a><a class="linkQuote" href="/pol/res/84904.html#q86553">86553</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#86535">&gt;&gt;86535</a><br>I think he just wants to start shit here for no reason.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86767"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-86767">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/15/2022 (Tue) 05:31:46</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #4006dd">4006dd</span></span>
+  <a class="linkPreview" href="/pol/preview/86767.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#86767">No.</a><a class="linkQuote" href="/pol/res/84904.html#q86767">86767</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Just wanted to ask if any of you guys ever got replied with your name on /pol/, with an ID from a country you don’t know many people. Iv stopped using /pol/ the last few days after this and i think (((they))) are much more prepared than we would like to think. Im not shilling, take care of yourselves, please.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86768"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-86768">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/15/2022 (Tue) 11:22:40</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #9164bb">9164bb</span></span>
+  <a class="linkPreview" href="/pol/preview/86768.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#86768">No.</a><a class="linkQuote" href="/pol/res/84904.html#q86768">86768</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#86767">&gt;&gt;86767</a><br>No one has ever determine my name. It's usually just wrong prediction insults by typically dimwitted kikes such as fat, single, low IQ, unemployed etc. Sounds to me like you where on the wrong site.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86771"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-86771">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/15/2022 (Tue) 14:21:27</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #13e28d">13e28d</span></span>
+  <a class="linkPreview" href="/pol/preview/86771.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#86771">No.</a><a class="linkQuote" href="/pol/res/84904.html#q86771">86771</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#86768">&gt;&gt;86768</a><br>Well, fuck, if so, i hope i can go on without being fucked somehow. Anyway, the ID was acting like a "friend" towards me and everyone on the thread, not as a shill. Not much after, a few threads about how they are making a database about us.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86801"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-86801">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/18/2022 (Fri) 09:21:58</span>
+  
+  <a class="linkPreview" href="/pol/preview/86801.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#86801">No.</a><a class="linkQuote" href="/pol/res/84904.html#q86801">86801</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/860fdb2e9db1a1c7ac8f97abeef487b7-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">8.80 KB</span>
+  <span class="dimensionLabel">289x174</span> <a class="originalNameLink" href="/.media/860fdb2e9db1a1c7ac8f97abeef487b7-imagejpeg.jpg" download="gjhrhrtjh.jpeg">gjhrhrtjh.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/860fdb2e9db1a1c7ac8f97abeef487b7-imagejpeg.jpg" data-filewidth="289" data-fileheight="174" data-filemime="image/jpeg"><img src="/.media/t_860fdb2e9db1a1c7ac8f97abeef487b7-imagejpeg" width="255" height="154"></a></figure></div>
+  <div class="divMessage">Why are so many people dying in their sleep?
+<br>
+<br>61.22GHz endogenous opiate-induced respiratory depression = brain and heart ischemia.
+<br>
+<br>It's the same mechanism as an opiate overdose, just from endogenous opiates. When you're asleep you can neither feel your body dying nor notice you aren't breathing.
+<br>
+<br>Both the 5G towers and many devices emit this frequency. For some reason phone manufacturers aren't advertising that they use this frequency, which is called WiGIG among other things.
+<br>
+<br><a rel="nofollow" target="_blank" href="https://www.naturalnews.com/2022-03-15-fort-bragg-lost-over-80-soldiers-unexplained-causes.html">https://www.naturalnews.com/2022-03-15-fort-bragg-lost-over-80-soldiers-unexplained-causes.html</a>
+<br>
+<br><a rel="nofollow" target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/18064600/">https://pubmed.ncbi.nlm.nih.gov/18064600/</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86802"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-86802">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/18/2022 (Fri) 16:07:46</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #9164bb">9164bb</span></span>
+  <a class="linkPreview" href="/pol/preview/86802.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#86802">No.</a><a class="linkQuote" href="/pol/res/84904.html#q86802">86802</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#86801">&gt;&gt;86801</a><br>Natural News is like The Sun or The National Enquirer. It's full of shit.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86835"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-86835">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/21/2022 (Mon) 12:41:34</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #c1c943">c1c943</span></span>
+  <a class="linkPreview" href="/pol/preview/86835.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#86835">No.</a><a class="linkQuote" href="/pol/res/84904.html#q86835">86835</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">exactly.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="87702"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-87702">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/08/2022 (Wed) 12:31:27</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #e20668">e20668</span></span>
+  <a class="linkPreview" href="/pol/preview/87702.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#87702">No.</a><a class="linkQuote" href="/pol/res/84904.html#q87702">87702</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Americans said that they hated freedom 100 years ago because the environment was dirty, there were murders, and medicine was dangerous, but the US is now a police state and the environment is still dirty, there are still murders, and medicine is still dangerous.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="88322"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-88322">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/27/2022 (Sat) 04:44</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #0358ec">0358ec</span></span>
+  <a class="linkPreview" href="/pol/preview/88322.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#88322">No.</a><a class="linkQuote" href="/pol/res/84904.html#q88322">88322</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#84904">&gt;&gt;84904</a><br>What Operation system, Phone, and Communication apps do you recommend?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="88347"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-88347">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/29/2022 (Mon) 17:53</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #624c25">624c25</span></span>
+  <a class="linkPreview" href="/pol/preview/88347.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#88347">No.</a><a class="linkQuote" href="/pol/res/84904.html#q88347">88347</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#84904">&gt;&gt;84904</a><br>So should I stop watching tv and playing video games?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="88348"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-88348">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/29/2022 (Mon) 20:18</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #9164bb">9164bb</span></span>
+  <a class="linkPreview" href="/pol/preview/88348.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#88348">No.</a><a class="linkQuote" href="/pol/res/84904.html#q88348">88348</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/88fbf5fe25029b07fcceeb1faf94bdd4-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">176.39 KB</span>
+  <span class="dimensionLabel">599x522</span> <a class="originalNameLink" href="/.media/88fbf5fe25029b07fcceeb1faf94bdd4-imagejpeg.jpg" download="download (17).jpg">download (17).jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/88fbf5fe25029b07fcceeb1faf94bdd4-imagejpeg.jpg" data-filewidth="599" data-fileheight="522" data-filemime="image/jpeg"><img src="/.media/t_88fbf5fe25029b07fcceeb1faf94bdd4-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/59c5e68ec932c7b960f9b9683610d713-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">140.24 KB</span>
+  <span class="dimensionLabel">1059x487</span> <a class="originalNameLink" href="/.media/59c5e68ec932c7b960f9b9683610d713-imagejpeg.jpg" download="Leo.jpg">Leo.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/59c5e68ec932c7b960f9b9683610d713-imagejpeg.jpg" data-filewidth="1059" data-fileheight="487" data-filemime="image/jpeg"><img src="/.media/t_59c5e68ec932c7b960f9b9683610d713-imagejpeg" loading="lazy" width="255" height="117"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/4c5e63466dda22d36ea59a434b32129f-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">112.35 KB</span>
+  <span class="dimensionLabel">970x1100</span> <a class="originalNameLink" href="/.media/4c5e63466dda22d36ea59a434b32129f-imagejpeg.jpg" download="30-rock.jpg">30-rock.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/4c5e63466dda22d36ea59a434b32129f-imagejpeg.jpg" data-filewidth="970" data-fileheight="1100" data-filemime="image/jpeg"><img src="/.media/t_4c5e63466dda22d36ea59a434b32129f-imagejpeg" loading="lazy" width="225" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#88347">&gt;&gt;88347</a><br>I don't know if OP will be back, but you should at least stop melting your mind with television. Make sure a movie or program does not have jews as writers, producers, cast members or shareholders. Those are the ways they influence.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="88374"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-88374">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/31/2022 (Wed) 18:13</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #624c25">624c25</span></span>
+  <a class="linkPreview" href="/pol/preview/88374.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#88374">No.</a><a class="linkQuote" href="/pol/res/84904.html#q88374">88374</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#88348">&gt;&gt;88348</a><br>What about social media? Should I use an alternate platform? What about an alternative to Amazon?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="88375"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-88375">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/31/2022 (Wed) 23:24</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #2f5380">2f5380</span></span>
+  <a class="linkPreview" href="/pol/preview/88375.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#88375">No.</a><a class="linkQuote" href="/pol/res/84904.html#q88375">88375</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">If you lived in the North Korea in 1980 then you could have escaped to the USA.<br><br>Now if you lived in North Korea then where could you go to have freedom?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="88377"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-88377">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">09/01/2022 (Thu) 06:39</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #45fa78">45fa78</span></span>
+  <a class="linkPreview" href="/pol/preview/88377.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#88377">No.</a><a class="linkQuote" href="/pol/res/84904.html#q88377">88377</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#88374">&gt;&gt;88374</a><br><span class="greenText">&gt;What about an alternative to Amazon?</span><br>I dont know if you are an american but you still have Ebay at your service</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="88504"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-88504">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/17/2022 (Sat) 00:23</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #ed06c7">ed06c7</span></span>
+  <a class="linkPreview" href="/pol/preview/88504.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#88504">No.</a><a class="linkQuote" href="/pol/res/84904.html#q88504">88504</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Making plans is difficult when you live in a police state.<br><br>Everything is illegal.<br><br>You are not allowed to go outside. You don't know if you can buy a house because you don't know if the government will close your business.<br><br>You are not allowed to travel or escape.<br><br>The state can indefinitely detain you without trial, grope you, kill you, torture you, or destroy or steal your property at any time. You are not allowed to have free speech, the government wiretaps you, you cannot go to church, and you cannot own a gun.<br><br>Americans are now just slaves like North Koreans are.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="88505"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-88505">
+  <span class="labelSubject">sage</span>
+  <a class="linkName" href="mailto:sage">sage</a>
+  
+  
+  <span class="labelCreated">09/17/2022 (Sat) 05:09</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #9164bb">9164bb</span></span>
+  <a class="linkPreview" href="/pol/preview/88505.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#88505">No.</a><a class="linkQuote" href="/pol/res/84904.html#q88505">88505</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#88504">&gt;&gt;88504</a><br><span class="greenText">&gt;Blah blah I don't know anything about America blah blah</span><br>AIDSkike, the United States government doesn't give a fuck enough to wiretap us. They're too busy sanctioning Russia to fuck our gas prices and rolling out green agendas to fuck our food prices. This is happening across Europe as the U.N. follows Biden's dumb ass.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="88693"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-88693">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/24/2022 (Sat) 03:58</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #f7754e">f7754e</span></span>
+  <a class="linkPreview" href="/pol/preview/88693.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#88693">No.</a><a class="linkQuote" href="/pol/res/84904.html#q88693">88693</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9fafff7de7414372de347ea15134309a-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">127.09 KB</span>
+  <span class="dimensionLabel">1920x1080</span> <a class="originalNameLink" href="/.media/9fafff7de7414372de347ea15134309a-imagejpeg.jpg" download="EgI8bn-WAAACLWL.jpg">EgI8bn-WAAACLWL.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9fafff7de7414372de347ea15134309a-imagejpeg.jpg" data-filewidth="1920" data-fileheight="1080" data-filemime="image/jpeg"><img src="/.media/t_9fafff7de7414372de347ea15134309a-imagejpeg" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#88504">&gt;&gt;88504</a><br><a class="quoteLink" href="/pol/res/84904.html#88504">&gt;&gt;88504</a><br>Don't you have a "new" shitty honeypot to spam around every imageboard or something?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="88696"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-88696">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/24/2022 (Sat) 04:28</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #624c25">624c25</span></span>
+  <a class="linkPreview" href="/pol/preview/88696.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#88696">No.</a><a class="linkQuote" href="/pol/res/84904.html#q88696">88696</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#84904">&gt;&gt;84904</a><br>My friend wants to know why it matters if they know his information. Can you explain to him? Thanks</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="88699"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-88699">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/24/2022 (Sat) 07:12</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #624c25">624c25</span></span>
+  <a class="linkPreview" href="/pol/preview/88699.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#88699">No.</a><a class="linkQuote" href="/pol/res/84904.html#q88699">88699</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#84904">&gt;&gt;84904</a><br>I'm not carrying around a cancer ensuring homing device in my pocket.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="88798"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-88798">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/05/2022 (Wed) 03:21</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41de5a">41de5a</span></span>
+  <a class="linkPreview" href="/pol/preview/88798.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#88798">No.</a><a class="linkQuote" href="/pol/res/84904.html#q88798">88798</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">You don't love freedom if you hate Rand Paul and support NSA wiretapping.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="88801"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-88801">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/05/2022 (Wed) 18:34</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #52f101">52f101</span></span>
+  <a class="linkPreview" href="/pol/preview/88801.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#88801">No.</a><a class="linkQuote" href="/pol/res/84904.html#q88801">88801</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/1786e9256a40487d8c7f3eee6907b65b-videowebm.webm">Open File</a>(<span class="sizeLabel">5.20 MB</span>
+  <span class="dimensionLabel">256x144</span> <a class="originalNameLink" href="/.media/1786e9256a40487d8c7f3eee6907b65b-videowebm.webm" download="Yuri-Bezmenov_stages-of-demoralization.webm">Yuri-Bezmenov_stages-of-demoralization.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/1786e9256a40487d8c7f3eee6907b65b-videowebm.webm" data-filewidth="256" data-fileheight="144" data-filemime="video/webm"><img src="/.media/t_1786e9256a40487d8c7f3eee6907b65b-videowebm" loading="lazy" width="255" height="143"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/851ae88796063d9c1aed4eb72eefef27-videowebm.webm">Open File</a>(<span class="sizeLabel">5.97 MB</span>
+  <span class="dimensionLabel">176x144</span> <a class="originalNameLink" href="/.media/851ae88796063d9c1aed4eb72eefef27-videowebm.webm" download="Yuri-Bezmenov_faith.webm">Yuri-Bezmenov_faith.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/851ae88796063d9c1aed4eb72eefef27-videowebm.webm" data-filewidth="176" data-fileheight="144" data-filemime="video/webm"><img src="/.media/t_851ae88796063d9c1aed4eb72eefef27-videowebm" loading="lazy" width="176" height="144"></a></figure></div>
+  <div class="divMessage">I would like to add to OP's great thread that one way of fighting the globohomo mind-control media machine - because the endgoal of its mass surveilance is manipulation (read R. Thaler's book on Nudges) and therefore, mind-control - is to organize in small and tightly-knit social circles.<br>These social circles are extremely resilient to mass propaganda, mass hysteria and all the tools (((they))) use to manipulate and control.<br><br>Now, living in the country side is the best way to implement this, but not everyone can do it right now this instant - if at all. Fret not however, as small communities tend to naturally and unconciously aggregate around the magical circle: the family (=one straight couple with a stay-at-home mother and a few kids), nuclear families naturally exert this gravitational field as part of our biological programming. You'll notice btw that all I'm describing has recently been the target of vicious and unrelenting attacks (probably a coincidence).<br>When you secure a stay-at-home wife that escapes society's mental pollution and stays away from (((social media))), you will have a considerable cultural inertia against the rampaging hurricanes of modern media.<br>There's no secret. The Woman is the best piece on the chest board, it is the most precious thing to protect because she ensures the posterity you want. But I understand that they're a species facing extinction so good look finding one (try, faggot).<br><br>I could go on about how small tightly-knit communities resist to propaganda but keep these main ideas in mind:<br>- meals<br>Meals should be eaten together and NOT watching a random screen. These events are like system updates where all the members of a family resynchronize their brains with the newly digested elements of the most influent member (the patriarch)<br>This is also why birthdays and holidays are important, and kids visitting their grandparents is crucial, otherwise don't be surprised if they end up talking like Eminem and hating their own race.<br>- language<br>Insular communities naturally develop their own references, language and, eventually, culture (think 4chins, t*mblr, etc). Thus it becomes harder for outsider to infect their minds with poisonous ideas seeing that they would speak differently, think differently, etc. This is how r*dittors happen to be identified and told off sometimes.<br>- kinship<br>It has been demonstrated that people statistically are more suspicious of strangers and foreigners, whatever that means. "People that do not belong to the group", basically. This unconcious inclination is one of the causes of the universally observed phenomenons of racism and endogamy. The Hitler Youth, Communist schools, and even Japanese highschoolers etc all used to dress in the same uniforms.<br>As a consequence, the mere fact of having a group of people that surround your family (they could be neighbors, extended family, friends) and acting/eating/talking/dressing the same will increase your mental immunity to ideological subversion.<br><br><br>The problem with churches is that many of them became an efficient relay for (((the Antichrist's))) degeneracy and harmful ideas. But you never know, finding a good church and tight community around it could be one of the best things to happen to you.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="88806"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-88806">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/06/2022 (Thu) 00:24</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #9164bb">9164bb</span></span>
+  <a class="linkPreview" href="/pol/preview/88806.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#88806">No.</a><a class="linkQuote" href="/pol/res/84904.html#q88806">88806</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/7f28beb3071f96758eb66307c6531ac1-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">53.70 KB</span>
+  <span class="dimensionLabel">680x601</span> <a class="originalNameLink" href="/.media/7f28beb3071f96758eb66307c6531ac1-imagejpeg.jpg" download="569.jpg">569.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/7f28beb3071f96758eb66307c6531ac1-imagejpeg.jpg" data-filewidth="680" data-fileheight="601" data-filemime="image/jpeg"><img src="/.media/t_7f28beb3071f96758eb66307c6531ac1-imagejpeg" loading="lazy" width="255" height="225"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a690c1818dafbc9e128981485f1d7374-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">375.29 KB</span>
+  <span class="dimensionLabel">1600x2812</span> <a class="originalNameLink" href="/.media/a690c1818dafbc9e128981485f1d7374-imagejpeg.jpg" download="4980.jpg">4980.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a690c1818dafbc9e128981485f1d7374-imagejpeg.jpg" data-filewidth="1600" data-fileheight="2812" data-filemime="image/jpeg"><img src="/.media/t_a690c1818dafbc9e128981485f1d7374-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/df6d2ec3a856e250e1adef0379b6456e-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">376.83 KB</span>
+  <span class="dimensionLabel">717x1528</span> <a class="originalNameLink" href="/.media/df6d2ec3a856e250e1adef0379b6456e-imagejpeg.jpg" download="femen.jpg">femen.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/df6d2ec3a856e250e1adef0379b6456e-imagejpeg.jpg" data-filewidth="717" data-fileheight="1528" data-filemime="image/jpeg"><img src="/.media/t_df6d2ec3a856e250e1adef0379b6456e-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/34a8eebedc317de311e3860a92d914f3-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">58.09 KB</span>
+  <span class="dimensionLabel">500x444</span> <a class="originalNameLink" href="/.media/34a8eebedc317de311e3860a92d914f3-imagejpeg.jpg" download="LIB (12).jpg">LIB (12).jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/34a8eebedc317de311e3860a92d914f3-imagejpeg.jpg" data-filewidth="500" data-fileheight="444" data-filemime="image/jpeg"><img src="/.media/t_34a8eebedc317de311e3860a92d914f3-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#88801">&gt;&gt;88801</a><br>Ok. I don't mean to contradict anything you've said. It's mostly accurate and mostly truth. However, what if every woman you come across (as they're not facing extinction but rather more easily brainwashed) is a demented, maladjusted pro-immigration, anti-racist BLM Antifa Karen bitch? All because she turns on the stupid box and watches shit like (((The View))) or numerous woke movies and other television programs out there with (((THE MESSAGE))). What if you're stuck smack in the middle of the Statue of (((Liberty's))) "wretched refuse of your teeming shore"? Such as almost everyone around you is not Caucasian and the few that are: they've bought into the (((girl boss))) mentality. As in the few peach skins you know of are "yass queens". (((Feminism))) never relented and never let go of that whole "We want the good stuff. Let men keep the bad stuff" idea. These bitches are stuck in an "I'm in charge" mentality and they don't know how to be anything but cunts. The delusions they have. The makeup illusions. The man is not the bread winner. The woman does not stay at home.<br><br>You may think that's an attempt at demoralizing. I'm just witnessing the truth surrounding us.<br>Jews got what they wanted and society is turned inside out.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="89118"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-89118">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/23/2022 (Sun) 16:20</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #624c25">624c25</span></span>
+  <a class="linkPreview" href="/pol/preview/89118.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#89118">No.</a><a class="linkQuote" href="/pol/res/84904.html#q89118">89118</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Is getting a dumb phone still as dangerous as a smartphone, because it can still track you and irradiate you with cell phone radiation. And so on.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="89119"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-89119">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/23/2022 (Sun) 18:33</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #9164bb">9164bb</span></span>
+  <a class="linkPreview" href="/pol/preview/89119.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#89119">No.</a><a class="linkQuote" href="/pol/res/84904.html#q89119">89119</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#89118">&gt;&gt;89118</a><br>I own a shitty flip-phone but only because it was forced on me by my service provider with the clarification they would be canceling my old keyboard-slide-out. I think the old wasn't 6G. Regardless, I never do anything "sketchy" (as it would be to our ZOG overlords)<br><br>Ionizing radiation is what damages your DNA. Television waves, radio and cell-phones are low level non-ionizing radiation. Your body is constantly subjected to cosmic rays. Radionuclides such as radium, uranium and potassium are in soil, rocks and food. Long story short, you can't escape radiation. There's no point in trying.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="89168"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-89168">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/27/2022 (Thu) 13:26</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #624c25">624c25</span></span>
+  <a class="linkPreview" href="/pol/preview/89168.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#89168">No.</a><a class="linkQuote" href="/pol/res/84904.html#q89168">89168</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#84904">&gt;&gt;84904</a><br>Is it okay to use social media just for getting conspiracy theories.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="89170"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-89170">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/28/2022 (Fri) 05:51</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #386363">386363</span></span>
+  <a class="linkPreview" href="/pol/preview/89170.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#89170">No.</a><a class="linkQuote" href="/pol/res/84904.html#q89170">89170</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">We'll all be living in caves after everything is outlawed, but then you can be sure that living in caves will soon be banned in order to protect endangered bats.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90600"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-90600">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/11/2023 (Sun) 05:11</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #624c25">624c25</span></span>
+  <a class="linkPreview" href="/pol/preview/90600.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#90600">No.</a><a class="linkQuote" href="/pol/res/84904.html#q90600">90600</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/fb1bb5dde1362e00e29afdc7984cb27a-imagewebp.undefined">Open File</a>(<span class="sizeLabel">682.47 KB</span>
+  <span class="dimensionLabel">1361x3055</span> <a class="originalNameLink" href="/.media/fb1bb5dde1362e00e29afdc7984cb27a-imagewebp.undefined" download="sPsKZ5CkDxGOXX2Hot_8Li6SA9aBqilVEqG0_htDRr8.webp">sPsKZ5CkDxGOXX2Hot_8Li6SA9aBqilVEqG0_htDRr8.webp</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/fb1bb5dde1362e00e29afdc7984cb27a-imagewebp.undefined" data-filewidth="1361" data-fileheight="3055" data-filemime="image/webp"><img src="/.media/t_fb1bb5dde1362e00e29afdc7984cb27a-imagewebp" loading="lazy" width="114" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#84904">&gt;&gt;84904</a><br>Is this up to date in terms of what can be used to protect your privacy?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90601"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-90601">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/11/2023 (Sun) 06:57</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41699d">41699d</span></span>
+  <a class="linkPreview" href="/pol/preview/90601.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#90601">No.</a><a class="linkQuote" href="/pol/res/84904.html#q90601">90601</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#90600">&gt;&gt;90600</a><br><span class="greenText">&gt;2013</span><br>Doubtful. (((They))) have made great strides in deceiving and spying since then.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90609"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-90609">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/13/2023 (Tue) 16:39</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #dda78f">dda78f</span></span>
+  <a class="linkPreview" href="/pol/preview/90609.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#90609">No.</a><a class="linkQuote" href="/pol/res/84904.html#q90609">90609</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">One of the best opsec tips is simply FORWARD SECRECY. Only tell people what you want them to know (or deceptively believe) what you want them to. As toxic as it may sound, little white lies here and there can throw of a good witch hunt too.<br><br>Here is a thread from /b/ about OPSEC (OP was well meaning but very naive but comments are very good):<br><br><a class="quoteLink" href="/b/res/46757.html#46757">&gt;&gt;&gt;/b/46757</a><br><a rel="nofollow" target="_blank" href="https://endchan.org/b/res/46757.html">https://endchan.org/b/res/46757.html</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92352"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-92352">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/28/2024 (Sun) 00:18</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7f8313">7f8313</span></span>
+  <a class="linkPreview" href="/pol/preview/92352.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#92352">No.</a><a class="linkQuote" href="/pol/res/84904.html#q92352">92352</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/598d179a7fd53d085ff0d371e86873e5-imagepng.png">Open File</a>(<span class="sizeLabel">752.03 KB</span>
+  <span class="dimensionLabel">680x763</span> <a class="originalNameLink" href="/.media/598d179a7fd53d085ff0d371e86873e5-imagepng.png" download="GigaSaiyan.png">GigaSaiyan.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/598d179a7fd53d085ff0d371e86873e5-imagepng.png" data-filewidth="680" data-fileheight="763" data-filemime="image/png"><img src="/.media/t_598d179a7fd53d085ff0d371e86873e5-imagepng" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#84904">&gt;&gt;84904</a><br><span class="greenText">&gt;Anti (((Surveillance Phone)))</span><br>SUPREMELY<br>BASED<br>THREAD</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94381"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-94381">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/08/2024 (Thu) 18:41</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #21374c">21374c</span></span>
+  <a class="linkPreview" href="/pol/preview/94381.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#94381">No.</a><a class="linkQuote" href="/pol/res/84904.html#q94381">94381</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/fd666c72d6b0cc3f18e999355c6f0f94-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">12.42 KB</span>
+  <span class="dimensionLabel">300x248</span> <a class="originalNameLink" href="/.media/fd666c72d6b0cc3f18e999355c6f0f94-imagejpeg.jpg" download="1723041790034027.jpg">1723041790034027.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/fd666c72d6b0cc3f18e999355c6f0f94-imagejpeg.jpg" data-filewidth="300" data-fileheight="248" data-filemime="image/jpeg"><img src="/.media/t_fd666c72d6b0cc3f18e999355c6f0f94-imagejpeg" loading="lazy" width="255" height="211"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#94379">&gt;&gt;94379</a><br><span class="greenText">&gt;because the Stasi have decided to work for the elites now instead of respecting the Bill of Rights.</span><br><br>Confirmed giga aidskike thinking hr csn sell one of the most vile secret communist police in history as honorable citizens<br><br>Dipshit stasi was anything but not an bil lof rights<br><span class="greenText">&gt;Black mails</span><br><span class="greenText">&gt;Drug trafficking and narco poisoning of public</span><br><span class="greenText">&gt;Property destruction to instill fear</span><br><span class="greenText">&gt;Good old fashioned survrilance</span><br><span class="greenText">&gt;Even having its own porn production btw</span><br>Why i am even mentioning it as anyone with a brain can look the sick stuff stasi did</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94506"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-94506">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/5e7fadb8724ac800cf75496d" title="Imperial Japanese Army">
+  
+  <span class="labelCreated">08/25/2024 (Sun) 15:52</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #34d525">34d525</span></span>
+  <a class="linkPreview" href="/pol/preview/94506.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#94506">No.</a><a class="linkQuote" href="/pol/res/84904.html#q94506">94506</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a280b017084253f7a0387e884af1ec8a-imagepng.png">Open File</a>(<span class="sizeLabel">261.71 KB</span>
+  <span class="dimensionLabel">597x660</span> <a class="originalNameLink" href="/.media/a280b017084253f7a0387e884af1ec8a-imagepng.png" download="bad girl - Travis Bell.png">bad girl - Travis Bell.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a280b017084253f7a0387e884af1ec8a-imagepng.png" data-filewidth="597" data-fileheight="660" data-filemime="image/png"><img src="/.media/t_a280b017084253f7a0387e884af1ec8a-imagepng" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#94381">&gt;&gt;94381</a><br>Yeah the Stasi were fucking scum.<br><br><span class="greenText">&gt;Property destruction to instill fear</span><br><span class="greenText">&gt;Drug trafficking and narco poisoning of public</span><br>Any times in specific they did that? I know they're awful, but I wasn't born when they were a thing. <br><br><span class="greenText">&gt;Even having its own porn production btw</span><br><br>Well ok then</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="95046"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-95046">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">11/09/2024 (Sat) 00:59</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #3774de">3774de</span></span>
+  <a class="linkPreview" href="/pol/preview/95046.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#95046">No.</a><a class="linkQuote" href="/pol/res/84904.html#q95046">95046</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">told to kill myself by a 4channer because I wanted to eat ramen and watch a silly mario romhack overview <span class="youtube_wrapper">https://youtube.com/watch?v=OHB06Do6cIs [<a href="https://youtube.com/watch?v=OHB06Do6cIs">Embed</a>]</span><br><br>I don't know what you gain from telling people to end their lives because theyre not "perfect" and have different convictions to yours. The answer to your troubles is Jesus Christ, Not living in paranoia and Hatred for everything in the world you live in.<br><br>Abstain from ever telling people to kill themselves, It might not seem serious to you but every word we utter holds power, Power that can be used for evil and good, Bless then, Bless and do not curse. I'm sure you're an avid reader based on the demands you demand from others so consider reading the Bible to become the strong objectively correct man you strive to be.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="95048"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-84904-95048">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  <span class="labelRole">Board owner</span>
+  <span class="labelCreated">11/09/2024 (Sat) 03:59</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41699d">41699d</span></span>
+  <a class="linkPreview" href="/pol/preview/95048.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/84904.html#95048">No.</a><a class="linkQuote" href="/pol/res/84904.html#q95048">95048</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/0f0b94a1baaad7b169f56f0a84414c2b-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">779.16 KB</span>
+  <span class="dimensionLabel">929x747</span> <a class="originalNameLink" href="/.media/0f0b94a1baaad7b169f56f0a84414c2b-imagejpeg.jpg" download="1517962824.jpg">1517962824.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/0f0b94a1baaad7b169f56f0a84414c2b-imagejpeg.jpg" data-filewidth="929" data-fileheight="747" data-filemime="image/jpeg"><img src="/.media/t_0f0b94a1baaad7b169f56f0a84414c2b-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/83846dec41b83e294b8cbb2599dd6cb8-imagepng.png">Open File</a>(<span class="sizeLabel">1.07 MB</span>
+  <span class="dimensionLabel">961x679</span> <a class="originalNameLink" href="/.media/83846dec41b83e294b8cbb2599dd6cb8-imagepng.png" download="Destruction-of-Israel.png">Destruction-of-Israel.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/83846dec41b83e294b8cbb2599dd6cb8-imagepng.png" data-filewidth="961" data-fileheight="679" data-filemime="image/png"><img src="/.media/t_83846dec41b83e294b8cbb2599dd6cb8-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/fa37ca2a6c407d53737655efcbbe4d9b-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">318.94 KB</span>
+  <span class="dimensionLabel">690x690</span> <a class="originalNameLink" href="/.media/fa37ca2a6c407d53737655efcbbe4d9b-imagejpeg.jpg" download="c19dd364896532c284d417c634d36ed0660fe07e_2_690x690.jpeg">c19dd364896532c284d417c634d36ed0660fe07e_2_690x690.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/fa37ca2a6c407d53737655efcbbe4d9b-imagejpeg.jpg" data-filewidth="690" data-fileheight="690" data-filemime="image/jpeg"><img src="/.media/t_fa37ca2a6c407d53737655efcbbe4d9b-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b663f5b39e51d3e97f7c3b1399752a84-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">297.66 KB</span>
+  <span class="dimensionLabel">1516x810</span> <a class="originalNameLink" href="/.media/b663f5b39e51d3e97f7c3b1399752a84-imagejpeg.jpg" download="4fd9f82eb4205583e4cb0d0baefcde686b9de1e0c1f8b0db3a3eb3781ce57f10.jpg">4fd9f82eb4205583e4cb0d0baefcde686b9de1e0c1f8b0db3a3eb3781ce57f10.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b663f5b39e51d3e97f7c3b1399752a84-imagejpeg.jpg" data-filewidth="1516" data-fileheight="810" data-filemime="image/jpeg"><img src="/.media/t_b663f5b39e51d3e97f7c3b1399752a84-imagejpeg" loading="lazy" width="255" height="136"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b018682f18ab89593e8097fd9952c3f1-imagepng.png">Open File</a>(<span class="sizeLabel">1.10 MB</span>
+  <span class="dimensionLabel">1279x1304</span> <a class="originalNameLink" href="/.media/b018682f18ab89593e8097fd9952c3f1-imagepng.png" download="1412624451.png">1412624451.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b018682f18ab89593e8097fd9952c3f1-imagepng.png" data-filewidth="1279" data-fileheight="1304" data-filemime="image/png"><img src="/.media/t_b018682f18ab89593e8097fd9952c3f1-imagepng" loading="lazy" width="250" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/84904.html#95046">&gt;&gt;95046</a><br>Don't pretend like you're not responding to <a class="quoteLink" href="/pol/res/92884.html#95044">&gt;&gt;95044</a> Acting like the subject is completely different.<br>Hasn't your bible warned you about deceit? It sure warns you about jews.<br><span class="redText">All jews should kill themselves immediately.</span></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/84904.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

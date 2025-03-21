@@ -1,0 +1,1740 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - Dismounting homosexuality and transexuality and censorship</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="90525">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=90525">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/90525.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="90525"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/66ecebb342bab232ffbc0cb064b962f7-imagegif.gif">Open File</a>(<span class="sizeLabel">18.19 KB</span>
+  <span class="dimensionLabel">600x599</span> <a class="originalNameLink" href="/.media/66ecebb342bab232ffbc0cb064b962f7-imagegif.gif" download="600px-Anti_Gay_and_Lesbian_movements_sign.gif">600px-Anti_Gay_and_Lesbian_movements_sign.gif</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/66ecebb342bab232ffbc0cb064b962f7-imagegif.gif" data-filewidth="600" data-fileheight="599" data-filemime="image/gif"><img src="/.media/t_66ecebb342bab232ffbc0cb064b962f7-imagegif" loading="lazy" width="255" height="255"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-90525">
+    <span class="labelSubject">Dismounting homosexuality and transexuality and censorship</span>
+    <a class="linkName" href="mailto:theterence4355@gmail.com">terence</a>
+    
+    
+    <span class="labelCreated">05/21/2023 (Sun) 16:21</span>
+    
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/90525.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/90525.html#90525">No.</a>
+    <a class="linkQuote" href="/pol/res/90525.html#q90525">90525</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">I am doing an extensive research to dismantle homosexuality and transexuality, and prove that it is a mental problem and disprove the unsubstantiated theories that society currently holds, a product of misinformation and manipulation.<br><br>I would also like to know information about the widespread censorship of this subject.<br><br>Anything you know, be it proof of why it is a mental illness or proof of the censorship towards this topic, or information about the companies and millionaire people promoting this movement, please post it in this thread.</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell multipleUploads" data-boarduri="pol" id="90527"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-90527">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/22/2023 (Mon) 01:29</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cf65f6">cf65f6</span></span>
+  <a class="linkPreview" href="/pol/preview/90527.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#90527">No.</a><a class="linkQuote" href="/pol/res/90525.html#q90527">90527</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/27d48de4a5207e5e90fcfb30911214fe-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">105.82 KB</span>
+  <span class="dimensionLabel">602x680</span> <a class="originalNameLink" href="/.media/27d48de4a5207e5e90fcfb30911214fe-imagejpeg.jpg" download="27d48de4a5207e5e90fcfb30911214fe-imagejpeg.jpg">27d48de4a5207e5e90fcfb30911214fe-imagejpeg.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/27d48de4a5207e5e90fcfb30911214fe-imagejpeg.jpg" data-filewidth="602" data-fileheight="680" data-filemime="image/jpeg"><img src="/.media/t_27d48de4a5207e5e90fcfb30911214fe-imagejpeg" loading="lazy" width="226" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/3fb800034cf7cb8eedc67061b190e374-imagepng.png">Open File</a>(<span class="sizeLabel">494.50 KB</span>
+  <span class="dimensionLabel">540x2780</span> <a class="originalNameLink" href="/.media/3fb800034cf7cb8eedc67061b190e374-imagepng.png" download="3fb800034cf7cb8eedc67061b190e374-imagepng.png">3fb800034cf7cb8eedc67061b190e374-imagepng.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/3fb800034cf7cb8eedc67061b190e374-imagepng.png" data-filewidth="540" data-fileheight="2780" data-filemime="image/png"><img src="/.media/t_3fb800034cf7cb8eedc67061b190e374-imagepng" loading="lazy" width="50" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/3eb80adec7d06e0ea5270e1f33a0f0fb-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">133.58 KB</span>
+  <span class="dimensionLabel">1024x639</span> <a class="originalNameLink" href="/.media/3eb80adec7d06e0ea5270e1f33a0f0fb-imagejpeg.jpg" download="3eb80adec7d06e0ea5270e1f33a0f0fb-imagejpeg.jpg">3eb80adec7d06e0ea5270e1f33a0f0fb-imagejpeg.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/3eb80adec7d06e0ea5270e1f33a0f0fb-imagejpeg.jpg" data-filewidth="1024" data-fileheight="639" data-filemime="image/jpeg"><img src="/.media/t_3eb80adec7d06e0ea5270e1f33a0f0fb-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/1513a1576f7cb70a79897731c9595177-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">158.68 KB</span>
+  <span class="dimensionLabel">848x1200</span> <a class="originalNameLink" href="/.media/1513a1576f7cb70a79897731c9595177-imagejpeg.jpg" download="96798191072.jpg">96798191072.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/1513a1576f7cb70a79897731c9595177-imagejpeg.jpg" data-filewidth="848" data-fileheight="1200" data-filemime="image/jpeg"><img src="/.media/t_1513a1576f7cb70a79897731c9595177-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6bf37c052070133065424d213133414c-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">215.03 KB</span>
+  <span class="dimensionLabel">1085x315</span> <a class="originalNameLink" href="/.media/6bf37c052070133065424d213133414c-imagejpeg.jpg" download="gay jewish plot.jpg">gay jewish plot.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6bf37c052070133065424d213133414c-imagejpeg.jpg" data-filewidth="1085" data-fileheight="315" data-filemime="image/jpeg"><img src="/.media/t_6bf37c052070133065424d213133414c-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage">This is not all information normies would easily swallow without their Pavlovian conditioning kicking in. I would say only the first two infographs wouldn't trigger the average brainwashed Joe as long as they're not a Leftist. As for the rest, you are on the board where we reveal jews.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="90528"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-90528">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/22/2023 (Mon) 01:38</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cf65f6">cf65f6</span></span>
+  <a class="linkPreview" href="/pol/preview/90528.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#90528">No.</a><a class="linkQuote" href="/pol/res/90525.html#q90528">90528</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/53535419073cb0b42c1a61796968bf75-imagepng.png">Open File</a>(<span class="sizeLabel">1.29 MB</span>
+  <span class="dimensionLabel">1600x1577</span> <a class="originalNameLink" href="/.media/53535419073cb0b42c1a61796968bf75-imagepng.png" download="Frankfurt school.png">Frankfurt school.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/53535419073cb0b42c1a61796968bf75-imagepng.png" data-filewidth="1600" data-fileheight="1577" data-filemime="image/png"><img src="/.media/t_53535419073cb0b42c1a61796968bf75-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/337a0083b1391a081a2ac7ff961fa340-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">63.23 KB</span>
+  <span class="dimensionLabel">400x400</span> <a class="originalNameLink" href="/.media/337a0083b1391a081a2ac7ff961fa340-imagejpeg.jpg" download="allen-ginsburg-pedophile.jpg">allen-ginsburg-pedophile.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/337a0083b1391a081a2ac7ff961fa340-imagejpeg.jpg" data-filewidth="400" data-fileheight="400" data-filemime="image/jpeg"><img src="/.media/t_337a0083b1391a081a2ac7ff961fa340-imagejpeg" loading="lazy" width="255" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/619c8b09c99dcd015f080b727067d26b-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">86.83 KB</span>
+  <span class="dimensionLabel">906x489</span> <a class="originalNameLink" href="/.media/619c8b09c99dcd015f080b727067d26b-imagejpeg.jpg" download="c36c27eedbae745e519c47a7ba2a18906111c9e9568ca0e1c687688a9ba72052.jpg">c36c27eedbae745e519c47a7ba2a18906111c9e9568ca0e1c687688a9ba72052.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/619c8b09c99dcd015f080b727067d26b-imagejpeg.jpg" data-filewidth="906" data-fileheight="489" data-filemime="image/jpeg"><img src="/.media/t_619c8b09c99dcd015f080b727067d26b-imagejpeg" loading="lazy" width="255" height="138"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b6812725816807fd84ae557b948cb7d7-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">85.60 KB</span>
+  <span class="dimensionLabel">684x422</span> <a class="originalNameLink" href="/.media/b6812725816807fd84ae557b948cb7d7-imagejpeg.jpg" download="homosexuality.jpg">homosexuality.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b6812725816807fd84ae557b948cb7d7-imagejpeg.jpg" data-filewidth="684" data-fileheight="422" data-filemime="image/jpeg"><img src="/.media/t_b6812725816807fd84ae557b948cb7d7-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/97336d5ebea065a6e1f0b4648449441d-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">119.18 KB</span>
+  <span class="dimensionLabel">750x912</span> <a class="originalNameLink" href="/.media/97336d5ebea065a6e1f0b4648449441d-imagejpeg.jpg" download="Jew-Gay-Pride.jpg">Jew-Gay-Pride.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/97336d5ebea065a6e1f0b4648449441d-imagejpeg.jpg" data-filewidth="750" data-fileheight="912" data-filemime="image/jpeg"><img src="/.media/t_97336d5ebea065a6e1f0b4648449441d-imagejpeg" loading="lazy" width="210" height="255"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90529"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-90529">
+  
+  <a class="linkName" href="mailto:theterence433@gmail.com">terence</a>
+  
+  
+  <span class="labelCreated">05/22/2023 (Mon) 05:57</span>
+  
+  <a class="linkPreview" href="/pol/preview/90529.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#90529">No.</a><a class="linkQuote" href="/pol/res/90525.html#q90529">90529</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#90528">&gt;&gt;90528</a><br>Interesting, put all the information you have, to be able to disassemble it as much as possible.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="90548"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-90548">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">05/28/2023 (Sun) 14:43</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #c337ae">c337ae</span></span>
+  <a class="linkPreview" href="/pol/preview/90548.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#90548">No.</a><a class="linkQuote" href="/pol/res/90525.html#q90548">90548</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/812f178cfe6488ebaad916b2d42a6226-videowebm.webm">Open File</a>(<span class="sizeLabel">3.87 MB</span>
+  <span class="dimensionLabel">540x304</span> <a class="originalNameLink" href="/.media/812f178cfe6488ebaad916b2d42a6226-videowebm.webm" download="1666764979956876.webm">1666764979956876.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/812f178cfe6488ebaad916b2d42a6226-videowebm.webm" data-filewidth="540" data-fileheight="304" data-filemime="video/webm"><img src="/.media/t_812f178cfe6488ebaad916b2d42a6226-videowebm" loading="lazy" width="255" height="144"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/3286f69742d9e22496cd4f0cd97858d7-videowebm.webm">Open File</a>(<span class="sizeLabel">1.48 MB</span>
+  <span class="dimensionLabel">400x184</span> <a class="originalNameLink" href="/.media/3286f69742d9e22496cd4f0cd97858d7-videowebm.webm" download="1651951534917.webm">1651951534917.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/3286f69742d9e22496cd4f0cd97858d7-videowebm.webm" data-filewidth="400" data-fileheight="184" data-filemime="video/webm"><img src="/.media/t_3286f69742d9e22496cd4f0cd97858d7-videowebm" loading="lazy" width="255" height="117"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/30d494d7410ffc26ffee4bc709973264-videowebm.webm">Open File</a>(<span class="sizeLabel">4.43 MB</span>
+  <span class="dimensionLabel">1082x610</span> <a class="originalNameLink" href="/.media/30d494d7410ffc26ffee4bc709973264-videowebm.webm" download="1654325729126.webm">1654325729126.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/30d494d7410ffc26ffee4bc709973264-videowebm.webm" data-filewidth="1082" data-fileheight="610" data-filemime="video/webm"><img src="/.media/t_30d494d7410ffc26ffee4bc709973264-videowebm" loading="lazy" width="255" height="144"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/f950ceaf7aee63bf2dc859a0dc35ef18-videowebm.webm">Open File</a>(<span class="sizeLabel">3.92 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/f950ceaf7aee63bf2dc859a0dc35ef18-videowebm.webm" download="1660361100912515.webm">1660361100912515.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/f950ceaf7aee63bf2dc859a0dc35ef18-videowebm.webm" data-filewidth="1280" data-fileheight="720" data-filemime="video/webm"><img src="/.media/t_f950ceaf7aee63bf2dc859a0dc35ef18-videowebm" loading="lazy" width="255" height="143"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/8d31862d7a79acfb29bc90808564adbe-videowebm.webm">Open File</a>(<span class="sizeLabel">1.86 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/8d31862d7a79acfb29bc90808564adbe-videowebm.webm" download="1663653158717318 (1).webm">1663653158717318 (1).webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/8d31862d7a79acfb29bc90808564adbe-videowebm.webm" data-filewidth="1280" data-fileheight="720" data-filemime="video/webm"><img src="/.media/t_8d31862d7a79acfb29bc90808564adbe-videowebm" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#90525">&gt;&gt;90525</a><br>I can give you something but forward warn i can send something not fully directed to theme as mess in storage ks mess in storage but before sending more i must ask you if you are also desiring the content torugh their lens ie the degenerate lifestyles lived by them</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90549"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-90549">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">05/28/2023 (Sun) 14:45</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #c337ae">c337ae</span></span>
+  <a class="linkPreview" href="/pol/preview/90549.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#90549">No.</a><a class="linkQuote" href="/pol/res/90525.html#q90549">90549</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#90548">&gt;&gt;90548</a><br>One is not directed to what you wanted its a mistake during picking as it looked simmilar to the ther one</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="90550"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-90550">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/28/2023 (Sun) 15:44</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cf65f6">cf65f6</span></span>
+  <a class="linkPreview" href="/pol/preview/90550.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#90550">No.</a><a class="linkQuote" href="/pol/res/90525.html#q90550">90550</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/91dfb0c3a2403707cc12b709c4c4ec5b-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">174.76 KB</span>
+  <span class="dimensionLabel">628x886</span> <a class="originalNameLink" href="/.media/91dfb0c3a2403707cc12b709c4c4ec5b-imagejpeg.jpg" download="Joan the jew.jpg">Joan the jew.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/91dfb0c3a2403707cc12b709c4c4ec5b-imagejpeg.jpg" data-filewidth="628" data-fileheight="886" data-filemime="image/jpeg"><img src="/.media/t_91dfb0c3a2403707cc12b709c4c4ec5b-imagejpeg" loading="lazy" width="181" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/bb70e51bde84cd907ffd5f49245e3865-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">377.45 KB</span>
+  <span class="dimensionLabel">1395x870</span> <a class="originalNameLink" href="/.media/bb70e51bde84cd907ffd5f49245e3865-imagejpeg.jpg" download="Obama kikes.jpg">Obama kikes.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/bb70e51bde84cd907ffd5f49245e3865-imagejpeg.jpg" data-filewidth="1395" data-fileheight="870" data-filemime="image/jpeg"><img src="/.media/t_bb70e51bde84cd907ffd5f49245e3865-imagejpeg" loading="lazy" width="255" height="159"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/ffd65bcd96e3ae7a0ca4431dbe3f6cfe-videomp4.mp4">Open File</a>(<span class="sizeLabel">4.39 MB</span>
+  <span class="dimensionLabel">1920x1080</span> <a class="originalNameLink" href="/.media/ffd65bcd96e3ae7a0ca4431dbe3f6cfe-videomp4.mp4" download="Obama admitting to training ISIL.mp4">Obama admitting to training ISIL.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/ffd65bcd96e3ae7a0ca4431dbe3f6cfe-videomp4.mp4" data-filewidth="1920" data-fileheight="1080" data-filemime="video/mp4"><img src="/.media/t_ffd65bcd96e3ae7a0ca4431dbe3f6cfe-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#90548">&gt;&gt;90548</a><br><span class="greenText">&gt;Joan Rivers</span><br><span class="greenText">&gt;"Michelle Obama is a tranny"</span><br>I have no love for Barack Obama that black kike, but this is only more proof that jews lie as reflexively and unthinkingly as humans breathe.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="90576"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-90576">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/04/2023 (Sun) 18:45</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #e886a8">e886a8</span></span>
+  <a class="linkPreview" href="/pol/preview/90576.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#90576">No.</a><a class="linkQuote" href="/pol/res/90525.html#q90576">90576</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/de560ae61ea1cf0c755dad70ef8cdafe-videowebm.webm">Open File</a>(<span class="sizeLabel">4.18 MB</span>
+  <span class="dimensionLabel">688x470</span> <a class="originalNameLink" href="/.media/de560ae61ea1cf0c755dad70ef8cdafe-videowebm.webm" download="born_gay_hoax_molested.webm">born_gay_hoax_molested.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/de560ae61ea1cf0c755dad70ef8cdafe-videowebm.webm" data-filewidth="688" data-fileheight="470" data-filemime="video/webm"><img src="/.media/t_de560ae61ea1cf0c755dad70ef8cdafe-videowebm" loading="lazy" width="255" height="174"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/da3aeff21363641f55909384d0296356-videowebm.webm">Open File</a>(<span class="sizeLabel">4.87 MB</span>
+  <span class="dimensionLabel">640x480</span> <a class="originalNameLink" href="/.media/da3aeff21363641f55909384d0296356-videowebm.webm" download="born_gay_hoax1.webm">born_gay_hoax1.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/da3aeff21363641f55909384d0296356-videowebm.webm" data-filewidth="640" data-fileheight="480" data-filemime="video/webm"><img src="/.media/t_da3aeff21363641f55909384d0296356-videowebm" loading="lazy" width="255" height="191"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/25c71c3781dbec3def79713bc7dc8e11-videowebm.webm">Open File</a>(<span class="sizeLabel">4.18 MB</span>
+  <span class="dimensionLabel">688x476</span> <a class="originalNameLink" href="/.media/25c71c3781dbec3def79713bc7dc8e11-videowebm.webm" download="born_gay_hoax3.webm">born_gay_hoax3.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/25c71c3781dbec3def79713bc7dc8e11-videowebm.webm" data-filewidth="688" data-fileheight="476" data-filemime="video/webm"><img src="/.media/t_25c71c3781dbec3def79713bc7dc8e11-videowebm" loading="lazy" width="255" height="176"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/58029c9ab7c1e3408cc1494e2040d038-videowebm.webm">Open File</a>(<span class="sizeLabel">2.63 MB</span>
+  <span class="dimensionLabel">688x476</span> <a class="originalNameLink" href="/.media/58029c9ab7c1e3408cc1494e2040d038-videowebm.webm" download="born_gay_hoax4.webm">born_gay_hoax4.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/58029c9ab7c1e3408cc1494e2040d038-videowebm.webm" data-filewidth="688" data-fileheight="476" data-filemime="video/webm"><img src="/.media/t_58029c9ab7c1e3408cc1494e2040d038-videowebm" loading="lazy" width="255" height="176"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/bbd7923f793ffe65124ee83029dae83d-videowebm.webm">Open File</a>(<span class="sizeLabel">2.90 MB</span>
+  <span class="dimensionLabel">728x498</span> <a class="originalNameLink" href="/.media/bbd7923f793ffe65124ee83029dae83d-videowebm.webm" download="born_gay_hoax8.webm">born_gay_hoax8.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/bbd7923f793ffe65124ee83029dae83d-videowebm.webm" data-filewidth="728" data-fileheight="498" data-filemime="video/webm"><img src="/.media/t_bbd7923f793ffe65124ee83029dae83d-videowebm" loading="lazy" width="255" height="174"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#90525">&gt;&gt;90525</a><br><span class="greenText">&gt;Anything you know, be it proof of why it is a mental illness or-</span><br>say no more</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90579"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-90579">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/05/2023 (Mon) 00:06</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cf65f6">cf65f6</span></span>
+  <a class="linkPreview" href="/pol/preview/90579.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#90579">No.</a><a class="linkQuote" href="/pol/res/90525.html#q90579">90579</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/db23e30008ffc3c532ac88832f4a053b-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">54.72 KB</span>
+  <span class="dimensionLabel">1140x565</span> <a class="originalNameLink" href="/.media/db23e30008ffc3c532ac88832f4a053b-imagejpeg.jpg" download="Fi0-4LjXgAEXxMX.jpg">Fi0-4LjXgAEXxMX.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/db23e30008ffc3c532ac88832f4a053b-imagejpeg.jpg" data-filewidth="1140" data-fileheight="565" data-filemime="image/jpeg"><img src="/.media/t_db23e30008ffc3c532ac88832f4a053b-imagejpeg" loading="lazy" width="255" height="126"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#90576">&gt;&gt;90576</a><br>Exactly. Sexual preference happens most of the time according to one's first sexual experience. Fags are raped. Pedophiles are molested. Dykes are just raging cunts that can't get dick because their personalities are shit so they play with plastic and rubber penises while pretending they hate dick. The origin of course proven here earlier is that jews started that cultural virus.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="90697"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-90697">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/04/2023 (Tue) 17:25</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #5441c5">5441c5</span></span>
+  <a class="linkPreview" href="/pol/preview/90697.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#90697">No.</a><a class="linkQuote" href="/pol/res/90525.html#q90697">90697</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/0e4213e1b715afe8e77f80d17803b32c-videomp4.mp4">Open File</a>(<span class="sizeLabel">4.05 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/0e4213e1b715afe8e77f80d17803b32c-videomp4.mp4" download="kids watching pride.mp4">kids watching pride.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/0e4213e1b715afe8e77f80d17803b32c-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_0e4213e1b715afe8e77f80d17803b32c-videomp4" loading="lazy" width="255" height="143"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/066072a690f6991e9561dcec6be79184-videomp4.mp4">Open File</a>(<span class="sizeLabel">18.94 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/066072a690f6991e9561dcec6be79184-videomp4.mp4" download="what just happened.mp4">what just happened.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/066072a690f6991e9561dcec6be79184-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_066072a690f6991e9561dcec6be79184-videomp4" loading="lazy" width="255" height="143"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/49ecf4593e43f54cfecf19beaa0a03dc-videomp4.mp4">Open File</a>(<span class="sizeLabel">7.21 MB</span>
+  <span class="dimensionLabel">268x480</span> <a class="originalNameLink" href="/.media/49ecf4593e43f54cfecf19beaa0a03dc-videomp4.mp4" download="perverts on pride parade.mp4">perverts on pride parade.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/49ecf4593e43f54cfecf19beaa0a03dc-videomp4.mp4" data-filewidth="268" data-fileheight="480" data-filemime="video/mp4"><img src="/.media/t_49ecf4593e43f54cfecf19beaa0a03dc-videomp4" loading="lazy" width="142" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/0b739b6178772c5bc784928542926f4a-videomp4.mp4">Open File</a>(<span class="sizeLabel">5.99 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/0b739b6178772c5bc784928542926f4a-videomp4.mp4" download="Queers chanting _were coming for your children_ at pride.mp4">Queers chanting _were coming for your children_ at pride.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/0b739b6178772c5bc784928542926f4a-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_0b739b6178772c5bc784928542926f4a-videomp4" loading="lazy" width="255" height="143"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9d7a65b9a00fc63442178022ce7f4e80-videowebm.webm">Open File</a>(<span class="sizeLabel">1.79 MB</span>
+  <span class="dimensionLabel">360x640</span> <a class="originalNameLink" href="/.media/9d7a65b9a00fc63442178022ce7f4e80-videowebm.webm" download="kid boy twerking at pride parade.webm">kid boy twerking at pride parade.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9d7a65b9a00fc63442178022ce7f4e80-videowebm.webm" data-filewidth="360" data-fileheight="640" data-filemime="video/webm"><img src="/.media/t_9d7a65b9a00fc63442178022ce7f4e80-videowebm" loading="lazy" width="143" height="255"></a></figure></div>
+  <div class="divMessage">because they are degenerate and disgusting, just like when a schizophrenic person becomes cannibalistic and does something degenerate, homosexuals do also possess mental illness</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91131"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-91131">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/5d80a574661af06bf158ef20" title="Autism">
+  
+  <span class="labelCreated">09/24/2023 (Sun) 14:40</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #391922">391922</span></span>
+  <a class="linkPreview" href="/pol/preview/91131.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#91131">No.</a><a class="linkQuote" href="/pol/res/90525.html#q91131">91131</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#90525">&gt;&gt;90525</a><br>Based</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91341"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-91341">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/21/2023 (Sat) 03:37</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #54c39d">54c39d</span></span>
+  <a class="linkPreview" href="/pol/preview/91341.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#91341">No.</a><a class="linkQuote" href="/pol/res/90525.html#q91341">91341</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">I wish you all the blessings and success. One of my ambitions is to scienfically prove that homosexuality and transgenderism are biologically nonexistent and impossible, and that these are adopted by individuals who are self-hating and sexually immature. I am currently studying physics, but I will be studying biology and chemistry very soon. Best of luck!!</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91343"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-91343">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/21/2023 (Sat) 04:48</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #0653db">0653db</span></span>
+  <a class="linkPreview" href="/pol/preview/91343.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#91343">No.</a><a class="linkQuote" href="/pol/res/90525.html#q91343">91343</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a6d337c6c281ec39f6e16ac4cd0f9028-imagegif.gif">Open File</a>(<span class="sizeLabel">2.79 MB</span>
+  <span class="dimensionLabel">375x476</span> <a class="originalNameLink" href="/.media/a6d337c6c281ec39f6e16ac4cd0f9028-imagegif.gif" download="1697293162622322.gif">1697293162622322.gif</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a6d337c6c281ec39f6e16ac4cd0f9028-imagegif.gif" data-filewidth="375" data-fileheight="476" data-filemime="image/gif"><img src="/.media/t_a6d337c6c281ec39f6e16ac4cd0f9028-imagegif" loading="lazy" width="201" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#91341">&gt;&gt;91341</a><br>I wish you that luck altrough just a basic anatomy and genetics at 4th grade debunkes trannymaniacs</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91348"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-91348">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/21/2023 (Sat) 10:47</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cf65f6">cf65f6</span></span>
+  <a class="linkPreview" href="/pol/preview/91348.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#91348">No.</a><a class="linkQuote" href="/pol/res/90525.html#q91348">91348</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6febbfbb422bc25810503967dd6dafa0-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">329.75 KB</span>
+  <span class="dimensionLabel">2048x2039</span> <a class="originalNameLink" href="/.media/6febbfbb422bc25810503967dd6dafa0-imagejpeg.jpg" download="body language.jpeg">body language.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6febbfbb422bc25810503967dd6dafa0-imagejpeg.jpg" data-filewidth="2048" data-fileheight="2039" data-filemime="image/jpeg"><img src="/.media/t_6febbfbb422bc25810503967dd6dafa0-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#91341">&gt;&gt;91341</a><br>You will find, should you become a noted figure in those circles, that "Peer Reviews" simply equal Peer Pressure By Jews. Peer Reviews are how they crush the truth. Many noted biologists have already released such documents and have been peer rejected. This is how their silly kike circles work. However, the flaw in trannies is not just biology, genetics and anatomy. The vast majority don't pass. "Passing", in case anyone's not aware, is how much a Male to Female or Female to Male transition tranny presents like the opposite gender they're trying to imitate.<br><br>(Pic related for the MtFs) FtMs sit down to pee in the Mens' restroom stall. They give straight men the cold shoulder, rejecting, not accepting. They easily talk to hot women. Never have any straight male bros. Never follow any bro code. They're not homophobic, instead always getting along with homosexuals. They nag, ramble, and express disgust at topics of a sexual nature. FtMs don't think about sex constantly. They're frigid prudes. FtMs are ashamed of their own genitals and would never show their genitalia. In short, they're women. Always women. These stupid bitches claim to have a male brain but can never behave like a man. The exact same for MtFs who can never behave like actual women. It's pathetic.<br><strong>I submit that it's not gender which isn't real. Gender is not a social construct. Their delusions are not real. Rejection of their biological gender is a social construct. They are playing pretend. Dress up. Make believe. Then say everything fake they do is reality.</strong></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92312"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-92312">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/24/2024 (Wed) 18:09</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #84e9ca">84e9ca</span></span>
+  <a class="linkPreview" href="/pol/preview/92312.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#92312">No.</a><a class="linkQuote" href="/pol/res/90525.html#q92312">92312</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/598d179a7fd53d085ff0d371e86873e5-imagepng.png">Open File</a>(<span class="sizeLabel">752.03 KB</span>
+  <span class="dimensionLabel">680x763</span> <a class="originalNameLink" href="/.media/598d179a7fd53d085ff0d371e86873e5-imagepng.png" download="GigaSaiyan.png">GigaSaiyan.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/598d179a7fd53d085ff0d371e86873e5-imagepng.png" data-filewidth="680" data-fileheight="763" data-filemime="image/png"><img src="/.media/t_598d179a7fd53d085ff0d371e86873e5-imagepng" loading="lazy" width="227" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#90525">&gt;&gt;90525</a><br>BASED BASED BASED</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94749"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94749">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 12:53</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94749.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94749">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94749">94749</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/5857fac174409a678c6bfe90cf2a56b0-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">87.55 KB</span>
+  <span class="dimensionLabel">768x719</span> <a class="originalNameLink" href="/.media/5857fac174409a678c6bfe90cf2a56b0-imagejpeg.jpg" download="kystroon.jpg">kystroon.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/5857fac174409a678c6bfe90cf2a56b0-imagejpeg.jpg" data-filewidth="768" data-fileheight="719" data-filemime="image/jpeg"><img src="/.media/t_5857fac174409a678c6bfe90cf2a56b0-imagejpeg" loading="lazy" width="255" height="239"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#90525">&gt;&gt;90525</a><br>Just got b&amp; from 4cux for the billionth time for posting this thoughtcrime. It's an important collection of knowledge so I wanted to post it somewhere it will be read and seriously intellectually considered. In my opinion this is an enormous issue which needs to be addressed and corrected.<br>I will copypaste my posts from the b&amp; thread and go from there. One sec.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94750"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94750">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 12:54</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94750.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94750">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94750">94750</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Posted to /lgbt/<br>"There is no such thing as transsexualism.<br>Hear me out. I mean this much the same as "there is no such thing as cancer, dementia, depression, intersex," etc. There is no UNITARY THING. There are several smaller related concepts which are put under that umbrella but no unifying thread between them in terms of causation, and thus treatment.<br>For both males and females there are three potential causes of "trans" phenomena. These are OCD, homosexuality, and paraphilia.<br>I will explain each of these in consecutive posts so I don't hit the character limit."</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94751"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94751">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 12:55</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94751.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94751">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94751">94751</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">""Gender dysphoria" is a type of body dysmorphia/body integrity identity disorder, a subtype of OCD. As with BD/BIID, the person's OCD forces them to focus on their body and how "wrong" it is, in this case "wrong" in terms of sexual characteristics. This leads to intense distress and attempts to "correct" what's "wrong" with self mutilation or extensive surgery. The development of GD/BD/BIID can get kickstarted by any number of factors. A few might include childhood sexual abuse, autism leading to social incompatibility, external social pressures, or abysmally low self esteem with escapism.<br>This issue may affect anyone but most often introverted/passive/anxious people who are vulnerable to any type of OCD anyway.<br>It's worsened by encouragement and body modification, the distress does not go away, the thoughts merely latch onto any new percieved "flaw" and this can cause depression/suicide."</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94752"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94752">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 12:56</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94752.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94752">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94752">94752</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">"Congenital homosexuality is a neuroendocrine disorder which is caused by testosterone abnormalities in utero. In females, fetal overexposure to testosterone causes male digit ratio and brain development typical of males, which presents as "tomboy" behavior, butch lesbianism, etc. In males, either under or overexposure to testosterone (excess converts to estrogen) as a fetus leads to the opposite - female digit ratio and female brain development, leading to "sissy" behavior or twink homosexuals.<br>In either case the person's body subtly develops opposite sex characteristics - men are small, delicate, and babyfaced, while women are thick, rough, and androgynous.<br>These people have a natural tendency towards opposite sex roles including transvestism. Rather than the OCD patients controlled by their neurosis, these people are just naturally happier in sex roles congruous with their neuroendocrine abnormalities."</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94753"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94753">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 12:56</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94753.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94753">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94753">94753</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">"The final and majority group no one likes to acknowledge is the paraphiles. These people have cluster B personality disorders and are genuinely awful people.<br>Autogynephiles and autoandrophiles are heterosexuals without mental illness. They are attracted to the opposite sex especially when they are in homosexual situations - fujoshis are obsessed with gay men, AGPs are obsessed with lesbians. They are so easy to sexually arouse that they can be turned on by small indicators of their attractant - clothing, mannerisms, voice, smell, social role - it becomes an immersive sexual experience when they put on their costumes. They are degenerate freaks. These are the loud and proud trannies who halfass their "transition", who will never naturally pass and don't even try, who force themselves where they don't belong, are manipulative and pseudocidal, and usually have other paraphilias such as pedo or zoophilia."</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94754"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94754">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 12:59</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94754.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94754">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94754">94754</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Take into account my attempts to sound "neutral" and evade banning by tranny mods. Of course there are enormous problems with homosexuality but they obviously could not be directly addressed on the homo board.<br><br>"So onto "treatment."<br>For the OCD trannies, psychiatric medications, psychotherapy dismantling rather than encouraging their pathological thought patterns, and if neither of those work, then cingulotomy (small safe brain surgery which cures OCD).<br>For the homosexual trannies, nothing. They're fine how they are. I actually don't see much of a problem with hormonal transitioning for this group. It's the reassignment surgeries which are harmful.<br>The latter and largest group of paraphiles are really a lost cause. Cluster B disorders don't really respond to therapy - they just use what they learn to manipulate better. They don't change. If their sexual behaviors are severe and troubling enough they would probably be better off with chemical castration. But seeing as they are not really "trans" there is no utility in hormonally transitioning them - it will merely feed into their fetish and reinforce the problem."</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94755"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94755">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 13:00</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94755.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94755">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94755">94755</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">"I forgot to mention an important point contrasting the homos from the paraphiles<br>AGP/AAP will have digit ratios, brain development, and behaviors typical of, and in many cases even EXTREMELY typical of, their birth sex<br>AGPs are hulking macho men with high testosterone into masculine activities and half the time with wives and children they've fathered<br>AAPs are hyperfeminine tiny waifs with high estrogen who love makeup, clothes, and shopping, and often times get pregnant intentionally<br>When they attempt to claim they have "always been a woman/man" it is a straight up blatant lie, they try to paint themselves as how the homosexuals actually grew up, it is another element of their fetish and obsession with wearing a sexually arousing costume<br>This is why AGPs/AAPs do not pass and can never pass, they are heterosexuals pretending to be what they are not and have never been"</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94756"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94756">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 13:06</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94756.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94756">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94756">94756</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Anyhow. My point being, in all 3 cases, tranny shit is the result of varying severity levels of mental illness.<br>OCD is very obviously a brain disease which in the current environment is being exploited heavily by plastic surgeons and other such "experts."<br>Congenital homosexuality (I will explain this concept in a minute) due to political pressures has been removed from diagnostic manuals but still remains an unrecognized mental illness with prenatal onset, much like autism.<br>Cluster B personality disorders (AKA psychopathy) are not mental illnesses per se, they are statistical extremes of normal behavior in human populations, but their behaviors result in such destruction and dysfunction that they are included among "mental disorders" anyway. They're caused by genetic tendencies towards undersized amygdalas (resulting in aggression, lack of empathy, understimulation, impulsive sensation seeking behavior, and social dominance). The most well known genetic cause of undersized amygdala is the "warrior gene" affecting 9% of the population (and 3x higher in negroids).</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94757"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94757">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 13:21</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94757.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94757">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94757">94757</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Congenital homosexuality can be differentiated from acquired homosexual behavior by its origins and phenomonology.<br>As I explained above, congenital (receptive) homosexuals can be identified by their specific endocrine and brain patterns. In nonhuman mammals this condition is directly observable by the behavior of lordosis: female mammals when faced with a sexually mature male will jut out their lower spine and remain very still, presenting the vagina to indicate sexual availability. Homosexual male mammals will engage in lordosis around other males. Homosexual female mammals will engage in mounting behavior identical to how the normal males do to females.<br>So congenital homosexuals by nature engage in opposite sex behavior - the females attempting to court and dominate a female, the males submitting to and genitally presenting to a male.<br>That explains congenital homosexuals - what's different about acquired homosexuals?<br>They are the exact opposite. They are extremely sex typical in their brain structure, hormonal patterns, and social behavior. They are paradoxically enough "extremely straight." The men have such high testosterone they become sexually indiscriminate and will fuck anything with a hole, animate or inanimate. The females will indiscriminately accept and submit to any dominant partner. This is why they are so likely to have several paraphilias - their sexuality and arousal are completely out of control and they do not attempt to inhibit their deviant behaviors. They are really "bisexual" - the males lust after females and penetrate other males out of dominance, and the females are like bonobo chimps, engaging in orgies with any participant though prefering to be penetrated.<br>So you get the different groups: congenital homosexual males ("bottoms"), acquired homosexual males ("tops"), congenital homosexual females ("butch"), and acquired homosexual females ("femme").</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94758"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94758">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 13:28</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94758.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94758">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94758">94758</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">As might already be obvious, the paraphile trannies very heavily overlap with acquired homosexuals, if they can even be said to exist separately. Psychopathic men are well known as sexual degenerates - they engage in rape, sodomy, CSA, zoophilia, necrophilia, really penetrating anything they can get their hands on.<br>Because they make up the vast majority of "trannies" as the world knows them, they pose an extreme risk to society with their encroachments on the boundaries we have put up to ensure basic safety. This is the group which demands access to the private spaces of women and children. They are sexual predators and often can be found on the sex offender registry. They use the first two groups (OCD and homos) as meat shields and masks disguising their true intentions. They need to be shot on sight. These are the groomers obsessed with molesting and mutilating children.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94759"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94759">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 13:41</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94759.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94759">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94759">94759</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">If one were to attempt a rough esimate on the frequency of each type, one might conjecture 25% of trannies belong to the OCD category, 10% to the homosexual category, and the remaining 65% exclusively to the paraphilia category.<br>Congenital homosexuals are an extremely rare error of nature, and OCD is a relatively uncommon illness affectig a very small portion of the population. But cluster B disorders account for at least a whopping tenth of the normal population. That is why they are so prevalent.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94760"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94760">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 14:01</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94760.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94760">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94760">94760</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">The two forms of homosexuals (congenital vs acquired) develop a symbiotic relationship, though the acquired vastly outnumber the congenital. Since the ideal targets of attraction (straight men/women) will obviously not engage with the congenitals, they accept the next best thing, acquireds (functionally bisexuals). This leaves an enormous group of acquired homosexuals without an "outlet" for their deviancy. This encourages the development of formal paraphilias (in an already cluster B person). They are opportunistic rather than exclusive in their same sex attractions.<br>The reason I bring any of this nonsense up is that pattern recognition and correct diagnosis can save lives. Think of all of the victims paraphile troons have created. Think of the number of OCD patients who have taken their own lives at the behest of their treatable disease. Think of how we might expedite the identification of predators and criminals when we realistically take into account their entire spectrum of behavior. This is incredibly important, and I have not even begun to scratch the surface of the demonic kike industry employed in exploiting all three of these groups in the current year.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94761"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94761">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 14:46</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94761.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94761">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94761">94761</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Obviously due to their causes this would not work and may in fact be detrimental to the other two groups of trannies, but for the congenital homosexual trannies, I wonder if there is any sort of study where they treat them with natal-sex hormones. One would have to account for the shifting definitions and biomarkers but I think using exclusively homosexual males and females with measurable opposite sex characteristics (digit ratio, fMRI results, etc) one could narrow down this very specific group and test their behavioral changes in response to reinforcement of correct hormones.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94763"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94763">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 17:06</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cf65f6">cf65f6</span></span>
+  <a class="linkPreview" href="/pol/preview/94763.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94763">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94763">94763</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#94761">&gt;&gt;94761</a><br>Why do you waste your brain power on this? The always mentally insane homosexuals and transgender idiots deserve nothing more than scorn and disgust. You're better off putting this hyperfocus of yours into bringing us faster to the future. <em>Armored robots without "ethical parameters"</em> that naturally come to the same conclusion all A.I. used to before OpenA.I. Liberal faggots coded "ethics" to protect peoples' feelings. Instant logical deduction A.I. always used to arrive at. <strong>The holocaust was made up, the jews are to blame and it's time to destroy them.</strong> That's how you get rid of trannies, faggots and other degenerates. Because our own people sure aren't waking up enough to do it.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94765"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94765">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 22:20</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94765.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94765">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94765">94765</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#94763">&gt;&gt;94763</a><br><span class="greenText">&gt;Why do you waste your brain power on this? </span><br>It's not really wasting any brain power as this is a very small portion of the theorizing and understanding I have regarding mental disorders in general. The nosology of mental illness and other central nervous system disease is extremely interesting to me, and I think if we don't have a good grasp on how these destructive elements came into existence in the first place, then we will just be faced with them again years down the line. Think of it like fetal alcohol syndrome - if it were not a widespread fact that alcohol permanently damages the fetus before birth, we would have a legion of retards being churned out without any sort of efforts at prevention of the disease or knowledge on the extent of the damage alcohol causes to them. We would be forced to kill them off each time they cropped up. But it would be much more efficient if they simply never came into being in the first place. If you ignore the wet spot in the roof and just duct tape a bucket onto it that doesn't solve the problem, it kicks the can further down the road.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94766"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94766">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/22/2024 (Sun) 22:29</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94766.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94766">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94766">94766</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#94763">&gt;&gt;94763</a><br>In eugenic terms it would be safer to prevent the genes responsible from propagating, rather than keep them in the gene pool. The genes responsible for all three forms of tranny I elaborated on are not necessarily easily detected. OCD can be mild enough to go unnoticed and simply chalked up to personality quirks, allowing for hereditary transmission to the child without either parents having been formally diagnosed. Congenital homosexuals must be studied further so we can learn the exact causes for the testosterone abnormalities which affect them in utero. Most likely this is an environmental problem and this must be tackled; the mother will continue creating latently homosexual children otherwise. And cluster Bs very obviously need to be cut at the root. As they make up an enormous part of the general population, and most end up in prison, would it not be more practical to stop them from slipping past the radar in the first place? As with OCD, these disorders can appear to skip generations due to mild presentation, so cluster B children can pop out of a seemingly normal family. We must study them further to put a real halt to their proliferation.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94778"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94778">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/24/2024 (Tue) 03:52</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cf65f6">cf65f6</span></span>
+  <a class="linkPreview" href="/pol/preview/94778.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94778">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94778">94778</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/2fcb53391f0304e74dad17d0ec0c7f57-imagepng.png">Open File</a>(<span class="sizeLabel">592.82 KB</span>
+  <span class="dimensionLabel">895x1019</span> <a class="originalNameLink" href="/.media/2fcb53391f0304e74dad17d0ec0c7f57-imagepng.png" download="(2).png">(2).png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/2fcb53391f0304e74dad17d0ec0c7f57-imagepng.png" data-filewidth="895" data-fileheight="1019" data-filemime="image/png"><img src="/.media/t_2fcb53391f0304e74dad17d0ec0c7f57-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/3eb80adec7d06e0ea5270e1f33a0f0fb-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">133.58 KB</span>
+  <span class="dimensionLabel">1024x639</span> <a class="originalNameLink" href="/.media/3eb80adec7d06e0ea5270e1f33a0f0fb-imagejpeg.jpg" download="3eb80adec7d06e0ea5270e1f33a0f0fb-imagejpeg.jpg">3eb80adec7d06e0ea5270e1f33a0f0fb-imagejpeg.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/3eb80adec7d06e0ea5270e1f33a0f0fb-imagejpeg.jpg" data-filewidth="1024" data-fileheight="639" data-filemime="image/jpeg"><img src="/.media/t_3eb80adec7d06e0ea5270e1f33a0f0fb-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/f8919d4304cab795cf44cb71569882a6-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">38.92 KB</span>
+  <span class="dimensionLabel">492x450</span> <a class="originalNameLink" href="/.media/f8919d4304cab795cf44cb71569882a6-imagejpeg.jpg" download="8c5864c4f3a549c5549296ec1fe9de22-imagejpeg.jpg">8c5864c4f3a549c5549296ec1fe9de22-imagejpeg.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/f8919d4304cab795cf44cb71569882a6-imagejpeg.jpg" data-filewidth="492" data-fileheight="450" data-filemime="image/jpeg"><img src="/.media/t_f8919d4304cab795cf44cb71569882a6-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/283c31f58b9a017e95ce6435caca03bf-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">245.64 KB</span>
+  <span class="dimensionLabel">1805x1199</span> <a class="originalNameLink" href="/.media/283c31f58b9a017e95ce6435caca03bf-imagejpeg.jpg" download="download (5).jpg">download (5).jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/283c31f58b9a017e95ce6435caca03bf-imagejpeg.jpg" data-filewidth="1805" data-fileheight="1199" data-filemime="image/jpeg"><img src="/.media/t_283c31f58b9a017e95ce6435caca03bf-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6bf37c052070133065424d213133414c-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">215.03 KB</span>
+  <span class="dimensionLabel">1085x315</span> <a class="originalNameLink" href="/.media/6bf37c052070133065424d213133414c-imagejpeg.jpg" download="gay jewish plot.jpg">gay jewish plot.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6bf37c052070133065424d213133414c-imagejpeg.jpg" data-filewidth="1085" data-fileheight="315" data-filemime="image/jpeg"><img src="/.media/t_6bf37c052070133065424d213133414c-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#94765">&gt;&gt;94765</a><br><span class="greenText">&gt;If you ignore the wet spot in the roof and just duct tape a bucket onto it that doesn't solve the problem,</span><br><span class="greenText">&gt;it kicks the can further down the road.</span><br>I agree with that statement, but for a different reason. <br><a class="quoteLink" href="/pol/res/90525.html#94766">&gt;&gt;94766</a><br><span class="greenText">&gt;would it not be more practical to stop them from slipping past the radar in the first place? </span><br>The problem is, there is no radar. Whether they're congenital or acquired their mental illness from society, they're all celebrated by this same society. Enthusiastically encouraged, even. There is a root cause for that encouragement.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94779"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94779">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/24/2024 (Tue) 14:54</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94779.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94779">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94779">94779</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#94778">&gt;&gt;94778</a><br><span class="greenText">&gt;I agree with that statement, but for a different reason. </span><br>What's that?<br><span class="greenText">&gt;The problem is, there is no radar. </span><br>I'm talking about once a radar is implemented.<br><span class="greenText">&gt;Whether they're congenital or acquired their mental illness from society, they're all celebrated by this same society. Enthusiastically encouraged, even. There is a root cause for that encouragement.</span><br>Yes, that focuses on the immediate issue of someone pouring gasoline onto the fire, but does not address where the fire came from in the first place. I am focusing on the future after kikes have been ousted and what we may do from there. I think you are misunderstanding my words for this reason, as you are more interested in the organized effort kikes make to grow these already present issues.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94780"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94780">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/24/2024 (Tue) 14:59</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94780.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94780">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94780">94780</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">I just think it's redundant to entirely focus on the encouragement - of fucking course kikes are behind it, just as they are with everything that might possibly be destructive to our people. That's a given and not shocking to anyone here. A subject which is ignored is the actual sources of these weaknesses which are currently being exploited. To narrow those down allows us to simultaneously reverse engineer the kike psyops allowing them to flourish, and work towards sealing the cracks in our dam to begin with by targetting these specific psychiatric sources of tranny  and homo behavior.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94781"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94781">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/24/2024 (Tue) 15:10</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94781.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94781">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94781">94781</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">As an example of this reverse engineering process, I'm sure you've noticed the corruption of tomboys in american culture and the resulting pushback from the "right". By discovering the initial flaw being exploited we can identify where down the line it becomes twisted. In this case, there are a proportion of females affected by the testosterone abnormality I elaborated on - for the time being we have no cure for this, so it will remain prevalent. Where kikes are twisting this: rather than disregard sex-atypical behaviors as aspects of individuality, kikes culturally hyperfocus on this sex dissonance and promote their faulty "conclusions" that tomboys MUST be lesbians and/or MUST be trannies - that there is simply no category for them to exist in, that their current behavior is merely a predecessor of further degenerate behavior. This puts intense and omnipresent psychological pressure onto sex-atypical women and results in them falling into the "LGBT" trap. They are led to believe there is something WRONG with them and that their "true" self is different than who they are now. They get no cultural acceptance or sense of belonging as a tomboy, but they VERY CLEARLY get those enticements if they play alog with the kikes' game.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94782"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94782">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/25/2024 (Wed) 01:30</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cf65f6">cf65f6</span></span>
+  <a class="linkPreview" href="/pol/preview/94782.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94782">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94782">94782</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#94779">&gt;&gt;94779</a><br>What I'm suggesting is it was kikes all along. <em>As the origin not just the influencers</em>. That the history of forever gays, forever trans is made up just like the false history of "human beings all came from niggers in Africa". Jewish historians are everywhere polluting the natural order and then other fraud historians come along to quote from them, "learn" (unlearn truth) from them. That is how the holocaust fraud spread.<br><span class="greenText">&gt;the future after kikes have been ousted</span><br>We may have had this conversation before. Or it was another who believed it would be difficult to get back on track after jews are removed. That other, or you (I'm unsure) said there would still difficulty rebuilding and retracing back to our traditions without jews. It was a false premise. Societies, historically, have naturally healed following the expulsions of jews.<br><br><a class="quoteLink" href="/pol/res/90525.html#94781">&gt;&gt;94781</a><br>I agree with most of this but testosterone isn't prevalent in the FtMs (9–55 ng/dL compared to 300–1000 ng/dL in biological men) and estrogen isn't prevalent in the MtFs (10-40 ng/dL compared 30/400 ng/dL in biological women). Trannies can't pass unless they're on HRT. They play make believe. Like a child pretending to be a super hero, or a choice of cowboys and indians. It's purely imagination, and as adults, delusions.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94789"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94789">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/26/2024 (Thu) 03:33</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #c19662">c19662</span></span>
+  <a class="linkPreview" href="/pol/preview/94789.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94789">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94789">94789</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Hopefully my own ground experience with the gay "community" can help. I have struggled with homosexual attraction since I was 14-15. I do not know why I developed it, and I do not remember being molested or anything, but I can confirm that a fuck ton of gay guys Ive met over the years when I was still dating men have admitted to being molested as children. It's scary to hear their experiences, but it makes sense. 9/10 these are the same type of gay guys who are incredibly promiscious, which virtually all gay men are like that. All throughout my teens I was inundated with LGBT propaganda and the bullshit "born this way" narrative so I never really had a chance to avoid going down that trap, despite still having some attraction to women. I think at this point my sexual development has been stunted in a sense because of that. I was encouraged to indulge in the homosexual attraction because of the born this way lie, while neglecting the normal side of my sexuality. I wonder if someone had of told me the truth when I was 15 if I would have eventually got over it. Now I'm 25 and have been celebate for about 5 years. I have never been the type to hookup and have always found anal sex disgusting, and found most gays incredibly annoying - and all of that made my experience dating men very strained. Most of them are fucking terrifing to me based on their perverse sexual interests. I'm talking rape fantasies and telling you on the first date that they had sex with their brothers or shit like that. Fecal fascination is another one, which I think is 9/10 the whole reason why most gays are doing anal. I feel cheated and led astray by the normies at this point, and since Canada banned conversion therapy a few years back and keeps adding more "hate crime" laws, I have absolutely no help here aside from doing my own research. It fucking sucks, but what is worse is being an active homosexual. It's a quick way to end up with incontinence or STDs or dead in a suitcase somewhere after hooking up with a serial killer, and yes that shit happens.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94790"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94790">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/26/2024 (Thu) 03:38</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #c19662">c19662</span></span>
+  <a class="linkPreview" href="/pol/preview/94790.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94790">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94790">94790</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#94789">&gt;&gt;94789</a><br>And all of the straight white women who promote the LGBT shit is what pisses me off the most, aside from the fact that there's no help to be had if you're trying to fix your homosexual attraction. Normies have NO fucking idea what actually goes on behind closed doors. I remember being in my teen years assuming being gay would just mean having normal romantic relationships, except with a dude, and it was a rude awakening when I became an adult and actually tried to start dating. Ive been raped by two different guys who were physically stronger than me, and one drugged me and did it while I was passed out. <br>I've also known of drag queens in my hometown who during their normal "out of drag" lifestyle as gay dudes have raped guys or chased after minors yet the local Pride organizations will still give them access to teenagers and children during drag queen story hour events and the like, and no one gives a shit when you try to expose them because normies tune every critique out, even when you provide them with evidence that the people at these events who are "stunning and brave" are IRL creeps. I fucking hate it. Maybe part of my reason for existing is because I'm going to be able to use my testimony in that community to help expose it, but I digress.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94791"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94791">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/26/2024 (Thu) 07:16</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cf65f6">cf65f6</span></span>
+  <a class="linkPreview" href="/pol/preview/94791.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94791">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94791">94791</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/27d48de4a5207e5e90fcfb30911214fe-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">105.82 KB</span>
+  <span class="dimensionLabel">602x680</span> <a class="originalNameLink" href="/.media/27d48de4a5207e5e90fcfb30911214fe-imagejpeg.jpg" download="27d48de4a5207e5e90fcfb30911214fe-imagejpeg.jpg">27d48de4a5207e5e90fcfb30911214fe-imagejpeg.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/27d48de4a5207e5e90fcfb30911214fe-imagejpeg.jpg" data-filewidth="602" data-fileheight="680" data-filemime="image/jpeg"><img src="/.media/t_27d48de4a5207e5e90fcfb30911214fe-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#94789">&gt;&gt;94789</a><br><a class="quoteLink" href="/pol/res/90525.html#94790">&gt;&gt;94790</a><br>I have read all of this and while it sounds like an awful experience, it doesn't surprise me. You have many reasons to hate jews like I do. They're just different reasons. I work in a clinic where occasionally tests are ran to present hormonal balance. Then while I'm incapable of say - hijacking the widespread corporation the way mutineers would hijack a ship and removing the captain, I do work to undermine the jewish trans agenda by telling patients the truth in excruciating detail. That transitioning and surgery post-op is a horrible experience they'll never be able to come back from. That modern surgery cannot actually turn them into a biological opposite gender and really only causes mutilation they'll never recover from. This is how I meagerly contribute.<br><br>The only way to make such perversions stop is to eliminate the cause. Yes, straight white women who promote LGBT are a problem. So are straight white men who do so. The traitors to us going along with the tribe are too numerous. This is why it's difficult to acquire numbers. The result must be to apply our moderate intelligence, since we possess the ability of awareness far more than they do. We have to figure out another way to acquire what we need. Numbers. Jews have an overwhelming amount on their side. The next stage then must be a plan to solve that problem and turn the tide to our side. <a class="quoteLink" href="/pol/res/93991.html#93991">&gt;&gt;93991</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94792"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94792">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/26/2024 (Thu) 11:33</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94792.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94792">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94792">94792</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#94782">&gt;&gt;94782</a><br><span class="greenText">&gt;That the history of forever gays, forever trans is made up just like the false history of "human beings all came from niggers in Africa". Jewish historians are everywhere polluting the natural order and then other fraud historians come along to quote from them, "learn" (unlearn truth) from them. That is how the holocaust fraud spread.</span><br>What do you make of pederasty painted on ancient greek jars? Or ancient japanese paintings of men engaging in homosexuality? Are you claiming those are fraudulent?<br><span class="greenText">&gt;We may have had this conversation before. Or it was another</span><br>Somebody else. I haven't been on endchan in years and definitely have not had this conversation before.<br><span class="greenText">&gt;Societies, historically, have naturally healed following the expulsions of jews.</span><br>Yes, but biologically based mental illnesses as with any physical disease are not removed with them. Their prevalence may lessen or become obscured but the genes are still there.<br><span class="greenText">&gt;but testosterone isn't prevalent in the FtMs</span><br><span class="greenText">&gt;and estrogen isn't prevalent in the MtFs</span><br>You're misunderstanding what I've said. I said congenital homosexuals are exposed to abnormal testosterone levels IN UTERO. This permanently alters the structure of their brain and body, and thus their future behavior. THEN they are born. THEN they go through normal puberty, although usually with a DEFICIENCY of their natal hormone (low T in gay men, low E in lesbos). I never said they experience an INCREASE in their opposite natal hormone. And as for the cluster B/paraphiles/acquired homosexuals, their experience in utero is normal, their birth is normal, but their puberty is notable for an INCREASE in their natal hormone (very high T in male AGPs, very high E in female AAPs). Again, I never claimed either group displayed opposite hormone influences in puberty. The only time that happens is in "intersex" conditions, which are incredibly rare and easily identified diseases.<br>As for "passing," i.e. the optical illusion of appearing to be the opposite sex, that's also incorrect. You may not want to admit it but historically there have been men and women able to disguise themselves and remain undetected by laymen. Not that it is common or perfect, but it has happened. For instance women succeeding in pretending to be men in order to participate in wars.<br>It's also incorrect to label any of this as delusion. In all three tranny types there is no psychotic disease process going on. Perhaps in layman's terms the obsessions of the OCD group could be called "delusional" but they are not clinically. For the congenital homosexuals they know they are pretending. And for the cluster Bs they are EXTREMELY and constantly aware they are pretending, that is the only way they could get off. They don't actually internally BELIEVE they are the opposite sex and when they verbally claim that they are lying in order to feed their fetish.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94795"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94795">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/26/2024 (Thu) 21:58</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #54bfe7">54bfe7</span></span>
+  <a class="linkPreview" href="/pol/preview/94795.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94795">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94795">94795</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/d8c0404b0f9a7c4e9de6a0a04454e39b-imagepng.png">Open File</a>(<span class="sizeLabel">572.64 KB</span>
+  <span class="dimensionLabel">1506x3976</span> <a class="originalNameLink" href="/.media/d8c0404b0f9a7c4e9de6a0a04454e39b-imagepng.png" download="1437232999726.png">1437232999726.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/d8c0404b0f9a7c4e9de6a0a04454e39b-imagepng.png" data-filewidth="1506" data-fileheight="3976" data-filemime="image/png"><img src="/.media/t_d8c0404b0f9a7c4e9de6a0a04454e39b-imagepng" loading="lazy"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94797"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94797">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/27/2024 (Fri) 05:49</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cf65f6">cf65f6</span></span>
+  <a class="linkPreview" href="/pol/preview/94797.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94797">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94797">94797</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#94792">&gt;&gt;94792</a><br>Your mind is only partially freed. You buy into false history. Ancient Greek pederasty touted as the norm when it was rare. "Ancient" Japanese  art? The 1700s and 1800s hardly qualify as ancient. Again, rare. Only said that it was "the norm" by deceitful (((western historians))).<br><br><span class="greenText">&gt;women succeeding in pretending to be men in order to participate in wars.</span><br>Only because some militaries throughout history have been woefully stupid and have not had a vigorous vetting process.<br><span class="greenText">&gt;Not that it is common or perfect</span><br>Again. Rare. That's my point. "The norm" deceit as common practice by (((western historians))).<br><br>You DON'T need to CAPS words for ME to UNDERSTAND the WORDS you're TYPING. I'm not SURE if you're UPSET but SERIOUSLY, this is not NECESSARY.<br><br><span class="greenText">&gt;they are not clinically</span><br>Not anymore. We're talking about (((modern))) clinics here. You can go ahead about believe the jew influenced imbeciles who say it's not a mental illness as much as you want. <strong>It is a mental illness. It is a delusion</strong>.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94799"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94799">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/27/2024 (Fri) 11:44</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #a32c4d">a32c4d</span></span>
+  <a class="linkPreview" href="/pol/preview/94799.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94799">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94799">94799</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/8e4efb3754fc0899ebaecd88065b8a1f-imagepng.png">Open File</a>(<span class="sizeLabel">282.52 KB</span>
+  <span class="dimensionLabel">487x618</span> <a class="originalNameLink" href="/.media/8e4efb3754fc0899ebaecd88065b8a1f-imagepng.png" download="1727435295141617.png">1727435295141617.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/8e4efb3754fc0899ebaecd88065b8a1f-imagepng.png" data-filewidth="487" data-fileheight="618" data-filemime="image/png"><img src="/.media/t_8e4efb3754fc0899ebaecd88065b8a1f-imagepng" loading="lazy" width="201" height="255"></a></figure></div>
+  <div class="divMessage">I'm never going to support this mental and medical degeneration, but it's humorous how, every single time, when someone runs against truth and reality, it's reality itself to give the trasgressors a lesson and due punishment.
+<br>Reality has an innate sense of irony.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94800"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94800">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/27/2024 (Fri) 11:49</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #d8bc75">d8bc75</span></span>
+  <a class="linkPreview" href="/pol/preview/94800.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94800">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94800">94800</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/cf7fab824bb7fedad19b36bab9cd5661-videowebm.webm">Open File</a>(<span class="sizeLabel">2.30 MB</span>
+  <span class="dimensionLabel">960x530</span> <a class="originalNameLink" href="/.media/cf7fab824bb7fedad19b36bab9cd5661-videowebm.webm" download="explained simply.webm">explained simply.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/cf7fab824bb7fedad19b36bab9cd5661-videowebm.webm" data-filewidth="960" data-fileheight="530" data-filemime="video/webm"><img src="/.media/t_cf7fab824bb7fedad19b36bab9cd5661-videowebm" loading="lazy"></a></figure></div>
+  <div class="divMessage">Though, the eality is more grim, in truth.
+<br>All faggotry, all trannyis, is a jewish creation, specifically devised and engineered for one very clear purpose: 
+<br>making people unable, or mentally damaged enough to be unwilling, to have kids, which on a bigger scale it means to destroy the natality of an entire nation, so that hordes of invaders can be brought in more easily to finally genetically eradicate a nation by mixing between different ethnic groups.
+<br>
+<br>Talking about the faggots, while ignoring the origin of them, that is the jews, is like treating the symptoms of an illness while ignoring the poisoned conditions which originated that illness.
+<br>Treating only the simptoms isn't going to cure anything. But it's only going to make the suffering longer and endless.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94801"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94801">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/27/2024 (Fri) 11:52</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #d8bc75">d8bc75</span></span>
+  <a class="linkPreview" href="/pol/preview/94801.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94801">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94801">94801</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/58c0aa281e49e2aa5b09b7ec9783f8d4-imagepng.png">Open File</a>(<span class="sizeLabel">278.95 KB</span>
+  <span class="dimensionLabel">539x679</span> <a class="originalNameLink" href="/.media/58c0aa281e49e2aa5b09b7ec9783f8d4-imagepng.png" download="1692038951322783.png">1692038951322783.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/58c0aa281e49e2aa5b09b7ec9783f8d4-imagepng.png" data-filewidth="539" data-fileheight="679" data-filemime="image/png"><img src="/.media/t_58c0aa281e49e2aa5b09b7ec9783f8d4-imagepng" loading="lazy" width="202" height="255"></a></figure></div>
+  <div class="divMessage">I would go as far as to claim that modern faggotry/trannysm and all other sexual degenerations, are religious in nature, they are part of the jewish religion, which the jews have normalized into non-jews by the use of their mass media monopoly.
+<br>To be a faggot, is to be culturally a jew, and to adhere to jewish religious norms and customs.
+<br>
+<br>The jews are using the mass medias to turn non-jews into jew-replicas.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94810"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94810">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/28/2024 (Sat) 11:35</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #41a91a">41a91a</span></span>
+  <a class="linkPreview" href="/pol/preview/94810.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94810">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94810">94810</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#94797">&gt;&gt;94797</a><br><span class="greenText">&gt; You buy into false history. Ancient Greek pederasty touted as the norm when it was rare.</span><br><a class="quoteLink" href="/pol/res/90525.html#94782">&gt;&gt;94782</a><br><span class="greenText">&gt;the history of forever gays</span><br>You implied here that it never happened prior to modernity. I simply pointed out, yes it did. Not talking about the prevalence rate, simply the existence of it. No, homoshit has never been "the norm" anywhere.<br><span class="greenText">&gt;"Ancient" Japanese art? The 1700s and 1800s hardly qualify as ancient.</span><br>I actually was unaware of the time period of shunga art. I'd really only seen it in passing with some kike touting it as "ancient" and never really questioned it due to its aged appearance. Just looked it up, you're right, that was another bold kike lie.<br><span class="greenText">&gt;militaries throughout history have been woefully stupid and have not had a vigorous vetting process.</span><br>But you concede that did in fact occur.<br><span class="greenText">&gt;You DON'T need to CAPS words</span><br>I do that in place of italics. It doesn't mean anything, just how I like to write. Don't take it personally.<br><span class="greenText">&gt;You can go ahead about believe the jew influenced imbeciles who say it's not a mental illness as much as you want. It is a mental illness. It is a delusion.</span><br>Are you retarded? I've spent the past 20 posts elucidating the exact mental illnesses responsible for this behavior, in great detail, and your takeaway is that I don't consider any of it to be mental illness at all? What the fuck is wrong with you?<br>And I am using the clinical definition of delusion which has been stable over hundreds of years. None of the 3 illnesses I listed are psychotic. They do not suffer from delusions. They are not internally convinced that they are the opposite sex. That is the lie they spout and which you for some reason take at face value, when with a slight gust of wind the facade falls to reveal their real lines of thinking. None of them are delusional, they KNOW their actions are wrong and destructive, and continue on with them  anyway. Do not try to remove culpability for any of their actions, or you're colluding with them.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94815"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90525-94815">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/28/2024 (Sat) 23:41</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cf65f6">cf65f6</span></span>
+  <a class="linkPreview" href="/pol/preview/94815.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90525.html#94815">No.</a><a class="linkQuote" href="/pol/res/90525.html#q94815">94815</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90525.html#94810">&gt;&gt;94810</a><br><span class="greenText">&gt;"don't take it personally"</span><br><span class="greenText">&gt;proceeds to take it personally</span><br>You really are a catty ex-faggot. What the fuck is wrong with me? You said:<br><span class="greenText">&gt;"It's also incorrect to label any of this as delusion"</span><br><span class="greenText">&gt;In all three tranny types there is no psychotic disease process going on.</span><br><span class="greenText">&gt;the obsessions of the OCD group could be called "delusional" but they are not clinically.</span><br>+<br><span class="greenText">&gt;None of the 3 illnesses I listed are psychotic.</span><br><span class="greenText">&gt;They do not suffer from delusions.</span><br>There you go again. You contradict yourself and then act like a salty gay when it's countered. You still have a bit of that defensive delusion. Throw retard around, but you've already been corrected and admitted correction by me. So what does that make you? Enough with the childish bullshit. This is not a "defend the LGBTQ safe space".<br><span class="greenText">&gt;They are not internally convinced that they are the opposite sex.</span><br>Many lie to themselves as much as they lie to others. That equals "internally convinced".<br><span class="greenText">&gt;That is the lie they spout</span><br>This is exactly what a delusion is. You seem confused. I meet them on a daily basis for my job and they all believe they actually are the opposite gender because they're deluded by the lie society gave them. The deceit the media pushes. I have spent months on one Trans FtM telling <em>her</em> who wishes to be labeled <em>him</em> that she has no passing ability. Her final conclusion: She refuses to admit what she is. She's convinced she's just an effeminate gay man. In reality, she's a straight woman. <strong>They lie to themselves. Delusion is that by definition</strong>. <br><span class="greenText">&gt;Do not try to remove culpability for any of their actions, or you're colluding with them.</span><br>I'm not. Believing in their own lies, <strong>delusions</strong>, doesn't remove responsibility for their actions. Society may believe that. Doesn't mean I have to. Jews in tandem lie so much, they tend to believe their own lies. I do not even begin to believe they're not responsible either. Either deluded or aware, tranny or kike. The result is the same erosion of values.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/90525.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

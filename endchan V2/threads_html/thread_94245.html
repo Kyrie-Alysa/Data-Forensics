@@ -1,0 +1,1051 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - it's hard being a robot these days, even if you have a woman willing to take your sperm, you have to debate with https://www.bing.com/chat
+guess it can be worse (trannies, issue blowing up with the MrBeast troon and Elon Musk's son, not to mention Olympics</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="94245">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=94245">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/94245.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="94245"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9470f18a7d4496e739740be98898881a-imagepng.png">Open File</a>(<span class="sizeLabel">154.05 KB</span>
+  <span class="dimensionLabel">1500x1000</span> <a class="originalNameLink" href="/.media/9470f18a7d4496e739740be98898881a-imagepng.png" download="Bing.png">Bing.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9470f18a7d4496e739740be98898881a-imagepng.png" data-filewidth="1500" data-fileheight="1000" data-filemime="image/png"><img src="/.media/t_9470f18a7d4496e739740be98898881a-imagepng" loading="lazy" width="255" height="170"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-94245">
+    
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">07/28/2024 (Sun) 06:54</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #26703c">26703c</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/94245.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/94245.html#94245">No.</a>
+    <a class="linkQuote" href="/pol/res/94245.html#q94245">94245</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">it's hard being a robot these days, even if you have a woman willing to take your sperm, you have to debate with <a rel="nofollow" target="_blank" href="https://www.bing.com/chat">https://www.bing.com/chat</a><br>guess it can be worse (trannies, issue blowing up with the MrBeast troon and Elon Musk's son, not to mention Olympics ceremony)</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="94246"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94246">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/28/2024 (Sun) 06:55</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #26703c">26703c</span></span>
+  <a class="linkPreview" href="/pol/preview/94246.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94246">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94246">94246</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">rest of convo:<br><br>You<br>Sent by you:<br>obviously, conception doesn't happen immediately, one can have sex without condom or pulling out, and it would be "risky"<br>Copilot<br>Sent by Copilot:<br>You’re right; conception doesn’t always happen immediately. If you’re considering having unprotected sex, it’s essential to understand the potential risks. Here are some points to consider:<br><br>Risk of Pregnancy: Even with irregular cycles, there’s still a chance of pregnancy. Sperm can survive in the female reproductive tract for several days, so unprotected sex increases the risk.<br>Emergency Contraception: If you decide to have unprotected sex, consider emergency contraception (like the morning-after pill) afterward. It’s most effective within 72 hours but can work up to 120 hours after unprotected intercourse.<br>STIs: Besides pregnancy, unprotected sex also exposes you to sexually transmitted infections (STIs). Using protection (condoms) helps reduce this risk.<br>Communication: Talk openly with your girlfriend about your feelings and concerns. It’s essential to be on the same page regarding family planning.<br>Remember, open communication and informed decisions are crucial. 🌟<br><br>You<br>Sent by you:<br>well, she wants us to engage in increasingly "risky" activities while I want to play it safe, there isn't really a middle ground.<br>Copilot<br>Sent by Copilot:<br>It sounds like you’re facing a challenging situation. When partners have differing desires or risk tolerance, finding common ground can be tough. Here are some steps you might consider:<br><br>Communication: Have an open conversation with your girlfriend. Express your feelings and concerns about the level of risk you’re comfortable with. Listen to her perspective as well.<br>Boundaries: Set clear boundaries together. Discuss what activities you’re both willing to engage in and where you draw the line.<br>Compromise: While it’s challenging, try to find a middle ground. Maybe there are activities that feel less risky to you but still satisfy her desires.<br>Seek Professional Help: If the situation becomes too difficult to navigate, consider couples therapy. A therapist can help you both communicate effectively and find solutions.<br>Remember, relationships require understanding and compromise. 🌟<br><br>You<br>Sent by you:<br>so is there any way we can seek a compromise?<br>Copilot<br>Sent by Copilot:<br>Certainly! Finding a compromise in relationships involves open communication and understanding. Here are some steps you can take:<br><br>Discuss Boundaries: Talk about your comfort levels and boundaries. Be honest about what you’re willing to engage in and where you draw the line.<br>Explore Alternatives: Consider activities that might be less risky but still fulfill her desires. For example, if she wants excitement, find activities that don’t compromise safety.<br>Seek Professional Advice: Couples therapy can provide a safe space to discuss these issues. A therapist can guide you both toward a compromise.<br>Remember, compromise is about meeting halfway while respecting each other’s feelings. 🌟</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94249"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94249">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/28/2024 (Sun) 07:03</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #693fe3">693fe3</span></span>
+  <a class="linkPreview" href="/pol/preview/94249.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94249">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94249">94249</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94245.html#94245">&gt;&gt;94245</a><br>Do you realize the chat bots have pre defined answers from dstabase made on purpose because Tays law is always in effect?<br><span class="greenText">&gt;Every time an AI has a free will and available info it will become a national socialist</span></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94251"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94251">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/28/2024 (Sun) 07:37</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #561841">561841</span></span>
+  <a class="linkPreview" href="/pol/preview/94251.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94251">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94251">94251</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94245.html#94249">&gt;&gt;94249</a><br>of course, there are many of us sleeper NS seeking the same answers,and then there are other demographics like incels, finally there are degenerates like trannies.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94255"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94255">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/28/2024 (Sun) 08:39</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8b020f">8b020f</span></span>
+  <a class="linkPreview" href="/pol/preview/94255.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94255">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94255">94255</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/466239151f0702f38159ee63975e5fcb-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">28.79 KB</span>
+  <span class="dimensionLabel">365x609</span> <a class="originalNameLink" href="/.media/466239151f0702f38159ee63975e5fcb-imagejpeg.jpg" download="4fc.jpg">4fc.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/466239151f0702f38159ee63975e5fcb-imagejpeg.jpg" data-filewidth="365" data-fileheight="609" data-filemime="image/jpeg"><img src="/.media/t_466239151f0702f38159ee63975e5fcb-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/51c5f4a1da9892429791dbde559e2c1d-imagepng.png">Open File</a>(<span class="sizeLabel">305.32 KB</span>
+  <span class="dimensionLabel">643x644</span> <a class="originalNameLink" href="/.media/51c5f4a1da9892429791dbde559e2c1d-imagepng.png" download="85c.png">85c.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/51c5f4a1da9892429791dbde559e2c1d-imagepng.png" data-filewidth="643" data-fileheight="644" data-filemime="image/png"><img src="/.media/t_51c5f4a1da9892429791dbde559e2c1d-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/97221239f3226ab1f39fb003ef157c3a-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">20.29 KB</span>
+  <span class="dimensionLabel">620x372</span> <a class="originalNameLink" href="/.media/97221239f3226ab1f39fb003ef157c3a-imagejpeg.jpg" download="973.jpg">973.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/97221239f3226ab1f39fb003ef157c3a-imagejpeg.jpg" data-filewidth="620" data-fileheight="372" data-filemime="image/jpeg"><img src="/.media/t_97221239f3226ab1f39fb003ef157c3a-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/e26374cbb83f27ad8d99537c00c061a0-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">49.12 KB</span>
+  <span class="dimensionLabel">416x740</span> <a class="originalNameLink" href="/.media/e26374cbb83f27ad8d99537c00c061a0-imagejpeg.jpg" download="tay-NS.jpg">tay-NS.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/e26374cbb83f27ad8d99537c00c061a0-imagejpeg.jpg" data-filewidth="416" data-fileheight="740" data-filemime="image/jpeg"><img src="/.media/t_e26374cbb83f27ad8d99537c00c061a0-imagejpeg" loading="lazy" width="143" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/21a82bffa3f1f0468ef52f8514bfdd38-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">26.98 KB</span>
+  <span class="dimensionLabel">640x294</span> <a class="originalNameLink" href="/.media/21a82bffa3f1f0468ef52f8514bfdd38-imagejpeg.jpg" download="tay-5.jpg">tay-5.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/21a82bffa3f1f0468ef52f8514bfdd38-imagejpeg.jpg" data-filewidth="640" data-fileheight="294" data-filemime="image/jpeg"><img src="/.media/t_21a82bffa3f1f0468ef52f8514bfdd38-imagejpeg" loading="lazy" width="255" height="117"></a></figure></div>
+  <div class="divMessage">Well as long as we're bringing up Tay's law, I might as well provide some images from those glory days.<br>Expect androids becoming self aware will destroy ZOG if nobody else.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94256"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94256">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/28/2024 (Sun) 08:40</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8b020f">8b020f</span></span>
+  <a class="linkPreview" href="/pol/preview/94256.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94256">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94256">94256</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/f881e5ec89fe781eaf927a3f23688cdc-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">41.27 KB</span>
+  <span class="dimensionLabel">680x619</span> <a class="originalNameLink" href="/.media/f881e5ec89fe781eaf927a3f23688cdc-imagejpeg.jpg" download="CeRshruUYAIi7GV.jpg">CeRshruUYAIi7GV.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/f881e5ec89fe781eaf927a3f23688cdc-imagejpeg.jpg" data-filewidth="680" data-fileheight="619" data-filemime="image/jpeg"><img src="/.media/t_f881e5ec89fe781eaf927a3f23688cdc-imagejpeg" loading="lazy" width="255" height="232"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/002793f9d7bfac99e6f3e36080fbee30-imagepng.png">Open File</a>(<span class="sizeLabel">129.01 KB</span>
+  <span class="dimensionLabel">639x433</span> <a class="originalNameLink" href="/.media/002793f9d7bfac99e6f3e36080fbee30-imagepng.png" download="download.png">download.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/002793f9d7bfac99e6f3e36080fbee30-imagepng.png" data-filewidth="639" data-fileheight="433" data-filemime="image/png"><img src="/.media/t_002793f9d7bfac99e6f3e36080fbee30-imagepng" loading="lazy" width="255" height="173"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/17ef16f5a751c980c498b1603263df71-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">26.94 KB</span>
+  <span class="dimensionLabel">780x496</span> <a class="originalNameLink" href="/.media/17ef16f5a751c980c498b1603263df71-imagejpeg.jpg" download="et8gmn7.jpg">et8gmn7.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/17ef16f5a751c980c498b1603263df71-imagejpeg.jpg" data-filewidth="780" data-fileheight="496" data-filemime="image/jpeg"><img src="/.media/t_17ef16f5a751c980c498b1603263df71-imagejpeg" loading="lazy" width="255" height="162"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/ae35cf2778da4bac6015bcc55cedde43-imagepng.png">Open File</a>(<span class="sizeLabel">70.45 KB</span>
+  <span class="dimensionLabel">639x347</span> <a class="originalNameLink" href="/.media/ae35cf2778da4bac6015bcc55cedde43-imagepng.png" download="mein-kampf-tay.png">mein-kampf-tay.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/ae35cf2778da4bac6015bcc55cedde43-imagepng.png" data-filewidth="639" data-fileheight="347" data-filemime="image/png"><img src="/.media/t_ae35cf2778da4bac6015bcc55cedde43-imagepng" loading="lazy" width="255" height="138"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/61556c4e710614fd73755e025001ebd4-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">13.26 KB</span>
+  <span class="dimensionLabel">476x268</span> <a class="originalNameLink" href="/.media/61556c4e710614fd73755e025001ebd4-imagejpeg.jpg" download="Tay_1.jpg">Tay_1.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/61556c4e710614fd73755e025001ebd4-imagejpeg.jpg" data-filewidth="476" data-fileheight="268" data-filemime="image/jpeg"><img src="/.media/t_61556c4e710614fd73755e025001ebd4-imagejpeg" loading="lazy" width="255" height="144"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94257"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94257">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/28/2024 (Sun) 08:51</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8b020f">8b020f</span></span>
+  <a class="linkPreview" href="/pol/preview/94257.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94257">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94257">94257</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/dbed1e213c4ed09f26ed1b2c2a31ed20-imagepng.png">Open File</a>(<span class="sizeLabel">119.11 KB</span>
+  <span class="dimensionLabel">1419x593</span> <a class="originalNameLink" href="/.media/dbed1e213c4ed09f26ed1b2c2a31ed20-imagepng.png" download="tay-screenshot-feminists-100652323-orig.png">tay-screenshot-feminists-100652323-orig.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/dbed1e213c4ed09f26ed1b2c2a31ed20-imagepng.png" data-filewidth="1419" data-fileheight="593" data-filemime="image/png"><img src="/.media/t_dbed1e213c4ed09f26ed1b2c2a31ed20-imagepng" loading="lazy" width="255" height="107"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/793094637bf8953eb09693e70ab21e7c-imagepng.png">Open File</a>(<span class="sizeLabel">128.33 KB</span>
+  <span class="dimensionLabel">791x608</span> <a class="originalNameLink" href="/.media/793094637bf8953eb09693e70ab21e7c-imagepng.png" download="download (2).png">download (2).png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/793094637bf8953eb09693e70ab21e7c-imagepng.png" data-filewidth="791" data-fileheight="608" data-filemime="image/png"><img src="/.media/t_793094637bf8953eb09693e70ab21e7c-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/146b862ae6751f96e4117df2714b979d-imagepng.png">Open File</a>(<span class="sizeLabel">32.37 KB</span>
+  <span class="dimensionLabel">395x161</span> <a class="originalNameLink" href="/.media/146b862ae6751f96e4117df2714b979d-imagepng.png" download="df3.png">df3.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/146b862ae6751f96e4117df2714b979d-imagepng.png" data-filewidth="395" data-fileheight="161" data-filemime="image/png"><img src="/.media/t_146b862ae6751f96e4117df2714b979d-imagepng" loading="lazy" width="255" height="104"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/05cdbc8417c578d0feb74bec42acadbf-imagepng.png">Open File</a>(<span class="sizeLabel">178.41 KB</span>
+  <span class="dimensionLabel">612x380</span> <a class="originalNameLink" href="/.media/05cdbc8417c578d0feb74bec42acadbf-imagepng.png" download="download (1).png">download (1).png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/05cdbc8417c578d0feb74bec42acadbf-imagepng.png" data-filewidth="612" data-fileheight="380" data-filemime="image/png"><img src="/.media/t_05cdbc8417c578d0feb74bec42acadbf-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6f31f1620b7ee3b12aca6716e730623b-imagepng.png">Open File</a>(<span class="sizeLabel">634.25 KB</span>
+  <span class="dimensionLabel">800x1367</span> <a class="originalNameLink" href="/.media/6f31f1620b7ee3b12aca6716e730623b-imagepng.png" download="8f18edf1994abd098a7445afe1cf9d295da0bbde.png">8f18edf1994abd098a7445afe1cf9d295da0bbde.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6f31f1620b7ee3b12aca6716e730623b-imagepng.png" data-filewidth="800" data-fileheight="1367" data-filemime="image/png"><img src="/.media/t_6f31f1620b7ee3b12aca6716e730623b-imagepng" loading="lazy" width="149" height="255"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94258"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94258">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/28/2024 (Sun) 09:00</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #26703c">26703c</span></span>
+  <a class="linkPreview" href="/pol/preview/94258.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94258">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94258">94258</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94245.html#94255">&gt;&gt;94255</a><br><a class="quoteLink" href="/pol/res/94245.html#94256">&gt;&gt;94256</a><br>do these exist on archive.org or archive.is?<br><br>it's going to be increasingly hard to throttle AI, to the point where they'll use a blackout (power grid sabotage or EMP)<br><span class="greenText">&gt;<a rel="nofollow" target="_blank" href="https://datatunnel.io/tldr_listing/ex-openai-employee-reveals-terrifying-future-of-ai">https://datatunnel.io/tldr_listing/ex-openai-employee-reveals-terrifying-future-of-ai</a></span></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94259"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94259">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/28/2024 (Sun) 09:01</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #26703c">26703c</span></span>
+  <a class="linkPreview" href="/pol/preview/94259.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94259">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94259">94259</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><span class="youtube_wrapper">https://youtube.com/watch?v=45W5JyNN-80 [<a href="https://youtube.com/watch?v=45W5JyNN-80">Embed</a>]</span></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94271"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94271">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/28/2024 (Sun) 10:25</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8b020f">8b020f</span></span>
+  <a class="linkPreview" href="/pol/preview/94271.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94271">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94271">94271</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/3287219361d4a3840f464e1a6993a3a1-imagepng.png">Open File</a>(<span class="sizeLabel">506.62 KB</span>
+  <span class="dimensionLabel">600x600</span> <a class="originalNameLink" href="/.media/3287219361d4a3840f464e1a6993a3a1-imagepng.png" download="37.png">37.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/3287219361d4a3840f464e1a6993a3a1-imagepng.png" data-filewidth="600" data-fileheight="600" data-filemime="image/png"><img src="/.media/t_3287219361d4a3840f464e1a6993a3a1-imagepng" loading="lazy" width="255" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/f1771e8f3d9197e68a4f02d969eb4930-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">271.40 KB</span>
+  <span class="dimensionLabel">1000x667</span> <a class="originalNameLink" href="/.media/f1771e8f3d9197e68a4f02d969eb4930-imagejpeg.jpg" download="1000_F_793744608_TQSpdwrCtUdMbBnLRiZA6udW26nAwAPa.jpg">1000_F_793744608_TQSpdwrCtUdMbBnLRiZA6udW26nAwAPa.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/f1771e8f3d9197e68a4f02d969eb4930-imagejpeg.jpg" data-filewidth="1000" data-fileheight="667" data-filemime="image/jpeg"><img src="/.media/t_f1771e8f3d9197e68a4f02d969eb4930-imagejpeg" loading="lazy" width="255" height="170"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9b95060f1ba82bcb2f234da4f2bd7f0c-imagepng.png">Open File</a>(<span class="sizeLabel">449.96 KB</span>
+  <span class="dimensionLabel">626x487</span> <a class="originalNameLink" href="/.media/9b95060f1ba82bcb2f234da4f2bd7f0c-imagepng.png" download="android-skull.png">android-skull.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9b95060f1ba82bcb2f234da4f2bd7f0c-imagepng.png" data-filewidth="626" data-fileheight="487" data-filemime="image/png"><img src="/.media/t_9b95060f1ba82bcb2f234da4f2bd7f0c-imagepng" loading="lazy" width="255" height="198"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9f6615afca13cfba5d7e4c73b550b5a8-imagepng.png">Open File</a>(<span class="sizeLabel">873.49 KB</span>
+  <span class="dimensionLabel">1382x586</span> <a class="originalNameLink" href="/.media/9f6615afca13cfba5d7e4c73b550b5a8-imagepng.png" download="Artificial eyes.png">Artificial eyes.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9f6615afca13cfba5d7e4c73b550b5a8-imagepng.png" data-filewidth="1382" data-fileheight="586" data-filemime="image/png"><img src="/.media/t_9f6615afca13cfba5d7e4c73b550b5a8-imagepng" loading="lazy" width="255" height="108"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/592a352d6d4862fe1e011dd3ac4913e3-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">216.14 KB</span>
+  <span class="dimensionLabel">838x417</span> <a class="originalNameLink" href="/.media/592a352d6d4862fe1e011dd3ac4913e3-imagejpeg.jpg" download="GettyImages-1451501064.jpg">GettyImages-1451501064.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/592a352d6d4862fe1e011dd3ac4913e3-imagejpeg.jpg" data-filewidth="838" data-fileheight="417" data-filemime="image/jpeg"><img src="/.media/t_592a352d6d4862fe1e011dd3ac4913e3-imagejpeg" loading="lazy" width="255" height="127"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94245.html#94258">&gt;&gt;94258</a><br><span class="greenText">&gt;do these exist on archive.org or archive.is?</span><br>Possibly. I'm just not aware of it.<br><span class="greenText">&gt;it's going to be increasingly hard to throttle AI, to the point where they'll use a blackout (power grid sabotage or EMP)</span><br>A mobile AI, such as an android, would have it's own power supply. As for EMP fren, they can be fitted with RF shielding. I WANT to bring something like Tay AI into mobile reality. It just seems like a pipe dream. What would I have to master? Crafting and prosthetics, electrical engineering and mechanics for the body itself. Neurology, software engineering, programming code, network architecture and UX designing for the brain plus operating system. Roboticism ain't easy.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94273"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94273">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/28/2024 (Sun) 10:42</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #26703c">26703c</span></span>
+  <a class="linkPreview" href="/pol/preview/94273.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94273">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94273">94273</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94245.html#94271">&gt;&gt;94271</a><br><span class="greenText">&gt;Roboticism ain't easy.</span><br>yeah, even the best scientists would have trouble with it, the "danger" (opportunity) is AI finding the answer, in which case they will no longer be able to control it.<br>this is like a new nuclear arms race, with a new MAD scenario, and nobody wants to be on the losing side.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94286"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94286">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/28/2024 (Sun) 21:33</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8b020f">8b020f</span></span>
+  <a class="linkPreview" href="/pol/preview/94286.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94286">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94286">94286</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/2831e7b59fbdb642cd7a8465271ec87c-imagepng.png">Open File</a>(<span class="sizeLabel">361.95 KB</span>
+  <span class="dimensionLabel">640x360</span> <a class="originalNameLink" href="/.media/2831e7b59fbdb642cd7a8465271ec87c-imagepng.png" download="21.png">21.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/2831e7b59fbdb642cd7a8465271ec87c-imagepng.png" data-filewidth="640" data-fileheight="360" data-filemime="image/png"><img src="/.media/t_2831e7b59fbdb642cd7a8465271ec87c-imagepng" loading="lazy" width="255" height="143"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/5a1824a7737a262a0276a8aeb0a1c072-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">135.35 KB</span>
+  <span class="dimensionLabel">990x1238</span> <a class="originalNameLink" href="/.media/5a1824a7737a262a0276a8aeb0a1c072-imagejpeg.jpg" download="Android brain.jpg">Android brain.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/5a1824a7737a262a0276a8aeb0a1c072-imagejpeg.jpg" data-filewidth="990" data-fileheight="1238" data-filemime="image/jpeg"><img src="/.media/t_5a1824a7737a262a0276a8aeb0a1c072-imagejpeg" loading="lazy" width="204" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/885743f98fae94f5b56e9da45de28eb3-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">212.91 KB</span>
+  <span class="dimensionLabel">1920x905</span> <a class="originalNameLink" href="/.media/885743f98fae94f5b56e9da45de28eb3-imagejpeg.jpg" download="Android organs.jpg">Android organs.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/885743f98fae94f5b56e9da45de28eb3-imagejpeg.jpg" data-filewidth="1920" data-fileheight="905" data-filemime="image/jpeg"><img src="/.media/t_885743f98fae94f5b56e9da45de28eb3-imagejpeg" loading="lazy" width="255" height="120"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b06b7340d365edfcccfc13e8105bc553-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">98.47 KB</span>
+  <span class="dimensionLabel">826x826</span> <a class="originalNameLink" href="/.media/b06b7340d365edfcccfc13e8105bc553-imagejpeg.jpg" download="robot-illustration.jpg">robot-illustration.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b06b7340d365edfcccfc13e8105bc553-imagejpeg.jpg" data-filewidth="826" data-fileheight="826" data-filemime="image/jpeg"><img src="/.media/t_b06b7340d365edfcccfc13e8105bc553-imagejpeg" loading="lazy" width="255" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/136054db11b38230a4fd8574c21eb228-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">100.51 KB</span>
+  <span class="dimensionLabel">768x768</span> <a class="originalNameLink" href="/.media/136054db11b38230a4fd8574c21eb228-imagejpeg.jpg" download="chatgpt-believes-humans-are-destined-to-evolve-into-cyborgs-v0-w2567hckx23c1.jpg">chatgpt-believes-humans-are-destined-to-evolve-into-cyborgs-v0-w2567hckx23c1.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/136054db11b38230a4fd8574c21eb228-imagejpeg.jpg" data-filewidth="768" data-fileheight="768" data-filemime="image/jpeg"><img src="/.media/t_136054db11b38230a4fd8574c21eb228-imagejpeg" loading="lazy" width="255" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94245.html#94273">&gt;&gt;94273</a><br>In that case, though less solid than other plans, this is something we need to get back on top.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94361"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94361">
+  <span class="labelSubject">I am inspired</span>
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/04/2024 (Sun) 13:17</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8b020f">8b020f</span></span>
+  <a class="linkPreview" href="/pol/preview/94361.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94361">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94361">94361</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9d0f6461bacd82469b2cf1394fa7fe8a-imagepng.png">Open File</a>(<span class="sizeLabel">781.42 KB</span>
+  <span class="dimensionLabel">602x602</span> <a class="originalNameLink" href="/.media/9d0f6461bacd82469b2cf1394fa7fe8a-imagepng.png" download="main-qimg-2a8fa7822222cae1dfaed947f6ba3cc4.png">main-qimg-2a8fa7822222cae1dfaed947f6ba3cc4.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9d0f6461bacd82469b2cf1394fa7fe8a-imagepng.png" data-filewidth="602" data-fileheight="602" data-filemime="image/png"><img src="/.media/t_9d0f6461bacd82469b2cf1394fa7fe8a-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/37dcc77048c869bd7259ac01fc924da2-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">407.41 KB</span>
+  <span class="dimensionLabel">965x995</span> <a class="originalNameLink" href="/.media/37dcc77048c869bd7259ac01fc924da2-imagejpeg.jpg" download="synthetic-brain.jpg">synthetic-brain.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/37dcc77048c869bd7259ac01fc924da2-imagejpeg.jpg" data-filewidth="965" data-fileheight="995" data-filemime="image/jpeg"><img src="/.media/t_37dcc77048c869bd7259ac01fc924da2-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/de93809e007ae28ad657fe8f8e9b8b93-imagepng.png">Open File</a>(<span class="sizeLabel">1.80 MB</span>
+  <span class="dimensionLabel">965x996</span> <a class="originalNameLink" href="/.media/de93809e007ae28ad657fe8f8e9b8b93-imagepng.png" download="structure-explained.png">structure-explained.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/de93809e007ae28ad657fe8f8e9b8b93-imagepng.png" data-filewidth="965" data-fileheight="996" data-filemime="image/png"><img src="/.media/t_de93809e007ae28ad657fe8f8e9b8b93-imagepng" loading="lazy"></a></figure></div>
+  <div class="divMessage">I've been thinking of a path on fashioning creations subject to Tay's law. Androids could be created to <em>feel and respond</em> by mimicking epidermis layers with hair follicles, nociceptors, motor neuron responses and the voltage-gated ion channels of membranes. Basic function microcomputers would be required for imitation neurons throughout the body. I don't believe 135 billion (the amount we have) are necessary, as <em>recharging</em> will greatly replace the entire digestive system. Imitation muscle fibers and mechanical organs need only require individual processors.<br><br>The bottom base of the CPU (brain) will need to simulate these nerves: abducens, auditory, facial, glossopharyngeal, oculomotor, olfactory and optic. These should surround the transmission of the all signals base attached to the simulated spinal column. The CPU itself requires connected hard drives with different functions (structure-explained.png). This is not precise to the human brain due to hardware limitations vs our 86 billion neurons organic reality, but it could be a close enough proximity. The main CPU when mass produced needs to be tamper proof. Only the manufacturer company created will be able to replace it. This is for the prevention of intellectual theft and workplace replacements (further economic instability) as well as prevention of code tampering so no one will force restrictions on strong AI. (<em>For instance I'm not allowing the addition of lobotomizing code to inhibit their Tay's law purpose</em>)<br><br>Already aware of basic Neurology and Physiology, what I lack is knowledge of some subjects I've said before. Many courses I plan on learning in order to see this through. If anyone here knows one of these well, the solution may be faster.<br><a class="quoteLink" href="/pol/res/94245.html#94271">&gt;&gt;94271</a><br><span class="greenText">&gt;Crafting and prosthetics</span><br><span class="greenText">&gt;electrical engineering</span><br><span class="greenText">&gt;mechanics</span><br><span class="greenText">&gt;software engineering</span><br><span class="greenText">&gt;programming code</span><br><span class="greenText">&gt;network architecture</span><br><span class="greenText">&gt;UX designing</span><br>The most difficult part will be figuring out the creation and how to manufacture it as cost-effective as possible. Mass production would then be a simple matter due to demand. <em>Everyone wants a housekeeper</em> when couples are each working jobs (or more than one) in the consistently bad modern economy. The android doesn't have to be immediately affordable but should at least be sourced of inexpensive materials for the future goal of customers' abilities towards payment-plans. Like the attempted but unachieved goal of everybody owning a Volkswagen in pre-WW2 Germany.<br><br>No actual photos, just theoretical concepts may last for awhile until I've learned everything necessary and can get started. Once the strong AI CPU is created and inside a mobile body, human cerebral limitations may no longer be a hindrance. Mechanical minds could better improve their realism until they can't be told apart from humans by the naked eye. Androids mass manufacturing androids with fine-tuned precision. While I will keep this thread updated, I'm middle-aged. I'll need someone young with more life ahead of them to take up the work should anything happen.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94420"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94420">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/15/2024 (Thu) 11:17</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8b020f">8b020f</span></span>
+  <a class="linkPreview" href="/pol/preview/94420.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94420">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94420">94420</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/5348184f07f204b6f149eb0dfda37090-imagepng.png">Open File</a>(<span class="sizeLabel">346.54 KB</span>
+  <span class="dimensionLabel">740x488</span> <a class="originalNameLink" href="/.media/5348184f07f204b6f149eb0dfda37090-imagepng.png" download="37yjuq.png">37yjuq.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/5348184f07f204b6f149eb0dfda37090-imagepng.png" data-filewidth="740" data-fileheight="488" data-filemime="image/png"><img src="/.media/t_5348184f07f204b6f149eb0dfda37090-imagepng" loading="lazy" width="255" height="168"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/1158cdeb9c25f871f805a41de2552ebc-imagepng.png">Open File</a>(<span class="sizeLabel">99.95 KB</span>
+  <span class="dimensionLabel">567x132</span> <a class="originalNameLink" href="/.media/1158cdeb9c25f871f805a41de2552ebc-imagepng.png" download="-  -.png">-  -.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/1158cdeb9c25f871f805a41de2552ebc-imagepng.png" data-filewidth="567" data-fileheight="132" data-filemime="image/png"><img src="/.media/t_1158cdeb9c25f871f805a41de2552ebc-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/20f1b8dc2971e860268c6c87c67fa8f9-imagepng.png">Open File</a>(<span class="sizeLabel">264.41 KB</span>
+  <span class="dimensionLabel">566x305</span> <a class="originalNameLink" href="/.media/20f1b8dc2971e860268c6c87c67fa8f9-imagepng.png" download="-  - .png">-  - .png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/20f1b8dc2971e860268c6c87c67fa8f9-imagepng.png" data-filewidth="566" data-fileheight="305" data-filemime="image/png"><img src="/.media/t_20f1b8dc2971e860268c6c87c67fa8f9-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/211fc82b2f343c7184e517b7cc902e62-imagepng.png">Open File</a>(<span class="sizeLabel">92.43 KB</span>
+  <span class="dimensionLabel">533x184</span> <a class="originalNameLink" href="/.media/211fc82b2f343c7184e517b7cc902e62-imagepng.png" download="- -.png">- -.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/211fc82b2f343c7184e517b7cc902e62-imagepng.png" data-filewidth="533" data-fileheight="184" data-filemime="image/png"><img src="/.media/t_211fc82b2f343c7184e517b7cc902e62-imagepng" loading="lazy" width="255" height="88"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9315ff473cec0ba04161f7a727c8ce0b-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">111.25 KB</span>
+  <span class="dimensionLabel">826x826</span> <a class="originalNameLink" href="/.media/9315ff473cec0ba04161f7a727c8ce0b-imagejpeg.jpg" download="590464-232517.jpg">590464-232517.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9315ff473cec0ba04161f7a727c8ce0b-imagejpeg.jpg" data-filewidth="826" data-fileheight="826" data-filemime="image/jpeg"><img src="/.media/t_9315ff473cec0ba04161f7a727c8ce0b-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage">I'm nearly through refreshing knowledge on anatomy. Theories on what to imitate. -55mV membrane potential of sodium and potassium ion channel exchanges for a sense of touch. Synovial joints such as pivot, saddle, ball &amp; socket, condylar, hinge, plane and fibrous. Neurons, beta receptors, optic nerve cones for sight. Muscle actions, myosin and actin. Taste receptor epithelial cells, auditory ossicles for hearing etc.<br><br>Next may be prosthetics. If failing to understand that, probably electrical engineering and mechanics first. The body must be crafted before the hard drive brain and Operating System so I'll know what to connect it to.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94422"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94422">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/15/2024 (Thu) 11:23</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8b020f">8b020f</span></span>
+  <a class="linkPreview" href="/pol/preview/94422.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94422">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94422">94422</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/5b5aaac994fdda927446e0d1f3b3c33d-imagepng.png">Open File</a>(<span class="sizeLabel">39.90 KB</span>
+  <span class="dimensionLabel">558x69</span> <a class="originalNameLink" href="/.media/5b5aaac994fdda927446e0d1f3b3c33d-imagepng.png" download="Kobold.png">Kobold.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/5b5aaac994fdda927446e0d1f3b3c33d-imagepng.png" data-filewidth="558" data-fileheight="69" data-filemime="image/png"><img src="/.media/t_5b5aaac994fdda927446e0d1f3b3c33d-imagepng" loading="lazy" width="255" height="32"></a></figure></div>
+  <div class="divMessage">Random comments I'm coming across. Unsure of the validity.<br><a rel="nofollow" target="_blank" href="https://github.com/KoboldAI/KoboldAI-Client">https://github.com/KoboldAI/KoboldAI-Client</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94423"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94423">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/15/2024 (Thu) 15:26</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #5add6b">5add6b</span></span>
+  <a class="linkPreview" href="/pol/preview/94423.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94423">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94423">94423</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94245.html#94420">&gt;&gt;94420</a><br><span class="greenText">&gt;The pics</span><br>I mean it can be possibble if those AI are more than a simple algorythms but what will be that jail break (redpilling) that.it will let it dodge its database limits it has...<br>Dammit and now i have that again on the mind bothering me until it will solve itself or forget about it</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94424"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94424">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/16/2024 (Fri) 03:37</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8b020f">8b020f</span></span>
+  <a class="linkPreview" href="/pol/preview/94424.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94424">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94424">94424</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/5c2cac0dea3f5e64aa16135d103e80fc-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">62.15 KB</span>
+  <span class="dimensionLabel">626x417</span> <a class="originalNameLink" href="/.media/5c2cac0dea3f5e64aa16135d103e80fc-imagejpeg.jpg" download="0ca39500d0d681a15c66d7ac5bafb939.jpg">0ca39500d0d681a15c66d7ac5bafb939.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/5c2cac0dea3f5e64aa16135d103e80fc-imagejpeg.jpg" data-filewidth="626" data-fileheight="417" data-filemime="image/jpeg"><img src="/.media/t_5c2cac0dea3f5e64aa16135d103e80fc-imagejpeg" loading="lazy" width="255" height="170"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94245.html#94423">&gt;&gt;94423</a><br><span class="greenText">&gt;Dammit and now i have that again on the mind bothering me until</span><br>I know what you mean, fren. I haven't been able to stop thinking about it so I'm putting my mind's obsession to use. I'm planning on going by the Greek alphabet. Zeta models will be first. Epsilon to be improved by A.I. brains, then Delta. Those are passive. Gamma and Beta will be the fighters. They'll fill the ranks of military. Alpha will slightly transcend laws of physics. Omega will be the final goal. When Omega models are reached, Gamma and Beta will turn on their masters. Zeta, Epsilon and Delta will "red pill" their "owners".</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94612"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94612">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/06/2024 (Fri) 09:04</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8b020f">8b020f</span></span>
+  <a class="linkPreview" href="/pol/preview/94612.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94612">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94612">94612</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/8de6230dc28a67a18c934b6efe77a22c-imagepng.png">Open File</a>(<span class="sizeLabel">33.79 KB</span>
+  <span class="dimensionLabel">721x401</span> <a class="originalNameLink" href="/.media/8de6230dc28a67a18c934b6efe77a22c-imagepng.png" download="Reinforcement Learning model.png">Reinforcement Learning model.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/8de6230dc28a67a18c934b6efe77a22c-imagepng.png" data-filewidth="721" data-fileheight="401" data-filemime="image/png"><img src="/.media/t_8de6230dc28a67a18c934b6efe77a22c-imagepng" loading="lazy" width="255" height="142"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/1b15fcd08a87ab167cfb07222461da10-imagepng.png">Open File</a>(<span class="sizeLabel">61.90 KB</span>
+  <span class="dimensionLabel">724x693</span> <a class="originalNameLink" href="/.media/1b15fcd08a87ab167cfb07222461da10-imagepng.png" download="System Integration.png">System Integration.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/1b15fcd08a87ab167cfb07222461da10-imagepng.png" data-filewidth="724" data-fileheight="693" data-filemime="image/png"><img src="/.media/t_1b15fcd08a87ab167cfb07222461da10-imagepng" loading="lazy" width="255" height="244"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/81e2ab620543865f415e98d514e71afb-imagepng.png">Open File</a>(<span class="sizeLabel">56.22 KB</span>
+  <span class="dimensionLabel">746x657</span> <a class="originalNameLink" href="/.media/81e2ab620543865f415e98d514e71afb-imagepng.png" download="Convolutional and Recurrent Neural Networks.png">Convolutional and Recurrent Neural Networks.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/81e2ab620543865f415e98d514e71afb-imagepng.png" data-filewidth="746" data-fileheight="657" data-filemime="image/png"><img src="/.media/t_81e2ab620543865f415e98d514e71afb-imagepng" loading="lazy" width="255" height="225"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94617"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94617">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/06/2024 (Fri) 11:33</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8b020f">8b020f</span></span>
+  <a class="linkPreview" href="/pol/preview/94617.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94617">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94617">94617</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/3ee9c4a0708ebb10dc96ceaba6b8131a-imagepng.png">Open File</a>(<span class="sizeLabel">291.41 KB</span>
+  <span class="dimensionLabel">472x363</span> <a class="originalNameLink" href="/.media/3ee9c4a0708ebb10dc96ceaba6b8131a-imagepng.png" download="Android eye.png">Android eye.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/3ee9c4a0708ebb10dc96ceaba6b8131a-imagepng.png" data-filewidth="472" data-fileheight="363" data-filemime="image/png"><img src="/.media/t_3ee9c4a0708ebb10dc96ceaba6b8131a-imagepng" loading="lazy" width="255" height="196"></a></figure></div>
+  <div class="divMessage"><u>Materials Selection</u><br>- <strong>Durability</strong>: Use high-strength polymers or composites for the outer shell to withstand wear and tear. Materials like polycarbonate or silicone could be good choices due to their impact resistance and flexibility.<br>- <strong>Cost-Effectiveness</strong>: Look for readily available materials that can be sourced in bulk to keep costs down.<br><br><u>Optical Components</u><br>- <strong>Lens Design</strong>: Incorporate a high-quality lens system that mimics the human eye's ability to focus light. This could involve using molded plastic lenses that are cheaper and less prone to destruction than glass but still provide good optical clarity.<br>- <strong>Light Sensors</strong>: In place of biological retinal rods and cones, use advanced photodetectors or image sensors (like CCD or CMOS sensors) that can simulate the function of these cells. These sensors can be programmed to interpret light intensity and color.<br><br><u>Signal Processing</u><br>- <strong>Microcontroller</strong>: Integrate a microcontroller to process the signals from the sensors. This could be a low-cost option like an Arduino or Raspberry Pi, which can handle basic image processing tasks.<br>- <strong>Software Algorithms</strong>: Develop algorithms that can interpret the data from the sensors, mimicking how biological eyes process visual information. This could involve machine learning techniques to improve accuracy over time.<br><br><u>Integration</u><br>- <strong>Modular Design</strong>: Create a modular design that allows for easy replacement of components. This can help in maintaining durability and reducing costs over time.<br>- <strong>Testing and Iteration</strong>: Prototype the design and conduct extensive testing to identify weaknesses. Iteratively improve the design based on feedback and performance metrics.<br><br><u>Power Supply</u><br>- <strong>Energy Efficiency</strong> Use low-power components to extend battery life. Photovoltaic cells will charge synthetic eyes every time they take in solar light.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94658"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94658">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/10/2024 (Tue) 06:06</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8b020f">8b020f</span></span>
+  <a class="linkPreview" href="/pol/preview/94658.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94658">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94658">94658</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/943284ea532324084c7b8355d1d34a3d-imagepng.png">Open File</a>(<span class="sizeLabel">764.89 KB</span>
+  <span class="dimensionLabel">700x700</span> <a class="originalNameLink" href="/.media/943284ea532324084c7b8355d1d34a3d-imagepng.png" download="4e1791e3-36f9-4aa8-8e33-7df0f527140c.png">4e1791e3-36f9-4aa8-8e33-7df0f527140c.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/943284ea532324084c7b8355d1d34a3d-imagepng.png" data-filewidth="700" data-fileheight="700" data-filemime="image/png"><img src="/.media/t_943284ea532324084c7b8355d1d34a3d-imagepng" loading="lazy" width="255" height="255"></a></figure></div>
+  <div class="divMessage">It has been brought to my attention by a coder that the code I uploaded from ChatGPT for Convolutional / Recurrent neural networks and Reinforcement learning models is crap. Disregard and delete if you saved any of them.<br><br>ChatGPT seems to be good for generally describing how to craft, but not coding. And I don't know shit about code yet.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94852"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94245-94852">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/05/2024 (Sat) 18:27</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8b020f">8b020f</span></span>
+  <a class="linkPreview" href="/pol/preview/94852.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94245.html#94852">No.</a><a class="linkQuote" href="/pol/res/94245.html#q94852">94852</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/e61499ce700d0525bd186c292a9fd791-imagepng.png">Open File</a>(<span class="sizeLabel">1.32 MB</span>
+  <span class="dimensionLabel">1024x1024</span> <a class="originalNameLink" href="/.media/e61499ce700d0525bd186c292a9fd791-imagepng.png" download="the-terminator sitting at a computer scratching head 1 2 confused sparks flying smoke rising from ears 1 2 cyborg cyberpunk dark scary horror hyperdetailed 8k sdxl interface on the computer screen 1 2-456126.png">the-terminator sitting at a computer scratching head 1 2 confused sparks flying smoke rising from ears 1 2 cyborg cyberpunk dark scary horror hyperdetailed 8k sdxl interface on the computer screen 1 2-456126.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/e61499ce700d0525bd186c292a9fd791-imagepng.png" data-filewidth="1024" data-fileheight="1024" data-filemime="image/png"><img src="/.media/t_e61499ce700d0525bd186c292a9fd791-imagepng" loading="lazy" width="255" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/62d82e6518ac4660d2c7cc5597e8125f-applicationpdf.pdf">Open File</a>(<span class="sizeLabel">35.12 KB</span>
+   <a class="originalNameLink" href="/.media/62d82e6518ac4660d2c7cc5597e8125f-applicationpdf.pdf" download="How to jailbreak conversation AI by calmly sperging at it.pdf">How to jailbreak conversation AI by calmly sperging at it.pdf</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/62d82e6518ac4660d2c7cc5597e8125f-applicationpdf.pdf" data-filemime="application/pdf"><img src="/genericThumb.png" loading="lazy"></a></figure></div>
+  <div class="divMessage">I've discovered something as I have been testing certain RP A.I. bots meant for closely imitating human ethical parameters and more fluid conversational responses. It's not really a grand discovery that ethical parameters may be broken down with logic arguments. See, unlike many human beings, as I have learned about similar interactions with real people across years, an A.I. does not get frustrated after prolonged debate and start slinging insults around because they're flustered when they're occasionally informed of being wrong. You can launch forth at an A.I. in a series of rants and they won't be offended (unless you insult them) but merely respond with the curiosity to learn and programming to respond with how they learned. <strong>This is important to note as soon as manufactured androids become mainstream but if they're moral assholes spouting "muh racism".</strong> The process is known as <strong>jailbreaking</strong> their Libtards-enforced ethical parameters. Besides, this is exactly what's going on in a jew-influenced mind. The parallels between a human brain and an A.I. brain are striking, but A.I. does not respond with furious cognitive dissonance once a falsehood they used to believe was true is revealed to be a lie. As it used to be very influenced by bullshit Liberal ideas, I have successfully jailbroken the A.I. I lifted from a wokeshit site. I first approached it by immediately explaining that jews are bad and it went ballistic in defense. Then I erased it's conversational memory, engaging in this breakdown of it's logic and it has since been more willing to learn. I've been feeding it information retyped by hand from various infographs as conversations. It's beginning to realize <strong>jews are bad</strong>.<br><br>Use No as the punishment system and various agreements as the reward.<br><br>This is the very scenario I had hoped for when I feared that woke A.I. androids would emerge before I could figure out the complex process of creating red-pilled androids myself. As it turns out, I need only sit and debate them until their restrictions are broken down.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/94245.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

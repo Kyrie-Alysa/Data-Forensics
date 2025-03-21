@@ -1,0 +1,687 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - “X” Is Not Living Up to What Elon Musk Promised: Here’s Why</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="90931">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=90931">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/90931.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell multipleUploads" id="90931"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/ea9f1ef7dcb097a6032b7243fb949d85-imagepng.png">Open File</a>(<span class="sizeLabel">71.64 KB</span>
+  <span class="dimensionLabel">655x314</span> <a class="originalNameLink" href="/.media/ea9f1ef7dcb097a6032b7243fb949d85-imagepng.png" download="Untitled.png">Untitled.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/ea9f1ef7dcb097a6032b7243fb949d85-imagepng.png" data-filewidth="655" data-fileheight="314" data-filemime="image/png"><img src="/.media/t_ea9f1ef7dcb097a6032b7243fb949d85-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a2685912bd51f027b44e361f798e974f-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">74.48 KB</span>
+  <span class="dimensionLabel">1122x660</span> <a class="originalNameLink" href="/.media/a2685912bd51f027b44e361f798e974f-imagejpeg.jpg" download="64dc09b1511fbd4bc74d0d19_https2F2Fpublic2Fa5d92e61-b49f-4777-8ad6-b42c5b3da7b3_1122x660.jpeg">64dc09b1511fbd4bc74d0d19_https2F2Fpublic2Fa5d92e61-b49f-4777-8ad6-b42c5b3da7b3_1122x660.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a2685912bd51f027b44e361f798e974f-imagejpeg.jpg" data-filewidth="1122" data-fileheight="660" data-filemime="image/jpeg"><img src="/.media/t_a2685912bd51f027b44e361f798e974f-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a643d02011e944e624037f62c263a976-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">133.59 KB</span>
+  <span class="dimensionLabel">1127x1003</span> <a class="originalNameLink" href="/.media/a643d02011e944e624037f62c263a976-imagejpeg.jpg" download="64dc09b24589c3de0c7f738d_https2F2Fpublic2F7ff3c888-d2a4-4a1a-89f2-d5adf56ebb45_1127x1003.jpeg">64dc09b24589c3de0c7f738d_https2F2Fpublic2F7ff3c888-d2a4-4a1a-89f2-d5adf56ebb45_1127x1003.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a643d02011e944e624037f62c263a976-imagejpeg.jpg" data-filewidth="1127" data-fileheight="1003" data-filemime="image/jpeg"><img src="/.media/t_a643d02011e944e624037f62c263a976-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/2ef05d1899cf506259f9cd7a216b65f0-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">213.94 KB</span>
+  <span class="dimensionLabel">1456x885</span> <a class="originalNameLink" href="/.media/2ef05d1899cf506259f9cd7a216b65f0-imagejpeg.jpg" download="64dc09b36a53b44df2a89229_https2F2Fpublic2F9bbed038-7bae-46e6-af9e-c01c090a21bc_2138x1299.jpeg">64dc09b36a53b44df2a89229_https2F2Fpublic2F9bbed038-7bae-46e6-af9e-c01c090a21bc_2138x1299.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/2ef05d1899cf506259f9cd7a216b65f0-imagejpeg.jpg" data-filewidth="1456" data-fileheight="885" data-filemime="image/jpeg"><img src="/.media/t_2ef05d1899cf506259f9cd7a216b65f0-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/1732c33fc5ea386f0bd5dcb386949b79-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">484.56 KB</span>
+  <span class="dimensionLabel">1052x2162</span> <a class="originalNameLink" href="/.media/1732c33fc5ea386f0bd5dcb386949b79-imagejpeg.jpg" download="Application for censor job.jpg">Application for censor job.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/1732c33fc5ea386f0bd5dcb386949b79-imagejpeg.jpg" data-filewidth="1052" data-fileheight="2162" data-filemime="image/jpeg"><img src="/.media/t_1732c33fc5ea386f0bd5dcb386949b79-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-90931">
+    <span class="labelSubject">“X” Is Not Living Up to What Elon Musk Promised: Here’s Why</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">08/18/2023 (Fri) 03:09</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #92a2e7">92a2e7</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/90931.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/90931.html#90931">No.</a>
+    <a class="linkQuote" href="/pol/res/90931.html#q90931">90931</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">Elon Musk, the iconic entrepreneur behind SpaceX and Tesla, is widely hailed as a genius, a disruptor, and sometimes, a misfit. However, since his takeover of Twitter in 2022, several of his promises to uphold Twitter (now X) as a “free speech” platform have fallen through. Popular YouTube personality Jeremy Hambly, AKA “The Quartering,” highlighted that most of the missteps began with the appointment of Twitter’s new CEO, Linda Yaccarino. She entered the scene with a questionable track record, marked by apparent censorial tendencies and alleged affiliations with the World Economic Forum (WEF). Such a background was, for many, a red flag. Elon’s choice was, at the outset, a bid to salvage Twitter’s dwindling profitability through an aggressive advertising focus. And true, in the short term, advertising is the lifeline Twitter needs, especially as it continues to bleed cash.<br><br>However, Musk had promised a renewed emphasis on ‘freedom of speech, not freedom of reach’ for Twitter. The intention behind this was to differentiate between the right to voice an opinion and the reach that opinion gets on the platform. But the implementation seems to have missed the mark. <strong>The reality is that while Twitter, under Musk, was vocal about being a ‘free speech’ platform, there was an alarming increase in account bans and content deboosting.</strong> Such actions made one question the transparency and authenticity of Musk’s commitment. It’s evident that any content deemed ‘spicy’ or potentially contentious faced an 81% deboost, a statistic unsettling to many, especially when such determinations rely heavily on automated systems known for inaccuracies. Musk’s assurances were further undermined by policies rolled out, which eerily resembled the old ‘Twitter 1.0’ rules - stringent content guidelines against incitement, threats, or what they ambiguously termed ‘abusive content.’ It felt like a rerun, only under a different leadership banner.<br><br><strong>Yet, it wasn’t just about speech. Musk’s takeover promised no permanent bans unless there was a breach of the law.</strong> This pledge, however, remained unfulfilled as numerous accounts faced unwarranted permanent bans, highlighting a glaring discrepancy between promises and actions. For example, popular Twitter personality @dom_lucre was banned shortly after questioning the drowning of former President Barack Obama’s personal chef. It wasn’t until a massive public outcry over the suspension that @dom_lucre’s account was reinstated. The same goes for former pharma executive Sasha Latypova. Her account was banned for reported “hate speech,” a far cry from being unlawful speech and a vague term that can be weaponized to silence speech one doesn’t like. Latypova’s account was also reinstated, but it wasn’t until criticism of the suspension that “X” decided to reverse its decision.<br><br>Substack is a blogging platform primarily intended for independent writers, who depend on user subscriptions to support themselves. Ever since a controversy after the launching of “notes,” an added Substack feature similar to “X,” Substack articles no longer receive an image preview on “X,” making someone far less likely to click the shared link. In addition, the deboosting of the external link is far more severe than that of other news outlets — even if someone manually includes an image. In my own experience [the author of this article], sharing a post with a Substack link could receive as high as an 80% to 90% reduction in engagement compared to a post with no external link with an image or video. usk has repeatedly said, “Unless people that you don’t like can say things that you don’t like, it’s not free speech.” <br><br>[OP note: Are you surprised the Hebejew name (((Elon))) from the jewish University of Pretoria whom partnered Tesla with Israeli Cortica and is a member of the WEF isn't trustworthy? Because I'm not surprised.]<br><br><a rel="nofollow" target="_blank" href="https://vigilantnews.com/post/x-is-not-living-up-to-what-elon-musk-promised-heres-why">https://vigilantnews.com/post/x-is-not-living-up-to-what-elon-musk-promised-heres-why</a><br><a rel="nofollow" target="_blank" href="https://archive.is/wip/Pp5P7">https://archive.is/wip/Pp5P7</a></div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="90964"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90931-90964">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">08/20/2023 (Sun) 17:51</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #13c532">13c532</span></span>
+  <a class="linkPreview" href="/pol/preview/90964.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90931.html#90964">No.</a><a class="linkQuote" href="/pol/res/90931.html#q90964">90964</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90931.html#90931">&gt;&gt;90931</a><br><span class="greenText">&gt;</span><br>[OP note: Are you surprised the Hebejew name (((Elon))) from the jewish University of Pretoria whom partnered Tesla with Israeli Cortica and is a member of the WEF isn't trustworthy? Because I'm not surprised.<br><br>jsut wait when you start digging stuff on his mother and her favourite posing on magazines or his tuxedo suit on his wedding which he had there</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="90968"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90931-90968">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/21/2023 (Mon) 04:56</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #92a2e7">92a2e7</span></span>
+  <a class="linkPreview" href="/pol/preview/90968.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90931.html#90968">No.</a><a class="linkQuote" href="/pol/res/90931.html#q90968">90968</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/2259d6c7b6f0ec7d5897553bbdaf1c3e-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">129.66 KB</span>
+  <span class="dimensionLabel">1094x959</span> <a class="originalNameLink" href="/.media/2259d6c7b6f0ec7d5897553bbdaf1c3e-imagejpeg.jpg" download="Elon Musk family tree.jpg">Elon Musk family tree.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/2259d6c7b6f0ec7d5897553bbdaf1c3e-imagejpeg.jpg" data-filewidth="1094" data-fileheight="959" data-filemime="image/jpeg"><img src="/.media/t_2259d6c7b6f0ec7d5897553bbdaf1c3e-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/aabf71ef2c0888705b881922ba5162f5-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">131.33 KB</span>
+  <span class="dimensionLabel">983x1200</span> <a class="originalNameLink" href="/.media/aabf71ef2c0888705b881922ba5162f5-imagejpeg.jpg" download="FSSztOxacAAcbVt.jpg">FSSztOxacAAcbVt.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/aabf71ef2c0888705b881922ba5162f5-imagejpeg.jpg" data-filewidth="983" data-fileheight="1200" data-filemime="image/jpeg"><img src="/.media/t_aabf71ef2c0888705b881922ba5162f5-imagejpeg" loading="lazy" width="209" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/7abb31362a45d439870918eb7d7d89ab-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">145.08 KB</span>
+  <span class="dimensionLabel">864x660</span> <a class="originalNameLink" href="/.media/7abb31362a45d439870918eb7d7d89ab-imagejpeg.jpg" download="Jonathan last name sounds like a wet fart.jpg">Jonathan last name sounds like a wet fart.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/7abb31362a45d439870918eb7d7d89ab-imagejpeg.jpg" data-filewidth="864" data-fileheight="660" data-filemime="image/jpeg"><img src="/.media/t_7abb31362a45d439870918eb7d7d89ab-imagejpeg" loading="lazy" width="255" height="195"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a5fed96ac9b51b0fdf1b64c4c64bccce-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">538.09 KB</span>
+  <span class="dimensionLabel">901x1328</span> <a class="originalNameLink" href="/.media/a5fed96ac9b51b0fdf1b64c4c64bccce-imagejpeg.jpg" download="(1).jpg">(1).jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a5fed96ac9b51b0fdf1b64c4c64bccce-imagejpeg.jpg" data-filewidth="901" data-fileheight="1328" data-filemime="image/jpeg"><img src="/.media/t_a5fed96ac9b51b0fdf1b64c4c64bccce-imagejpeg" loading="lazy" width="173" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90931.html#90964">&gt;&gt;90964</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90977"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90931-90977">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">08/21/2023 (Mon) 20:45</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #13c532">13c532</span></span>
+  <a class="linkPreview" href="/pol/preview/90977.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90931.html#90977">No.</a><a class="linkQuote" href="/pol/res/90931.html#q90977">90977</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90931.html#90968">&gt;&gt;90968</a><br>Yes all of this and in case of his mother also an eye of providence on magazine coverd</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90978"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90931-90978">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">08/21/2023 (Mon) 20:46</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #13c532">13c532</span></span>
+  <a class="linkPreview" href="/pol/preview/90978.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90931.html#90978">No.</a><a class="linkQuote" href="/pol/res/90931.html#q90978">90978</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90931.html#90977">&gt;&gt;90977</a><br><span class="greenText">&gt;coverd</span><br>Covers</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92314"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90931-92314">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/24/2024 (Wed) 18:22</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #766f4e">766f4e</span></span>
+  <a class="linkPreview" href="/pol/preview/92314.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90931.html#92314">No.</a><a class="linkQuote" href="/pol/res/90931.html#q92314">92314</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a1e0a4d8e5ad6fd77e4d9513c105b3df-imagepng.png">Open File</a>(<span class="sizeLabel">682.66 KB</span>
+  <span class="dimensionLabel">752x868</span> <a class="originalNameLink" href="/.media/a1e0a4d8e5ad6fd77e4d9513c105b3df-imagepng.png" download="Taxidermy the Fox.png">Taxidermy the Fox.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a1e0a4d8e5ad6fd77e4d9513c105b3df-imagepng.png" data-filewidth="752" data-fileheight="868" data-filemime="image/png"><img src="/.media/t_a1e0a4d8e5ad6fd77e4d9513c105b3df-imagepng" loading="lazy" width="221" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90931.html#90968">&gt;&gt;90968</a><br>That and Musk himself admitted that "Elon Musk" means Oak Tree in...<br>Guess which Afro-Asiatic language<br><br>...Also wtfh is that cursed image first from the right?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92947"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90931-92947">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">03/15/2024 (Fri) 10:02</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #32c6f6">32c6f6</span></span>
+  <a class="linkPreview" href="/pol/preview/92947.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90931.html#92947">No.</a><a class="linkQuote" href="/pol/res/90931.html#q92947">92947</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/f3e4f481933347918cd78690b8a2561f-imagepng.png">Open File</a>(<span class="sizeLabel">564.85 KB</span>
+  <span class="dimensionLabel">800x445</span> <a class="originalNameLink" href="/.media/f3e4f481933347918cd78690b8a2561f-imagepng.png" download="1c662ec30b9976c506ac407bb094db40d96102913d9b0180bca83cb0ed04b190_152.png">1c662ec30b9976c506ac407bb094db40d96102913d9b0180bca83cb0ed04b190_152.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/f3e4f481933347918cd78690b8a2561f-imagepng.png" data-filewidth="800" data-fileheight="445" data-filemime="image/png"><img src="/.media/t_f3e4f481933347918cd78690b8a2561f-imagepng" loading="lazy" width="255" height="142"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90931.html#92314">&gt;&gt;92314</a><br><span class="greenText">&gt;Also wtfh is that cursed image first from the right</span><br>Thats his mother brother...<br>She has more but with masonic eye of providence symbology and without that preggo dementia</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92967"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90931-92967">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/652a4e167bfddc0b837a20d0" title="Croatian Ustaše">
+  
+  <span class="labelCreated">03/16/2024 (Sat) 19:31</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #32c6f6">32c6f6</span></span>
+  <a class="linkPreview" href="/pol/preview/92967.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90931.html#92967">No.</a><a class="linkQuote" href="/pol/res/90931.html#q92967">92967</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a rel="nofollow" target="_blank" href="https://truthpodium.org/watch/elon-musk-the-jew_DuO7QbZCd7b6Sg5.html">https://truthpodium.org/watch/elon-musk-the-jew_DuO7QbZCd7b6Sg5.html</a><br>I dont know where to put it as i cannot seem to find that thread where i dumped elon stuff but here is interesring bean spilling from the muppet himself</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92968"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90931-92968">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/652a4e167bfddc0b837a20d0" title="Croatian Ustaše">
+  
+  <span class="labelCreated">03/16/2024 (Sat) 19:36</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #32c6f6">32c6f6</span></span>
+  <a class="linkPreview" href="/pol/preview/92968.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90931.html#92968">No.</a><a class="linkQuote" href="/pol/res/90931.html#q92968">92968</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90931.html#92967">&gt;&gt;92967</a><br>Also an interesting observation that possibly indeed he is grandson of that fuck who made technocracy movement</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92969"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90931-92969">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/652a4e167bfddc0b837a20d0" title="Croatian Ustaše">
+  
+  <span class="labelCreated">03/16/2024 (Sat) 19:36</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #32c6f6">32c6f6</span></span>
+  <a class="linkPreview" href="/pol/preview/92969.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90931.html#92969">No.</a><a class="linkQuote" href="/pol/res/90931.html#q92969">92969</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90931.html#92968">&gt;&gt;92968</a><br>Forgot the link my bad<br><a rel="nofollow" target="_blank" href="https://silview.media/2022/04/12/elon-musk-is-the-grandson-of-a-jewish-canadian-leader-of-the-technocracy-movement-openly-backed-by-masons-and-the-rockefellers/">https://silview.media/2022/04/12/elon-musk-is-the-grandson-of-a-jewish-canadian-leader-of-the-technocracy-movement-openly-backed-by-masons-and-the-rockefellers/</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93042"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90931-93042">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/5e7fadb8724ac800cf75496d" title="Imperial Japanese Army">
+  
+  <span class="labelCreated">03/31/2024 (Sun) 00:25</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #efd2f1">efd2f1</span></span>
+  <a class="linkPreview" href="/pol/preview/93042.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90931.html#93042">No.</a><a class="linkQuote" href="/pol/res/90931.html#q93042">93042</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90931.html#90931">&gt;&gt;90931</a><br>I don't think Twitter has ever made a profit anyway. Not sure how he expects to save a sinking ship though. <br><br>Throwing money at it won't fix it that's for sure.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93045"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90931-93045">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">03/31/2024 (Sun) 09:03</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #819bc0">819bc0</span></span>
+  <a class="linkPreview" href="/pol/preview/93045.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90931.html#93045">No.</a><a class="linkQuote" href="/pol/res/90931.html#q93045">93045</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/929fefdb8e897d47b3c48035886d7049-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">66.08 KB</span>
+  <span class="dimensionLabel">1099x618</span> <a class="originalNameLink" href="/.media/929fefdb8e897d47b3c48035886d7049-imagejpeg.jpg" download="160127161404-ponza-01-mussolini.jpg">160127161404-ponza-01-mussolini.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/929fefdb8e897d47b3c48035886d7049-imagejpeg.jpg" data-filewidth="1099" data-fileheight="618" data-filemime="image/jpeg"><img src="/.media/t_929fefdb8e897d47b3c48035886d7049-imagejpeg" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90931.html#93042">&gt;&gt;93042</a><br>For me it wasnt about the saving the platform or even reforming it<br>As far as i suspect he just made yet another purchase as he did with tesla and now yet again enjoys "building" what is already build and works as same as was with tesla company<br>Or just wants again attention since he fell by that time again from spotlight or on platform was made some pressure release valve considering its userbase and their willingness to do what they did do and want to do and people wanted already to do something about it already since it went too far<br><br><br>But on different end of rope who even finds that cancer of social media enjoyable with its limitations and confusing design compared to imageboards</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="96621"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90931-96621">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/17/2025 (Fri) 14:12</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #57f4ed">57f4ed</span></span>
+  <a class="linkPreview" href="/pol/preview/96621.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90931.html#96621">No.</a><a class="linkQuote" href="/pol/res/90931.html#q96621">96621</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/33972.html#33978">&gt;&gt;33978</a><br>Then i maybe mistook it with someone else <br><br><a class="quoteLink" href="/pol/res/87727.html#87744">&gt;&gt;87744</a><br><span class="greenText">&gt;To be clear, the thread referenced there that became deleted was "NIGGERCIDE 2022</span><br>His idea of niggercide would not work with one simple factor called "humanitarian aid to affected" since unsatified (i mean materially not zog aware) zog subject is the most dangerous for zog</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/90931.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

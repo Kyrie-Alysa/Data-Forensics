@@ -1,0 +1,889 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - NYPD Finds Illegal Tunnels Under Jew Organization Building</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="92179">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=92179">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/92179.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell multipleUploads" id="92179"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/0478dbbd59e712a45a947cea84ed1160-videomp4.mp4">Open File</a>(<span class="sizeLabel">5.05 MB</span>
+  <span class="dimensionLabel">720x1032</span> <a class="originalNameLink" href="/.media/0478dbbd59e712a45a947cea84ed1160-videomp4.mp4" download="ssstwitter.com_1704766746367.mp4">ssstwitter.com_1704766746367.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/0478dbbd59e712a45a947cea84ed1160-videomp4.mp4" data-filewidth="720" data-fileheight="1032" data-filemime="video/mp4"><img src="/.media/t_0478dbbd59e712a45a947cea84ed1160-videomp4" loading="lazy" width="178" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9a4df5087e7063d96e739ff51d308d44-videomp4.mp4">Open File</a>(<span class="sizeLabel">757.08 KB</span>
+  <span class="dimensionLabel">354x472</span> <a class="originalNameLink" href="/.media/9a4df5087e7063d96e739ff51d308d44-videomp4.mp4" download="ssstwitter.com_1704772115346.mp4">ssstwitter.com_1704772115346.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9a4df5087e7063d96e739ff51d308d44-videomp4.mp4" data-filewidth="354" data-fileheight="472" data-filemime="video/mp4"><img src="/.media/t_9a4df5087e7063d96e739ff51d308d44-videomp4" loading="lazy" width="191" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/d2c90aa74bcd826c692c906bdf23fb09-videomp4.mp4">Open File</a>(<span class="sizeLabel">25.22 MB</span>
+  <span class="dimensionLabel">576x1024</span> <a class="originalNameLink" href="/.media/d2c90aa74bcd826c692c906bdf23fb09-videomp4.mp4" download="ssstwitter.com_1704786112348.mp4">ssstwitter.com_1704786112348.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/d2c90aa74bcd826c692c906bdf23fb09-videomp4.mp4" data-filewidth="576" data-fileheight="1024" data-filemime="video/mp4"><img src="/.media/t_d2c90aa74bcd826c692c906bdf23fb09-videomp4" loading="lazy" width="143" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/2f7ee5e459f7c9d393c73d7fd7c4cf41-videomp4.mp4">Open File</a>(<span class="sizeLabel">4.41 MB</span>
+  <span class="dimensionLabel">848x480</span> <a class="originalNameLink" href="/.media/2f7ee5e459f7c9d393c73d7fd7c4cf41-videomp4.mp4" download="ssstwitter.com_1704786175019.mp4">ssstwitter.com_1704786175019.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/2f7ee5e459f7c9d393c73d7fd7c4cf41-videomp4.mp4" data-filewidth="848" data-fileheight="480" data-filemime="video/mp4"><img src="/.media/t_2f7ee5e459f7c9d393c73d7fd7c4cf41-videomp4" loading="lazy" width="255" height="144"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/32b49c295ad9932e4ed161e0e3a5dc0c-videomp4.mp4">Open File</a>(<span class="sizeLabel">11.58 MB</span>
+  <span class="dimensionLabel">720x900</span> <a class="originalNameLink" href="/.media/32b49c295ad9932e4ed161e0e3a5dc0c-videomp4.mp4" download="ssstwitter.com_1704786260670.mp4">ssstwitter.com_1704786260670.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/32b49c295ad9932e4ed161e0e3a5dc0c-videomp4.mp4" data-filewidth="720" data-fileheight="900" data-filemime="video/mp4"><img src="/.media/t_32b49c295ad9932e4ed161e0e3a5dc0c-videomp4" loading="lazy" width="204" height="255"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-92179">
+    <span class="labelSubject">NYPD Finds Illegal Tunnels Under Jew Organization Building</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">01/09/2024 (Tue) 08:00</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #4a100e">4a100e</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/92179.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/92179.html#92179">No.</a>
+    <a class="linkQuote" href="/pol/res/92179.html#q92179">92179</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">The New York Police Department found illegal tunnels that were dug under a Jewish organization building in New York City and the Jews started rioting. Many Jews were arrested and some mattresses with weird stains on them were being thrown around. All sorts of insane footage was recorded. Chabad, the Hasidic Jewish sect, has secret tunnels that were discovered under their headquarters in NYC, and are now being shut down by the NYPD. Arrests are being made. Riot broke out as NYPD attempted to fill tunnels with cement. Why would Jews would have numerous stained mattresses contained within a series of tunnels under Chabad World Headquarters in the Brooklyn, New York Synagogue? Those mattresses should be forensically analyzed for sure. WHAT were the Jews doing in those tunnels?</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell multipleUploads" data-boarduri="pol" id="92180"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92179-92180">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/09/2024 (Tue) 08:04</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #4a100e">4a100e</span></span>
+  <a class="linkPreview" href="/pol/preview/92180.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92179.html#92180">No.</a><a class="linkQuote" href="/pol/res/92179.html#q92180">92180</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/42de65b865a6e1b1b2cdd773dc239d34-videomp4.mp4">Open File</a>(<span class="sizeLabel">6.72 MB</span>
+  <span class="dimensionLabel">640x480</span> <a class="originalNameLink" href="/.media/42de65b865a6e1b1b2cdd773dc239d34-videomp4.mp4" download="Bibi Netanyahu Meets the Rebbe  1990.mp4">Bibi Netanyahu Meets the Rebbe  1990.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/42de65b865a6e1b1b2cdd773dc239d34-videomp4.mp4" data-filewidth="640" data-fileheight="480" data-filemime="video/mp4"><img src="/.media/t_42de65b865a6e1b1b2cdd773dc239d34-videomp4" loading="lazy" width="255" height="191"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/7492a15c510d959202421b73df1bf21e-videomp4.mp4">Open File</a>(<span class="sizeLabel">1.22 MB</span>
+  <span class="dimensionLabel">480x848</span> <a class="originalNameLink" href="/.media/7492a15c510d959202421b73df1bf21e-videomp4.mp4" download="ssstwitter.com_1704761933651.mp4">ssstwitter.com_1704761933651.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/7492a15c510d959202421b73df1bf21e-videomp4.mp4" data-filewidth="480" data-fileheight="848" data-filemime="video/mp4"><img src="/.media/t_7492a15c510d959202421b73df1bf21e-videomp4" loading="lazy" width="144" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/0f9962b096c8855c9a54075106f7c3bb-videomp4.mp4">Open File</a>(<span class="sizeLabel">1.08 MB</span>
+  <span class="dimensionLabel">640x480</span> <a class="originalNameLink" href="/.media/0f9962b096c8855c9a54075106f7c3bb-videomp4.mp4" download="ssstwitter.com_1704764849053.mp4">ssstwitter.com_1704764849053.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/0f9962b096c8855c9a54075106f7c3bb-videomp4.mp4" data-filewidth="640" data-fileheight="480" data-filemime="video/mp4"><img src="/.media/t_0f9962b096c8855c9a54075106f7c3bb-videomp4" loading="lazy" width="255" height="191"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/618a67476f04c91d9e413c5e284331b8-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">111.30 KB</span>
+  <span class="dimensionLabel">1024x497</span> <a class="originalNameLink" href="/.media/618a67476f04c91d9e413c5e284331b8-imagejpeg.jpg" download="1024x497.jpeg">1024x497.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/618a67476f04c91d9e413c5e284331b8-imagejpeg.jpg" data-filewidth="1024" data-fileheight="497" data-filemime="image/jpeg"><img src="/.media/t_618a67476f04c91d9e413c5e284331b8-imagejpeg" loading="lazy" width="255" height="124"></a></figure></div>
+  <div class="divMessage">The synagogue w/the tunnels &amp; dirty mattress hidden in the wall was headed by Menachem Mendel Schneerson--the Rabbi who blessed Netanyahu back in the 1990s, &amp; asked him to hasten the process for the Messiah to arrive faster.<br><br>Knowing the Jews, we have to assume that whatever was happening down there wasn’t good. Why else would they react this way? If they did nothing wrong, there would be no reason to get so mad about it. Some speculated that these tunnels were built so they could secretly gather during the virus hoax. If we were dealing with normal people, I guess I could maybe buy that, but we are not dealing with normal people here, we are dealing with Jews. For all we know, the Jews could have built some sort of rape or blood sacrifice dungeon underneath their building. They might even have used the tunnels to secretly sex traffic children. It is not unreasonable to speculate about these things considering what we know about the Jews. Judaism is interchangeable with Satanism. I also still can’t get over the stained mattress situation. That alone raises all sorts of questions. I guess we’ll know more in the days to come, but I’d say this is certainly the most bizarre and crazy story of 2024 so far.<br><br><a rel="nofollow" target="_blank" href="https://infostormer.com/nypd-finds-illegal-tunnels-under-jew-organization-building/">https://infostormer.com/nypd-finds-illegal-tunnels-under-jew-organization-building/</a><br><a rel="nofollow" target="_blank" href="https://archive.is/NWlAJ">https://archive.is/NWlAJ</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92182"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92179-92182">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/09/2024 (Tue) 11:17</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #4a100e">4a100e</span></span>
+  <a class="linkPreview" href="/pol/preview/92182.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92179.html#92182">No.</a><a class="linkQuote" href="/pol/res/92179.html#q92182">92182</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">RAPE definitely seems to be involved. The tunnel was burrowed under the women’s section of 770.<br><a rel="nofollow" target="_blank" href="https://crownheights.info/chabad-news/848574/breaking-tunnel-found-burrowed-under-womens-section-of-770-possibly-destabilizing-the-building/">https://crownheights.info/chabad-news/848574/breaking-tunnel-found-burrowed-under-womens-section-of-770-possibly-destabilizing-the-building/</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="92183"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92179-92183">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/10/2024 (Wed) 04:16</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #4a100e">4a100e</span></span>
+  <a class="linkPreview" href="/pol/preview/92183.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92179.html#92183">No.</a><a class="linkQuote" href="/pol/res/92179.html#q92183">92183</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/1a56e77eb43955cc275ba487733efc11-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">63.66 KB</span>
+  <span class="dimensionLabel">562x562</span> <a class="originalNameLink" href="/.media/1a56e77eb43955cc275ba487733efc11-imagejpeg.jpg" download="jewtunnel1.jpg">jewtunnel1.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/1a56e77eb43955cc275ba487733efc11-imagejpeg.jpg" data-filewidth="562" data-fileheight="562" data-filemime="image/jpeg"><img src="/.media/t_1a56e77eb43955cc275ba487733efc11-imagejpeg" loading="lazy" width="255" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/0cc2fab552da650e71f3388d2cc615c9-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">57.10 KB</span>
+  <span class="dimensionLabel">637x1100</span> <a class="originalNameLink" href="/.media/0cc2fab552da650e71f3388d2cc615c9-imagejpeg.jpg" download="jewtunnel2.jpg">jewtunnel2.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/0cc2fab552da650e71f3388d2cc615c9-imagejpeg.jpg" data-filewidth="637" data-fileheight="1100" data-filemime="image/jpeg"><img src="/.media/t_0cc2fab552da650e71f3388d2cc615c9-imagejpeg" loading="lazy" width="148" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/4fdbc80204f8959ee2cd74a8eda230f5-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">88.31 KB</span>
+  <span class="dimensionLabel">1024x836</span> <a class="originalNameLink" href="/.media/4fdbc80204f8959ee2cd74a8eda230f5-imagejpeg.jpg" download="jewtunnel3.jpg">jewtunnel3.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/4fdbc80204f8959ee2cd74a8eda230f5-imagejpeg.jpg" data-filewidth="1024" data-fileheight="836" data-filemime="image/jpeg"><img src="/.media/t_4fdbc80204f8959ee2cd74a8eda230f5-imagejpeg" loading="lazy" width="255" height="208"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/22aa4c2f8e2de7384d2b79f30d6ac105-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">71.39 KB</span>
+  <span class="dimensionLabel">680x520</span> <a class="originalNameLink" href="/.media/22aa4c2f8e2de7384d2b79f30d6ac105-imagejpeg.jpg" download="jewtunnel4.jpg">jewtunnel4.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/22aa4c2f8e2de7384d2b79f30d6ac105-imagejpeg.jpg" data-filewidth="680" data-fileheight="520" data-filemime="image/jpeg"><img src="/.media/t_22aa4c2f8e2de7384d2b79f30d6ac105-imagejpeg" loading="lazy" width="255" height="195"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9eabcdb3bc5e4c9d63b3c914bcc5cba4-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">196.41 KB</span>
+  <span class="dimensionLabel">1024x1024</span> <a class="originalNameLink" href="/.media/9eabcdb3bc5e4c9d63b3c914bcc5cba4-imagejpeg.jpg" download="jewtunnel7.jpg">jewtunnel7.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9eabcdb3bc5e4c9d63b3c914bcc5cba4-imagejpeg.jpg" data-filewidth="1024" data-fileheight="1024" data-filemime="image/jpeg"><img src="/.media/t_9eabcdb3bc5e4c9d63b3c914bcc5cba4-imagejpeg" loading="lazy" width="255" height="255"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="92184"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92179-92184">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/10/2024 (Wed) 04:16</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #4a100e">4a100e</span></span>
+  <a class="linkPreview" href="/pol/preview/92184.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92179.html#92184">No.</a><a class="linkQuote" href="/pol/res/92179.html#q92184">92184</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/0901c1bf03a653f56f4a0804c3bb5b03-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">64.11 KB</span>
+  <span class="dimensionLabel">627x471</span> <a class="originalNameLink" href="/.media/0901c1bf03a653f56f4a0804c3bb5b03-imagejpeg.jpg" download="jewtunnel8.jpg">jewtunnel8.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/0901c1bf03a653f56f4a0804c3bb5b03-imagejpeg.jpg" data-filewidth="627" data-fileheight="471" data-filemime="image/jpeg"><img src="/.media/t_0901c1bf03a653f56f4a0804c3bb5b03-imagejpeg" loading="lazy" width="255" height="192"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/83263c20cd06ed8d02e3dc3cbd023f03-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">139.83 KB</span>
+  <span class="dimensionLabel">928x1280</span> <a class="originalNameLink" href="/.media/83263c20cd06ed8d02e3dc3cbd023f03-imagejpeg.jpg" download="jewtunnel9.jpg">jewtunnel9.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/83263c20cd06ed8d02e3dc3cbd023f03-imagejpeg.jpg" data-filewidth="928" data-fileheight="1280" data-filemime="image/jpeg"><img src="/.media/t_83263c20cd06ed8d02e3dc3cbd023f03-imagejpeg" loading="lazy" width="185" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/59af24215052c28cf508f3df51e6c7bc-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">64.31 KB</span>
+  <span class="dimensionLabel">578x668</span> <a class="originalNameLink" href="/.media/59af24215052c28cf508f3df51e6c7bc-imagejpeg.jpg" download="jewtunnel10.jpg">jewtunnel10.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/59af24215052c28cf508f3df51e6c7bc-imagejpeg.jpg" data-filewidth="578" data-fileheight="668" data-filemime="image/jpeg"><img src="/.media/t_59af24215052c28cf508f3df51e6c7bc-imagejpeg" loading="lazy" width="221" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/4f7e0073ca850e7664910719298c8bec-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">51.26 KB</span>
+  <span class="dimensionLabel">593x659</span> <a class="originalNameLink" href="/.media/4f7e0073ca850e7664910719298c8bec-imagejpeg.jpg" download="jewtunnel11.jpg">jewtunnel11.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/4f7e0073ca850e7664910719298c8bec-imagejpeg.jpg" data-filewidth="593" data-fileheight="659" data-filemime="image/jpeg"><img src="/.media/t_4f7e0073ca850e7664910719298c8bec-imagejpeg" loading="lazy" width="229" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b79fe77a4c77f783aaa0aa0b8fc434f3-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">231.23 KB</span>
+  <span class="dimensionLabel">1024x1024</span> <a class="originalNameLink" href="/.media/b79fe77a4c77f783aaa0aa0b8fc434f3-imagejpeg.jpg" download="jewtunnel12.jpg">jewtunnel12.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b79fe77a4c77f783aaa0aa0b8fc434f3-imagejpeg.jpg" data-filewidth="1024" data-fileheight="1024" data-filemime="image/jpeg"><img src="/.media/t_b79fe77a4c77f783aaa0aa0b8fc434f3-imagejpeg" loading="lazy" width="255" height="255"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="92185"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92179-92185">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/10/2024 (Wed) 04:17</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #4a100e">4a100e</span></span>
+  <a class="linkPreview" href="/pol/preview/92185.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92179.html#92185">No.</a><a class="linkQuote" href="/pol/res/92179.html#q92185">92185</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/8fc0cde34647e3db6c5d7617e409a84e-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">65.42 KB</span>
+  <span class="dimensionLabel">667x667</span> <a class="originalNameLink" href="/.media/8fc0cde34647e3db6c5d7617e409a84e-imagejpeg.jpg" download="jewtunnel15.jpg">jewtunnel15.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/8fc0cde34647e3db6c5d7617e409a84e-imagejpeg.jpg" data-filewidth="667" data-fileheight="667" data-filemime="image/jpeg"><img src="/.media/t_8fc0cde34647e3db6c5d7617e409a84e-imagejpeg" loading="lazy" width="255" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/946ac1692180106dc2e866686a5b57ac-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">146.68 KB</span>
+  <span class="dimensionLabel">1060x1045</span> <a class="originalNameLink" href="/.media/946ac1692180106dc2e866686a5b57ac-imagejpeg.jpg" download="jewtunnel16.jpg">jewtunnel16.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/946ac1692180106dc2e866686a5b57ac-imagejpeg.jpg" data-filewidth="1060" data-fileheight="1045" data-filemime="image/jpeg"><img src="/.media/t_946ac1692180106dc2e866686a5b57ac-imagejpeg" loading="lazy" width="255" height="251"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9f564b0ccadf327c8b088f264b81983a-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">22.24 KB</span>
+  <span class="dimensionLabel">572x316</span> <a class="originalNameLink" href="/.media/9f564b0ccadf327c8b088f264b81983a-imagejpeg.jpg" download="jewtunnel17.jpg">jewtunnel17.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9f564b0ccadf327c8b088f264b81983a-imagejpeg.jpg" data-filewidth="572" data-fileheight="316" data-filemime="image/jpeg"><img src="/.media/t_9f564b0ccadf327c8b088f264b81983a-imagejpeg" loading="lazy" width="255" height="141"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/61f5e1ce450c9c37f2244eb0aeda2e6e-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">118.38 KB</span>
+  <span class="dimensionLabel">627x900</span> <a class="originalNameLink" href="/.media/61f5e1ce450c9c37f2244eb0aeda2e6e-imagejpeg.jpg" download="jewtunnel18.jpg">jewtunnel18.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/61f5e1ce450c9c37f2244eb0aeda2e6e-imagejpeg.jpg" data-filewidth="627" data-fileheight="900" data-filemime="image/jpeg"><img src="/.media/t_61f5e1ce450c9c37f2244eb0aeda2e6e-imagejpeg" loading="lazy" width="178" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/2b503ecf10636571f52df3e8278fe495-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">101.09 KB</span>
+  <span class="dimensionLabel">601x1026</span> <a class="originalNameLink" href="/.media/2b503ecf10636571f52df3e8278fe495-imagejpeg.jpg" download="jewtunnel19.jpg">jewtunnel19.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/2b503ecf10636571f52df3e8278fe495-imagejpeg.jpg" data-filewidth="601" data-fileheight="1026" data-filemime="image/jpeg"><img src="/.media/t_2b503ecf10636571f52df3e8278fe495-imagejpeg" loading="lazy" width="149" height="255"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="92186"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92179-92186">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/10/2024 (Wed) 04:17</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #4a100e">4a100e</span></span>
+  <a class="linkPreview" href="/pol/preview/92186.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92179.html#92186">No.</a><a class="linkQuote" href="/pol/res/92179.html#q92186">92186</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/fb4fed42845c5c489ab67b6733f0ab06-imagepng.png">Open File</a>(<span class="sizeLabel">369.20 KB</span>
+  <span class="dimensionLabel">681x607</span> <a class="originalNameLink" href="/.media/fb4fed42845c5c489ab67b6733f0ab06-imagepng.png" download="jewtunnel20.png">jewtunnel20.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/fb4fed42845c5c489ab67b6733f0ab06-imagepng.png" data-filewidth="681" data-fileheight="607" data-filemime="image/png"><img src="/.media/t_fb4fed42845c5c489ab67b6733f0ab06-imagepng" loading="lazy" width="255" height="227"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a93ff6871fa921c2fc29e56552844c7e-imagepng.png">Open File</a>(<span class="sizeLabel">331.74 KB</span>
+  <span class="dimensionLabel">536x546</span> <a class="originalNameLink" href="/.media/a93ff6871fa921c2fc29e56552844c7e-imagepng.png" download="jewtunnel22.png">jewtunnel22.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a93ff6871fa921c2fc29e56552844c7e-imagepng.png" data-filewidth="536" data-fileheight="546" data-filemime="image/png"><img src="/.media/t_a93ff6871fa921c2fc29e56552844c7e-imagepng" loading="lazy" width="250" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/fc5e6540d3926b1ea7689b56b3194c67-imagepng.png">Open File</a>(<span class="sizeLabel">958.84 KB</span>
+  <span class="dimensionLabel">681x755</span> <a class="originalNameLink" href="/.media/fc5e6540d3926b1ea7689b56b3194c67-imagepng.png" download="jewtunnel24.png">jewtunnel24.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/fc5e6540d3926b1ea7689b56b3194c67-imagepng.png" data-filewidth="681" data-fileheight="755" data-filemime="image/png"><img src="/.media/t_fc5e6540d3926b1ea7689b56b3194c67-imagepng" loading="lazy" width="230" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/00ab9c4bb0ff8625c36fb5ef282e4cea-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">108.18 KB</span>
+  <span class="dimensionLabel">681x812</span> <a class="originalNameLink" href="/.media/00ab9c4bb0ff8625c36fb5ef282e4cea-imagejpeg.jpg" download="jewtunnel25.jpeg">jewtunnel25.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/00ab9c4bb0ff8625c36fb5ef282e4cea-imagejpeg.jpg" data-filewidth="681" data-fileheight="812" data-filemime="image/jpeg"><img src="/.media/t_00ab9c4bb0ff8625c36fb5ef282e4cea-imagejpeg" loading="lazy" width="214" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/19e4c5ec3f105b30954bcffdd434b90a-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">37.28 KB</span>
+  <span class="dimensionLabel">681x608</span> <a class="originalNameLink" href="/.media/19e4c5ec3f105b30954bcffdd434b90a-imagejpeg.jpg" download="jewtunnel35.jpeg">jewtunnel35.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/19e4c5ec3f105b30954bcffdd434b90a-imagejpeg.jpg" data-filewidth="681" data-fileheight="608" data-filemime="image/jpeg"><img src="/.media/t_19e4c5ec3f105b30954bcffdd434b90a-imagejpeg" loading="lazy" width="255" height="228"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="92187"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92179-92187">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/10/2024 (Wed) 04:19</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #4a100e">4a100e</span></span>
+  <a class="linkPreview" href="/pol/preview/92187.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92179.html#92187">No.</a><a class="linkQuote" href="/pol/res/92179.html#q92187">92187</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/8d08d3a1d66b64e0a881f773eaea7204-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">33.29 KB</span>
+  <span class="dimensionLabel">681x381</span> <a class="originalNameLink" href="/.media/8d08d3a1d66b64e0a881f773eaea7204-imagejpeg.jpg" download="jewtunnel38.jpg">jewtunnel38.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/8d08d3a1d66b64e0a881f773eaea7204-imagejpeg.jpg" data-filewidth="681" data-fileheight="381" data-filemime="image/jpeg"><img src="/.media/t_8d08d3a1d66b64e0a881f773eaea7204-imagejpeg" loading="lazy" width="255" height="143"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/3a1e6ead2ed6152aa8ab982c922fc59d-imagepng.png">Open File</a>(<span class="sizeLabel">250.39 KB</span>
+  <span class="dimensionLabel">509x430</span> <a class="originalNameLink" href="/.media/3a1e6ead2ed6152aa8ab982c922fc59d-imagepng.png" download="jewtunnel42.png">jewtunnel42.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/3a1e6ead2ed6152aa8ab982c922fc59d-imagepng.png" data-filewidth="509" data-fileheight="430" data-filemime="image/png"><img src="/.media/t_3a1e6ead2ed6152aa8ab982c922fc59d-imagepng" loading="lazy" width="255" height="215"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/41df957e85af68a32d72ef1f28a22d86-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">96.32 KB</span>
+  <span class="dimensionLabel">640x762</span> <a class="originalNameLink" href="/.media/41df957e85af68a32d72ef1f28a22d86-imagejpeg.jpg" download="jewtunnel43.jpeg">jewtunnel43.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/41df957e85af68a32d72ef1f28a22d86-imagejpeg.jpg" data-filewidth="640" data-fileheight="762" data-filemime="image/jpeg"><img src="/.media/t_41df957e85af68a32d72ef1f28a22d86-imagejpeg" loading="lazy" width="214" height="255"></a></figure></div>
+  <div class="divMessage">First worldwide attention on their massacres in Gaza and now this. Who would've thought jews would be the ones to wake everyone up in the world about how evil they are? I used to hate this timeline. Now I love it.<br><br>I sincerely hope jews don't ever stop fucking up like this.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92190"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92179-92190">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/11/2024 (Thu) 02:01</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #203871">203871</span></span>
+  <a class="linkPreview" href="/pol/preview/92190.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92179.html#92190">No.</a><a class="linkQuote" href="/pol/res/92179.html#q92190">92190</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/412bed30a2ed224b278c6f1620a5dc21-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">186.44 KB</span>
+  <span class="dimensionLabel">542x800</span> <a class="originalNameLink" href="/.media/412bed30a2ed224b278c6f1620a5dc21-imagejpeg.jpg" download="teter1.jpg">teter1.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/412bed30a2ed224b278c6f1620a5dc21-imagejpeg.jpg" data-filewidth="542" data-fileheight="800" data-filemime="image/jpeg"><img src="/.media/t_412bed30a2ed224b278c6f1620a5dc21-imagejpeg" loading="lazy" width="173" height="255"></a></figure></div>
+  <div class="divMessage">Definitely trafficking and ritual related no doubt. This opportunity should be used for propaganda regardless of the reason. When you think of underground tunnels it is always associated with crime and bad doings. The damage control has been entertaining to watch. It went viral so quickly.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="92191"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92179-92191">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/11/2024 (Thu) 16:49</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #a1afa4">a1afa4</span></span>
+  <a class="linkPreview" href="/pol/preview/92191.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92179.html#92191">No.</a><a class="linkQuote" href="/pol/res/92179.html#q92191">92191</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/8b3f53588baecbdff63182981914e87c-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">64.58 KB</span>
+  <span class="dimensionLabel">680x363</span> <a class="originalNameLink" href="/.media/8b3f53588baecbdff63182981914e87c-imagejpeg.jpg" download="1704991014925186.jpg">1704991014925186.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/8b3f53588baecbdff63182981914e87c-imagejpeg.jpg" data-filewidth="680" data-fileheight="363" data-filemime="image/jpeg"><img src="/.media/t_8b3f53588baecbdff63182981914e87c-imagejpeg" loading="lazy" width="255" height="136"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/c7738388b7a73276d1580e07d94f75ae-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">329.38 KB</span>
+  <span class="dimensionLabel">1439x959</span> <a class="originalNameLink" href="/.media/c7738388b7a73276d1580e07d94f75ae-imagejpeg.jpg" download="1704989062402233.jpg">1704989062402233.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/c7738388b7a73276d1580e07d94f75ae-imagejpeg.jpg" data-filewidth="1439" data-fileheight="959" data-filemime="image/jpeg"><img src="/.media/t_c7738388b7a73276d1580e07d94f75ae-imagejpeg" loading="lazy" width="255" height="170"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/e52f2ebb772643f3f5c67cfd0fb2a9ce-imagepng.png">Open File</a>(<span class="sizeLabel">1.78 MB</span>
+  <span class="dimensionLabel">1008x1200</span> <a class="originalNameLink" href="/.media/e52f2ebb772643f3f5c67cfd0fb2a9ce-imagepng.png" download="1704809894431076.png">1704809894431076.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/e52f2ebb772643f3f5c67cfd0fb2a9ce-imagepng.png" data-filewidth="1008" data-fileheight="1200" data-filemime="image/png"><img src="/.media/t_e52f2ebb772643f3f5c67cfd0fb2a9ce-imagepng" loading="lazy" width="214" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/92179.html#92187">&gt;&gt;92187</a><br>and my favourite as its sort of relevant <br>why this exists to begin with<br><a class="quoteLink" href="/pol/res/92179.html#92190">&gt;&gt;92190</a><br><span class="greenText">&gt;Definitely trafficking and ritual related no doubt.</span><br>funny thing is they cope with their propaganda that these tunnels are and i quote "covid tunnels to dodge lockdowns"</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="92193"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92179-92193">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/11/2024 (Thu) 17:03</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #a1afa4">a1afa4</span></span>
+  <a class="linkPreview" href="/pol/preview/92193.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92179.html#92193">No.</a><a class="linkQuote" href="/pol/res/92179.html#q92193">92193</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/63c501234a88aca47b8546d527fe66af-videomp4.mp4">Open File</a>(<span class="sizeLabel">4.63 MB</span>
+  <span class="dimensionLabel">480x852</span> <a class="originalNameLink" href="/.media/63c501234a88aca47b8546d527fe66af-videomp4.mp4" download="rrd7ta.mp4">rrd7ta.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/63c501234a88aca47b8546d527fe66af-videomp4.mp4" data-filewidth="480" data-fileheight="852" data-filemime="video/mp4"><img src="/.media/t_63c501234a88aca47b8546d527fe66af-videomp4" loading="lazy" width="144" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/4cded9d2ef19ea37b36007dc4c4ffbb0-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">97.49 KB</span>
+  <span class="dimensionLabel">657x900</span> <a class="originalNameLink" href="/.media/4cded9d2ef19ea37b36007dc4c4ffbb0-imagejpeg.jpg" download="1704978121345910.jpg">1704978121345910.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/4cded9d2ef19ea37b36007dc4c4ffbb0-imagejpeg.jpg" data-filewidth="657" data-fileheight="900" data-filemime="image/jpeg"><img src="/.media/t_4cded9d2ef19ea37b36007dc4c4ffbb0-imagejpeg" loading="lazy" width="186" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/8a0bb967f4f45789e8c1b5b78c719749-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">138.41 KB</span>
+  <span class="dimensionLabel">1080x1626</span> <a class="originalNameLink" href="/.media/8a0bb967f4f45789e8c1b5b78c719749-imagejpeg.jpg" download="1704976924378936.jpg">1704976924378936.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/8a0bb967f4f45789e8c1b5b78c719749-imagejpeg.jpg" data-filewidth="1080" data-fileheight="1626" data-filemime="image/jpeg"><img src="/.media/t_8a0bb967f4f45789e8c1b5b78c719749-imagejpeg" loading="lazy" width="169" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/7ac94bc6fcc9a8a333d0d1e597637d54-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">18.03 KB</span>
+  <span class="dimensionLabel">253x350</span> <a class="originalNameLink" href="/.media/7ac94bc6fcc9a8a333d0d1e597637d54-imagejpeg.jpg" download="1704979384580113.jpg">1704979384580113.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/7ac94bc6fcc9a8a333d0d1e597637d54-imagejpeg.jpg" data-filewidth="253" data-fileheight="350" data-filemime="image/jpeg"><img src="/.media/t_7ac94bc6fcc9a8a333d0d1e597637d54-imagejpeg" loading="lazy" width="184" height="255"></a></figure></div>
+  <div class="divMessage">also remember nobody can bullshit that stained childs matress with that blood stain as we know what happens with blood when oxidizing</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92194"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92179-92194">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/11/2024 (Thu) 19:35</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #4a100e">4a100e</span></span>
+  <a class="linkPreview" href="/pol/preview/92194.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92179.html#92194">No.</a><a class="linkQuote" href="/pol/res/92179.html#q92194">92194</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/92179.html#92193">&gt;&gt;92193</a><br><span class="greenText">&gt;blood when oxidizing</span><br>Yes, those of us who have lived with women while on their periods.<br><a class="quoteLink" href="/pol/res/92179.html#92191">&gt;&gt;92191</a><br><span class="greenText">&gt;"covid tunnels to dodge lockdowns"</span><br>Yet the tunnels were made <em>after</em> the lockdowns. It's sad that the one thing which comes natural to them isn't even skilled. Lying. Kikes' lies always have holes.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92213"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92179-92213">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/13/2024 (Sat) 09:27</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #a1afa4">a1afa4</span></span>
+  <a class="linkPreview" href="/pol/preview/92213.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92179.html#92213">No.</a><a class="linkQuote" href="/pol/res/92179.html#q92213">92213</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/54bc2da8615761f550f9aefca2e54e27-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">41.37 KB</span>
+  <span class="dimensionLabel">408x569</span> <a class="originalNameLink" href="/.media/54bc2da8615761f550f9aefca2e54e27-imagejpeg.jpg" download="C_-gpMMUQAAfEns.jpg">C_-gpMMUQAAfEns.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/54bc2da8615761f550f9aefca2e54e27-imagejpeg.jpg" data-filewidth="408" data-fileheight="569" data-filemime="image/jpeg"><img src="/.media/t_54bc2da8615761f550f9aefca2e54e27-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/92179.html#92212">&gt;&gt;92212</a><br><span class="greenText">&gt;Low effort hasbara</span><br>Oh well under the saw please</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="95185"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92179-95185">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">11/29/2024 (Fri) 00:07</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #ced384">ced384</span></span>
+  <a class="linkPreview" href="/pol/preview/95185.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92179.html#95185">No.</a><a class="linkQuote" href="/pol/res/92179.html#q95185">95185</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/92179.html#92193">&gt;&gt;92193</a><br><span class="greenText">&gt;post part 2?</span><br>Mmh yeah?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="95366"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92179-95366">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/09/2024 (Mon) 12:33</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #0ea889">0ea889</span></span>
+  <a class="linkPreview" href="/pol/preview/95366.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92179.html#95366">No.</a><a class="linkQuote" href="/pol/res/92179.html#q95366">95366</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/26894f899ddd0b9852cd698366d5b905-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">147.92 KB</span>
+  <span class="dimensionLabel">800x806</span> <a class="originalNameLink" href="/.media/26894f899ddd0b9852cd698366d5b905-imagejpeg.jpg" download="1704909227901748.jpg">1704909227901748.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/26894f899ddd0b9852cd698366d5b905-imagejpeg.jpg" data-filewidth="800" data-fileheight="806" data-filemime="image/jpeg"><img src="/.media/t_26894f899ddd0b9852cd698366d5b905-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/92179.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>
