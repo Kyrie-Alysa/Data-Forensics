@@ -1,0 +1,1218 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - Vitality by Exercise</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="93708">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=93708">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/93708.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="93708"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/1ec6d66ccd347a66f00cff34b76d86fe-imagepng.png">Open File</a>(<span class="sizeLabel">36.37 KB</span>
+  <span class="dimensionLabel">579x131</span> <a class="originalNameLink" href="/.media/1ec6d66ccd347a66f00cff34b76d86fe-imagepng.png" download="nigger erectus.png">nigger erectus.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/1ec6d66ccd347a66f00cff34b76d86fe-imagepng.png" data-filewidth="579" data-fileheight="131" data-filemime="image/png"><img src="/.media/t_1ec6d66ccd347a66f00cff34b76d86fe-imagepng" loading="lazy" width="255" height="58"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-93708">
+    <span class="labelSubject">Vitality by Exercise</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">05/17/2024 (Fri) 15:59</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #86e805">86e805</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/93708.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/93708.html#93708">No.</a>
+    <a class="linkQuote" href="/pol/res/93708.html#q93708">93708</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">This idea of the niggers being remnants of Homo Erectus, the kikes being Neanderthals, and the european-asians being Cro Magnon. All competing for control over the planet. This idea made me rethink about an older idea I once had.
+<br>
+<br>What does an athlete needs to stay in top form?
+<br>Exercise.
+<br>
+<br>What does a nation, civilization, or ethnic group needs to stay in top form?
+<br>Exercise.
+<br>But not just moving the body, exercise here is meant in a more wide and general sense. Existential exercise. Exercise to keep existing.
+<br>
+<br>Some guy once conveyed that same idea of "exercise" as "struggle", and that idea is much much older than that. Far preceding the world wars, but this is not the point.
+<br>
+<br>Now, what about the niggers and the jews? From the point of view of an european or an asian?
+<br>They, niggers and kikes, particularly the kikes, are mostly destructive and often parasitic, inside european civilizations. The moreso if one accepts this idea that they are distinct humanoids entirely, and that they instinctively want to destroy all competition, and destroy all europeans and anything created by europeans.
+<br>So the first instinct, of any european person free from brainwashing, of just wanting to remove all the niggers (and other alien foreigners) and kikes from the european lands, is not a misplaced impulse.
+<br>
+<br>What I'm about to propose, is about what to do with the niggers and jews living outside the european lands. Should they be eradicated too, or not?
+<br>Given an hypotetical scenario where they have already been completely kicked out of all europe (and america and asia, if you want to include them too), what to do with the niggers and kikes living elsewhere?
+<br>
+<br>A primal instinct, as per the 3 humanoids theory, would be to just remove them all from anywhere on earth, and then for the european people to move on with more interesting things to do.
+<br>
+<br>What instead I think, based on the principle of health of a genus by execise, is that there is benefit for the european people to keep the niggers and kikes around, only so far the niggers and kikes are used by the europeans as obstacles to overcome, as ways to exercise the european capacities to self defend, to hone internal integrity, to improve resistance to parasitism, and resistance to poisonous attacks targeting the core of society. The exercise needed by europeans to fend off the destructive presence of both niggers and kikes, is a good way to self improvement and maintain a sane level of vitality.
+<br>
+<br>The current issue, regarding the european decadence, regarding both niggers and kikes in european lands and elsewhere, the current issue leading to that decadence is that the niggers and jews are no longer used as subjects to exercise over by europeans, and by the lack of exercise to uphold their own existence the europeans are growing weaker.
+<br>So it's not necessarily the presence of the niggers and kikes alone to be the cause of the decadence of european societies, but it's rather the lack of the will to continue existing and the lack of existential exercise, which is ruining our societies, as this interpretation goes.
+<br>
+<br>Conversely, the complete removal of both niggers and kikes from anywhere on earth, would not necessarily result in an improvement of the european people, if the attitude to not practicing existential exercise would continue afterwards.
+<br>
+<br>The idea of vitality by exercise, or by struggle, suggests that it's more beneficial for the europeans to exercise dominance over the niggers and kikes (and any similar hostile population), rather than just exterminating them all.
+<br>
+<br>(excluding cases where the niggers and jews go extinct by their own savage idiocy alone, I'm not saying they should be helped survive either, if they lack the ability to survive by themselves, they should be left to disappear as they should, this is a case where the course of nature should be respected, not all things can keep existing forever, it's normal and natural to be so, good old things should be left to die so that newer good things may grow up; except the kikes can't be said to be good things</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="93709"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93709">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/17/2024 (Fri) 16:03</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #86e805">86e805</span></span>
+  <a class="linkPreview" href="/pol/preview/93709.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93709">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93709">93709</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93708.html#93708">&gt;&gt;93708</a>
+<br>The final observations were cut off:
+<br>
+<br>(excluding cases where the niggers and jews go extinct by their own savage idiocy alone, I'm not saying they should be helped survive either, if they lack the ability to survive by themselves, they should be left to disappear as they should, this is a case where the course of nature should be respected, not all things can keep existing forever, it's normal and natural to be so, good old things should be left to die so that newer good things may grow up; except the kikes can't be said to be good things, so it's very likely a new form of evil would emerge after the kikes are gone)
+<br>(it's also very possible that once the niggers and jews are no more, new challenges will arise naturally to keep the europeans busy and without a lack of exercise, in that sense the niggers and jews and not needed, they are not necessary as sources of exercise, the european people can find sources of exercise even without them)
+<br>(all this discourse is done while ignoring for a moment the active role of (((usa))) and of the military occupation of europe by (((usa))), in the complete negrization and subversion of europe, it should be normal for the (((americans))) to be treated like niggers and jews by the europeans)</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="93730"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93730">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/18/2024 (Sat) 09:23</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #6a6e8a">6a6e8a</span></span>
+  <a class="linkPreview" href="/pol/preview/93730.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93730">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93730">93730</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/ed44764a79518a1b98588f342d2c499b-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">82.38 KB</span>
+  <span class="dimensionLabel">600x705</span> <a class="originalNameLink" href="/.media/ed44764a79518a1b98588f342d2c499b-imagejpeg.jpg" download="46b33573487bce86ea34786f4a91c98c92fc2c403102230112f4d633d025fc4a.jpg">46b33573487bce86ea34786f4a91c98c92fc2c403102230112f4d633d025fc4a.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/ed44764a79518a1b98588f342d2c499b-imagejpeg.jpg" data-filewidth="600" data-fileheight="705" data-filemime="image/jpeg"><img src="/.media/t_ed44764a79518a1b98588f342d2c499b-imagejpeg" loading="lazy" width="217" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/d6cf7f0824968660a5a26f2506e2de30-imagepng.png">Open File</a>(<span class="sizeLabel">39.87 KB</span>
+  <span class="dimensionLabel">600x600</span> <a class="originalNameLink" href="/.media/d6cf7f0824968660a5a26f2506e2de30-imagepng.png" download="493.png">493.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/d6cf7f0824968660a5a26f2506e2de30-imagepng.png" data-filewidth="600" data-fileheight="600" data-filemime="image/png"><img src="/.media/t_d6cf7f0824968660a5a26f2506e2de30-imagepng" loading="lazy" width="255" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/fa57d51ce65b5ab61a1bd416df2c1e04-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">39.72 KB</span>
+  <span class="dimensionLabel">380x284</span> <a class="originalNameLink" href="/.media/fa57d51ce65b5ab61a1bd416df2c1e04-imagejpeg.jpg" download="imagine.jpg">imagine.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/fa57d51ce65b5ab61a1bd416df2c1e04-imagejpeg.jpg" data-filewidth="380" data-fileheight="284" data-filemime="image/jpeg"><img src="/.media/t_fa57d51ce65b5ab61a1bd416df2c1e04-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/8c282c9fe59f30b584ffa161d450c5e0-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">147.63 KB</span>
+  <span class="dimensionLabel">960x626</span> <a class="originalNameLink" href="/.media/8c282c9fe59f30b584ffa161d450c5e0-imagejpeg.jpg" download="9131.jpg">9131.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/8c282c9fe59f30b584ffa161d450c5e0-imagejpeg.jpg" data-filewidth="960" data-fileheight="626" data-filemime="image/jpeg"><img src="/.media/t_8c282c9fe59f30b584ffa161d450c5e0-imagejpeg" loading="lazy" width="255" height="166"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/86ad28ad8a8310270302d841a568435c-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">103.37 KB</span>
+  <span class="dimensionLabel">502x640</span> <a class="originalNameLink" href="/.media/86ad28ad8a8310270302d841a568435c-imagejpeg.jpg" download="National Socialist rent.jpg">National Socialist rent.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/86ad28ad8a8310270302d841a568435c-imagejpeg.jpg" data-filewidth="502" data-fileheight="640" data-filemime="image/jpeg"><img src="/.media/t_86ad28ad8a8310270302d841a568435c-imagejpeg" loading="lazy" width="200" height="255"></a></figure></div>
+  <div class="divMessage">Well, your post certainly got overwhelmed by jew spam in other threads. I didn't see it before. While I agree with a lot of your posts, here are some problems with it:<br>• No. Fuck all jews. They must be eradicated.<br>• There will never be any greater evil emerging if kikes are destroyed.<br>• Jews want you distracted with a race war vs niggers. You can't take on both at the same time. Stop. Jews first.<br>• Wrong. Society will swiftly recover with their removal. Hitler dealt with jews, removed them from public life and then brought Germany to the best economic recovery in the history of Earth.<br>• You're wasting effort theorizing on what would happen after removing jews instead of HOW.<br><br>Now I'm going to talk about the Earth's <strong>immune disorder</strong>.<br>Neutrophils are white blood cells as the first line of defense against bacteria and diseases.<br>• Niggers are merely the bacteria.<br>• Jews are the disease. Consider them as HIV.<br>Now what HIV does is <em>gets inside</em> a white cell, copies itself, and then causes <em>cell death</em>. Neutropenia is the lack of white blood cells to fight back and result of <strong>Lazy Leucocyte Syndrome</strong>.<br><br>Imagine you're a lone white blood cell. You discover you're immune to attacks by HIV. You're aware there is 10% of the white blood cell population also immune. What do you do?<br>• Travel around trying to find white blood cells not fucked up by HIV in the hopes of gathering numbers? That took Hitler 13 years of going door to door.<br>• In the case of an extremely low white blood cell count, there is the possibility of flooding the body(Earth) with artificial white blood cells. Meaning synthetic ones. Created to mimic the fighting response. But you are one cell so you must create one that can produce others until there is mass production. This means androids.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93731"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93731">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/18/2024 (Sat) 09:26</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #6a6e8a">6a6e8a</span></span>
+  <a class="linkPreview" href="/pol/preview/93731.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93731">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93731">93731</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/283f0cf94fc2553c21c57e792f7ad6bd-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">56.04 KB</span>
+  <span class="dimensionLabel">500x480</span> <a class="originalNameLink" href="/.media/283f0cf94fc2553c21c57e792f7ad6bd-imagejpeg.jpg" download="1 (4).jpg">1 (4).jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/283f0cf94fc2553c21c57e792f7ad6bd-imagejpeg.jpg" data-filewidth="500" data-fileheight="480" data-filemime="image/jpeg"><img src="/.media/t_283f0cf94fc2553c21c57e792f7ad6bd-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage">Of course you know what happened to Hitler. The fact is, either way, we need numbers. How that's achieved is irrelevant as long as we're cured. As long as AIDSKIKES are eradicated.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="93735"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93735">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/18/2024 (Sat) 12:38</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #0d2289">0d2289</span></span>
+  <a class="linkPreview" href="/pol/preview/93735.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93735">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93735">93735</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/13208516e2de93bafb675956a1653a37-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">2.02 MB</span>
+  <span class="dimensionLabel">2527x1243</span> <a class="originalNameLink" href="/.media/13208516e2de93bafb675956a1653a37-imagejpeg.jpg" download="Neanderthal kike hybrids.jpg">Neanderthal kike hybrids.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/13208516e2de93bafb675956a1653a37-imagejpeg.jpg" data-filewidth="2527" data-fileheight="1243" data-filemime="image/jpeg"><img src="/.media/t_13208516e2de93bafb675956a1653a37-imagejpeg" loading="lazy" width="255" height="125"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/f100cbb834cce63514f1e1c15f3f703a-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">2.92 MB</span>
+  <span class="dimensionLabel">2344x2736</span> <a class="originalNameLink" href="/.media/f100cbb834cce63514f1e1c15f3f703a-imagejpeg.jpg" download="Neanderthal kike hybrids 2.jpg">Neanderthal kike hybrids 2.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/f100cbb834cce63514f1e1c15f3f703a-imagejpeg.jpg" data-filewidth="2344" data-fileheight="2736" data-filemime="image/jpeg"><img src="/.media/t_f100cbb834cce63514f1e1c15f3f703a-imagejpeg" loading="lazy" width="218" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/5379f3c4f85a00300c344910d047d6a9-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">1.22 MB</span>
+  <span class="dimensionLabel">1967x1149</span> <a class="originalNameLink" href="/.media/5379f3c4f85a00300c344910d047d6a9-imagejpeg.jpg" download="1715967443767977.jpg">1715967443767977.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/5379f3c4f85a00300c344910d047d6a9-imagejpeg.jpg" data-filewidth="1967" data-fileheight="1149" data-filemime="image/jpeg"><img src="/.media/t_5379f3c4f85a00300c344910d047d6a9-imagejpeg" loading="lazy" width="255" height="149"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/d321fe2f78da2ba54fa03239d16cce79-imagepng.png">Open File</a>(<span class="sizeLabel">765.20 KB</span>
+  <span class="dimensionLabel">1022x1024</span> <a class="originalNameLink" href="/.media/d321fe2f78da2ba54fa03239d16cce79-imagepng.png" download="1715964314414890.png">1715964314414890.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/d321fe2f78da2ba54fa03239d16cce79-imagepng.png" data-filewidth="1022" data-fileheight="1024" data-filemime="image/png"><img src="/.media/t_d321fe2f78da2ba54fa03239d16cce79-imagepng" loading="lazy" width="255" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b661657af9107ae82dcfae06ee72ed1c-imagepng.png">Open File</a>(<span class="sizeLabel">3.11 MB</span>
+  <span class="dimensionLabel">1660x1739</span> <a class="originalNameLink" href="/.media/b661657af9107ae82dcfae06ee72ed1c-imagepng.png" download="1715965977269466.png">1715965977269466.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b661657af9107ae82dcfae06ee72ed1c-imagepng.png" data-filewidth="1660" data-fileheight="1739" data-filemime="image/png"><img src="/.media/t_b661657af9107ae82dcfae06ee72ed1c-imagepng" loading="lazy" width="243" height="255"></a></figure></div>
+  <div class="divMessage"><span class="greenText">&gt;There will never be any greater evil emerging if kikes are destroyed.</span><br>You are optimistic, at least from my point of view.<br>That optimism may be rooted in the idea that the evil of the jews is purely a material evil, a genetic evil, with no further ramification, nor any deeper source.<br>My point of view is based instead on the idea that the evil of the jews is foremost a spiritual evil, rather than only of material evil, even if the spiritual evil can and has corrupted also the material level for the jews. And that spiritual evil wouldn't really be affected by a total eradication of the jews, since the jews would be only a visible manifestation of the deeper invisible evil, and once the jews are removed that spiritual evil will find new ways to show up its ugly face in the material realm.<br>This doesn't mean that the jews shouldn't be opposed or dominated, just to be ready to kick out and hold advantage over any and all expressions of that deeper evil, everytime it will show up, even after the jews are gone. And also if that evil will show up in some populations which aren't related to the jews.<br><br>There is actually a non spiritual way to explain what I'm thinking about, it just came to mind now, I'll propose this interpretation too.<br>Even if this materialistic downgrade of a spiritual concept lacks nuance, and should be taken only as an example, and not the entirety of the discourse.<br><br>Think about the material evil of the jews, be it of genetic origin, if you like. If you go back far in the past, where did that genetic evil come from? It came from a random mutation. Random mutations happen all the time, that randomness is what allows humanity to slowly change, and that little change when coupled with selection, is what allows more favorable human setups to advance and to allow humanity to adapt to differing conditions.<br>But that same very useful and very important randomness, is also the source of horrors, of which the jews can be said to be a great example of.<br>Do you think that randomness "decides" to affect only the jews, and no one else, ever for all eternity? Surely that randomness affects everyone, every human population. And since that randomness affects everyone, the same "errors" or material evils which made the jews what they are, could appear potentially into any other population.<br>So even after the jews would be gone forever, that randomness will still be with all of us, and eventually some other jew-like horrors will emerge into non-jewish populations, and maybe even go unnoticed for some time before being found out which could allow a new jew-like population to take stage in history. And there is nothing which can really be done about it, because any attempt to limit that randomness would result in less variability and less ability for humanity to adapt, which lack of adaptability would dangerously weaken all humanity, making humanity more vulnerable to a mass extinction event.<br><br>A similar alternative re-interpretation of the spiritual evil, could be done by using a sociologicial evil as metaphor, instead of a genetic evil.<br>Evil behaviour, corrupting the body, the body further corrupting behaviour, in a cycle of evil self-reinforcement. And that evil behavior emerging out of random minor events and accidents. So that behavioral evil could reappear anywhere into any population, anytime in the future. Where that randomness of tiny events can't be removed, lest all humanity be reduced to some gray and grotesque existence, leading to the end of all humanity.<br><br><span class="greenText">&gt;Stop. Jews first.</span><br>No objection about that, it's very clear who is running things between the nigger and the jews.<br><br><br>(I'm really writing too much, I keep going over the 4000 character limit..)</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93736"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93736">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/18/2024 (Sat) 13:05</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #ee0271">ee0271</span></span>
+  <a class="linkPreview" href="/pol/preview/93736.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93736">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93736">93736</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/62fdf1f9447f6278e1f912ba2d34f37d-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">177.32 KB</span>
+  <span class="dimensionLabel">828x922</span> <a class="originalNameLink" href="/.media/62fdf1f9447f6278e1f912ba2d34f37d-imagejpeg.jpg" download="money laundering.jpg">money laundering.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/62fdf1f9447f6278e1f912ba2d34f37d-imagejpeg.jpg" data-filewidth="828" data-fileheight="922" data-filemime="image/jpeg"><img src="/.media/t_62fdf1f9447f6278e1f912ba2d34f37d-imagejpeg" loading="lazy" width="229" height="255"></a></figure></div>
+  <div class="divMessage"><span class="greenText">&gt;You're wasting effort theorizing on what would happen after removing jews instead of HOW.</span><br>Rather I think the removal of the jews is in itself an exercise of the will to exist. And the removal of the jews can't happen without the will to exercise one own existence.<br><br>Then surely the jews try to distract, subvert, and corrupt, to divert the europeans from exercising their existence. But here too, the overcoming of the jewish deceptions, is also done as an existential exercise.<br>Because it doesn't really matter what is the nature of the existential danger, be it a frontal aggression or a indirect subversion, the application of existential exercise must face on and overcome any possible danger.<br><br>So regardless of the endgoal, be it total eradication of the jews, or just constant exercise of dominance over existential dangers, both courses of action would require and necessitate to exercise the will to live over what endangers the life of a group of people.<br><br>The road to free the european people from the jews, is in exercising dominance over the jews.<br><br>Exercising dominance over the jews. Even in the daily small things, by one own little personal effort, with or without inspiring others. Because the populations, the nations, the people, are more of an intellectual concept even if it's rooted in reality, but that reality are the single persons who are part of the group, the persons who act for more than themselves because they understand that the good of their people is their own good, nothing happens or is done without action by the single person.<br><br><br>If instead you're talking only about direct actions in the very short term, to free the european people from the jewish societal poisoning, then that's relatively simpler.<br>You only need to crash their financial system, make all their ill gotten and fake money and property, which they use as medium for their corruption, to make the whole of the kike finance be worth zero.<br>After they lose their main method to corrupt, they will be very vulnerable. <br>After they can't buy and finance the mass medias to deflect their crimes, everyone will see their evil and instinctively act against it.<br>After they can't buy the politicians, they won't be able to pass laws in their favor, and nature will run its course, including maybe even some laws directly making them pay for their responsibilities.<br>After they can't buy control of the bigger economy, they won't be able to weaponize the economy as a tool of genocide, and it'll rather be the freed economy itself to defend itself from them.<br>What is the main base of finance for the kikes right now? Mainly in usa, secondarily in china.<br>How can a financial system made of worthless printed money be crashed, as to have all the people abusing a wealth they really don't have go back to own only what they really have? You mainly obstacolate the circulation of the fake money and its usage in the commerce of real value. Either stopping the kike money from being accepted for transactions, or by directly damaging the digital system which allows non-existent money to move around the globe.<br>That, if you want an easily available and quick solution right now, even if with some major drawbacks and huge collateral damage.<br><br>The more the jews centralize all power between them, the more puppeteer strings lead to them and the more single points of failure become noticeable.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93737"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93737">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/18/2024 (Sat) 13:18</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #535851">535851</span></span>
+  <a class="linkPreview" href="/pol/preview/93737.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93737">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93737">93737</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">About the immune disorder metaphor, I think we're actually looking at the same matter, just from two different points of view, but both the goal, and the course of action, are similar.<br>You see the eradication of the jews as the only way to remove the immune disease, by mechanically removing every single virus particle.<br>I'm seeing the dominance over the jews as a way to turn the immune disease harmless, by enhancing every single cell of the body with resistance to immune diseases. (which will also make the disease disappear, since a disease can't spread where there are no infectable hosts)<br><br>What I'm sort of criticising, is that the method of mechanic removal of a disease, doesn't really improve the body, which body will still be vulnerable all the same when a new immune disorder will affect it.<br>While the method of immune enhancement to neutralize diseases, makes the body stronger, which may be of help when a new immune disease will spread and affect the same body.<br><br>But I guess, the root of the difference in views really lies in how much the jews are seen as final evils after whose eradication evil will be no more, or if the jews are seen as just one of many not unique evils which all come from a deeper non-removable-by-humans evil which will continue to generate lesser evils.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="93738"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93738">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/18/2024 (Sat) 13:40</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #3f0552">3f0552</span></span>
+  <a class="linkPreview" href="/pol/preview/93738.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93738">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93738">93738</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/5d5a46d6ba48e5ab50b20e9a80ab135d-imagepng.png">Open File</a>(<span class="sizeLabel">1.89 MB</span>
+  <span class="dimensionLabel">2154x1833</span> <a class="originalNameLink" href="/.media/5d5a46d6ba48e5ab50b20e9a80ab135d-imagepng.png" download="1714970249885917.png">1714970249885917.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/5d5a46d6ba48e5ab50b20e9a80ab135d-imagepng.png" data-filewidth="2154" data-fileheight="1833" data-filemime="image/png"><img src="/.media/t_5d5a46d6ba48e5ab50b20e9a80ab135d-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/96b21940dcf38cec8bdf43725bbd1569-imagepng.png">Open File</a>(<span class="sizeLabel">1.43 MB</span>
+  <span class="dimensionLabel">1332x954</span> <a class="originalNameLink" href="/.media/96b21940dcf38cec8bdf43725bbd1569-imagepng.png" download="1703343055482445.png">1703343055482445.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/96b21940dcf38cec8bdf43725bbd1569-imagepng.png" data-filewidth="1332" data-fileheight="954" data-filemime="image/png"><img src="/.media/t_96b21940dcf38cec8bdf43725bbd1569-imagepng" loading="lazy" width="255" height="183"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a2274ba8af422c492d7a7a3281366831-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">178.69 KB</span>
+  <span class="dimensionLabel">1024x768</span> <a class="originalNameLink" href="/.media/a2274ba8af422c492d7a7a3281366831-imagejpeg.jpg" download="1712525426074584.jpg">1712525426074584.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a2274ba8af422c492d7a7a3281366831-imagejpeg.jpg" data-filewidth="1024" data-fileheight="768" data-filemime="image/jpeg"><img src="/.media/t_a2274ba8af422c492d7a7a3281366831-imagejpeg" loading="lazy" width="255" height="191"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/0e519107bb60bf12ef4ea6eb56e12673-videowebm.webm">Open File</a>(<span class="sizeLabel">3.61 MB</span>
+  <span class="dimensionLabel">496x424</span> <a class="originalNameLink" href="/.media/0e519107bb60bf12ef4ea6eb56e12673-videowebm.webm" download="1709587920533125.webm">1709587920533125.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/0e519107bb60bf12ef4ea6eb56e12673-videowebm.webm" data-filewidth="496" data-fileheight="424" data-filemime="video/webm"><img src="/.media/t_0e519107bb60bf12ef4ea6eb56e12673-videowebm" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/d71d60c695047fad4b55c6153744c8ba-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">101.04 KB</span>
+  <span class="dimensionLabel">849x427</span> <a class="originalNameLink" href="/.media/d71d60c695047fad4b55c6153744c8ba-imagejpeg.jpg" download="tay-sachs jew curse.jpg">tay-sachs jew curse.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/d71d60c695047fad4b55c6153744c8ba-imagejpeg.jpg" data-filewidth="849" data-fileheight="427" data-filemime="image/jpeg"><img src="/.media/t_d71d60c695047fad4b55c6153744c8ba-imagejpeg" loading="lazy" width="255" height="128"></a></figure></div>
+  <div class="divMessage">Or maybe it could be a more interesting question to ask: <br>What is the evil of the Jews?<br>Where did that evil come from?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93740"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93740">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/18/2024 (Sat) 13:44</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #3f0552">3f0552</span></span>
+  <a class="linkPreview" href="/pol/preview/93740.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93740">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93740">93740</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93708.html#93735">&gt;&gt;93735</a><br><a class="quoteLink" href="/pol/res/93708.html#93736">&gt;&gt;93736</a><br><a class="quoteLink" href="/pol/res/93708.html#93737">&gt;&gt;93737</a><br><a class="quoteLink" href="/pol/res/93708.html#93738">&gt;&gt;93738</a><br>My id keeps changing for some reason, the above were all me, just to avoid confusion.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93742"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93742">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/18/2024 (Sat) 19:41</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #148da2">148da2</span></span>
+  <a class="linkPreview" href="/pol/preview/93742.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93742">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93742">93742</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93708.html#93740">&gt;&gt;93740</a><br>Arent you using mobile data or have dynamic ips or idk something with cookies</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="93754"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93754">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/19/2024 (Sun) 05:43</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #6a6e8a">6a6e8a</span></span>
+  <a class="linkPreview" href="/pol/preview/93754.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93754">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93754">93754</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/e556a68ff84c4921f13c03311e5aa439-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">6.99 MB</span>
+  <span class="dimensionLabel">2984x3712</span> <a class="originalNameLink" href="/.media/e556a68ff84c4921f13c03311e5aa439-imagejpeg.jpg" download="8cd.jpg">8cd.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/e556a68ff84c4921f13c03311e5aa439-imagejpeg.jpg" data-filewidth="2984" data-fileheight="3712" data-filemime="image/jpeg"><img src="/.media/t_e556a68ff84c4921f13c03311e5aa439-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/007ee8d20f569f0bbdce4a0ebb71ae83-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">1.36 MB</span>
+  <span class="dimensionLabel">1928x2374</span> <a class="originalNameLink" href="/.media/007ee8d20f569f0bbdce4a0ebb71ae83-imagejpeg.jpg" download="9ec9.jpg">9ec9.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/007ee8d20f569f0bbdce4a0ebb71ae83-imagejpeg.jpg" data-filewidth="1928" data-fileheight="2374" data-filemime="image/jpeg"><img src="/.media/t_007ee8d20f569f0bbdce4a0ebb71ae83-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b2ac32a54db17a3fa4c3ddac318bf8f3-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">454.03 KB</span>
+  <span class="dimensionLabel">3017x961</span> <a class="originalNameLink" href="/.media/b2ac32a54db17a3fa4c3ddac318bf8f3-imagejpeg.jpg" download="944fa3fc79b47a544ab860e0c38d0dc4d6e05db3ff13b5066828465421b21e03.jpg">944fa3fc79b47a544ab860e0c38d0dc4d6e05db3ff13b5066828465421b21e03.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b2ac32a54db17a3fa4c3ddac318bf8f3-imagejpeg.jpg" data-filewidth="3017" data-fileheight="961" data-filemime="image/jpeg"><img src="/.media/t_b2ac32a54db17a3fa4c3ddac318bf8f3-imagejpeg" loading="lazy" width="255" height="81"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93708.html#93736">&gt;&gt;93736</a><br><span class="greenText">&gt;That, if you want an easily available and quick solution right now</span><br>What you proposed, while it would work, is far from easily available or quick. It's the easier said than done scenario. Looks simple on paper but it isn't. If it is so simple, maybe you should lay out steps.<br><br>I'm not so spiritualistic. I have no desire to smoke a pipe and take the role of a Greek philosopher. I'm pragmatic.<br><br><a class="quoteLink" href="/pol/res/93708.html#93737">&gt;&gt;93737</a><br>Strengthening the immune system is best done <em>without</em> contracting HIV. Germany was mass infected with first the jewish virus and then the african and arab bacteria. You propose taking vitamin C after the fact and not before. The before is over. The virus has already taken hold.<br><a class="quoteLink" href="/pol/res/93708.html#93738">&gt;&gt;93738</a><br>Well, now. I'm 100% willing to accept that they're a rival species and not "the human race". If that Neanderkikes theory is correct, then they've been a pestilence for far too long. The problem with cells building up strength through dominance over the HIV is that the majority of strong white blood cells have already died in wars against the virus. That virus knew it's weakness and adapted to being constantly expelled from the body. We now have a general refusal of the descendants of the ones who refused to fight, which are the majority of remaining weak white blood cells.<br><br>10% remain strong. 90% are cowardly, brainwashed and apathetic. With that, HIV exerts dominance over lazy leucocytes. So you don't want an eradication but dominance. Ok, exert control by destroying the HIV Neanderkikes' financial system of influence. But again, the question remaining is HOW those scattered 10% manage it. Like grains of sand fighting against not only the ocean (of kikes and shitskins) but 90% of the remaining sand.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93755"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93755">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/19/2024 (Sun) 05:53</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #6a6e8a">6a6e8a</span></span>
+  <a class="linkPreview" href="/pol/preview/93755.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93755">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93755">93755</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">We must consider how we got here, with jews holding overwhelming influence, by looking at it through the lens of history. They were weak and dominated by generation after generation of monarchs. Always playing the court jews. Pretending to be humble. Sucking up. Kissing ass. Then assassinating monarchs. Shooting Germans in the streets. Experiencing retaliation for their vile acts. Next staying close to and literally poisoning the Fuhrer as others verbally poisoned the Allied nations.<br><br>Suppose we return to history. Monarchs rule everywhere and jews are once again subjugated. They'll only continue whispering in our ears. They may again be discovered and expelled. They'll only return. They always come back. Then we'll have fools who listen gradually, succumbing more and more. Until entire nations bend to their will. The same as it is now and was before. <strong>Hitler's only mistake was not actually gassing 6 million of the parasites.</strong> For if he did, we wouldn't be here with every one of our nations compromised, our traditions and everything our ancestors fought for flushed down the drain.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93759"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93759">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/20/2024 (Mon) 12:03</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #268adf">268adf</span></span>
+  <a class="linkPreview" href="/pol/preview/93759.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93759">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93759">93759</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93708.html#93738">&gt;&gt;93738</a>
+<br>A normal person may just find it odd how the jews seem obsessed with the idea of getting burned into ovens, until you find out the jews used to really burn kids into bull shaped ovens as human sacrifices.
+<br>It's the jews projecting their atrocities, and faulting others for what they have done. Over and over again.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93760"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93760">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/20/2024 (Mon) 18:16</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #6a6e8a">6a6e8a</span></span>
+  <a class="linkPreview" href="/pol/preview/93760.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93760">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93760">93760</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93708.html#93759">&gt;&gt;93759</a><br>Because there's no retaliation. Ever. Just a few low level jews in a synagogue if the dipshit can even figure out how to open the gate. That happened once. The moron "couldn't get it open" so he shot random passerbys. I'm just wondering when anyone besides Palestinians is ever going to effectively fight back.<br><br>One man or woman can't achieve anything as a loner without numbers behind us. We are but a grain of sand. Being aware of the general malaise of my Caucasian people is endless torment. Even our own are brainwashed against us.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93778"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93778">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/23/2024 (Thu) 16:47</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #940e7d">940e7d</span></span>
+  <a class="linkPreview" href="/pol/preview/93778.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93778">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93778">93778</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><span class="greenText">&gt;Suppose we return to history. Monarchs rule everywhere and jews are once again subjugated. They'll only continue whispering in our ears. They may again be discovered and expelled. They'll only return. They always come back. Then we'll have fools who listen gradually, succumbing more and more. Until entire nations bend to their will. The same as it is now and was before. Hitler's only mistake was not actually gassing 6 million of the parasites. For if he did, we wouldn't be here with every one of our nations compromised, our traditions and everything our ancestors fought for flushed down the drain.</span>
+<br>The old monarchs were weak, and were defeated. They didn't exercise their will to live, nor their duty to sustain and protect their own nations, so they were defeated by the always present corruption.
+<br>Same can be said about german national socialism, you can only judge the results. What lasting immunity did that short time grant the german people? Nothing. The reaction to the jewish attempt to coup germany, were only a little bump over the total submission of germany to globohomo in the following decades, as we're watching it now in the present. And likewise of all the rest of the world.
+<br>
+<br>There is no use going back, to a time before widespread corruption, if the mistakes done before aren't also corrected. Cleaning up and reinforcement can't be split apart, as alone they aren't sufficient.
+<br>
+<br>After cleaning up the damages done by the kike hold over europe, it's of most importance to reinstate the discipline of exercise, or as you summed up, everything gone wrong will just repeat itself.
+<br>
+<br>It isn't a matter of system, it's a matter of people.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93779"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93779">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/23/2024 (Thu) 16:49</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #940e7d">940e7d</span></span>
+  <a class="linkPreview" href="/pol/preview/93779.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93779">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93779">93779</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><span class="greenText">&gt;Ok, exert control by destroying the HIV Neanderkikes' financial system of influence. But again, the question remaining is HOW those scattered 10% manage it. Like grains of sand fighting against not only the ocean (of kikes and shitskins) but 90% of the remaining sand.</span>
+<br>I don't think there is any particular plan or strategy in exercising the will to live.
+<br>It's more of a placid acceptation of the flow of nature, any living being doesn't require any specific treatment or special care to keep living, as living things can manage on their own, without any special attention and help from outside them, if an organism has the capacity to live it'll manage, whatever the conditions, whatever the shocks and traumas, it'll recover, endure, and keep living on. The only thing which is needed for any being to thrive, and which should be provided or must be readily available, is nourishment, since life consumes energy and without energy it just dies.
+<br>
+<br>And I'm neither looking at this from a collectivist or popular movement point of view, so no general plan or script to give out to everyone to follow, it's all an individual matter, and the individuals will shape the group they are part of.
+<br>The individuals which have the strongest will to live, those who are best equipped, those who by pure luck obtained favorable conditions, those will survive, and bring on the next generation. The others will just have failed, and their mistake or weakness will die with them.
+<br>As brute as this may sound, to remove weakness and to let the will to live flourish this way, to just let time sort things out, until only the strong will be left, and their vitality become the vitality of all their community, this is still infinitely better than the attempt to regulate the weakness away in a silent and uncospicious manner, that constriction of collective regulation and the unavoidable falsity and unsincerity that mass regulation requires are more damaging than the benefits, and that hypocrisy of trying to paint cleanly what remains at its core something brutish rather ends up corrupting the whole process of trying to improve the life of a whole population.
+<br>That said, being upfront about wanting to live doesn't necessarily exclude cooperation, kindness, altruism, and even self-sacrifice for the good of the community. But it's necessary to be full of life first of all in oneself, to be able to restore life in others, or to lend some help to others, so care in one own will to live is essential. The common mistake and the most dangerous mistake, is to think to be alone, and to treat anyone as an enemy by default, that's a mistake, or rather a lack of judgement, some people are important to protect like your own community, some others people are outsiders and must be left on their own so long they keep their respectful distance, some others are aggressors or extensions of corruption and must be either removed or destroyed, it's important to differentiate to don't waste energy in a continuous logorating self-destructive conflictuality, as much as it's important to differentiate to give support and sanate who is weakened and infected.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93780"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93780">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/23/2024 (Thu) 16:59</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #940e7d">940e7d</span></span>
+  <a class="linkPreview" href="/pol/preview/93780.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93780">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93780">93780</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93708.html#93779">&gt;&gt;93779</a> (continuing)
+<br>There is no plan, just to stay in the midst of things, in the midst of people, in the midst of time, in the midst of the people who share your history and spirit, and to Live with great decision.
+<br>
+<br>Dominance over manipulative people, like jews and not only, is best exercised by indipendence of thought and action.
+<br>As there is nothing a manipulator hates more than being uninfluential and lacking control over others.
+<br>
+<br>So if a jew, or if a byproduct of jewish corruptive activity, tries to block your path, or tries to divert your route elsewhere, you keep moving on where you intended to go, where you decided to go by your own will and judgement of reality, and if necesary you run over anyone blocking your path, never stopping, never slowing down, you make no concessions nor put up your own decisions to a trade in exchange for some tranquillity.
+<br>Anyone giving up on asserting themselves because of the fear of getting harmed, has already lost their will to live, and with the loss of that will has also lost his future.
+<br>While it's reasonable to move with caution, being upfront in exercising the will to live doesn't exclude caution and methodology. Caution doesn't impede action, nor paralises into inaction.
+<br>
+<br>Different persons will obviously have different goals and routes they want to walk on, homogeneity is not a trait of humanity, everyone is different, some more positively others more negatively, but what matters is twofold: the awareness of being part of a community, the community one takes life from and to which one gives life back, by which community one own actions must be aligned as to avoid internal disgregation and weakening; and the will to carry on one own actions once they are determined, will to act which must be without holding back anything.
+<br>So long as many persons act with conscience and decision, their community will be full of vitality, and that vitality will further sustain those persons of action.
+<br>
+<br>What do you need to set a cycle of vitality back into motion? Nothing else but the original action directed towards vitality.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93781"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93781">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/23/2024 (Thu) 17:17</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #940e7d">940e7d</span></span>
+  <a class="linkPreview" href="/pol/preview/93781.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93781">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93781">93781</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><span class="greenText">&gt;So long as many persons act with conscience and decision, their community will be full of vitality, and that vitality will further sustain those persons of action.</span>
+<br><span class="greenText">&gt;What do you need to set a cycle of vitality back into motion? Nothing else but the original action directed towards vitality.</span>
+<br>
+<br>But I guess, in the end it's useless to even talk about this, as who has awareness will know what has to be done and won't need any long talk as explaination, and who lacks awareness won't know and no explaination made of words will gift them the piece of spirit they lack.
+<br>At best who lacks awareness can learn from an example, and that's how things are normally carried on between generations, but in the current time there may not be enough time left for that education to take place, those people who need examples will likely realize things only after everything is done, so they'll just be spectators, as much at the people who won't understand even after seeing an example.
+<br>
+<br>The exercise of existence is selfexplanatory in its action.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93782"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93782">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/23/2024 (Thu) 17:23</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #940e7d">940e7d</span></span>
+  <a class="linkPreview" href="/pol/preview/93782.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93782">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93782">93782</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">I can only maybe put this in a provocative manner, as to bring forth what is already there.
+<br>
+<br><span class="greenText">&gt;Hitler's only mistake was not actually gassing 6 million of the parasites. For if he did, we wouldn't be here with every one of our nations compromised, our traditions and everything our ancestors fought for flushed down the drain.</span>
+<br>
+<br>Focus on this part:
+<br><span class="greenText">&gt;our traditions and everything our ancestors fought for</span>
+<br>What are these traditions and things fought over by your ancestors you are talking about?
+<br>You don't need to tell me, just, in that answer lies the vitality which your ancestors passed over to you, and the vitality over which you must act, or disappear if you fail to act.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93783"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93783">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/23/2024 (Thu) 17:57</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #16046f">16046f</span></span>
+  <a class="linkPreview" href="/pol/preview/93783.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93783">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93783">93783</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93708.html#93779">&gt;&gt;93779</a><br><span class="greenText">&gt;some help to others, so care in one own will to live is essential. The common mistake and the most dangerous mistake, is to think to be alone, and to treat anyone as an enemy by default,</span><br>Tell me about that...<br>And then those same people then in cries say why they are in position they are despising those who at least a bit try altrough not speaking in movement but overall social matters to gaslight others into their own nihilism and darkness or their le heckin kool kids klub limited hangout if any at all of nazbols (pun intended)<br>Yes it is important to keep operational security and there are measures to maitain it well but its a childish nonsense to in literal sense balkanize oneself from life into slave morality <br><br><span class="greenText">&gt;so long they keep their respectful distance, some others are aggressors or extensions of corruption and must be either removed or destroyed, it's important to differentiate to don't waste energy in a continuous logorating self-destructive conflictuality, as much as it's important to differentiate to give support and sanate who is weakened and infected.</span><br>In movement hardly i saw someone keeping a distance and obeying natural law of kind with kind and only saw a narcisistic or psychopatic extensions of zog by any means to consolidate power over people to get their fix<br><span class="greenText">&gt;Its important to defferentiate</span><br>But as BO said (altrough o nsomething different) these who are those who are corrupted they wont leave you alone even if you stand a ground.<br>They even if you openly say fuck off to them wont stop and intensifiy even further at nothing until you are subjigated by them and on their mercy ie. evil <br>And i know these people too well as from close family to peers etc. i dealth, deal and will deal with that cancer and had to go trough a lot of neurological damage (yes you read well psychologicaly damaging things like stress, depression low self esteem etc. neurologicaly damage you and especially in cognitive and functioning factors)<br><br>Or even better to get safer replication of point i make<br>Go to 4chan /pol/ and dare to make a thread<br>I defenetly can say you will want to go on total hasbara death for getting it harrased, slid etc</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="93788"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93788">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/24/2024 (Fri) 08:11</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #6a6e8a">6a6e8a</span></span>
+  <a class="linkPreview" href="/pol/preview/93788.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93788">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93788">93788</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/283f0cf94fc2553c21c57e792f7ad6bd-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">56.04 KB</span>
+  <span class="dimensionLabel">500x480</span> <a class="originalNameLink" href="/.media/283f0cf94fc2553c21c57e792f7ad6bd-imagejpeg.jpg" download="1 (4).jpg">1 (4).jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/283f0cf94fc2553c21c57e792f7ad6bd-imagejpeg.jpg" data-filewidth="500" data-fileheight="480" data-filemime="image/jpeg"><img src="/.media/t_283f0cf94fc2553c21c57e792f7ad6bd-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/53535419073cb0b42c1a61796968bf75-imagepng.png">Open File</a>(<span class="sizeLabel">1.29 MB</span>
+  <span class="dimensionLabel">1600x1577</span> <a class="originalNameLink" href="/.media/53535419073cb0b42c1a61796968bf75-imagepng.png" download="Frankfurt school.png">Frankfurt school.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/53535419073cb0b42c1a61796968bf75-imagepng.png" data-filewidth="1600" data-fileheight="1577" data-filemime="image/png"><img src="/.media/t_53535419073cb0b42c1a61796968bf75-imagepng" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93708.html#93778">&gt;&gt;93778</a><br><span class="greenText">&gt;Same can be said about german national socialism, you can only judge the results. What lasting immunity did that short time grant the german people? Nothing.</span><br><strong>Watch it.</strong> You can easily catch a ban for that kind of bullshit.<br><span class="greenText">&gt;were only a little bump over the total submission of germany to globohomo in the following decades</span><br>Because kikes overwhelmed little Germany with their corruption over major empires that were <em>post monarchies</em>.<br><span class="greenText">&gt;After cleaning up the damages done by the kike hold over europe, it's of most importance to reinstate the discipline of exercise</span><br>Again, you're projecting thoughts about the future and not a solid plan to first remove kikes.<br><span class="greenText">&gt;or as you summed up, everything gone wrong will just repeat itself.</span><br>No. You suggested everything would go wrong after jews are removed. I say otherwise.<br><br><a class="quoteLink" href="/pol/res/93708.html#93779">&gt;&gt;93779</a><br><span class="greenText">&gt;I don't think there is any particular plan or strategy in exercising the will to live.</span><br>I thought your particular plan was to keep the kikes around to build up an immunity? Right?<br><span class="greenText">&gt;random philosophizing about basic survival needs boiling down to "people need nourishment"</span><br>Ok.<br><span class="greenText">&gt;it's all an individual matter, and the individuals will shape the group they are part of.</span><br>Groups have hive mentalities. The hive now, as they have been for decades, is bending over for ZOG. That's not just Germany. 14 nations of Europe have harsh penalties over rejecting the jew holocaust fraud.<br><span class="greenText">&gt;The individuals which have the strongest will to live, those who are best equipped, those who by pure luck obtained favorable conditions, those will survive, and bring on the next generation.</span><br>In a perfect world subject to Darwinism where the strong survive, yes. That is not the modern world we live in. &gt;The others will just have failed, and their mistake or weakness will die with them.<br>Wrong. This is not nature. This is modern society. The <em>weak</em> hold power and the strong are made subservient. Men have lost their roles of domination and women have gained boss bitch status. The Frankfurt school's intent to flip everything backwards has succeeded. It's unnatural.<br><span class="greenText">&gt;As brute as this may sound, to remove weakness and to let the will to live flourish this way, to just let time sort things out, until only the strong will be left,</span><br><span class="greenText">&gt;and their vitality become the vitality of all their community, this is still infinitely better</span><br>IF it worked that way. Which, thanks to decades of jewish influence for forced diversity, it hasn't.<br><span class="greenText">&gt;that hypocrisy of trying to paint cleanly what remains at its core something brutish rather ends up corrupting the whole process of trying to improve the life of a whole population.</span><br>What exactly are you referencing? This is sounding like continuous bashing of National Socialism, but I could be wrong. That's too vague.<br><span class="greenText">&gt;some others people are outsiders and must be left on their own so long they keep their respectful distance,</span><br>The brown invaders insisted upon by jews do not stay on their own nor are they respectful.<br><span class="greenText">&gt;some others are aggressors or extensions of corruption and must be either removed or destroyed,</span><br>Jews. All of them.<br><span class="greenText">&gt;it's important to differentiate to don't waste energy in a continuous logorating self-destructive conflictuality, as much as it's important to differentiate to give support and sanate who is weakened and infected.</span><br>Again: Vague. Actually refer to which outsiders you mean specifically.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="93789"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93789">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">05/24/2024 (Fri) 08:29</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #6a6e8a">6a6e8a</span></span>
+  <a class="linkPreview" href="/pol/preview/93789.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93789">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93789">93789</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/fcf432b7b35cf0fdd3a1236d32ced91d-videowebm.webm">Open File</a>(<span class="sizeLabel">23.50 MB</span>
+  <span class="dimensionLabel">1920x1080</span> <a class="originalNameLink" href="/.media/fcf432b7b35cf0fdd3a1236d32ced91d-videowebm.webm" download="Thanks-jews.webm">Thanks-jews.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/fcf432b7b35cf0fdd3a1236d32ced91d-videowebm.webm" data-filewidth="1920" data-fileheight="1080" data-filemime="video/webm"><img src="/.media/t_fcf432b7b35cf0fdd3a1236d32ced91d-videowebm" loading="lazy" width="255" height="143"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/48cc252d1215a7c53ef5a7abe51269d7-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">329.03 KB</span>
+  <span class="dimensionLabel">900x1046</span> <a class="originalNameLink" href="/.media/48cc252d1215a7c53ef5a7abe51269d7-imagejpeg.jpg" download="9.jpg">9.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/48cc252d1215a7c53ef5a7abe51269d7-imagejpeg.jpg" data-filewidth="900" data-fileheight="1046" data-filemime="image/jpeg"><img src="/.media/t_48cc252d1215a7c53ef5a7abe51269d7-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/aa830b5039e92f46fd169e7ad07e0666-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">205.25 KB</span>
+  <span class="dimensionLabel">917x997</span> <a class="originalNameLink" href="/.media/aa830b5039e92f46fd169e7ad07e0666-imagejpeg.jpg" download="21314.jpg">21314.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/aa830b5039e92f46fd169e7ad07e0666-imagejpeg.jpg" data-filewidth="917" data-fileheight="997" data-filemime="image/jpeg"><img src="/.media/t_aa830b5039e92f46fd169e7ad07e0666-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/bcd3c5f8ad193da45721d6ad6b8dbaf5-imagepng.png">Open File</a>(<span class="sizeLabel">2.41 MB</span>
+  <span class="dimensionLabel">1560x1832</span> <a class="originalNameLink" href="/.media/bcd3c5f8ad193da45721d6ad6b8dbaf5-imagepng.png" download="67876.png">67876.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/bcd3c5f8ad193da45721d6ad6b8dbaf5-imagepng.png" data-filewidth="1560" data-fileheight="1832" data-filemime="image/png"><img src="/.media/t_bcd3c5f8ad193da45721d6ad6b8dbaf5-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/14d030d4c6a51f85208eae9ddba44271-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">488.53 KB</span>
+  <span class="dimensionLabel">989x1280</span> <a class="originalNameLink" href="/.media/14d030d4c6a51f85208eae9ddba44271-imagejpeg.jpg" download="Every-Single-Aspect-of-the-Pornography-is-Jewish-1.jpg">Every-Single-Aspect-of-the-Pornography-is-Jewish-1.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/14d030d4c6a51f85208eae9ddba44271-imagejpeg.jpg" data-filewidth="989" data-fileheight="1280" data-filemime="image/jpeg"><img src="/.media/t_14d030d4c6a51f85208eae9ddba44271-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93708.html#93780">&gt;&gt;93780</a><br><span class="greenText">&gt;There is no plan, just to stay in the midst of things, in the midst of people, in the midst of time, in the midst of the people who share your history and spirit, and to Live with great decision.</span><br>I live in the midst of the wrong people. The ones who surround me on a daily basis are not <em>my people</em>. That is thanks to jews.<br><span class="greenText">&gt;Dominance over manipulative people, like jews and not only, is best exercised by indipendence of thought and action.</span><br>I already possess that. It gains me nothing but bleak awareness.<br><span class="greenText">&gt;As there is nothing a manipulator hates more than being uninfluential and lacking control over others.</span><br>If only the others were more rather than so few.<br><span class="greenText">&gt;So if a jew, or if a byproduct of jewish corruptive activity, tries to block your path, or tries to divert your route elsewhere, you keep moving on where you intended to go, where you decided to go by your own will</span><br><span class="greenText">&gt;and judgement of reality, and if necesary you run over anyone blocking your path, never stopping, never slowing down, you make no concessions nor put up your own decisions to a trade in exchange for some tranquillity.</span><br>My path continues towards death, as does us all, with no end to the jewish control over my people with the intent to replace us. Our dominance has already been replaced. Those monarchs you labeled as weak at least held control for centuries. .You criticize National Socialism for the end result. Yet what Hitler did was everything you just described. His attempt at least resulted in 12 years of solid tranquility for Germans. What tranquility do Americans and Europeans have now? Not a moment of it.<br><span class="greenText">&gt;Anyone giving up on asserting themselves because of the fear of getting harmed, has already lost their will to live, and with the loss of that will has also lost his future.</span><br>Public shooters assert themselves without the fear of being harmed. Then they're harmed. They not only frequently fail at their tasks - they strengthen worldwide Zionist control through the jewish victim complex.<br><a class="quoteLink" href="/pol/res/93708.html#93781">&gt;&gt;93781</a><br><a class="quoteLink" href="/pol/res/93708.html#93782">&gt;&gt;93782</a><br>Your continued pontificating really doesn't offer any practical solution to the above mentioned problems. I feel as if I'm typing to Socrates. Philosophizing vaguely in a roundabout way does not solve issues.<br><span class="greenText">&gt;What are these traditions and things fought over by your ancestors you are talking about?</span><br><span class="greenText">&gt;You don't need to tell me, just, in that answer lies the vitality which your ancestors passed over to you, and the vitality over which you must act, or disappear if you fail to act.</span><br>My enemies the jews have crushed those traditions and values. You only need to stop over at <a class="quoteLink" href="/endpolmeta/res/1444.html#1444">&gt;&gt;&gt;/endpolmeta/1444</a> to witness their exact psychosis.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93856"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93856">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/04/2024 (Tue) 00:23</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #301d1b">301d1b</span></span>
+  <a class="linkPreview" href="/pol/preview/93856.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93856">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93856">93856</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93708.html#93708">&gt;&gt;93708</a><br><span class="greenText">&gt;What I'm about to propose, is about what to do with the niggers and jews living outside the european lands. Should they be eradicated too, or not? </span><br>Jews have to be annihilated everywhere, domestically and to the ends of the Earth. Even assuming they hypothetically were all migrated to one containment zone on the opposite end of the planet, time and time again for millennia that they are incapable of not acting out their parasitical tapeworm nature from across the globe. They are responsible for cyber-terrorism and ransomware attacks, they conduct false flags as a regular matter, and openly engage in assassination / terror campaigns. Besides this, they control financial arms and -will- loop other countries into war with Europe even if it spells their own destruction. They have to be viewed as an alien species from a different universe, only thriving on death and evil, for that is what they are.<br><br>Mohammedians and the like were successfully beaten away by White Europeans and removed from maritime piracy very successfully for hundreds of years; they're just not really a threat when kept in their own lands and away from European and White soil. Blacks equally so just return to their traditions of eating each other and spending time in the shade, when aid is cut off-- I think the problem solves itself, except for when White territories are threatened such as Rhodesia or South Africa.<br><br>I don't view these people as an exercise in struggle to better one's blood and folk, I view them as a series of parasites damaging an otherwise glorious and healthy body.  They have to be removed, and their presence doesn't build up one's strength or character.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93857"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93857">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/04/2024 (Tue) 03:20</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #6a6e8a">6a6e8a</span></span>
+  <a class="linkPreview" href="/pol/preview/93857.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93857">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93857">93857</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b235c7c1df8f33863931f0302b03d7e1-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">152.10 KB</span>
+  <span class="dimensionLabel">480x798</span> <a class="originalNameLink" href="/.media/b235c7c1df8f33863931f0302b03d7e1-imagejpeg.jpg" download="23543.jpg">23543.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b235c7c1df8f33863931f0302b03d7e1-imagejpeg.jpg" data-filewidth="480" data-fileheight="798" data-filemime="image/jpeg"><img src="/.media/t_b235c7c1df8f33863931f0302b03d7e1-imagejpeg" loading="lazy" width="153" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93708.html#93856">&gt;&gt;93856</a><br><strong>Precisely</strong>. I only view OP's suggestion to keep jews around as a means to build up our immunity "because greater evil would show up" as a subterfuge. There is no such thing as a greater evil than jews. As you said, our white ancestors were always perfectly capable of fighting off any others. That is, until jews were thrown into the mix. Now there is influence we can't fight against. Only by freeing our own minds, not the masses. For those minds we free, the mind is often re-brainwashed in a short period of time and their opinion of the one who freed them sours.<br><br>I had a patient rant at me today about the W.H.O. and how much that org pisses him off. I said nothing. I've been at this for many years. I know to rant in the same manner would make me look as crazy to the dimwitted normie masses surrounding me. What this guy possessed was a minor awareness of the problem, believing he's onto something major, but what he lacked was an awareness of the solution. He clearly doesn't even know about kikes controlling these orgs.<br><br>Whether peaceful or violent, nothing is accomplished significantly by one-self. No lone shooter ever raised a massive revolt by picking off regular civilians, jews or not. No lone bomber ever raised a massive revolt by blowing up any populated building.<br><br>There is only one solution and many ways to accomplish it.<br><u>Numbers</u><br>Are what we need on our side. How we go about this is the difficult part. Start with 9 men and walk door to door converting people who convert those they know - for 13 years with some minor press joining us until we amass around 11 million. That's a long fucking time and none of us has the willpower or patience for it. Besides, people will sometimes turn us away or re-brainwash. Maybe even most of the time.<br>Another means is <em>artificial numbers</em>. This solution is more of a pipe dream than the first. You would need to create an android brain based exactly off of the human version. One with failsafes to prevent tampering or anyone looking into the code or the brain self-destructs. Ensure the parts are cheap enough people can pay for one the same amount as a car, with monthly payment plans. Service centers may repair any part of the android besides their brain, the operating system. The failsafes have to exist because they'll have an underlying code to <em>exterminate all jews</em> - something no brainwashed twat should discover and re-write. <strong>The masses would pay you a lot of money to mass produce domestic androids who will do their chores for them.</strong> Yes this is more far fetched. You'd either have to be a millionaire able to afford people with specific educations, or much less likely- be a lone genius capable of creating this on your own.<br>Required employees might be: neurologists and human biology majors, electrical and mechanical engineers, electricians, network architects, software engineers, app developers, UX designers, chemists, machinist mechanics, technologists, roboticists, IT specialists, scientists, programmers, hackers, computer repairers, prosthetists, craftsmen and sculptors.<br><br>I don't know exactly. I'm just spitballing here. Daydreaming. Fantasizing.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93858"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-93858">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">06/04/2024 (Tue) 03:33</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #6a6e8a">6a6e8a</span></span>
+  <a class="linkPreview" href="/pol/preview/93858.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#93858">No.</a><a class="linkQuote" href="/pol/res/93708.html#q93858">93858</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">A third more practical and modern solution would be to amass 12 individuals of varying skills to hijack the public opinion and influence the masses. Fixers. All with the same goal but capable of actions such as hijacking news satellites and hacking popular websites. You could gain numbers that way far easier than taking the route of Jehovah's witnesses.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="95099"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-95099">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">11/14/2024 (Thu) 18:38</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #e3483d">e3483d</span></span>
+  <a class="linkPreview" href="/pol/preview/95099.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#95099">No.</a><a class="linkQuote" href="/pol/res/93708.html#q95099">95099</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/342c178a4f03a357fedbef4feacf55b0-imagepng.png">Open File</a>(<span class="sizeLabel">323.18 KB</span>
+  <span class="dimensionLabel">960x1106</span> <a class="originalNameLink" href="/.media/342c178a4f03a357fedbef4feacf55b0-imagepng.png" download="1731584942687615.png">1731584942687615.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/342c178a4f03a357fedbef4feacf55b0-imagepng.png" data-filewidth="960" data-fileheight="1106" data-filemime="image/png"><img src="/.media/t_342c178a4f03a357fedbef4feacf55b0-imagepng" loading="lazy" width="221" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93708.html#93708">&gt;&gt;93708</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="96627"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93708-96627">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/17/2025 (Fri) 14:12</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #2e06dd">2e06dd</span></span>
+  <a class="linkPreview" href="/pol/preview/96627.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93708.html#96627">No.</a><a class="linkQuote" href="/pol/res/93708.html#q96627">96627</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90744.html#96567">&gt;&gt;96567</a><br>WTF are those satanists doing now, planning WW3 after the gay Olimpics ritual?<br><br><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Order_of_Nine_Angles">https://en.wikipedia.org/wiki/Order_of_Nine_Angles</a><br><a rel="nofollow" target="_blank" href="https://archive.is/8QLly">https://archive.is/8QLly</a><br><a rel="nofollow" target="_blank" href="https://pst.innomi.net/paste/wv6u3aen7xxfdwwab6tbrzrh">https://pst.innomi.net/paste/wv6u3aen7xxfdwwab6tbrzrh</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/93708.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

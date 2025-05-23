@@ -1,0 +1,408 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - Biden Administration's Weaponization of the Federal Government</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="95562">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=95562">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/95562.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="95562"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9d34d455da1761c4ab5c2362facd35ba-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">184.81 KB</span>
+  <span class="dimensionLabel">764x1024</span> <a class="originalNameLink" href="/.media/9d34d455da1761c4ab5c2362facd35ba-imagejpeg.jpg" download="1734750758850.jpg">1734750758850.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9d34d455da1761c4ab5c2362facd35ba-imagejpeg.jpg" data-filewidth="764" data-fileheight="1024" data-filemime="image/jpeg"><img src="/.media/t_9d34d455da1761c4ab5c2362facd35ba-imagejpeg" loading="lazy" width="190" height="255"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-95562">
+    <span class="labelSubject">Biden Administration's Weaponization of the Federal Government</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">12/21/2024 (Sat) 03:13</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #0ca397">0ca397</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/95562.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/95562.html#95562">No.</a>
+    <a class="linkQuote" href="/pol/res/95562.html#q95562">95562</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">Final Report:  The Biden Administration's Weaponization of the Federal Government<br><br>Released:  December 20, 2024<br><br><a rel="nofollow" target="_blank" href="https://archive.ph/bGHJY">https://archive.ph/bGHJY</a><br><br>Today, the House&nbsp;Select Subcommittee on the Weaponization of the Federal Government released its&nbsp;final 17,000-page staff report detailing the Select Subcommittee's findings about the Biden-Harris Administration's&nbsp;weaponized federal government.<br><br>Through its oversight and investigations, the Select Subcommittee found numerous instances of the&nbsp;federal government being weaponized against the Amer­ican people. For example, the Select Subcommittee:&nbsp;:&nbsp;<br><br>Highlighted censorship by Big Tech that led to Mark Zuckerberg admitting Facebook was pressured by the Biden-Harris White House to censor Amer­icans.<br><br>Empowered whistleblowers to come forward and have their voices heard despite retaliation by the Department of Justice and the FBI.&nbsp;<br><br>Protected the First Amendment, leading to the dissolution of the Global Alliance for Responsible Media (GARM) and other organizations that worked to censor Amer­icans' speech.<br><br>Revealed the weaponization of federal law enforcement against the Amer­ican people, leading to important policy changes from the&nbsp;Department of Justice and IRS.&nbsp;<br><br>Uncovered evidence that the Biden campaign coordinated with 51 former intelligence officials to interfere in the Amer­ican electoral system weeks before the 2020 presidential election by signing the statement calling Hunter Biden's laptop disinformation.&nbsp;<br><br>_</div>
+  
+  
+  <div class="labelLastEdit">Edited last time by AdolfHitler on 12/21/2024 (Sat) 04:08.</div>
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="95564"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-95562-95564">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  <span class="labelRole">Board owner</span>
+  <span class="labelCreated">12/21/2024 (Sat) 04:07</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #067e24">067e24</span></span>
+  <a class="linkPreview" href="/pol/preview/95564.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/95562.html#95564">No.</a><a class="linkQuote" href="/pol/res/95562.html#q95564">95564</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Note: I am not the OP, but OP has triggered word filters so I have to edit the post. The only edits have been fixing the filtered words.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="95565"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-95562-95565">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/21/2024 (Sat) 04:59</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #0ca397">0ca397</span></span>
+  <a class="linkPreview" href="/pol/preview/95565.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/95562.html#95565">No.</a><a class="linkQuote" href="/pol/res/95562.html#q95565">95565</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/5eca9ea4754d1e98638cd5393ddddf5d-imagegif.gif">Open File</a>(<span class="sizeLabel">227.29 KB</span>
+  <span class="dimensionLabel">220x220</span> <a class="originalNameLink" href="/.media/5eca9ea4754d1e98638cd5393ddddf5d-imagegif.gif" download="1734130309952380.gif">1734130309952380.gif</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/5eca9ea4754d1e98638cd5393ddddf5d-imagegif.gif" data-filewidth="220" data-fileheight="220" data-filemime="image/gif"><img src="/.media/t_5eca9ea4754d1e98638cd5393ddddf5d-imagegif" loading="lazy" width="255" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/95562.html#95564">&gt;&gt;95564</a><br><br>ty</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="95581"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-95562-95581">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/24/2024 (Tue) 19:24</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #11a257">11a257</span></span>
+  <a class="linkPreview" href="/pol/preview/95581.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/95562.html#95581">No.</a><a class="linkQuote" href="/pol/res/95562.html#q95581">95581</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/aea89fd624878054fedaa8697616c770-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">260.29 KB</span>
+  <span class="dimensionLabel">1080x1647</span> <a class="originalNameLink" href="/.media/aea89fd624878054fedaa8697616c770-imagejpeg.jpg" download="1735068237946.jpg">1735068237946.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/aea89fd624878054fedaa8697616c770-imagejpeg.jpg" data-filewidth="1080" data-fileheight="1647" data-filemime="image/jpeg"><img src="/.media/t_aea89fd624878054fedaa8697616c770-imagejpeg" loading="lazy" width="167" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/95562.html#95562">&gt;&gt;95562</a><br><br><br>Judiciary Report<br><br><a rel="nofollow" target="_blank" href="https://judiciary.house.gov/media/press-releases/final-report-weaponization-federal-government">https://judiciary.house.gov/media/press-releases/final-report-weaponization-federal-government</a><br><br>Final Report:&nbsp;The Weaponization of the Federal Government<br><br>WASHINGTON, D.C.&nbsp;–&nbsp;Today, the House&nbsp;Select Subcommittee on the Weaponization of the Federal Government released its&nbsp;final 17,000-page staff report detailing the Select Subcommittee's findings about the Biden-Harris Administration's&nbsp;weaponized federal government.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/95562.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

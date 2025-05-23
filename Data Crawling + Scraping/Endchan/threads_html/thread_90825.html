@@ -1,0 +1,475 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - MAYDAY! Poland Moves Troops To Belarus Border As Russia Moves Nukes To Cuba</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="90825">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=90825">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/90825.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="90825"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a944f17ddb1860c0360c0da295b09de1-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">74.53 KB</span>
+  <span class="dimensionLabel">844x886</span> <a class="originalNameLink" href="/.media/a944f17ddb1860c0360c0da295b09de1-imagejpeg.jpg" download="6262636.jpg">6262636.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a944f17ddb1860c0360c0da295b09de1-imagejpeg.jpg" data-filewidth="844" data-fileheight="886" data-filemime="image/jpeg"><img src="/.media/t_a944f17ddb1860c0360c0da295b09de1-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-90825">
+    <span class="labelSubject">MAYDAY! Poland Moves Troops To Belarus Border As Russia Moves Nukes To Cuba</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">07/26/2023 (Wed) 00:47</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #fdfb3e">fdfb3e</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/90825.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/90825.html#90825">No.</a>
+    <a class="linkQuote" href="/pol/res/90825.html#q90825">90825</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage"><span class="redText"><strong>MAYDAY! Poland Moves Troops To Belarus Border As Russia Moves Nukes To Cuba</strong></span><br><br>With every passing day, the disturbing possibility of a widening of the Ukraine war with the participation of other nations in direct military hostilities is becoming more and more palpable.<br><br>The Russian Foreign Intelligence Service (SVR) Director, Sergei Naryshkin, repeated today his warning that Poland is considering deploying troops on western Ukraine to establish control there.<br><br>The SVR head believes that Warsaw is finally coming to realize that the defeat of Ukraine is just a matter of time.<br><br>“The Polish leadership is intensifying the mindset to introduce control in the western territories of Ukraine, the western regions by deploying their troops there,” Naryshkin said at a meeting held by President Vladimir Putin with the permanent members of the Security Council.”<br><br>President Vladimir Putin instructed Naryshkin to monitor Poland’s plans for Ukraine, and said that Poland plans to form ‘a coalition under the guise of NATO’ to intervene in the conflict in Ukraine.<br><br>“As for the Polish leaders, they probably expect to form a coalition within NATO… and directly intervene in the conflict in Ukraine in order to then ‘tear off’ a fatter piece [of land] for themselves, to regain, as they believe, their historical territories – today’s Western Ukraine’, Vladimir Putin said.”<br><br>Reports in the media talk about an union between Poland, Lithuania and Ukraine, Putin added.<br><br>“There have been media reports about plans to create a certain so-called Polish-Lithuanian-Ukrainian union: that is, we are not talking about some gathering of mercenaries, there are enough of them, and they are being destroyed, namely a regular, assembled, equipped military unit that is planned to be used for actions on the territory of Ukraine, including for allegedly ensuring the security of the current Western Ukraine. And in fact, if you call things by their proper names — for the subsequent occupation of these territories,” Putin said at a meeting with permanent members of the Russian Security Council.<br><br>But the Polish territorial ambitions in Ukraine are not just a province of Russian propaganda, as many would have you think. Ex-Ukrainian president Yanukovych has also addressed this topic.<br><br>Former President Viktor Yanukovych also said that Ukraine’s statehood is under threat and it may be forced to merge with Poland. <br><br>‘No matter how painful it is for me to write about this today, but the statehood of Ukraine is in extreme danger. It is threatened with complete destruction. At the same time, we are talking not only about the risk of losing vast territories in the south and east of the country’, Yanukovych said in May 2022, adding that Ukraine ‘may be forced’ to de-facto merge with Poland.”<br><br>Belarusian defense ministry announced that Wagner mercenaries had started to train Belarusian special forces at a military range located just a few miles from the border with Poland.<br><br><a rel="nofollow" target="_blank" href="https://www.naturalnews.com/2023-07-23-poland-moves-troops-to-belarus-border.html">https://www.naturalnews.com/2023-07-23-poland-moves-troops-to-belarus-border.html</a><br><br>Meanwhile...</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="90826"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90825-90826">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/26/2023 (Wed) 00:47</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #fdfb3e">fdfb3e</span></span>
+  <a class="linkPreview" href="/pol/preview/90826.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90825.html#90826">No.</a><a class="linkQuote" href="/pol/res/90825.html#q90826">90826</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90825.html#90825">&gt;&gt;90825</a><br>Meanwhile...<br><br>The "Vice-Admiral Kulakov," an Udalay-class Destroyer of the Russian Navy has arrived in Cuba for an official visit for the first time in a long time, and there is dangerous news for the United States . . .<br><br>Shortly before the Russian navy warship arrived, talks were held between the leaders of Cuba and Russia and their defense ministries. The result is statements to strengthen not only economic cooperation, but also military-technical cooperation.<br><br>According to American military experts, this could mean the return of Russia to Cuba with all the resulting consequences: the deployment of Russian troops and long-range missiles.<br><br>This will be a decisive Russian response to the threats posed by the expansion of NATO's presence in Northern Europe and Japan.<br><br>Readers should note that back in 1962, the then-Soviet Union placed Medium Range and Intermediate Range nuclear missiles in Cuba with a five minute flight time to Washington, DC.  This resulted in the "Cuban Missile Crisis" wherein then U.S. President John F. Kennedy, imposed a naval blockade of Cuba and began massing U.S. troops in Florida for an invasion of Cuba to destroy those missiles.<br><br>For the 13 days when the crisis erupted, the world stood on the precipice of actual nuclear war.<br><br>Same type of crisis as in 1962, only this time, it was the US and NATO that started it by trying to bring Ukraine into NATO, so as to put US nukes in Ukraine.<br><br><a rel="nofollow" target="_blank" href="https://halturnerradioshow.com/index.php/en/news-page/world/breaking-news-cuba-announces-it-is-ready-to-accept-russian-missiles-again-as-russian-navy-arrives-90-miles-from-u-s-coast">https://halturnerradioshow.com/index.php/en/news-page/world/breaking-news-cuba-announces-it-is-ready-to-accept-russian-missiles-again-as-russian-navy-arrives-90-miles-from-u-s-coast</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90827"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90825-90827">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/26/2023 (Wed) 00:48</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #fdfb3e">fdfb3e</span></span>
+  <a class="linkPreview" href="/pol/preview/90827.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90825.html#90827">No.</a><a class="linkQuote" href="/pol/res/90825.html#q90827">90827</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><strong>MY COMMENT ABOUT THE OP PIC:</strong> By the way, as funny as that meme is that I found passing around the internet, let me be very clear to the delusional state-run corporate media: THERE IS NO "LIMITED" NUCLEAR WAR. If one nuke goes off, all the rest will as well! There is no nation currently that I know of willing to be nuked and not allow their nukes to be used in retaliation - <em>lest that nation wants to be defeated by adversaries!</em> All major cities and surrounding areas would be destroyed! Tons of farmland would be ruined by fallout radiation! Everything from grass, wildlife and even humans would face unprecedented extinction! The nukes many nations have today are up to 200 times the yield from what the US used on Japan in WWII! You think it's just cities being leveled this time around? THINK AGAIN! Cities, suburbs out to the exurbs would be wiped out completely leaving only farmland that would be poisoned for decades to come! That means 90 percent, at least, global human fatality within one year in the aftermath! And all those oligarchs hiding themselves away in their military bunkers? Good luck re-building a poisoned planet all by yourselves after a year of global nuclear winter! Hint: you won't! You are so spoiled pampered like a bunch of babies you'd end up killing yourselves when you run out of supplies in your underground bunkers, and that goes for many others as well!</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="91862"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90825-91862">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/09/2023 (Sat) 07:27</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #bcd31f">bcd31f</span></span>
+  <a class="linkPreview" href="/pol/preview/91862.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90825.html#91862">No.</a><a class="linkQuote" href="/pol/res/90825.html#q91862">91862</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/3bcfc32448af268153e09f8f59d15dfb-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">131.64 KB</span>
+  <span class="dimensionLabel">995x1645</span> <a class="originalNameLink" href="/.media/3bcfc32448af268153e09f8f59d15dfb-imagejpeg.jpg" download="pedo 2.jpg">pedo 2.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/3bcfc32448af268153e09f8f59d15dfb-imagejpeg.jpg" data-filewidth="995" data-fileheight="1645" data-filemime="image/jpeg"><img src="/.media/t_3bcfc32448af268153e09f8f59d15dfb-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/ff5ee0f4a29af96338cb054e7c9ebf5d-imagepng.png">Open File</a>(<span class="sizeLabel">208.07 KB</span>
+  <span class="dimensionLabel">1920x1008</span> <a class="originalNameLink" href="/.media/ff5ee0f4a29af96338cb054e7c9ebf5d-imagepng.png" download="violence 2.png">violence 2.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/ff5ee0f4a29af96338cb054e7c9ebf5d-imagepng.png" data-filewidth="1920" data-fileheight="1008" data-filemime="image/png"><img src="/.media/t_ff5ee0f4a29af96338cb054e7c9ebf5d-imagepng" loading="lazy" width="255" height="134"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/8f751904b2cb41bb37e882946411bfa6-imagepng.png">Open File</a>(<span class="sizeLabel">386.38 KB</span>
+  <span class="dimensionLabel">1920x1008</span> <a class="originalNameLink" href="/.media/8f751904b2cb41bb37e882946411bfa6-imagepng.png" download="violence 4.png">violence 4.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/8f751904b2cb41bb37e882946411bfa6-imagepng.png" data-filewidth="1920" data-fileheight="1008" data-filemime="image/png"><img src="/.media/t_8f751904b2cb41bb37e882946411bfa6-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6703091e398a626fd7c711929d4d2305-imagepng.png">Open File</a>(<span class="sizeLabel">409.98 KB</span>
+  <span class="dimensionLabel">1920x747</span> <a class="originalNameLink" href="/.media/6703091e398a626fd7c711929d4d2305-imagepng.png" download="woke.png">woke.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6703091e398a626fd7c711929d4d2305-imagepng.png" data-filewidth="1920" data-fileheight="747" data-filemime="image/png"><img src="/.media/t_6703091e398a626fd7c711929d4d2305-imagepng" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90825.html#90825">&gt;&gt;90825</a><br>The real enemy we're seeing right now is Russia. They're wolves in sheep's clothing, LARPing as conservatives while hiding their true judeo-bolshevik personality. We can't forget 1917.<br><br>And it seems like Moscow's on it again. We're living in 1963 cubed. Down with communists, capitalism wins again.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91866"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90825-91866">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/09/2023 (Sat) 14:47</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #f48d5b">f48d5b</span></span>
+  <a class="linkPreview" href="/pol/preview/91866.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90825.html#91866">No.</a><a class="linkQuote" href="/pol/res/90825.html#q91866">91866</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a1e938e84770def7d604586545639c6f-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">83.90 KB</span>
+  <span class="dimensionLabel">837x510</span> <a class="originalNameLink" href="/.media/a1e938e84770def7d604586545639c6f-imagejpeg.jpg" download="2014 Times of Pissrael.jpg">2014 Times of Pissrael.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a1e938e84770def7d604586545639c6f-imagejpeg.jpg" data-filewidth="837" data-fileheight="510" data-filemime="image/jpeg"><img src="/.media/t_a1e938e84770def7d604586545639c6f-imagejpeg" loading="lazy" width="255" height="155"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90825.html#91862">&gt;&gt;91862</a><br>Indeed. What is actually the plan is the following because I've seen right through it:<br>Israelis continue to massacre Palestinians in the hopes world hatred against jews for doing this dies down (hopefully it won't).<br>Their plan B because they're such massive failures is the evacuation of jews to the Ukraine. This is why U.S. Government is pushing so hard to add Ukraine funding of billions worth of taxpayer money along with the billions more proposed for Israel. Instead of being surrounded by the very Arabs they're pissing the fuck off right now, they would be surrounded by Russia, Belarus, Poland, Slovakia, Hungary, Romania, Moldava and the Black Sea.<br><br>Which means the following nations they've been agitating and attacking would not be able to reach them under the protection of Vladimir Jewtin: Egypt, Syria, Iraq, Iran and Turkey. (Don't forget the sheer size of Muslim Arabs and niggers from Libya and the Sudan) Kikes, as always, have been plotting from their sheer paranoia of being eliminated.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92316"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90825-92316">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/24/2024 (Wed) 18:34</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7b5891">7b5891</span></span>
+  <a class="linkPreview" href="/pol/preview/92316.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90825.html#92316">No.</a><a class="linkQuote" href="/pol/res/90825.html#q92316">92316</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90825.html#91862">&gt;&gt;91862</a><br>Wish more people were aware of (((Leftypol))), soy-filled goylems, it's sad really. What do they get out of it?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/90825.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

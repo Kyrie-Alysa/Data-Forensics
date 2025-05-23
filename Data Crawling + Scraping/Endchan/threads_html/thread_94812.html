@@ -1,0 +1,663 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - Canada is a woke hell-hole</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="94812">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=94812">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/94812.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="94812"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/0f6a381d79c8ceaef3bb771203ff0d3d-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">4.93 KB</span>
+  <span class="dimensionLabel">225x225</span> <a class="originalNameLink" href="/.media/0f6a381d79c8ceaef3bb771203ff0d3d-imagejpeg.jpg" download="baron_cohen.jpg">baron_cohen.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/0f6a381d79c8ceaef3bb771203ff0d3d-imagejpeg.jpg" data-filewidth="225" data-fileheight="225" data-filemime="image/jpeg"><img src="/.media/0f6a381d79c8ceaef3bb771203ff0d3d-imagejpeg.jpg" loading="lazy"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-94812">
+    <span class="labelSubject">Canada is a woke hell-hole</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">09/28/2024 (Sat) 19:41</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #173cd0">173cd0</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/94812.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/94812.html#94812">No.</a>
+    <a class="linkQuote" href="/pol/res/94812.html#q94812">94812</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">(1/2) I have a shocking true story to share with you, brethren. It is the story of the woke takeover of Canada, and how I, a healthy and intelligent white male, became a victim of its life-hating chokehold on the country.<br><br>A bit of background info about myself: I come from a stable middle-class background, was intellectually precocious, skipped a grade, excelled academically, fairly attractive but socially introverted, decent build, moderately athletic. Got into a decent university and performed well but was struck by the poor quality of the education. Shortly before I'm about to graduate I have a sudden and profound dissociative episode severe enough to be comparable to an MKUltra mind-wipe. I'm talking no memory, no awareness of space or time, no ego functioning whatsoever. After some unspecified period of time I manage to re-integrate my psyche and naturally become suspicious of my family with whom I was living. I press them about the issue but am met with evasive or defensive responses. Eventually our arguments come to a head and I agree to go to the emergency room, where I am assessed by several doctors who immediately certify me (i.e. involuntarily commit me) under our mental health act laws with an initial diagnosis of unspecified psychosis due to suspicion. One of the doctors is even bold enough to mock me, saying "You don't think there's a conspiracy against you, do you?", knowing that I can't protest. I have no choice but to comply, and after the initial shock wears off I realize the only course of action is to be as sane, polite, reasonable and compliant as possible in the hopes that someone responsible will notice the glaring incommensurability of the situation. As I sit on the psych ward, nurses and patients do eventually notice and begin commenting, with some nurses even approaching me directly with hushed inquiries as to why I'm there and offering advice for proceeding with legal appeals. <br><br>In my interviews with the psychiatrist I'm asked about my experience at university, and I respond honestly (for some reason) that I thought the standards were low and many of the students present didn't seem like they should be there if they were struggling with what to me seemed like basic material. At this point the psychiatrist tells me that modern universities "cater to all skill levels" and that it is not appropriate to have a large ego. After about a week on the ward I am discharged as an involuntary patient, meaning I am not confined but am compelled to show up for regular appointments and must take my medication (an antipsychotic). I get a full-time filler job (during Covid) while taking these medications and function normally. Obviously dissatisfied with my situation, I continue to argue with my family who I have been stuck with due to the pandemic. Eventually our arguments reach a peak and we agree to go to a different hospital with a better reputation. A similar series of events occurs there, and after two weeks on a ward my diagnosis is upgraded to full-blown paranoid schizophrenia. When I protest that I don't even meet the DSM criteria, I am politely informed that strict adherence to those guidelines is unnecessary and can be overridden by the clinician's subjective judgment. I am then discharged as an involuntary patient in the community and am forced to show up for regular antipsychotic injections. I decide to go back to school for a more advanced degree, which I complete with little stress and while living independently (as a diagnosed schizophrenic (!)). I eventually manage to convince the new doctor I have been transferred to that I am not actually crazy, and he agrees to slowly taper me off the medication while observing me. He then finally discharges me completely from any involuntary treatment and his care. I immediately discontinue the medication to no effects other than losing ~45 pounds within a month and feeling my mental vigor and clarity return.</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="94813"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94812-94813">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/28/2024 (Sat) 19:41</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #173cd0">173cd0</span></span>
+  <a class="linkPreview" href="/pol/preview/94813.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94812.html#94813">No.</a><a class="linkQuote" href="/pol/res/94812.html#q94813">94813</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">(2/2) My next step is naturally to try and press a malpractice suit, however after contacting several lawyers it becomes clear this will not be a viable course of action due to legal technicalities. One of the lawyers even seems to have some surprising foreknowledge of me, admitting resignedly that "I've been wronged" but that there's nothing he can do about it. <br><br>Still unsatisfied with the proceeding, I continue to pester my family about the issue while retaining some ambivalence about their role in the affair. They suggest that I talk with a family friend (a police officer), suggesting he may have some useful insight into my situation derived from his wide experience. During my conversation with this fellow I am informed that it is "impossible" that my experience could have been caused by a drugging or traumatic event, and must be a mental health issue. I am then asked about what I think when I see homeless people, drug addicts, etc. on the street. "You ask yourself, 'why would someone do that'"? he asks me in reference to their self-destructive behaviour. I agree but add that it's likely attributable to early adversity in life or somesuch. I'm then told that I shouldn't be so judgmental and should focus less on ego-based analytical reasoning and more on looking at the bigger picture. He goes on describe how even police officers he works with have struggles, "everybody has a struggle" and how nobody "gets a free pass". When I mention my indignation at having my autonomy violated, he responds by describing how, as a police officer, if he ever has to deal with uncooperative personalities, they have the power (emphasis) to simply boot them out unceremoniously or abuse them without regard for their legal rights or personal dignity. <br><br>Further interactions with my family make it clear what has actually happened: at a dinner with my father and uncle, I make a tangential reference to government brainwashing programs. My uncle then responds with "Like MKUltra?" while closely scanning my expression for any sign of understanding (I am still playing dumb here to gather information and fly under the radar). At another encounter he tells me bluntly that "they (meaning the system presumably) don't want white conservative men in positions of power making decisions" and implies that I should leave.<br><br>To summarize, the moral of the story is this: the progressive program that has taken hold of Canada (and many other Anglophone countries) is so committed to destroying strong, willful, intelligent, health-minded white males that they will literally employ their own family members to torture and brainwash them. The system is fully compromised. They want to totally annihilate any natural differences between individuals, the sexes, races, etc. so as to create a society of ego-less homogenized drones that are incapable of rational, independent thought.<br> <br>This is honestly a true story, and if any of you have any more questions feel free to ask. By the way this entire ordeal from the initial mind-wipe to the present date was 6 years. Holy hell how horrible is that.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94814"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94812-94814">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/28/2024 (Sat) 19:45</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #173cd0">173cd0</span></span>
+  <a class="linkPreview" href="/pol/preview/94814.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94812.html#94814">No.</a><a class="linkQuote" href="/pol/res/94812.html#q94814">94814</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">I should also add that this was posted to several other boards and was 404'd within like 10 hours so I may be fucked.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94816"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94812-94816">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/29/2024 (Sun) 03:15</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #1f3e03">1f3e03</span></span>
+  <a class="linkPreview" href="/pol/preview/94816.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94812.html#94816">No.</a><a class="linkQuote" href="/pol/res/94812.html#q94816">94816</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Yeah OP, this thread will not be wiped on this board. It's exactly the kind of exposing kikery we should see more of. Of course also planning how to stop it. We need more of that. I miss the old days when I was only aware of Sweden being terribly cucked and pathetic. That virus has spread everywhere by now.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94817"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94812-94817">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/29/2024 (Sun) 03:32</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #173cd0">173cd0</span></span>
+  <a class="linkPreview" href="/pol/preview/94817.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94812.html#94817">No.</a><a class="linkQuote" href="/pol/res/94812.html#q94817">94817</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94812.html#94816">&gt;&gt;94816</a><br>It's insane. One of the replies in one of the now deleted threads, in response to this line "To summarize, the moral of the story is this: the progressive program that has taken hold of Canada (and many other Anglophone countries) is so committed to destroying strong, willful, intelligent, health-minded white males that they will literally employ their own family members to torture and brainwash them. The system is fully compromised. They want to totally annihilate any natural differences between individuals, the sexes, races, etc. so as to create a society of ego-less homogenized drones that are incapable of rational, independent thought." was something like "Yeah that's exactly what's happening, but you're not going to be a whistleblower or you'll end up somewhere that'll make a psych ward look like an amusement park". I don't know if feds actually browse 4chan, it seemed unusually direct and un-troll-like.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94818"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94812-94818">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/29/2024 (Sun) 03:32</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #173cd0">173cd0</span></span>
+  <a class="linkPreview" href="/pol/preview/94818.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94812.html#94818">No.</a><a class="linkQuote" href="/pol/res/94812.html#q94818">94818</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94812.html#94816">&gt;&gt;94816</a><br>But yeah this whole program is just so disgusting and life hating. It won't even work - humanity needs strong individuals to thrive, not mindless slaves.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94819"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94812-94819">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/29/2024 (Sun) 03:37</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #173cd0">173cd0</span></span>
+  <a class="linkPreview" href="/pol/preview/94819.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94812.html#94819">No.</a><a class="linkQuote" href="/pol/res/94812.html#q94819">94819</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94812.html#94816">&gt;&gt;94816</a><br>Do you know any other forums where people discuss this kind of thing?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94823"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94812-94823">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/6433b13686a4fb1eb8d2034d" title="Gaddafi Loyalist">
+  
+  <span class="labelCreated">09/29/2024 (Sun) 17:46</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #03706c">03706c</span></span>
+  <a class="linkPreview" href="/pol/preview/94823.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94812.html#94823">No.</a><a class="linkQuote" href="/pol/res/94812.html#q94823">94823</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94812.html#94812">&gt;&gt;94812</a><br>I dont know but as i read the OP i think you got mocked by system for noticing that its not working and how you basically are burned out from it like ted katczinsky said in his wisdom<br><br>Also you made a severe mistake to go to psychiatrist as they will give you meds ALWAYS because in todays srandarts it is viewed as pathological phenomena if you dont react positivley on the enviroment you are forced in<br>t. Someone who had to suffer a large amount of xanax almost because i got tired of very stresfull enviroment i had to work in</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94824"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94812-94824">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/6433b13686a4fb1eb8d2034d" title="Gaddafi Loyalist">
+  
+  <span class="labelCreated">09/29/2024 (Sun) 17:54</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #03706c">03706c</span></span>
+  <a class="linkPreview" href="/pol/preview/94824.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94812.html#94824">No.</a><a class="linkQuote" href="/pol/res/94812.html#q94824">94824</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94812.html#94823">&gt;&gt;94823</a><br>And yes leaf OP i said simmilar topic as you except of the fact you did not started to argue with doctor until thrown out of ambulance on<br><span class="greenText">&gt;And how about instead of victim blaming and gaslighting with bullshit you go and actually fix the issue</span></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94825"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94812-94825">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/6433b13686a4fb1eb8d2034d" title="Gaddafi Loyalist">
+  
+  <span class="labelCreated">09/29/2024 (Sun) 17:58</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #03706c">03706c</span></span>
+  <a class="linkPreview" href="/pol/preview/94825.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94812.html#94825">No.</a><a class="linkQuote" href="/pol/res/94812.html#q94825">94825</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94812.html#94819">&gt;&gt;94819</a><br><span class="greenText">&gt;Other forums</span><br>Whew thats difficult to tell...<br>16chan likes such paragraph threads but they rather prefer arguing with each other on how to commit to action <br>Worldtruth.mx (now truthpodium.org ) is on other hand a facebook clone but its filled with infighting CIs on whos version of his favourite cherry pick of other version of cherry pick is true scotsmen<br>I dont recommend 4chan for reasons of that you will get same treatment as in psych. Clinic<br><br><br>Depends on you from 2 choices above</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94828"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94812-94828">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/30/2024 (Mon) 02:52</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #1f3e03">1f3e03</span></span>
+  <a class="linkPreview" href="/pol/preview/94828.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94812.html#94828">No.</a><a class="linkQuote" href="/pol/res/94812.html#q94828">94828</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/53535419073cb0b42c1a61796968bf75-imagepng.png">Open File</a>(<span class="sizeLabel">1.29 MB</span>
+  <span class="dimensionLabel">1600x1577</span> <a class="originalNameLink" href="/.media/53535419073cb0b42c1a61796968bf75-imagepng.png" download="Frankfurt school.png">Frankfurt school.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/53535419073cb0b42c1a61796968bf75-imagepng.png" data-filewidth="1600" data-fileheight="1577" data-filemime="image/png"><img src="/.media/t_53535419073cb0b42c1a61796968bf75-imagepng" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94812.html#94819">&gt;&gt;94819</a><br>I think what our friend above is trying to say is, no, there's likely not another place to discuss this. Though if you do find one, we need more traffic here. A whole lot of jew visitors trying to spread the very same anti-white hate are banned from this board. On purpose. I do the banning.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94834"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94812-94834">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/01/2024 (Tue) 12:29</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #5a8b9d">5a8b9d</span></span>
+  <a class="linkPreview" href="/pol/preview/94834.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94812.html#94834">No.</a><a class="linkQuote" href="/pol/res/94812.html#q94834">94834</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Sup op. The psych industry is coercive and extremely ineffective/blinkered and everybody knows that. It's like this across the western world. I don't care much about the politics here, because this isn't really political and how things are done everywhere, but I can tell you what to do to possibly restore your brain functioning from damage.<br><br>If your problem is brain damage from psychosis:  Take Dihexa on and off for several months with copious adjacent anticancer agents like methylene blue, gotu kola, tumeric etc. Go to hyperbaric oxygen therapy, which while expensive will stimulate stem cell release and  circulate bloodflow to damaged brain regions. Take bdnf agonists like semax as a nasal spray or 7,8 dhf. Take ngf sources such as lion's mane in concentrate. Take the fundamentals of cellular repair such as omega-3,good protein intake, possibly uridine, a good multivitamin to avoid deficiencies etc. Start working out and take workout supplements designed to raise growth hormone, arginine for example. PQQ will increase the circulating number of mitochondria which is another keystone.  Since Psychosis is damaging to the brain, within about a year or less you'll start to show signs of good recovery if this is your underlying problem. <br><br>The other possibilities are it's a neurotransmitter issue, or even an allergy. Anti-inflammatories such as ibuprofen and antihistamines can help. Neurotransmitter stuff is more complicated... if you are getting paranoid it is probably a sign of excess dopamine converting into norepinephrine. If you are getting intense mental imagery it is related to serotonin. Generally speaking your mind should compensate with time, but you want to reduce the firing of these circuits. Take magnesium threonate to cause more blocking action, and anxiolytic gaba raising compounds such as gotu kola etc to lower this activity. From my experience with time your brain does recover if you are very gentle and do not press it into a fast neurotransmitter recovery.<br><br>The meds are all bad for you and can cause something called supersensitivity psychosis as the brain upregulates dopamine levels. There's also a thing where dopamine blockage may pave the way for glutamate excitotoxicity. Whatever you do don't taper quickly since that will totally fuck you on the rebound. Try to convince the docs over time that you need a lower dose. You may eventually be able to recover in a real way and then you can flee to alberta where you have the option to reject meds if you can demonstrate real sanity without.<br><br>For you however, your younger age may represent the real neurodevelopmental onset of schizoprhenia. That's more of a lifelong problem whereas psychosis by accident may be more of a freak accident causing onset through brain damage. True schizos seem to be allergy/infection related. For example toxoplasmosis can be an issue, or wheat allergies, or various other antibodies causing chronic autoimmune issues might be part of it as well. For that you might want to consider metal and toxin chelation of the brain... for example cutler's ALA program for mercury, supplement store detox options, zeolite, NAC, black seed oil for toxoplasmosis, things of that sort</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94835"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94812-94835">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/01/2024 (Tue) 12:36</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #5a8b9d">5a8b9d</span></span>
+  <a class="linkPreview" href="/pol/preview/94835.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94812.html#94835">No.</a><a class="linkQuote" href="/pol/res/94812.html#q94835">94835</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Oh, and now that I've fully read your op I can say this. Psychosis/schizo is a highly over-diagnosed condition and a basket label they put on a variety of conditions not understood. It is very easy to fall into that position and get stuck there since the psychs have total power while also not trusting patients. Because of the power of psych diagnosis it has been used to shut up dissidents in dictatorships before. <br><br>Don't talk to your parents about any of your experiences or give them anything to work with. These people will totally fuck you, since anything they repeat to the doc can get you committed and average people have no idea what the system is actually like, or how ineffective it is</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94836"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94812-94836">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/01/2024 (Tue) 12:55</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #173cd0">173cd0</span></span>
+  <a class="linkPreview" href="/pol/preview/94836.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94812.html#94836">No.</a><a class="linkQuote" href="/pol/res/94812.html#q94836">94836</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94812.html#94835">&gt;&gt;94835</a><br>Yeah the Soviets were infamous for using psychiatry to suppress dissidents and non-conformists. I think they literally classified "free thought" and "questing for truth and justice" as mental disorders at one point.<br><br>I don't think I actually have brain damage btw (because I was never actually psychotic) but I appreciate your in-depth advice. I honestly think I was drugged/brainwashed/tortured/raped and this was just a cover up.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/94812.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

@@ -1,0 +1,750 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - 1987 Interview with General Otto Ernst Remer</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="92142">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=92142">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/92142.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="92142"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a6452bc3267fe047d0869f6381d73c2d-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">168.45 KB</span>
+  <span class="dimensionLabel">1890x995</span> <a class="originalNameLink" href="/.media/a6452bc3267fe047d0869f6381d73c2d-imagejpeg.jpg" download="Otto Remer.jpg">Otto Remer.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a6452bc3267fe047d0869f6381d73c2d-imagejpeg.jpg" data-filewidth="1890" data-fileheight="995" data-filemime="image/jpeg"><img src="/.media/t_a6452bc3267fe047d0869f6381d73c2d-imagejpeg" loading="lazy" width="255" height="134"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-92142">
+    <span class="labelSubject">1987 Interview with General Otto Ernst Remer</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">01/06/2024 (Sat) 13:04</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #ecb5d6">ecb5d6</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/92142.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/92142.html#92142">No.</a>
+    <a class="linkQuote" href="/pol/res/92142.html#q92142">92142</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage"><strong>General, could I ask you to speak about what interested you to enlist in the army?</strong><br>Otto: Yes, I came from a patriotic family, whom were always greatful for the fatherland and all that our nation provided. Germany in the 20s was in turmoil, as I am sure you know the Communists and their allies were trying very hard to gain power over the German people. The National Socialists were fighting to keep Germany German. I could see early on that Hitler would carry the day, as most Germans viewed the Communist’s as a foreign, ungodly idea, and Moscow as the leader seeking to take away our national identity. By 1930, it appeared to me that the military would be a good career, as I gambled that if Hitler ended up elected he would make good on his promise to repel Versailles. That meant the army no longer would be forced to limit its size to one hundred thousand. I went to take my entrance exam and due to my schooling, I was accepted as an officer candidate. After completing training in 1932, I was an officer in the German army and never looked back.<br><br><strong>You were in the war from the very beginning, what was it like?</strong><br>Otto: Yes, my regiment was sent east during the Polish crisis, we knew something was brewing, as news about Polish attacks on border farms was weekly it seemed. We knew the Führer could not ignore what was happening, so the only logical response was militarily. Deep down we hated this, as Germany was a nation of peace under National Socialism, our leader only wanted a return of the lands taken by the Allies, which was all. They bear responsibility for starting the second war, they (England) pushed Poland to refuse any offers that we made, and in the meantime, Polish nationalists and criminals were attacking German farmers and stealing what they could take with them, sometimes killing them. So on 1 September we attacked Poland and I remember being welcomed by the cheering civilians in every town we entered, they felt as if they were being liberated from an oppressive master. On 3 September, we received the news that the Allies declared war on us, this was not a good thing, but at the same time, we felt it was our duty to just as in the first war. Therefore, into the great unknown we went. As we moved further into Poland, combat became more frequent, the Polish army was well trained and supplied. It took the Luftwaffe’s help to break open many stubborn fronts; the Polish soldier was defending his home so he fought very hard. We suffered heavy causalities due to this, but once the Poles broke, they ran away and became prisoners.<br><br>Authors have asked me about war crimes and I can confirm that I sadly saw evidence of Polish soldiers and militia kill German civilians whose only crime was being left behind when the Allies took land away from the Reich. We entered into a small farming hamlet, the name I can no longer remember, in which Germans were found shot. There was such a feeling of disgust and anger that they would do this to innocent people. These stories are long forgotten today, our enemies want you to believe it was we, the Wehrmacht, who killed innocent Poles as we hated Slavs and looked upon them as vermin. The many millions who helped us or the thousands who volunteered in the Wehrmacht, and died for Europe would disagree. The east front was the hardest, it was a cruel place and the Soviet soldier was taught to be hard and cruel to the fascist invader. Many villages we came across had inhabitants that had been terrorized by their own soldiers. It was very strange. Soldiers are there to protect what is behind them, but in Russia, if the population did not retreat they became an enemy to the state. I have learned that those who were left behind and did not retreat with us were arrested and many killed; Russia then blames their deaths on us as part of some made up lebensraum plan. Saying we killed these people to make room for German settlers. Their claim of 30 million dead is absurd. [continued]</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="92143"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-92143">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/06/2024 (Sat) 13:06</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #ecb5d6">ecb5d6</span></span>
+  <a class="linkPreview" href="/pol/preview/92143.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#92143">No.</a><a class="linkQuote" href="/pol/res/92142.html#q92143">92143</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><strong>Do you know anything about Gleiwitz? It is understood that the SS staged the attack for Hitler so that the war looked legal.</strong><br>Otto: This is where history gets interesting, and someday the documents or testimonies may be found that contradict the allied version of events. To preface my thoughts on the matter, I will say that I lived during this time and heard of the events real time. I had many walks with the Führer while I commanded his bodyguard. He was very open and honest regarding the war; he did not want to fight. I know the war was started by England and America, who helped pull the strings. I know first-hand that Polish militia or criminals, were crossing our border to steal, rob, and in a few cases kill citizens. This is a fact that has slowly been attacked and driven underground by the victors where today it is called “Nazi propaganda”. The books that are available today that discuss Gleiwitz are using the same sources, mainly just tribunal evidence of so and so who “gave sworn testimony.” There is no real evidence. If that is the entire legal basis that this allied “fact” is judged by, then it is amazing people actually believe anything the Allies say. Their claim is that Hitler really wanted to attack Poland so he could steal land and do away with the sub human Slavs. To do this he knew the smart German people would have to be fooled, so he cooks up this plan to have inmates dressed as Poles get shot, SS men yelling angry tirades against Germany, posing as Poles, and then Germany in righteous indignation attacks the poor peace loving nation who was only trying to stave off a madman.<br><br>You have to believe it was a huge conspiracy from the top down to plan and execute this, you have the SS man giving a statement, and you have the Poles saying they would never have done this to Germany. Yet, when we accuse the Allies of conspiracies, they say we are crazy and just evil. What hypocrisy. I believe how it happened was this: Polish insurgents, wanting to fan the flames of war, and emboldened by British promises of help if we attacked, struck an easy target. Naujocks suffered the fate so many SS men did at the hands of his captors, sign a confession and maybe go home, or you and your family die. I spoke to Peiper who relayed his experience with this many years ago before he was murdered. Germany already had instances of Poles attacking our citizens, ignored today, so it is not out of the realm of possibility that they would attack Gleiwitz, since our police could never catch them in the past. It would have been very easy to sneak across the border, and get back quickly. I look at it as a partisan attack, not a government sanctioned event. Germany was trying to work out a peaceful solution with Poland, and I hope in the future more information, which the victors control, will become known on this issue.<br><br><strong>Do you believe that Germany committed atrocities in Poland?</strong><br>Otto: No, I do not. One man’s atrocity is another man’s reprisal. I have said for every action, there was a reaction. The story goes that we hated the Poles so much that we invaded their peaceful nation, enslaved them to work, and killed them on an industrial scale when they gave us problems. Many German soldiers and their Polish friend’s would disagree, as well as the many Polish people who served in the Wehrmacht or other capacities. There were incidences where a few overzealous Polish soldiers or civilians were hung for crimes against us, but for the most part, we got along very well with the Polish people. If they broke the laws that we enforced, like stealing, murder, assault, and fraud they went to prison camps, just like in any other country.  I only saw evidence of Polish atrocities not German ones. I know a couple of Generals protested once seeing civilians executed, but I am skeptical as they thumped their chest after the war, I assume to impress upon the victors that they really did not believe in or follow Hitler. [continued]</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92144"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-92144">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/06/2024 (Sat) 13:08</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #ecb5d6">ecb5d6</span></span>
+  <a class="linkPreview" href="/pol/preview/92144.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#92144">No.</a><a class="linkQuote" href="/pol/res/92142.html#q92144">92144</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/7cf9778005e454050b07711f0b0dd21e-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">58.39 KB</span>
+  <span class="dimensionLabel">559x422</span> <a class="originalNameLink" href="/.media/7cf9778005e454050b07711f0b0dd21e-imagejpeg.jpg" download="ww2-x23d.jpg">ww2-x23d.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/7cf9778005e454050b07711f0b0dd21e-imagejpeg.jpg" data-filewidth="559" data-fileheight="422" data-filemime="image/jpeg"><img src="/.media/t_7cf9778005e454050b07711f0b0dd21e-imagejpeg" loading="lazy" width="255" height="193"></a></figure></div>
+  <div class="divMessage">So much of what Germans have written in the immediate aftermath of the war was done so to impress the occupying forces, not necessarily to tell the truth. NS members and followers were sent to camps by the victors for their beliefs, so it was better to fit in than to rock the boat, lest they be called a Nazi. I make no secret that I am a National Socialist; I pride myself on being honest, loyal, and humane. The average person, who is intelligent, sees the newspaper stories, and watches TV shows that constantly show NS as a criminal state. Today they have no reason to investigate the stories, it is made to be taboo to question the official version of events, and you are not in the right mindset if you do. The Allies’ assertion that they were the angels and we were the demons has had 60 years to evolve. Many good scholars in Germany support the allied versions, when they come to me for answers as to why we did these things, I tell them the truth, and they act as if I am a brainwashed liar who is defending a very evil man and idea. I ask them how are they certain the victors are honest and not lying? They reply there is too much evidence against Hitler. When I ask them if they are aware, the Allies had many former German citizens working to create “evidence” to use against political enemies for revenge, they look stumped and confused. Anyone who claimed some type of persecution during the Third Reich can write a book, and whatever he or she says becomes fact. Laws are now being drawn up in the Federal Republic to keep these “facts” from being disputed. Someday people may actually go to prison camps for challenging these “facts.” If a nation, who defends itself against those who actively try to sabotage a war effort by putting them in prison camps, is evil, then all nations are evil because they all did this. NS Germany was no different from those we fought, England, America, and above all the USSR put people who disagreed with their government in prison camps (or worse) during wartime. It was our misfortune that due to the bombings, many of ours died at the end.<br><br><strong>You fought on the East front with Grossdeutschland, what was your experience?</strong><br>Otto: Yes, I was impressed with what I heard about GD and wanted to be a part of such a fine division. Their reputation in the early part of the war with Russia put them on par with the Waffen-SS, they were always outnumbered and in the thick of the fighting. They gave Ivan many bloody noses and kicks to the balls. I was able to join this fine unit and quickly became a battalion leader, I was very proud of my men; they fought hard and were loyal. My experience on the east front was a defining part of my manhood; I saw things that no one should ever see. Russia refused to sign any agreements regarding rules during wartime, and it showed right away. We attacked Russia and their soldiers were told to not be humane to the invader. From the early days, reports would come in about wounded soldiers being shot, surrendered soldiers being executed, and civilians being executed. A man in my regiment testified before our commander that he was captured with 10 other soldiers, and Ivan shot them all, he was the only survivor, as he played dead. I will say that most of my interactions with the Russians were positive. The people were friendly and helpful, and thanked us for the help we gave them. Our medical staff freely helped Russian soldiers and civilians alike; they delivered more than one Russian child in our sectors. The partisan menace was another story, they were nothing short of animals, and treated like so when captured. They were something rather new for us in modern war. They struck at the most weakest points, killing old reservists, and nurses. Today they are hailed as freedom fighters, but they truly were murderers, and seemed sadistic in the way they mutilated bodies of their enemies.<br><br>GD was a frontline combat division who was always in the thick of major battles; we fought well and with honor. [continued]</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92145"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-92145">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/06/2024 (Sat) 13:11</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #ecb5d6">ecb5d6</span></span>
+  <a class="linkPreview" href="/pol/preview/92145.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#92145">No.</a><a class="linkQuote" href="/pol/res/92142.html#q92145">92145</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/854a7b6772ef8066cca9bb00d3dee69e-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">89.90 KB</span>
+  <span class="dimensionLabel">468x558</span> <a class="originalNameLink" href="/.media/854a7b6772ef8066cca9bb00d3dee69e-imagejpeg.jpg" download="ww2-x23c.jpg">ww2-x23c.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/854a7b6772ef8066cca9bb00d3dee69e-imagejpeg.jpg" data-filewidth="468" data-fileheight="558" data-filemime="image/jpeg"><img src="/.media/t_854a7b6772ef8066cca9bb00d3dee69e-imagejpeg" loading="lazy" width="214" height="255"></a></figure></div>
+  <div class="divMessage">Hornlein had orders that he relayed to us that we were to treat our enemy with respect, no matter how brutal they were. We would allow the police units to find guilty parties and bring them to justice. In certain situations, we would have to bring justice quickly when dealing with partisans, which today is still acceptable military law. On the opposite hand, I saw the brutality of the Soviet soldier in Ost Prussia, I saw first-hand the murdered civilians whose only crime was being a German.<br><br><strong>You were in the Wach Battalion during the events of 20 July; can you tell me what happened?</strong><br>Otto: Well, as you know traitors tried to kill the Führer. Sadly, it came from the officer corps of the Wehrmacht. It was a strange day for me, we were on alert and I received orders to arrest NSDAP officials. This just did not fit with logic. I was told an attempt was made on the Führer, and he was dead. The party was the most loyal to the Führer, so it was inconceivable that they did this to him. I followed my orders, but I kept an open mind. There had been rumors that some of the Generals disliked Hitler and refused to follow his orders, costing us battles and lives. Therefore, I had that in the back of my mind as I went to arrest Dr. Goebbels. When I went to his office, many were asking what was going on but I brushed them aside as I needed to meet with him. As I entered his office, I stated to him that I was ordered to arrest him as the Führer has been assassinated. He smiled and told me that it was a lie, the Führer was alive and well, he asked me to take the phone and speak to the Führer. I knew his voice as I met him on many occasion. He confirmed to me that traitorous officers had planted a bomb and they must be arrested immediately, and that I had full power to do so. I thanked Dr. Goebbels and ordered my men to release those they detained, and we moved on to take down the traitors.<br><br>I was offered unlimited help from the police and army. I was so full of disgust that these men would try to kill the man they swore an oath too, just because the war was not going well for us. This was a very small group of people, mostly from the old aristocratic class, that never fully understood National Socialism. They never wanted to relinquish the better than thou class structure that they lived in. There was a brief skirmish, and then we took Stauffenburg and the others into custody. Against the Führer's orders, some ended up quickly executed on the orders of one of the traitors it turned out. It was a sad nasty affair and now these traitors are made out to be heroes by the victors, if they had tried to kill Churchill they would be seen as regular criminals. One man’s traitor is another man’s hero.<br><br><strong>The bomb plot only seems to prove what the Allies claim that Hitler was evil and incompetent and some in the army knew it, so they finally acted to end the war and save lives. You do not agree.</strong><br>Otto: No, I do not, you have to fully understand the motives of the traitors and what guided them. They claim to have opposed Hitler from the very beginning. So I say let us get this straight just so we all understand. A man is elected who takes a shaken and distraught nation, restores morals, faith, and hope. Giving the very common person a bright future, who in the aristocratic world is looked down on, with great jobs and these people were opposed to that? The NS state removed unfit and unqualified aliens who self-rewarded themselves due to the power and money they possessed, and this upset some of the German aristocracy? This makes no sense to me, as Hitler was a charitable, humble, and loving leader. This is why the German people fought for him until we had no more to fight with, our cities literally rubble, and our infrastructure gone, we fought on because we knew we were right. I can only think, that as the war turned against us, some generals were frustrated that their ideas were not being implemented, so as they vented to each other. [continued]</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92146"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-92146">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/06/2024 (Sat) 13:12</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #ecb5d6">ecb5d6</span></span>
+  <a class="linkPreview" href="/pol/preview/92146.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#92146">No.</a><a class="linkQuote" href="/pol/res/92142.html#q92146">92146</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">These traitorous aristocrats found fertile ground to plant the seeds of revolt; I believe the Allies had a bigger hand than what they admit. Many Generals and aristocrats had friends on the other side and they found ways to stay in touch with them. Therefore, the Allies could have had a hand in getting these friends to act on their frustrations. Their friends may have planted the idea that if they end the war they will be the real heroes, as they will save Germans from dying needlessly. Our side tried the same thing with the British in 1940/41 culminating with the flight of Hess to try to get the royals to intervene and stop the war. NS Germany had many enemies and I am sure they were somehow behind the plots to remove the Führer, which the German people did not want to do.<br><br><strong>I cannot discuss the war without bringing up the issue of concentration camps, after watching the movie Holocaust; it appears Germany targeted Jews for mass killing. This is something you believe is not correct.</strong><br>Otto: I want to be clear with you. Jews and others were put into many camps from 1933 to 1945, and at the end of the war, many ended up dying in these camps. However, there was no German policy to purposely kill these inmates based on their race or religion. The story goes that we hated them so much, since they were so successful and we were jealous of them, that we rounded them up and when we couldn’t get them out of Europe we gassed them. I saw the movies the Allies made us watch, I heard the stories they would freely tell on the radio, and read the books they write. They say our hatred was so great, that God poured out his anger on the German people as the righteous Allies destroyed us for raising our hand against Gods chosen people. It makes the allied cause seem very just and righteous. I say use your thinking cap, examine the testimonies with an open mind; ask yourself if it is possible. Some Jews were put into camps yes, just as Japanese were put into camps in America, because they were viewed as a threat. We viewed the Jewish problem as being very serious, they assassinated many of our diplomats, papers they owned encouraged disobedience and we reacted against them. For every action, there is a reaction. When war started, more were rounded up and sent to camps, to be moved east, from where they came. We used them for very important labor, with the men off serving, there were large needs for workers, and they provided it. So why kill people who could help create what you need.<br><br>I understand that fingers are pointed at us, just the very fact we had people, even whole families in camps looks bad. However, to say they were targeted for murder ups the ante of pure evil. While I was never in a camp, I did see some of the inmates after the war, and never heard anything of a plan to kill them. We executed orders very well, so I assure you if there had been an order to kill them all, there would be none left in Europe. Instead, there are millions of survivors. We would not have used an insecticide to do it either; Zyklon B was a fumigant that all nations used to kill lice, which cause typhus, which killed millions after the first war. The Americans called it DDT, so the Jews expect us to believe DDT was used to gas them, while we see news reels of GI’s and Wehrmacht soldiers getting sprayed with it before going on leave. The many photos of dead bodies that the Allies paraded around that purport to show proof, are in truth, evidence of why delousing was needed. The Allies destroyed rail lines, bridges, roads, and airports so that no supplies could get to German cities or the camps. One sad example of the Allies killing inmates is the train found at Dachau, it was bringing inmates to the camp from the east, and fighters attacked it. Dozens died instantly from the attack, and the guards fled leaving dozens more wounded to die. The allied press had a happy time showing a “Nazi” atrocity. There were times GD was in bad shape, we had no rations, medical supplies or water and our soldiers were getting sick. [continued]</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92147"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-92147">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/06/2024 (Sat) 13:14</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #ecb5d6">ecb5d6</span></span>
+  <a class="linkPreview" href="/pol/preview/92147.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#92147">No.</a><a class="linkQuote" href="/pol/res/92142.html#q92147">92147</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">The same happened to camp inmates. The prisoners got sick, withered away, and died, many times right when the Allies entered the camps. Many died even while under allied care, it took weeks to stop the outbreaks, and thousands of prisoners died. The Allies caused these deaths, although not intentionally. It was just easy to blame a policy of extermination instead of telling the truth. The only area that the Jews have open to them is the killings of partisans, many of whom were Jewish. If they fought against us as non-combatants, they ended up executed as common criminals. I saw this in person when a band was caught trying to blow up a rail bridge, they were tried and hung, as any nation would have done. It had nothing to do with who they were it was their actions that sealed their fate to the rope. The war turned into a political war in many ways, it was communists against nationalists, with capitalists siding with their opposites.<br><br><strong>General, if you could go back and relive the war would you?</strong><br>Otto: NO! There was so much death and destruction it was so very hard on my nerves. I believe your country calls it post-traumatic stress from Vietnam. Being in combat and outnumbered is never a good feeling. The enemy beat us in every category, tanks, planes, artillery, workers, and ammunition. We tried our hardest but just could not overcome being outnumbered by 12 or 14 to 1 if I remember the figures correctly. I remember many complaints by my officers and men, who desperately needed ammunition for their guns, many attempts to resupply were thwarted by enemy air attacks. Some artillery units could only fire a few shells for a whole week, or none at all for days on end. Living in a National Socialist state was quite a blessing, it was peaceful, the people happy, and life was truly worth living for the average German, which had been missing for so long. I would have no reservations to live in a NS Germany again, the war I have no desire to reenact. I think a pact with the new Russia could lead us back to that life.<br><br><strong>Do you have any animosity towards the Allies?</strong><br>Otto: I do. The Allies, especially the Americans who came into the war later, were guided by pure hatred. They then have the audacity to say we the Germans were the ones who hated so much that we turned our hate into war crimes and a Holocaust. This is rubbish. We fought with our eyes wide open, trying to realize the dream of hegemony in Europe, free from British and French threats and intervention. We only wanted a return of former lands that the Allies took by force, which the victors call a grab for lebensraum, which, yes, we wanted OUR former lebensraum (living space) back. The way the Allies conducted the war was one of extermination, they bombed without discrimination, destroying Europe’s treasures that were priceless testimony to our creativity and love of culture. We went out of our way to protect every nation’s treasures, moving them to safe places, with the help of local curators most of the time, I saw this personally. The Allies accuse us now of trying to steal and loot these treasures. This is false and a bold lie put in place to hide that the Allies actually looted art masterpieces, some are even being found today in deceased American veteran’s estates, taking anything they could get away with. In the German army this would have gotten you shot as a common thief or at the least a long penal assignment. The looting that took place in Europe by the Allies amazes me, they even brag about it in their literature, like somehow they were entitled to come over here and steal what was not theirs, just because they were fighting the “Nazis” who were looting things that were not ours. Therefore, in their infant minds it made it Ok.<br><br>I often see in the papers that art that is very valuable is being taken away from the rightful owners, who legally bought the piece and it is given to Jews who make dubious claims about ownership. [continued]</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92148"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-92148">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/06/2024 (Sat) 13:16</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #ecb5d6">ecb5d6</span></span>
+  <a class="linkPreview" href="/pol/preview/92148.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#92148">No.</a><a class="linkQuote" href="/pol/res/92142.html#q92148">92148</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6598af63aed771d131e3de20418c37fa-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">76.55 KB</span>
+  <span class="dimensionLabel">555x578</span> <a class="originalNameLink" href="/.media/6598af63aed771d131e3de20418c37fa-imagejpeg.jpg" download="ww2-x23e.jpg">ww2-x23e.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6598af63aed771d131e3de20418c37fa-imagejpeg.jpg" data-filewidth="555" data-fileheight="578" data-filemime="image/jpeg"><img src="/.media/t_6598af63aed771d131e3de20418c37fa-imagejpeg" loading="lazy" width="245" height="255"></a></figure></div>
+  <div class="divMessage">Many Jews who left Germany in the 30’s sold possessions legally as they did not want to take them as the tax was high, are now saying we stole the items and thus getting them back for free. What a good con game, then they send their children to get a top university education so they are assured of getting a high paying job. They will then follow the legacy the Allies laid down by promoting a one world, open border system that will collapse our religion and nations. The allied nations won the war due to the chilling ways they fought it, and the terrible weapons that were used, but it does not make them right. I have spoken to many allied veterans who have quietly told me they would not do it again; they understand today that they fought the wrong people. [end]</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92150"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-92150">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">01/06/2024 (Sat) 18:42</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #d44c5a">d44c5a</span></span>
+  <a class="linkPreview" href="/pol/preview/92150.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#92150">No.</a><a class="linkQuote" href="/pol/res/92142.html#q92150">92150</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/92142.html#92142">&gt;&gt;92142</a><br>Why i do have a feeling you found mouringtheancient.com or different version of history channel on yt and want to archive content here?<br>And i am oddly okay with that as it would be shame if it would get lost</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92151"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-92151">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/06/2024 (Sat) 23:30</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #ecb5d6">ecb5d6</span></span>
+  <a class="linkPreview" href="/pol/preview/92151.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#92151">No.</a><a class="linkQuote" href="/pol/res/92142.html#q92151">92151</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/23f0673f2f228b43394a8ae60a0087b9-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">190.01 KB</span>
+  <span class="dimensionLabel">480x640</span> <a class="originalNameLink" href="/.media/23f0673f2f228b43394a8ae60a0087b9-imagejpeg.jpg" download="2-13-2001-49.jpg">2-13-2001-49.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/23f0673f2f228b43394a8ae60a0087b9-imagejpeg.jpg" data-filewidth="480" data-fileheight="640" data-filemime="image/jpeg"><img src="/.media/t_23f0673f2f228b43394a8ae60a0087b9-imagejpeg" loading="lazy" width="191" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/92142.html#92150">&gt;&gt;92150</a><br>Pretty much both options. I looked up parts of the interview from Different Version of History and found Mourning the Ancient. <span class="spoiler">Not a fan of narrators when I can read myself</span></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92166"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-92166">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/07/2024 (Sun) 17:40</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #d44c5a">d44c5a</span></span>
+  <a class="linkPreview" href="/pol/preview/92166.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#92166">No.</a><a class="linkQuote" href="/pol/res/92142.html#q92166">92166</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/e71c74adea4dfb8648d75e38980eef2c-imagepng.png">Open File</a>(<span class="sizeLabel">351.80 KB</span>
+  <span class="dimensionLabel">561x879</span> <a class="originalNameLink" href="/.media/e71c74adea4dfb8648d75e38980eef2c-imagepng.png" download="1703931630337635.png">1703931630337635.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/e71c74adea4dfb8648d75e38980eef2c-imagepng.png" data-filewidth="561" data-fileheight="879" data-filemime="image/png"><img src="/.media/t_e71c74adea4dfb8648d75e38980eef2c-imagepng" loading="lazy" width="163" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/92142.html#92151">&gt;&gt;92151</a><br><span class="greenText">&gt;Not a fan of narrators when I can read myself</span><br>Same thing as i dont like when someone arrogantly gives a note or commentary to text he reads loudly.<br>It ruins the consistency of the text in it a bit.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="92177"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-92177">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/08/2024 (Mon) 19:56</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #ecb5d6">ecb5d6</span></span>
+  <a class="linkPreview" href="/pol/preview/92177.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#92177">No.</a><a class="linkQuote" href="/pol/res/92142.html#q92177">92177</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/5d6ea9d18e6d391507df35f6df6905e4-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">47.78 KB</span>
+  <span class="dimensionLabel">596x256</span> <a class="originalNameLink" href="/.media/5d6ea9d18e6d391507df35f6df6905e4-imagejpeg.jpg" download="facepalm.jpg">facepalm.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/5d6ea9d18e6d391507df35f6df6905e4-imagejpeg.jpg" data-filewidth="596" data-fileheight="256" data-filemime="image/jpeg"><img src="/.media/t_5d6ea9d18e6d391507df35f6df6905e4-imagejpeg" loading="lazy" width="255" height="110"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/1fc72755dd04dc58afac4ee2609ca3ae-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">950.05 KB</span>
+  <span class="dimensionLabel">2440x865</span> <a class="originalNameLink" href="/.media/1fc72755dd04dc58afac4ee2609ca3ae-imagejpeg.jpg" download="aush-SMOKE (2).jpg">aush-SMOKE (2).jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/1fc72755dd04dc58afac4ee2609ca3ae-imagejpeg.jpg" data-filewidth="2440" data-fileheight="865" data-filemime="image/jpeg"><img src="/.media/t_1fc72755dd04dc58afac4ee2609ca3ae-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/92142.html#92166">&gt;&gt;92166</a><br>The past:<br><span class="greenText">&gt;holocaust survivors draw pictures and badly doctor photos as 'evidence'</span><br>Now:<br><span class="greenText">&gt;holocaust survivors use AI</span><br>It's sad when the jews have one job - lying. But they can't even do that well.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92188"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-92188">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">01/10/2024 (Wed) 17:19</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #d44c5a">d44c5a</span></span>
+  <a class="linkPreview" href="/pol/preview/92188.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#92188">No.</a><a class="linkQuote" href="/pol/res/92142.html#q92188">92188</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/08a74a7816afc907d3139cae8c514e96-imagepng.png">Open File</a>(<span class="sizeLabel">823.67 KB</span>
+  <span class="dimensionLabel">618x800</span> <a class="originalNameLink" href="/.media/08a74a7816afc907d3139cae8c514e96-imagepng.png" download="1699264733876.png">1699264733876.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/08a74a7816afc907d3139cae8c514e96-imagepng.png" data-filewidth="618" data-fileheight="800" data-filemime="image/png"><img src="/.media/t_08a74a7816afc907d3139cae8c514e96-imagepng" loading="lazy" width="197" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/92142.html#92177">&gt;&gt;92177</a><br><span class="greenText">&gt;That photo of W SS sergant on left doen corner</span><br>Someone failed in their dress code as NCOs had no permission to carry breeches<br>And that next to wilder is as ludicrous as interests on central banks loans as i dont need to point out in that pic that for some reason<br><span class="greenText">&gt;Tankers</span><br><span class="greenText">&gt;Music corps</span><br><span class="greenText">&gt;Lacking any undershirts to tunics</span><br><span class="greenText">&gt;Flak personell</span><br><span class="greenText">&gt;Armed civilians in background? </span><br>Screams that again someone failed in his uniform dress code knowledge but i dont want now to ruin my nerves even when i dont have to deal with such bullshit outside of this imageboard i have to see daily by various nazbol zigger boomers or quasi historians <br><span class="greenText">&gt;It's sad when the jews have one job - lying. But they can't even do that well</span><br>But to be honest it feels good to be right again they will use it for yet another attempt to destroy reality</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92189"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-92189">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">01/10/2024 (Wed) 17:20</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #d44c5a">d44c5a</span></span>
+  <a class="linkPreview" href="/pol/preview/92189.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#92189">No.</a><a class="linkQuote" href="/pol/res/92142.html#q92189">92189</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/92142.html#92188">&gt;&gt;92188</a><br><span class="greenText">&gt;Bbut nco with permission to carry dagger</span><br>Its understurm fuhrer these are not under that category</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92192"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-92192">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/11/2024 (Thu) 16:50</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #d44c5a">d44c5a</span></span>
+  <a class="linkPreview" href="/pol/preview/92192.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#92192">No.</a><a class="linkQuote" href="/pol/res/92142.html#q92192">92192</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/92142.html#92189">&gt;&gt;92189</a><br>i meant underscharfuhrer</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="97796"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-97796">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/17/2025 (Fri) 15:03</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #db6796">db6796</span></span>
+  <a class="linkPreview" href="/pol/preview/97796.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#97796">No.</a><a class="linkQuote" href="/pol/res/92142.html#q97796">97796</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/70828.html#87802">&gt;&gt;87802</a><br>The war is still going if you can believe that</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="97810"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-92142-97810">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">01/17/2025 (Fri) 15:04</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #48f29f">48f29f</span></span>
+  <a class="linkPreview" href="/pol/preview/97810.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/92142.html#97810">No.</a><a class="linkQuote" href="/pol/res/92142.html#q97810">97810</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90546.html#93466">&gt;&gt;93466</a><br><span class="greenText">&gt;Tik history</span><br>Opionion discarded</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/92142.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

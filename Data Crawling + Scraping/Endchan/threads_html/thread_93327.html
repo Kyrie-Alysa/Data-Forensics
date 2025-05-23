@@ -1,0 +1,1366 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - Robert Kennedy II</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="93327">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=93327">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/93327.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="93327"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/f859851bd91b4366de6e947a5100e70e-videomp4.mp4">Open File</a>(<span class="sizeLabel">13.94 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/f859851bd91b4366de6e947a5100e70e-videomp4.mp4" download="Robert Kennedy II - Independent.mp4">Robert Kennedy II - Independent.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/f859851bd91b4366de6e947a5100e70e-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_f859851bd91b4366de6e947a5100e70e-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-93327">
+    <span class="labelSubject">Robert Kennedy II</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">04/11/2024 (Thu) 20:46</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #43e8b6">43e8b6</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/93327.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/93327.html#93327">No.</a>
+    <a class="linkQuote" href="/pol/res/93327.html#q93327">93327</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage"><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Robert_F._Kennedy_Jr.">https://en.wikipedia.org/wiki/Robert_F._Kennedy_Jr.</a><br><br>Robert Francis Kennedy Jr. (born January 17, 1954) is an environmental lawyer and activist.<br><br>A member of the Kennedy family, Kennedy is a son of U.S. attorney general and senator Robert F. Kennedy and nephew of U.S. president John F. Kennedy.<br><br><a rel="nofollow" target="_blank" href="https://web.archive.org/web/20230511051430/https://unherd.com/2023/05/robert-kennedy-jr-america-needs-a-revolution/">https://web.archive.org/web/20230511051430/https://unherd.com/2023/05/robert-kennedy-jr-america-needs-a-revolution/</a><br><br><strong>I’m a former drug addict and the first thing that you do if you want to deal with drug addiction is you admit there’s a problem and then you can deal with everything. We need to admit there’s a problem in our government before we’re able to heal our country.</strong><br><br>I’ve spent 40 years litigating against the agencies, the regulatory agencies in the United States, so I can tell you that the Environmental Protection Agency (EPA) is effectively run by the oil industry, the coal industry and the pesticide industry. When I was on the trial team that brought the Monsanto cases, and we ended up with a $13 billion settlement after winning three trials, we uncovered that the head of the pesticide division at the EPA was secretly working for Monsanto, and was running that agency to promote the mercantile ambitions of that business rather than the public interest. He was killing studies, he was fixing studies, he was ghost-writing studies. And that’s true throughout the agencies.<br><br>If you look at the pharmaceutical industry in our country, it runs the Food and Drug Administration (FDA). The FDA gets 50% of its budget from Big Pharma. The Center for Disease Control and Prevention (CDC) spends half of its budget purchasing vaccines from Big Pharma, and then distributing it. And the National Institutes of Health (NIH) is just an incubator for new pharmaceutical products. It doesn’t do the basic research that we want them to be doing — about where all these diseases come from. The studies that do get done are studies that develop pharmaceutical products. And then the NIH collects royalties when the pharma company sells those products. The regulator is essentially a partner with the regulated industry. The Department of Transportation (DOT) is run by the railroads in our country and by the airlines; the banks have utterly corrupted the Securities and Exchange Commission (SEC); and the media has corrupted the Federal Election Commission (FEC).<br><br>I don’t know of any values that my uncle John Kennedy harboured, or my father shared, that I don’t share. They had antipathy and suspicion towards war and the military-industrial complex; they did not want corporations running the American government; they were completely against censorship. They were against the use of fear as a governing tool, and they spoke out about it often. If you go down the list of things that they believed in, I don’t think there’s really any daylight between me and what they believed.<br><br>I think my ultimate ambition is to restore the faith and the love of America, and the pride in America, so that my children can grow up with the kind of pride that I felt about my country. I can restore our moral authority around the world, and restore the reputation of America as an exemplary nation, something that the rest of the world can look to as an example - one that people will want to copy - rather than as a threat. <strong>My uncle believed that America should be a leader, but we should not be a bully; and people understand the difference between those two things. Because my uncle steadfastly avoided war, and instead said: “I don’t want the picture of Americans around the world to be somebody with a gun, I want it to be a Peace Corps volunteer.” And because of that, people around the world love John Kennedy more than any president in our history. There’s more boulevards named after him, more avenues, more statues to him, more universities and hospitals, in Africa and Latin America and all over the world than any other U.S. President. That’s because he had a different vision that was not based on conquering people, but on helping them.</strong></div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="93328"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-93328">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">04/11/2024 (Thu) 20:51</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #43e8b6">43e8b6</span></span>
+  <a class="linkPreview" href="/pol/preview/93328.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#93328">No.</a><a class="linkQuote" href="/pol/res/93327.html#q93328">93328</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/919b9fe48b6672d18b6585eaa405f0e4-videomp4.mp4">Open File</a>(<span class="sizeLabel">11.02 MB</span>
+  <span class="dimensionLabel">608x1082</span> <a class="originalNameLink" href="/.media/919b9fe48b6672d18b6585eaa405f0e4-videomp4.mp4" download="RFKII discusses Ukraine war and Blackrock.mp4">RFKII discusses Ukraine war and Blackrock.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/919b9fe48b6672d18b6585eaa405f0e4-videomp4.mp4" data-filewidth="608" data-fileheight="1082" data-filemime="video/mp4"><img src="/.media/t_919b9fe48b6672d18b6585eaa405f0e4-videomp4" loading="lazy" width="143" height="255"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93329"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-93329">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">04/11/2024 (Thu) 20:52</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #43e8b6">43e8b6</span></span>
+  <a class="linkPreview" href="/pol/preview/93329.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#93329">No.</a><a class="linkQuote" href="/pol/res/93327.html#q93329">93329</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/442e6efae63a632eb96946f12eb02223-videomp4.mp4">Open File</a>(<span class="sizeLabel">14.09 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/442e6efae63a632eb96946f12eb02223-videomp4.mp4" download="RFKII investigates USA border.mp4">RFKII investigates USA border.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/442e6efae63a632eb96946f12eb02223-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_442e6efae63a632eb96946f12eb02223-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93330"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-93330">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">04/11/2024 (Thu) 20:53</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #43e8b6">43e8b6</span></span>
+  <a class="linkPreview" href="/pol/preview/93330.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#93330">No.</a><a class="linkQuote" href="/pol/res/93327.html#q93330">93330</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/46a0a7f1afd76da1453c9661b5e5b3fe-videomp4.mp4">Open File</a>(<span class="sizeLabel">13.66 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/46a0a7f1afd76da1453c9661b5e5b3fe-videomp4.mp4" download="RFKII discusses home ownership and democracy.mp4">RFKII discusses home ownership and democracy.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/46a0a7f1afd76da1453c9661b5e5b3fe-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_46a0a7f1afd76da1453c9661b5e5b3fe-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93331"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-93331">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">04/11/2024 (Thu) 20:58</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #43e8b6">43e8b6</span></span>
+  <a class="linkPreview" href="/pol/preview/93331.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#93331">No.</a><a class="linkQuote" href="/pol/res/93327.html#q93331">93331</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/1f9918f3ef7222c07b8df386a2ce8f02-videomp4.mp4">Open File</a>(<span class="sizeLabel">7.65 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/1f9918f3ef7222c07b8df386a2ce8f02-videomp4.mp4" download="RFKII discusses Trump and the swamp.mp4">RFKII discusses Trump and the swamp.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/1f9918f3ef7222c07b8df386a2ce8f02-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_1f9918f3ef7222c07b8df386a2ce8f02-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="93332"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-93332">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">04/11/2024 (Thu) 21:00</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #43e8b6">43e8b6</span></span>
+  <a class="linkPreview" href="/pol/preview/93332.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#93332">No.</a><a class="linkQuote" href="/pol/res/93327.html#q93332">93332</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/afb4e908985e74d6014e51724b7b7fc9-videomp4.mp4">Open File</a>(<span class="sizeLabel">12.41 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/afb4e908985e74d6014e51724b7b7fc9-videomp4.mp4" download="Darlington Ohio vinyl chloride environmental disaster Jewish capitalism.mp4">Darlington Ohio vinyl chloride environmental disaster Jewish capitalism.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/afb4e908985e74d6014e51724b7b7fc9-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_afb4e908985e74d6014e51724b7b7fc9-videomp4" loading="lazy" width="255" height="143"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a34946e90c0d005ced87ba227248ecf7-videomp4.mp4">Open File</a>(<span class="sizeLabel">13.76 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/a34946e90c0d005ced87ba227248ecf7-videomp4.mp4" download="RFKII discusses captured USA government and East Palestine, Ohio.mp4">RFKII discusses captured USA government and East Palestine, Ohio.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a34946e90c0d005ced87ba227248ecf7-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_a34946e90c0d005ced87ba227248ecf7-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93340"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-93340">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">04/12/2024 (Fri) 21:31</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #43e8b6">43e8b6</span></span>
+  <a class="linkPreview" href="/pol/preview/93340.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#93340">No.</a><a class="linkQuote" href="/pol/res/93327.html#q93340">93340</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/30f58d9488ce96e4b70b578f5b163cac-videomp4.mp4">Open File</a>(<span class="sizeLabel">8.04 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/30f58d9488ce96e4b70b578f5b163cac-videomp4.mp4" download="RFKII discusses lying medical journals and medical racketeering.mp4">RFKII discusses lying medical journals and medical racketeering.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/30f58d9488ce96e4b70b578f5b163cac-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_30f58d9488ce96e4b70b578f5b163cac-videomp4" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Racketeering">https://en.wikipedia.org/wiki/Racketeering</a><br><br><strong>Racketeering is a type of organized crime in which the persons set up a coercive, fraudulent, extortionary, or otherwise illegal coordinated scheme or operation (a "racket") to repeatedly or consistently collect a profit.</strong><br><br><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Racketeer_Influenced_and_Corrupt_Organizations_Act">https://en.wikipedia.org/wiki/Racketeer_Influenced_and_Corrupt_Organizations_Act</a><br><br>The Racketeer Influenced and Corrupt Organizations (RICO) Act is a United States federal law that provides for extended criminal penalties and a civil cause of action for acts performed as part of an ongoing criminal organization.<br><br><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Health_care_fraud">https://en.wikipedia.org/wiki/Health_care_fraud</a><br><br><strong>Health care fraud includes "snake oil" marketing, health insurance fraud, drug fraud, and medical fraud.</strong><br><br><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Snake_oil">https://en.wikipedia.org/wiki/Snake_oil</a><br><br><strong>Snake oil is a term used to describe a scam. Similarly, snake oil salesman is a common label used to describe someone who sells, promotes, or is a general proponent of some valueless or fraudulent cure, remedy, or solution. The term comes from the "snake oil" that used to be sold as a cure-all elixir for many kinds of physiological problems.</strong><br><br><strong>Selling snake oil is often portrayed as a confidence trick: a traveling salesman purports to be a doctor, selling fake medicines with boisterous marketing hype, and supported by pseudo-scientific evidence. To increase sales, an accomplice in the crowd (a shill or a "toadie") will often attest to the value of the product in an effort to provoke buying enthusiasm. The "doctor" will leave town before his customers realize they have been cheated.</strong></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93341"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-93341">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">04/12/2024 (Fri) 21:49</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #43e8b6">43e8b6</span></span>
+  <a class="linkPreview" href="/pol/preview/93341.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#93341">No.</a><a class="linkQuote" href="/pol/res/93327.html#q93341">93341</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/d88dd40508bc8d7435a145fc22d7d8f7-videomp4.mp4">Open File</a>(<span class="sizeLabel">7.25 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/d88dd40508bc8d7435a145fc22d7d8f7-videomp4.mp4" download="RFKII discusses psychiatric drugs and mass murder.mp4">RFKII discusses psychiatric drugs and mass murder.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/d88dd40508bc8d7435a145fc22d7d8f7-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_d88dd40508bc8d7435a145fc22d7d8f7-videomp4" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Quackery">https://en.wikipedia.org/wiki/Quackery</a><br><br><strong>Quackery is the practice of fraudulent medicine.</strong><br><br>Common elements of general quackery include fraudulent diagnoses using fraudulent diagnostic tests, as well as untested or refuted treatments, especially for serious diseases such as cancer.<br><br><strong>Unproven, usually ineffective, and sometimes dangerous medicines and treatments have been peddled throughout human history. Theatrical performances were sometimes given to enhance the credibility of purported medicines.</strong><br><br><strong>The evidence-based medicine community has criticized the infiltration of quackery into mainstream academic medicine, education, and publications, accusing institutions of "diverting research time, money, and other resources from more fruitful lines of investigation in order to pursue a theory that has no basis in biology."</strong><br><br><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Psychiatry">https://en.wikipedia.org/wiki/Psychiatry</a><br><br>The term psychiatry was first coined by the German physician Johann Christian Reil in 1808 and literally means the 'medical treatment of the soul' (psych- 'soul' from Ancient Greek psykhē 'soul'; -iatry 'medical treatment' from Gk. iātrikos 'medical' from iāsthai 'to heal').<br><br><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Anti-psychiatry">https://en.wikipedia.org/wiki/Anti-psychiatry</a><br><br><strong>Anti-psychiatry is a movement based on the view that psychiatry is more damaging than helpful to patients.</strong><br><br><strong>Objections to psychiatry include the unreliability of psychiatric diagnosis, the definite harm associated with psychiatric medications, the failure of psychiatry to demonstrate any disease treatment mechanism for psychiatric medications, and legal concerns about human rights and civil freedom being nullified by the presence of psychiatric diagnosis.</strong><br><br>The definitions of psychiatric diagnoses consist of combinations of phenomenological criteria, such as symptoms and signs. <strong>Psychiatric diagnostic categories are called disorders and are not validated by biological criteria, as medical diseases are; although they purport to represent medical diseases and take the form of medical diagnoses.</strong><br><br>The influence of pharmaceutical companies is another major issue for the anti-psychiatry movement. As many critics from within and outside of psychiatry have argued, there are many financial and professional links between psychiatry, regulators, and pharmaceutical companies. Drug companies routinely fund much of the research conducted by psychiatrists, advertise medication in psychiatric journals and conferences, fund psychiatric and healthcare organizations and health promotion campaigns, and send representatives to lobby general physicians and politicians.<br><br><strong>Psychiatric practices were introduced and framed as "treatments" for mental disorders, including inducing seizures (by electroshock, insulin or other drugs) or psychosurgery (lobotomy). In the US, beginning in 1939 through 1951, over 50,000 lobotomy operations were performed in mental hospitals.</strong><br><br>The number of psychiatric drug prescriptions have been increasing at an extremely high rate since the 1950s. In the United States, antidepressants and tranquilizers are now the top selling class of prescription drugs, and antipsychotics and other psychiatric drugs also rank near the top, all with expanding sales.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93342"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-93342">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">04/12/2024 (Fri) 21:52</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #43e8b6">43e8b6</span></span>
+  <a class="linkPreview" href="/pol/preview/93342.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#93342">No.</a><a class="linkQuote" href="/pol/res/93327.html#q93342">93342</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/072b03dd945562755d9d719b0c72e4db-videomp4.mp4">Open File</a>(<span class="sizeLabel">4.10 MB</span>
+  <span class="dimensionLabel">854x480</span> <a class="originalNameLink" href="/.media/072b03dd945562755d9d719b0c72e4db-videomp4.mp4" download="RFKII discusses opioid crisis and Jewish Sackler family.mp4">RFKII discusses opioid crisis and Jewish Sackler family.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/072b03dd945562755d9d719b0c72e4db-videomp4.mp4" data-filewidth="854" data-fileheight="480" data-filemime="video/mp4"><img src="/.media/t_072b03dd945562755d9d719b0c72e4db-videomp4" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Opioid_epidemic">https://en.wikipedia.org/wiki/Opioid_epidemic</a><br><br><strong>The opioid epidemic, also referred to as the opioid crisis, is the rapid increase in drug use and overdose deaths attributed either in part or in whole to the class of drugs called opiates/opioids since the 1990s.</strong><br><br>Opioids are a diverse class of moderate to strong painkillers, including oxycodone, hydrocodone, morphine, heroin, and fentanyl.<br><br>Due to the sedative effects of opioids, opioids may cause respiratory failure and death.<br><br><strong>From 1999 to 2021, approximately 645,000 Americans died from opioid use. The number of overdose deaths involving opioids in 2021 was ten times what it was in 1999.</strong><br><br><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Sackler_family">https://en.wikipedia.org/wiki/Sackler_family</a><br><br><strong>The Sackler family is a Jewish family who owned the pharmaceutical company Purdue Pharma and later founded Mundipharma. They were described as the "most evil family in America", and "the worst drug dealers in history".</strong><br><br>In late 2020, the Committee on Oversight and Reform of the US House of Representatives held a hearing on the role of Purdue Pharma and the Sackler family in the opioid epidemic. Regarding the Sacklers, author Patrick Radden Keefe stated "They could produce a rehearsed simulacrum of human empathy" but were "impervious to any genuine moral epiphany." Jim Cooper, a congressman from Tennessee, stated to David Sackler: "Watching you testify makes my blood boil. I am not sure I am aware of any family in America that's more evil than yours."<br><br><a rel="nofollow" target="_blank" href="https://www.newyorker.com/magazine/2017/10/30/the-family-that-built-an-empire-of-pain">https://www.newyorker.com/magazine/2017/10/30/the-family-that-built-an-empire-of-pain</a><br><br><strong>As OxyContin spread outside the U.S., the pattern of dysfunction repeated itself: to map the geographic distribution of the drug was also to map a rash of addiction, abuse, and death. But the Sackler family increased its efforts abroad, and is now pushing the drug, through a Purdue-related company called Mundipharma, into Asia, Latin America, and the Middle East.</strong> Part of Purdue’s strategy from the beginning is to create a market for OxyContin — to instill a perceived need by making bold claims about the existence of large numbers of people suffering from untreated chronic pain.<br><br>“It’s a parallel to what the tobacco industry did,” Mike Moore, the former Mississippi attorney general, told me. “They got caught in America, they saw their market share decline, so they export it to places with even fewer regulations than we have.” He added, “You know what’s going to happen. You’re going to see lots and lots of death.” In May, several members of Congress wrote to the World Health Organization, urging it to help stop the spread of OxyContin, and mentioning the Sackler family by name. “The international health community has a rare opportunity to see the future,” they wrote. <strong>“Do not allow Purdue to walk away from the tragedy they have inflicted on countless American families simply to find new markets and new victims elsewhere.”</strong></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93486"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-93486">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">04/27/2024 (Sat) 14:35</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #1a7efa">1a7efa</span></span>
+  <a class="linkPreview" href="/pol/preview/93486.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#93486">No.</a><a class="linkQuote" href="/pol/res/93327.html#q93486">93486</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/110926c78e9b5817874fe78b20502df6-videomp4.mp4">Open File</a>(<span class="sizeLabel">35.39 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/110926c78e9b5817874fe78b20502df6-videomp4.mp4" download="RFKII discusses political labels.mp4">RFKII discusses political labels.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/110926c78e9b5817874fe78b20502df6-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_110926c78e9b5817874fe78b20502df6-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94162"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94162">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/21/2024 (Sun) 19:31</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #e1d96f">e1d96f</span></span>
+  <a class="linkPreview" href="/pol/preview/94162.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94162">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94162">94162</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/861381d65d68a919630fd41f0073f803-videomp4.mp4">Open File</a>(<span class="sizeLabel">24.58 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/861381d65d68a919630fd41f0073f803-videomp4.mp4" download="Team RFKII discusses media false dilemma.mp4">Team RFKII discusses media false dilemma.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/861381d65d68a919630fd41f0073f803-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_861381d65d68a919630fd41f0073f803-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94212"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94212">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/26/2024 (Fri) 00:05</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #e1d96f">e1d96f</span></span>
+  <a class="linkPreview" href="/pol/preview/94212.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94212">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94212">94212</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/e404daba46a758daa3ce82ff530e9248-videomp4.mp4">Open File</a>(<span class="sizeLabel">7.94 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/e404daba46a758daa3ce82ff530e9248-videomp4.mp4" download="RFKII discusses free markets.mp4">RFKII discusses free markets.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/e404daba46a758daa3ce82ff530e9248-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_e404daba46a758daa3ce82ff530e9248-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94213"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94213">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/26/2024 (Fri) 00:09</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #e1d96f">e1d96f</span></span>
+  <a class="linkPreview" href="/pol/preview/94213.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94213">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94213">94213</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/cda547320912eb9f14aa4fc036e937cc-videomp4.mp4">Open File</a>(<span class="sizeLabel">10.48 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/cda547320912eb9f14aa4fc036e937cc-videomp4.mp4" download="RFKII discusses American Revolution.mp4">RFKII discusses American Revolution.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/cda547320912eb9f14aa4fc036e937cc-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_cda547320912eb9f14aa4fc036e937cc-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94214"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94214">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/26/2024 (Fri) 00:15</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #e1d96f">e1d96f</span></span>
+  <a class="linkPreview" href="/pol/preview/94214.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94214">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94214">94214</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/49d07f31934cb927bb795252911b45e3-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">292.69 KB</span>
+  <span class="dimensionLabel">824x1077</span> <a class="originalNameLink" href="/.media/49d07f31934cb927bb795252911b45e3-imagejpeg.jpg" download="Trump Fauci 2024 - give us another shot.jpg">Trump Fauci 2024 - give us another shot.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/49d07f31934cb927bb795252911b45e3-imagejpeg.jpg" data-filewidth="824" data-fileheight="1077" data-filemime="image/jpeg"><img src="/.media/t_49d07f31934cb927bb795252911b45e3-imagejpeg" loading="lazy" width="195" height="255"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94225"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94225">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/27/2024 (Sat) 08:47</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #90cda6">90cda6</span></span>
+  <a class="linkPreview" href="/pol/preview/94225.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94225">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94225">94225</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/269da0d86b9ca7512c9432b6d3e19227-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">746.55 KB</span>
+  <span class="dimensionLabel">2000x1600</span> <a class="originalNameLink" href="/.media/269da0d86b9ca7512c9432b6d3e19227-imagejpeg.jpg" download="this is a kike.jpg">this is a kike.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/269da0d86b9ca7512c9432b6d3e19227-imagejpeg.jpg" data-filewidth="2000" data-fileheight="1600" data-filemime="image/jpeg"><img src="/.media/t_269da0d86b9ca7512c9432b6d3e19227-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/78984e2dd84bb41b51050892f7c4916f-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">1.88 MB</span>
+  <span class="dimensionLabel">2732x1821</span> <a class="originalNameLink" href="/.media/78984e2dd84bb41b51050892f7c4916f-imagejpeg.jpg" download="bc-ml-israel-netanyahu-img-jpg.jpg">bc-ml-israel-netanyahu-img-jpg.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/78984e2dd84bb41b51050892f7c4916f-imagejpeg.jpg" data-filewidth="2732" data-fileheight="1821" data-filemime="image/jpeg"><img src="/.media/t_78984e2dd84bb41b51050892f7c4916f-imagejpeg" loading="lazy" width="255" height="170"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/03b8a819c75f8ee5bd3bda0da0b1334e-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">47.51 KB</span>
+  <span class="dimensionLabel">720x775</span> <a class="originalNameLink" href="/.media/03b8a819c75f8ee5bd3bda0da0b1334e-imagejpeg.jpg" download="03b8a819c75f8ee5bd3bda0da0b1334e-imagejpeg.jpg">03b8a819c75f8ee5bd3bda0da0b1334e-imagejpeg.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/03b8a819c75f8ee5bd3bda0da0b1334e-imagejpeg.jpg" data-filewidth="720" data-fileheight="775" data-filemime="image/jpeg"><img src="/.media/t_03b8a819c75f8ee5bd3bda0da0b1334e-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/f2d5d6c663ebac68ea38374f2015776c-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">97.99 KB</span>
+  <span class="dimensionLabel">1024x683</span> <a class="originalNameLink" href="/.media/f2d5d6c663ebac68ea38374f2015776c-imagejpeg.jpg" download="03e44c7c449eeeff01f7420b34aa1ff25ad9e9a48a8d3ee79a70fc06a6aa28de.jpg">03e44c7c449eeeff01f7420b34aa1ff25ad9e9a48a8d3ee79a70fc06a6aa28de.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/f2d5d6c663ebac68ea38374f2015776c-imagejpeg.jpg" data-filewidth="1024" data-fileheight="683" data-filemime="image/jpeg"><img src="/.media/t_f2d5d6c663ebac68ea38374f2015776c-imagejpeg" loading="lazy" width="255" height="170"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a81102fd352f1f1df4b4bd664ae7f1cd-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">148.00 KB</span>
+  <span class="dimensionLabel">1000x1015</span> <a class="originalNameLink" href="/.media/a81102fd352f1f1df4b4bd664ae7f1cd-imagejpeg.jpg" download="a1c4393ae9420534f8a6d50a4471862ee4be0843c477d4827796cdf0cf325ad5.jpg">a1c4393ae9420534f8a6d50a4471862ee4be0843c477d4827796cdf0cf325ad5.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a81102fd352f1f1df4b4bd664ae7f1cd-imagejpeg.jpg" data-filewidth="1000" data-fileheight="1015" data-filemime="image/jpeg"><img src="/.media/t_a81102fd352f1f1df4b4bd664ae7f1cd-imagejpeg" loading="lazy" width="251" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93327.html#94214">&gt;&gt;94214</a><br>Expect more of the same as last time.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94317"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94317">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/01/2024 (Thu) 00:32</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #2324e0">2324e0</span></span>
+  <a class="linkPreview" href="/pol/preview/94317.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94317">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94317">94317</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a2652b13b863b2f12a8cf90bd9c06bb2-videomp4.mp4">Open File</a>(<span class="sizeLabel">89.92 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/a2652b13b863b2f12a8cf90bd9c06bb2-videomp4.mp4" download="RFKII and Steven Donziger discuss Texaco dumping poison in Ecuador.mp4">RFKII and Steven Donziger discuss Texaco dumping poison in Ecuador.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a2652b13b863b2f12a8cf90bd9c06bb2-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_a2652b13b863b2f12a8cf90bd9c06bb2-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94383"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94383">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/09/2024 (Fri) 08:38</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #da6e24">da6e24</span></span>
+  <a class="linkPreview" href="/pol/preview/94383.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94383">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94383">94383</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a rel="nofollow" target="_blank" href="https://www.theguardian.com/environment/2024/mar/12/sewage-us-crop-farming-lawsuit-pfas">https://www.theguardian.com/environment/2024/mar/12/sewage-us-crop-farming-lawsuit-pfas</a><br><br><strong>Sewage sludge is human and industrial waste that is a byproduct of the wastewater treatment process. Its disposal is expensive, and the Environmental Protection Agency (EPA) allows it to be spread on cropland as “biosolid” fertilizer because it is also rich in plant nutrients.</strong><br><br>But public health advocates blasted the practice because the nation spends billions of dollars annually treating water only to take the toxic byproduct, insert it into the food supply and re-pollute water.<br><br><strong>Until political leadership in the EPA approved sludge for agricultural use over the objection of agency scientists in the early 1990s, it was dumped in the ocean, but that created vast dead zones.</strong><br><br>About 60% of the nation’s sludge is applied to farmland, and most water treatment facilities and businesses that dump toxic waste into the sewer system oppose a ban because it would increase their costs.<br><br>New legal action could put an end to the practice of spreading toxic sewage sludge on US cropland as a cheap alternative to fertilizer<br><br>The action comes as <strong>sludge contaminated farmland across the country, sickening farmers, killing livestock, polluting drinking water, contaminating meat sold to the public, tainting crops, and destroying farmers’ livelihoods.</strong></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94447"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94447">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/18/2024 (Sun) 08:39</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #da6e24">da6e24</span></span>
+  <a class="linkPreview" href="/pol/preview/94447.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94447">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94447">94447</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/701d87d2e7270858a20412383883e009-videomp4.mp4">Open File</a>(<span class="sizeLabel">13.53 MB</span>
+  <span class="dimensionLabel">1080x1080</span> <a class="originalNameLink" href="/.media/701d87d2e7270858a20412383883e009-videomp4.mp4" download="Tucker Carlson and Casey Means discuss USA disease epidemic after Jews allowed into USA medical schools.mp4">Tucker Carlson and Casey Means discuss USA disease epidemic after Jews allowed into USA medical schools.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/701d87d2e7270858a20412383883e009-videomp4.mp4" data-filewidth="1080" data-fileheight="1080" data-filemime="video/mp4"><img src="/.media/t_701d87d2e7270858a20412383883e009-videomp4" loading="lazy" width="255" height="255"></a></figure></div>
+  <div class="divMessage"><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Jewish_quota">https://en.wikipedia.org/wiki/Jewish_quota</a><br><br>A Jewish quota was a discriminatory racial quota designed to limit or deny Jew access to non-Jew institutions. Such quotas were widespread in the 19th and 20th centuries in developed countries and frequently present in higher education, often at prestigious universities.<br><br><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Numerus_clausus#North_America">https://en.wikipedia.org/wiki/Numerus_clausus#North_America</a><br><br>Numerus clausus ("closed number" in Latin) is one of many methods used to limit the number of students who may study at a university.<br><br><strong>Between 1918 and the 1950s, most universities and medical schools in the United States introduced numerus clausus policies limiting admissions of students based on their religion or race to certain percentages within the college population.</strong><br><br>At Yale University, Dean Milton Winternitz's instructions to the admissions office regarding ethnic quotas were very specific: "Never admit more than five Jews, take only two Italian Catholics, and take no blacks at all."<br><br>During this period, a notable exception among U.S. medical schools was the medical school of Middlesex University, which had no racial quotas and many Jewish faculty members and students; this school failed to receive American Medical Association (AMA) accreditation.<br><br><strong>U.S. university and medical school racial quotas against Jews were gradually discarded during the 1960s.</strong></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94448"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94448">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/18/2024 (Sun) 11:09</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #90cda6">90cda6</span></span>
+  <a class="linkPreview" href="/pol/preview/94448.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94448">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94448">94448</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/93b988d2da975a24c514ecfef09350ef-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">521.47 KB</span>
+  <span class="dimensionLabel">2400x1507</span> <a class="originalNameLink" href="/.media/93b988d2da975a24c514ecfef09350ef-imagejpeg.jpg" download="93b988d2da975a24c514ecfef09350ef-imagejpeg.jpg">93b988d2da975a24c514ecfef09350ef-imagejpeg.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/93b988d2da975a24c514ecfef09350ef-imagejpeg.jpg" data-filewidth="2400" data-fileheight="1507" data-filemime="image/jpeg"><img src="/.media/t_93b988d2da975a24c514ecfef09350ef-imagejpeg" loading="lazy" width="255" height="160"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b4075aaa72406fa22037a4951391ccc1-imagepng.png">Open File</a>(<span class="sizeLabel">1.55 MB</span>
+  <span class="dimensionLabel">651x1639</span> <a class="originalNameLink" href="/.media/b4075aaa72406fa22037a4951391ccc1-imagepng.png" download="Coca Cola propaganda.png">Coca Cola propaganda.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b4075aaa72406fa22037a4951391ccc1-imagepng.png" data-filewidth="651" data-fileheight="1639" data-filemime="image/png"><img src="/.media/t_b4075aaa72406fa22037a4951391ccc1-imagepng" loading="lazy" width="101" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/7a6b4073603eb4d16939d47fb70d64fe-imagepng.png">Open File</a>(<span class="sizeLabel">727.69 KB</span>
+  <span class="dimensionLabel">791x1024</span> <a class="originalNameLink" href="/.media/7a6b4073603eb4d16939d47fb70d64fe-imagepng.png" download="Every Single Aspect Of BlackRock Is Jewish.png">Every Single Aspect Of BlackRock Is Jewish.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/7a6b4073603eb4d16939d47fb70d64fe-imagepng.png" data-filewidth="791" data-fileheight="1024" data-filemime="image/png"><img src="/.media/t_7a6b4073603eb4d16939d47fb70d64fe-imagepng" loading="lazy" width="197" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/05e41624acec730873accc333bffcf3f-imagepng.png">Open File</a>(<span class="sizeLabel">298.40 KB</span>
+  <span class="dimensionLabel">916x2846</span> <a class="originalNameLink" href="/.media/05e41624acec730873accc333bffcf3f-imagepng.png" download="Shareholders.png">Shareholders.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/05e41624acec730873accc333bffcf3f-imagepng.png" data-filewidth="916" data-fileheight="2846" data-filemime="image/png"><img src="/.media/t_05e41624acec730873accc333bffcf3f-imagepng" loading="lazy" width="82" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/875a387dc456e5c2521d42f119d9052e-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">151.00 KB</span>
+  <span class="dimensionLabel">959x518</span> <a class="originalNameLink" href="/.media/875a387dc456e5c2521d42f119d9052e-imagejpeg.jpg" download="BlackRock.jpg">BlackRock.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/875a387dc456e5c2521d42f119d9052e-imagejpeg.jpg" data-filewidth="959" data-fileheight="518" data-filemime="image/jpeg"><img src="/.media/t_875a387dc456e5c2521d42f119d9052e-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93327.html#94447">&gt;&gt;94447</a><br>Here, fren. You seemed to be missing some glue.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94449"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94449">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/18/2024 (Sun) 11:43</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #402c98">402c98</span></span>
+  <a class="linkPreview" href="/pol/preview/94449.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94449">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94449">94449</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93327.html#94448">&gt;&gt;94448</a><br>Speaking of Blackrock and his aladdin with vanguard <br>Screw their ESG project</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94459"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94459">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/20/2024 (Tue) 03:11</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #90cda6">90cda6</span></span>
+  <a class="linkPreview" href="/pol/preview/94459.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94459">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94459">94459</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93327.html#94449">&gt;&gt;94449</a><br>They were blasted about ESG <span class="spoiler">Extra Specially Gay</span> too many times publicly. Now they're calling it "transition investing". Which is laughably more obvious.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94461"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94461">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/21/2024 (Wed) 09:05</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #da6e24">da6e24</span></span>
+  <a class="linkPreview" href="/pol/preview/94461.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94461">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94461">94461</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/5f7d8a276978d55b4c74dafaaf1014bd-videomp4.mp4">Open File</a>(<span class="sizeLabel">6.95 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/5f7d8a276978d55b4c74dafaaf1014bd-videomp4.mp4" download="RFKII discusses Trump shut down vaccine safety commission after Trump received money from Pfizer.mp4">RFKII discusses Trump shut down vaccine safety commission after Trump received money from Pfizer.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/5f7d8a276978d55b4c74dafaaf1014bd-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_5f7d8a276978d55b4c74dafaaf1014bd-videomp4" loading="lazy" width="255" height="143"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/92bef3690a859546fc7a4d588d6b0e08-videomp4.mp4">Open File</a>(<span class="sizeLabel">4.95 MB</span>
+  <span class="dimensionLabel">1276x720</span> <a class="originalNameLink" href="/.media/92bef3690a859546fc7a4d588d6b0e08-videomp4.mp4" download="Andrew Napolitano discusses Trump broke promise to release JFK assassination records.mp4">Andrew Napolitano discusses Trump broke promise to release JFK assassination records.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/92bef3690a859546fc7a4d588d6b0e08-videomp4.mp4" data-filewidth="1276" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_92bef3690a859546fc7a4d588d6b0e08-videomp4" loading="lazy" width="255" height="144"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94469"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94469">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/21/2024 (Wed) 18:44</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #90cda6">90cda6</span></span>
+  <a class="linkPreview" href="/pol/preview/94469.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94469">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94469">94469</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93327.html#94461">&gt;&gt;94461</a><br>Jeffrey Sachs is a kike. It's sad that Italians like Napolitano often work with filthy jews after the American Mafia lie was pushed off on them for decades. Look up Murder Inc.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94470"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94470">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/21/2024 (Wed) 18:52</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #90cda6">90cda6</span></span>
+  <a class="linkPreview" href="/pol/preview/94470.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94470">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94470">94470</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/05dd3463eeb47322e2fb7c73626e880d-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">170.79 KB</span>
+  <span class="dimensionLabel">847x705</span> <a class="originalNameLink" href="/.media/05dd3463eeb47322e2fb7c73626e880d-imagejpeg.jpg" download="eating his boogers.jpg">eating his boogers.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/05dd3463eeb47322e2fb7c73626e880d-imagejpeg.jpg" data-filewidth="847" data-fileheight="705" data-filemime="image/jpeg"><img src="/.media/t_05dd3463eeb47322e2fb7c73626e880d-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/fe185a9d4e3a3f32048da90476e9918e-imagepng.png">Open File</a>(<span class="sizeLabel">274.91 KB</span>
+  <span class="dimensionLabel">1385x618</span> <a class="originalNameLink" href="/.media/fe185a9d4e3a3f32048da90476e9918e-imagepng.png" download="5b4c3cb0b04232bbbceeef02af6d2f145ec7ff9d55a1a3979fe97cba04c900e8.png">5b4c3cb0b04232bbbceeef02af6d2f145ec7ff9d55a1a3979fe97cba04c900e8.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/fe185a9d4e3a3f32048da90476e9918e-imagepng.png" data-filewidth="1385" data-fileheight="618" data-filemime="image/png"><img src="/.media/t_fe185a9d4e3a3f32048da90476e9918e-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/857a5073076fa0f66bbca1d99f2fd6ba-imagepng.png">Open File</a>(<span class="sizeLabel">325.81 KB</span>
+  <span class="dimensionLabel">705x600</span> <a class="originalNameLink" href="/.media/857a5073076fa0f66bbca1d99f2fd6ba-imagepng.png" download="96.png">96.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/857a5073076fa0f66bbca1d99f2fd6ba-imagepng.png" data-filewidth="705" data-fileheight="600" data-filemime="image/png"><img src="/.media/t_857a5073076fa0f66bbca1d99f2fd6ba-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9831e55fe7e13553f5a512e6ef02f0d1-imagepng.png">Open File</a>(<span class="sizeLabel">28.08 KB</span>
+  <span class="dimensionLabel">574x524</span> <a class="originalNameLink" href="/.media/9831e55fe7e13553f5a512e6ef02f0d1-imagepng.png" download="98ac63d522bca6eead5cd76efa96d280d0810e6b4739bef0a4246b9336b16489.png">98ac63d522bca6eead5cd76efa96d280d0810e6b4739bef0a4246b9336b16489.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9831e55fe7e13553f5a512e6ef02f0d1-imagepng.png" data-filewidth="574" data-fileheight="524" data-filemime="image/png"><img src="/.media/t_9831e55fe7e13553f5a512e6ef02f0d1-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/ed3abbab0ce22793e76a1ec0588f1e94-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">210.80 KB</span>
+  <span class="dimensionLabel">1626x1076</span> <a class="originalNameLink" href="/.media/ed3abbab0ce22793e76a1ec0588f1e94-imagejpeg.jpg" download="Oswaldkillerjackrubyjacobrubenstein.jpg">Oswaldkillerjackrubyjacobrubenstein.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/ed3abbab0ce22793e76a1ec0588f1e94-imagejpeg.jpg" data-filewidth="1626" data-fileheight="1076" data-filemime="image/jpeg"><img src="/.media/t_ed3abbab0ce22793e76a1ec0588f1e94-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage">Now. About the JFK assassination.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94471"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94471">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/21/2024 (Wed) 18:56</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #90cda6">90cda6</span></span>
+  <a class="linkPreview" href="/pol/preview/94471.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94471">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94471">94471</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/2300f87a862f364815d9b4dd1b7eb7fb-imagepng.png">Open File</a>(<span class="sizeLabel">254.64 KB</span>
+  <span class="dimensionLabel">791x921</span> <a class="originalNameLink" href="/.media/2300f87a862f364815d9b4dd1b7eb7fb-imagepng.png" download="235597322.png">235597322.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/2300f87a862f364815d9b4dd1b7eb7fb-imagepng.png" data-filewidth="791" data-fileheight="921" data-filemime="image/png"><img src="/.media/t_2300f87a862f364815d9b4dd1b7eb7fb-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/64e00a988f069d4dd408405d44efd550-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">597.03 KB</span>
+  <span class="dimensionLabel">1457x643</span> <a class="originalNameLink" href="/.media/64e00a988f069d4dd408405d44efd550-imagejpeg.jpg" download="27796345985.jpg">27796345985.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/64e00a988f069d4dd408405d44efd550-imagejpeg.jpg" data-filewidth="1457" data-fileheight="643" data-filemime="image/jpeg"><img src="/.media/t_64e00a988f069d4dd408405d44efd550-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/99cb9cce09f8073fb0b7110c3e97e649-imagepng.png">Open File</a>(<span class="sizeLabel">344.68 KB</span>
+  <span class="dimensionLabel">873x951</span> <a class="originalNameLink" href="/.media/99cb9cce09f8073fb0b7110c3e97e649-imagepng.png" download="2802538942604.png">2802538942604.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/99cb9cce09f8073fb0b7110c3e97e649-imagepng.png" data-filewidth="873" data-fileheight="951" data-filemime="image/png"><img src="/.media/t_99cb9cce09f8073fb0b7110c3e97e649-imagepng" loading="lazy" width="234" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/dde796ad19ce6c4125cc6f87c5569ced-imagepng.png">Open File</a>(<span class="sizeLabel">291.14 KB</span>
+  <span class="dimensionLabel">822x927</span> <a class="originalNameLink" href="/.media/dde796ad19ce6c4125cc6f87c5569ced-imagepng.png" download="330844576472860513.png">330844576472860513.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/dde796ad19ce6c4125cc6f87c5569ced-imagepng.png" data-filewidth="822" data-fileheight="927" data-filemime="image/png"><img src="/.media/t_dde796ad19ce6c4125cc6f87c5569ced-imagepng" loading="lazy" width="226" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/102e93f840f04aaad0e463f53e5a7d37-imagepng.png">Open File</a>(<span class="sizeLabel">659.96 KB</span>
+  <span class="dimensionLabel">1280x947</span> <a class="originalNameLink" href="/.media/102e93f840f04aaad0e463f53e5a7d37-imagepng.png" download="06e1d9037d3e2af0ced50392f187471f7e309f4ddaefef2e538008446ad0fdba.png">06e1d9037d3e2af0ced50392f187471f7e309f4ddaefef2e538008446ad0fdba.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/102e93f840f04aaad0e463f53e5a7d37-imagepng.png" data-filewidth="1280" data-fileheight="947" data-filemime="image/png"><img src="/.media/t_102e93f840f04aaad0e463f53e5a7d37-imagepng" loading="lazy"></a></figure></div>
+  <div class="divMessage">Here's exactly why KIKE Trump wouldn't release info.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94472"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94472">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/652a4e167bfddc0b837a20d0" title="Croatian Ustaše">
+  
+  <span class="labelCreated">08/22/2024 (Thu) 07:59</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #9a97ef">9a97ef</span></span>
+  <a class="linkPreview" href="/pol/preview/94472.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94472">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94472">94472</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/06b6936679ee25130a14cccc86c7cad9-imagepng.png">Open File</a>(<span class="sizeLabel">1.30 MB</span>
+  <span class="dimensionLabel">1024x1368</span> <a class="originalNameLink" href="/.media/06b6936679ee25130a14cccc86c7cad9-imagepng.png" download="1717590796290661-1.png">1717590796290661-1.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/06b6936679ee25130a14cccc86c7cad9-imagepng.png" data-filewidth="1024" data-fileheight="1368" data-filemime="image/png"><img src="/.media/t_06b6936679ee25130a14cccc86c7cad9-imagepng" loading="lazy" width="191" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93327.html#94470">&gt;&gt;94470</a><br>Finally some more info to folders regarding of jfk assasination<br>Have a justin trudeau as a confirmed freemason in return</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94510"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94510">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/25/2024 (Sun) 23:02</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #656149">656149</span></span>
+  <a class="linkPreview" href="/pol/preview/94510.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94510">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94510">94510</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/3deb4b33563584c4f03195bf788468ec-videomp4.mp4">Open File</a>(<span class="sizeLabel">58.07 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/3deb4b33563584c4f03195bf788468ec-videomp4.mp4" download="RFKII discusses vaccines.mp4">RFKII discusses vaccines.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/3deb4b33563584c4f03195bf788468ec-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_3deb4b33563584c4f03195bf788468ec-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94511"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94511">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/26/2024 (Mon) 00:05</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #4a2acf">4a2acf</span></span>
+  <a class="linkPreview" href="/pol/preview/94511.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94511">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94511">94511</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/69406fda1dc9ce61d864e251477dc585-videomp4.mp4">Open File</a>(<span class="sizeLabel">139.46 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/69406fda1dc9ce61d864e251477dc585-videomp4.mp4" download="RFKII announces RFKII-Trump alliance after Jews rigged election against RFKII.mp4">RFKII announces RFKII-Trump alliance after Jews rigged election against RFKII.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/69406fda1dc9ce61d864e251477dc585-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_69406fda1dc9ce61d864e251477dc585-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94517"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94517">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/27/2024 (Tue) 05:50</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #90cda6">90cda6</span></span>
+  <a class="linkPreview" href="/pol/preview/94517.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94517">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94517">94517</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93327.html#94511">&gt;&gt;94511</a><br>So a nephew of THE United States president that was killed by jews decides to ally with an extremely pro-Israel jew. Fuck him.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94686"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94686">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/12/2024 (Thu) 12:20</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #68eabe">68eabe</span></span>
+  <a class="linkPreview" href="/pol/preview/94686.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94686">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94686">94686</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9c1c4628fd6d3e6096eb2d5adf596679-videomp4.mp4">Open File</a>(<span class="sizeLabel">17.11 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/9c1c4628fd6d3e6096eb2d5adf596679-videomp4.mp4" download="RFKII recommends vote Donald Trump 2024.mp4">RFKII recommends vote Donald Trump 2024.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9c1c4628fd6d3e6096eb2d5adf596679-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_9c1c4628fd6d3e6096eb2d5adf596679-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94710"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94710">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/13/2024 (Fri) 23:43</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #68eabe">68eabe</span></span>
+  <a class="linkPreview" href="/pol/preview/94710.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94710">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94710">94710</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/ed4149a91589a66a1dd8eda03cdc9135-videomp4.mp4">Open File</a>(<span class="sizeLabel">24.94 MB</span>
+  <span class="dimensionLabel">1920x1080</span> <a class="originalNameLink" href="/.media/ed4149a91589a66a1dd8eda03cdc9135-videomp4.mp4" download="RFKII discusses Judeoconservatives and wars against non-Jews.mp4">RFKII discusses Judeoconservatives and wars against non-Jews.mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/ed4149a91589a66a1dd8eda03cdc9135-videomp4.mp4" data-filewidth="1920" data-fileheight="1080" data-filemime="video/mp4"><img src="/.media/t_ed4149a91589a66a1dd8eda03cdc9135-videomp4" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="94711"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-93327-94711">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/14/2024 (Sat) 03:19</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #90cda6">90cda6</span></span>
+  <a class="linkPreview" href="/pol/preview/94711.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/93327.html#94711">No.</a><a class="linkQuote" href="/pol/res/93327.html#q94711">94711</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/03b8a819c75f8ee5bd3bda0da0b1334e-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">47.51 KB</span>
+  <span class="dimensionLabel">720x775</span> <a class="originalNameLink" href="/.media/03b8a819c75f8ee5bd3bda0da0b1334e-imagejpeg.jpg" download="03b8a819c75f8ee5bd3bda0da0b1334e-imagejpeg.jpg">03b8a819c75f8ee5bd3bda0da0b1334e-imagejpeg.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/03b8a819c75f8ee5bd3bda0da0b1334e-imagejpeg.jpg" data-filewidth="720" data-fileheight="775" data-filemime="image/jpeg"><img src="/.media/t_03b8a819c75f8ee5bd3bda0da0b1334e-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/506eb0b44aef6a0538b0bfbe9d659ef3-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">73.42 KB</span>
+  <span class="dimensionLabel">800x433</span> <a class="originalNameLink" href="/.media/506eb0b44aef6a0538b0bfbe9d659ef3-imagejpeg.jpg" download="3b9a8938dbdca97638db0bbc40734b4d3ea233227feec657071cae9b02f6a104.jpg">3b9a8938dbdca97638db0bbc40734b4d3ea233227feec657071cae9b02f6a104.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/506eb0b44aef6a0538b0bfbe9d659ef3-imagejpeg.jpg" data-filewidth="800" data-fileheight="433" data-filemime="image/jpeg"><img src="/.media/t_506eb0b44aef6a0538b0bfbe9d659ef3-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/269da0d86b9ca7512c9432b6d3e19227-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">746.55 KB</span>
+  <span class="dimensionLabel">2000x1600</span> <a class="originalNameLink" href="/.media/269da0d86b9ca7512c9432b6d3e19227-imagejpeg.jpg" download="this is a kike.jpg">this is a kike.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/269da0d86b9ca7512c9432b6d3e19227-imagejpeg.jpg" data-filewidth="2000" data-fileheight="1600" data-filemime="image/jpeg"><img src="/.media/t_269da0d86b9ca7512c9432b6d3e19227-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/89c924a2145b61caa484f3a0ad97cbfc-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">1.71 MB</span>
+  <span class="dimensionLabel">3335x1651</span> <a class="originalNameLink" href="/.media/89c924a2145b61caa484f3a0ad97cbfc-imagejpeg.jpg" download="Trump is Ashkenazi.jpg">Trump is Ashkenazi.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/89c924a2145b61caa484f3a0ad97cbfc-imagejpeg.jpg" data-filewidth="3335" data-fileheight="1651" data-filemime="image/jpeg"><img src="/.media/t_89c924a2145b61caa484f3a0ad97cbfc-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/f2d5d6c663ebac68ea38374f2015776c-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">97.99 KB</span>
+  <span class="dimensionLabel">1024x683</span> <a class="originalNameLink" href="/.media/f2d5d6c663ebac68ea38374f2015776c-imagejpeg.jpg" download="03e44c7c449eeeff01f7420b34aa1ff25ad9e9a48a8d3ee79a70fc06a6aa28de.jpg">03e44c7c449eeeff01f7420b34aa1ff25ad9e9a48a8d3ee79a70fc06a6aa28de.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/f2d5d6c663ebac68ea38374f2015776c-imagejpeg.jpg" data-filewidth="1024" data-fileheight="683" data-filemime="image/jpeg"><img src="/.media/t_f2d5d6c663ebac68ea38374f2015776c-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/93327.html#94686">&gt;&gt;94686</a><br><a class="quoteLink" href="/pol/res/93327.html#94710">&gt;&gt;94710</a><br>I don't know why you keep shilling this jew enabling dipshit when jews killed JFK. Rules 1 and 4. Familiarize yourself.<br><br><a rel="nofollow" target="_blank" href="https://endchan.org/pol/rules.html">https://endchan.org/pol/rules.html</a></div>
+  
+  
+  <div class="labelLastEdit">Edited last time by AdolfHitler on 09/14/2024 (Sat) 03:20.</div>
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/93327.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - The Graveyard Of Empires: What To Expect As The Unipolar World Order Collapses</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="90725">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=90725">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/90725.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="90725"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/d74c9dd3c2209bc1bfd9c295d6ea24ec-imagepng.png">Open File</a>(<span class="sizeLabel">41.06 KB</span>
+  <span class="dimensionLabel">804x436</span> <a class="originalNameLink" href="/.media/d74c9dd3c2209bc1bfd9c295d6ea24ec-imagepng.png" download="253523.png">253523.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/d74c9dd3c2209bc1bfd9c295d6ea24ec-imagepng.png" data-filewidth="804" data-fileheight="436" data-filemime="image/png"><img src="/.media/t_d74c9dd3c2209bc1bfd9c295d6ea24ec-imagepng" loading="lazy"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-90725">
+    <span class="labelSubject">The Graveyard Of Empires: What To Expect As The Unipolar World Order Collapses</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">07/09/2023 (Sun) 12:00</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #e4bcad">e4bcad</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/90725.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/90725.html#90725">No.</a>
+    <a class="linkQuote" href="/pol/res/90725.html#q90725">90725</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage"><strong>The Graveyard Of Empires: What To Expect As The Unipolar World Order Collapses</strong><br><br>“You have the watches, but we have the time.”<br><br>The Taliban often referred to this old Afghan saying when discussing their fight against the Americans.<br><br>Ultimately, they were proven correct.<br><br>After almost two decades of conflict, an insurgent army from one of the world’s poorest nations inflicted a decisive military defeat on the US, the global superpower that upholds the unipolar world order.<br><br>The US government’s total failure in Afghanistan — the longest war in American history — signifies a crucial moment and turning point in world history.<br><br>The Soviet Union collapsed about two years after the Red Army was defeated and withdrew from Afghanistan.<br><br>As we approach the second anniversary of the American retreat, could a similar fate be in store for the US?<br><br>While nobody knows the future, there is an excellent chance that the colossal failure in Afghanistan could accelerate the unraveling of the geopolitical power of the US and the shift to a multipolar world order.<br><br>Afghanistan’s strategic position has always made it a coveted prize in the Eurasian landscape.<br><br>As shown in the image below, Afghanistan is situated in the center of Eurasia, at the crossroads of China, Iran, and Russia—the three primary challengers to the US-led world order.<br><br>This central location is why Afghanistan has enormous geopolitical importance and why the US desired a strategic military presence there.<br><br>The US military’s presence in Afghanistan was a strategic roadblock to Russia, China, and Iran’s goal of creating a powerful geopolitical group in Eurasia that could challenge the US-led world order.<br><br>However, with the Taliban forcing the US military out of Afghanistan, the door to a more coherent geopolitical alliance in Eurasia is now wide open.<br><br><a rel="nofollow" target="_blank" href="https://www.zerohedge.com/geopolitical/graveyard-empires-top-investments-world-order-collapses">https://www.zerohedge.com/geopolitical/graveyard-empires-top-investments-world-order-collapses</a></div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="90726"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90725-90726">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/09/2023 (Sun) 12:00</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #e4bcad">e4bcad</span></span>
+  <a class="linkPreview" href="/pol/preview/90726.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90725.html#90726">No.</a><a class="linkQuote" href="/pol/res/90725.html#q90726">90726</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90725.html#90725">&gt;&gt;90725</a><br>China, Russia, and Iran are constructing a vast network of land-based transportation infrastructure, making the US Navy’s control of the oceans less significant.<br><br>China’s New Silk Road project is central to this new system. It aims to bypass the US financial system and the US Navy’s control of sea routes. The project, planned to be operational by 2025, includes high-speed railways, highways, fiber optic cables, energy pipelines, seaports, and airports.<br><br>These Eurasian powers are also establishing alternative international organizations for financial, political, and security cooperation, separate from those central to the US-led world order, institutions like NATO, the World Bank, SWIFT, and the IMF.<br><br>Some notable examples include the Asian Infrastructure Investment Bank (AIIB), launched by China in 2014 and is an alternative to the IMF and World Bank.<br><br>The Eurasian Economic Union (EEU), a Russian-led trading bloc created in 2015, allows for the free movement of goods, services, capital, and people among its member countries.<br><br>Lastly, the Shanghai Cooperation Organization (SCO) focuses on military and security collaboration between its members.<br><br>If current trends continue, it will result in greater economic, political, and security collaboration among the three main Eurasian nations—China, Russia, and Iran—at the expense of US geopolitical interests.<br><br>This scenario is exactly what Zbigniew Brzezinski worried would make the US “geopolitically peripheral.” It spells the end of the unipolar world order.<br><br>In short, we are on the path to the emergence of an alliance of powerful Eurasian countries and a multipolar world order.<br><br><a rel="nofollow" target="_blank" href="https://www.zerohedge.com/geopolitical/graveyard-empires-top-investments-world-order-collapses">https://www.zerohedge.com/geopolitical/graveyard-empires-top-investments-world-order-collapses</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90727"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90725-90727">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/09/2023 (Sun) 12:01</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #e4bcad">e4bcad</span></span>
+  <a class="linkPreview" href="/pol/preview/90727.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90725.html#90727">No.</a><a class="linkQuote" href="/pol/res/90725.html#q90727">90727</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90725.html#90726">&gt;&gt;90726</a><br>As the world order changes, I think there are two prominent investment outcomes we can bet on:<br><br><strong>Outcome #1: The US Dollar Will Lose Its Privileged Position</strong><br><br>The decline of America’s geopolitical influence is another enormous headwind for the US dollar.<br><br>Suppose the world thinks the US military is the ultimate backstop of the US dollar. What does it mean for the US dollar’s credibility when a ragtag group of insurgents from one of the poorest countries can defeat the military which backs it?<br><br>If the mighty US military couldn’t secure its partners in Afghanistan, how can it protect its other allies?<br><br>Taiwan, South Korea, Japan, Western European countries, and the Gulf Arab states are likely pondering this.<br><br>It wouldn’t be surprising to see them make security arrangements with US adversaries—such as China, Russia, and Iran—that exclude the Americans.<br><br>In fact, this has already happened with Saudi Arabia, a crucial player in the US-led world order. Saudi Arabia is the linchpin of the petrodollar system, which has underpinned the US dollar since Nixon removed its last links to gold in 1971.<br><br>In a matter of weeks, Saudi Arabia has: Restored relations with Iran. Restored relations with Syria and welcomed it back to Arab League. Supported multiple OPEC+ oil production cuts against American wishes. Announced an end to the war in Yemen. Agreed to sell oil in other currencies. Decided to join the Shanghai Cooperation Organization (SCO).<br><br>The US recently sent its CIA director to Riyadh to tell the Saudis the Americans feel “blindsided” amid these seismic shifts in Saudi foreign policy.<br><br>In short, a paradigm shift in Saudi policies signifies a paradigm shift in the US dollar because of the petrodollar system.<br><br>However, Saudi Arabia is not the only US ally hedging its geopolitical bets recently. France, India, Japan, Mexico, Brazil, and others are making moves to cozy up to the Eurasian geopolitical block.<br><br>The big question is, how long will the world continue to hold the paper liabilities of a bankrupt and declining government?<br><br>The only reason the US government has managed to avoid severe consequences from its monetary policies is the US dollar’s status as the world’s premiere reserve currency, thanks to Washington’s military and economic dominance that has prevailed since the end of World War II. However, as this dominance wanes, so will the dollar’s purchasing power.<br><br>The US government’s ability to hide the effects of its rampant money printing by offloading trillions of dollars to foreigners is nearing its end.<br><br>That’s terrible news for the US dollar.<br><br>Fake money comes from government. Real money emerges from the market. Government currencies are terrible money because they are easy to produce with a potentially unlimited supply. The free market wouldn’t choose government confetti as money without laws forcing their use.<br><br><a rel="nofollow" target="_blank" href="https://www.zerohedge.com/geopolitical/graveyard-empires-top-investments-world-order-collapses">https://www.zerohedge.com/geopolitical/graveyard-empires-top-investments-world-order-collapses</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90728"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90725-90728">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/09/2023 (Sun) 12:01</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #e4bcad">e4bcad</span></span>
+  <a class="linkPreview" href="/pol/preview/90728.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90725.html#90728">No.</a><a class="linkQuote" href="/pol/res/90725.html#q90728">90728</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90725.html#90727">&gt;&gt;90727</a><br><strong>Outcome #2: Commodity Supply Disruption</strong><br><br>The end of the unipolar world order means transitioning to a multipolar global trade regime—with serious implications for commodities.<br><br>As I see it, there will be two main geopolitical blocks.<br><br>First, there are the countries part of or allied with the West. I’m reluctant to call this block “the West” because the people who control it have values antithetical to Western Civilization.<br><br>The other block consists of Russia, China, Iran, and other countries favorable to a multipolar world order.<br><br>Let’s call them the BRICS+, which stands for Brazil, Russia, India, China, South Africa, and other interested countries.<br><br>Algeria, Argentina, Bahrain, Bangladesh, Belarus, Egypt, Indonesia, Iran, Mexico, Nigeria, Pakistan, Saudi Arabia, Sudan, Syria, Tunisia, Turkey, the UAE, Venezuela, Zimbabwe, and numerous others have expressed interest in membership of BRICS.<br><br>BRICS+ is not a perfect label, but it’s a decent representation of the countries favorable to the multipolar world order.<br><br>While there already is friction in free trade — sanctions, tariffs, export bans, nationalizations, embargoes, strategic competition, etc. — between NATO/West and BRICS+, I expect it to grow substantially as the multipolar world order emerges.<br><br>That will have serious consequences for commodities, which BRICS+ dominates.<br><br>As tensions between NATO &amp; Friends and BRICS+ continue to rise, I expect it to disrupt commodity trade between the two further.<br><br>Supply disruptions mean higher prices. That’s an outcome I think we can bet on.<br><br>I expect countries in both geopolitical blocks will increasingly focus on securing critical commodities and ensuring access to stable supplies.<br><br>Unfortunately, most people have no idea what really happens when the world order changes, let alone how to prepare…<br><br>The coming crisis will be much worse, much longer, and very different than what we’ve seen since World War II.<br><br>Countless millions throughout history were wiped out financially — or worse — as the world order changed because they failed to see the correct Big Picture and take appropriate action.<br><br>Don’t be one of them.<br><br><a rel="nofollow" target="_blank" href="https://www.zerohedge.com/geopolitical/graveyard-empires-top-investments-world-order-collapses">https://www.zerohedge.com/geopolitical/graveyard-empires-top-investments-world-order-collapses</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90729"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90725-90729">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/09/2023 (Sun) 12:01</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #e4bcad">e4bcad</span></span>
+  <a class="linkPreview" href="/pol/preview/90729.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90725.html#90729">No.</a><a class="linkQuote" href="/pol/res/90725.html#q90729">90729</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><strong>MY COMMENT:</strong> This is very likely THE REASON most of the biggest banks like Wells Fargo are setting up new booths for "wealth management  assistance" which includes options for foreign currency exchange options to swap with the US Dollar. Yes footage of this has been leaked online, along with whistleblowers working for some of the banks. They are getting ready for the time Americans start to panic and for bank runs. At the point they do this "Great Reset" and the BRICS+ nations announce their new gold-backed currency expect American and European banks to shut down temporarily to transition. Lots and lots of Westerners are going to lose their wealth and there will be assigned "wealth management" teams to transition them into exchanging currency or owned assets so they can keep living while the Western world faces rations and austerity measures.<br><br>Point is this: get whatever you need NOW, have backups of what you need, you should focus on all basic essentials and have at least one year backup of supplies. The more, the better.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/90725.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

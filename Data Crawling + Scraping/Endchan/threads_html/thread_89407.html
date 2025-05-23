@@ -1,0 +1,859 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - The Nations Armies are paper tigers and the recent conflicts reveal this.</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="89407">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=89407">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/89407.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="89407"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6a0f81ae8dc7205837df2f19edf491a3-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">630.63 KB</span>
+  <span class="dimensionLabel">790x1628</span> <a class="originalNameLink" href="/.media/6a0f81ae8dc7205837df2f19edf491a3-imagejpeg.jpg" download="heil hitler 2.jpg">heil hitler 2.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6a0f81ae8dc7205837df2f19edf491a3-imagejpeg.jpg" data-filewidth="790" data-fileheight="1628" data-filemime="image/jpeg"><img src="/.media/t_6a0f81ae8dc7205837df2f19edf491a3-imagejpeg" loading="lazy" width="124" height="255"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-89407">
+    <span class="labelSubject">The Nations Armies are paper tigers and the recent conflicts reveal this.</span>
+    <a class="linkName noEmailName">fuckniggersfuckjew</a>
+    
+    
+    <span class="labelCreated">12/14/2022 (Wed) 00:53</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #2dddb1">2dddb1</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/89407.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/89407.html#89407">No.</a>
+    <a class="linkQuote" href="/pol/res/89407.html#q89407">89407</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">The Nations Armies are paper tigers and the recent conflicts reveal this.  After seeing all the ineffectiveness of NATO vs Russia it is apparent that the military isn't that powerful at all.  With the removal of electrical substations comes a return to a more basic form of warefare.  With drones fgc 9 3d printed arms etc one can easily wage a war against their own nation state like what is going on in Burma.  Do you doubt how easy it is to take on your own nation state's Jewish Mafi Goons who control your nation through bribes importing foreigners and enforcing communism with their bailout bucks.  fuck jews fuck niggers</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="89411"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-89411">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/14/2022 (Wed) 04:38</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7d34c2">7d34c2</span></span>
+  <a class="linkPreview" href="/pol/preview/89411.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#89411">No.</a><a class="linkQuote" href="/pol/res/89407.html#q89411">89411</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">I doubt how easy it is to take on those that outnumber me because I am the only one I know in person who is JQ aware. Solo attacks are always a fool's strategy, yet kikes have control of those I know very personally. People whose minds  I am distinctly aware of. What do they do when I try to gain them as an additional into the fold which hasn't even started yet? They watch fucking (((TV))) and reinforce their jewish mind control. How many numbers do you have on your side? I have only myself. I am not bulletproof. If I can't take on mere cops, I certainly can't take on the massive lists I have put together of jews in positions of authority and entertainment.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="89412"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-89412">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/14/2022 (Wed) 06:16</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #2dddb1">2dddb1</span></span>
+  <a class="linkPreview" href="/pol/preview/89412.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#89412">No.</a><a class="linkQuote" href="/pol/res/89407.html#q89412">89412</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/5cfe2ad221615e379f3b43e2085a5da6-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">1.96 MB</span>
+  <span class="dimensionLabel">1133x1766</span> <a class="originalNameLink" href="/.media/5cfe2ad221615e379f3b43e2085a5da6-imagejpeg.jpg" download="impovement.jpg">impovement.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/5cfe2ad221615e379f3b43e2085a5da6-imagejpeg.jpg" data-filewidth="1133" data-fileheight="1766" data-filemime="image/jpeg"><img src="/.media/t_5cfe2ad221615e379f3b43e2085a5da6-imagejpeg" loading="lazy" width="164" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/89407.html#89411">&gt;&gt;89411</a><br>then you have a numbers problem.  One man can make 1000 flee.  2 or 3 men can make 10,000 flee.  The issue for you is finding 2-3 other loyal men and that you all share the same mind frame.  There are many like you but you must find them.  Test their minds to see how matrixed they are.  say it with me if you can.  fuck niggers fuck jews.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="89414"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-89414">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/15/2022 (Thu) 02:07</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7d34c2">7d34c2</span></span>
+  <a class="linkPreview" href="/pol/preview/89414.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#89414">No.</a><a class="linkQuote" href="/pol/res/89407.html#q89414">89414</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/89407.html#89412">&gt;&gt;89412</a><br><span class="greenText">&gt;/pol/ will make you a god or an ostracized hateful racist neo-nazi</span><br><span class="greenText">&gt;racist</span><br><span class="greenText">&gt;neo-nazi</span><br><span class="greenText">&gt;THERE IS NO THINKING ALLOWED</span><br><span class="greenText">&gt;Spend 30 minutes on /pol/ or some other right-wing side,</span><br><span class="greenText">&gt;especially Libertarian sites</span><br>Don't you know what a jew's Trojan Horse is? Whomever came up with those posts in your image was an infiltrating rat because lies were inserted into paragraphs of truth on purpose. That is how kikes get to you on sites where everyone is vigilant. Now, how about you explain how one man can make 1,000 men flee? Because I am fit, I do have what the brainwashed consider one of the best jobs and I do have a loud and commanding voice. I don't watch television because kikes control the majority of "entertainment". Besides family, I'm not incapable of freeing minds from a lifetime of jewish indoctrination. The problem is, every time I do that, those bastards engage in the old 'white flight'. They either find out about the North West Front and move or simply decide to pack up and get away. Why this happens is that my region is particularly infested with shitskins and I've opened the other person's eyes. No amount of further convincing stops them from fleeing. So here I am surrounded by spics, niggers and kikes in positions of authority and I have been for so long I'm used to it.<br><br>Fuck jews. I don't give a shit about niggers. There are billions of negroes. Nobody stands a chance in removing them unless first the jewish tick is removed from the nation. Kikes brought negroes over as slaves during the Trans Atlantic slave trade in the first place and have championed open borders for many decades. This is where specifics on how "one man can make a thousand flee" would come in handy. Do you actually have that information? It's strange how you wouldn't already put that to use if you know of it. I haven't heard of anyone causing thousands of jews and niggers to get the fuck out of our nations.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="89417"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-89417">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/15/2022 (Thu) 23:08</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #2dddb1">2dddb1</span></span>
+  <a class="linkPreview" href="/pol/preview/89417.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#89417">No.</a><a class="linkQuote" href="/pol/res/89407.html#q89417">89417</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6180c2b69743a288f83b03c17a559de9-imagegif.gif">Open File</a>(<span class="sizeLabel">80.39 KB</span>
+  <span class="dimensionLabel">1560x908</span> <a class="originalNameLink" href="/.media/6180c2b69743a288f83b03c17a559de9-imagegif.gif" download="monero private vs public.gif">monero private vs public.gif</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6180c2b69743a288f83b03c17a559de9-imagegif.gif" data-filewidth="1560" data-fileheight="908" data-filemime="image/gif"><img src="/.media/t_6180c2b69743a288f83b03c17a559de9-imagegif" loading="lazy" width="438" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/89407.html#89414">&gt;&gt;89414</a><br>the kikes power comes from his total control of the US Dollar.  Remove yourself from the kike economy.  Whites are using silver and gold for in person transactions and we are using monero for digital transactions.  the further we remove ourselves from this jewish economy the less power the jew has. The Jew is able to destroy white societies because he has unlimited financing due to his Jewish Bailout Bucks.  So leave those bailout bucks behind, and why not?  there is so much political risk associated with Bailout bucks now.  As soon as some politically connected Jew needs his company or bank bailed out he gets just that free money by debasing everyone elses money.  Whites cannot survive in an economic system where the Jew totally controls the Dollar.  So we left that Jew Economy behind.  Jews can't collect or spy on tranactions with monero thwarting the jews ability to collect income tax.  <br><br>fuck jews fuck niggers<br><br>fuck working for a jewish bailout bucks dollar with massive counter party political risk that just gets debased.  <br><br>Does this make sense for you now?  There already is a parallel economy in the works and the jews are not in control of it what so ever.  <br><br>Just wait until commodities sky rocket in jew dollars lol they already are aren't they ;)</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="89418"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-89418">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/16/2022 (Fri) 01:34</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7d34c2">7d34c2</span></span>
+  <a class="linkPreview" href="/pol/preview/89418.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#89418">No.</a><a class="linkQuote" href="/pol/res/89407.html#q89418">89418</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/89407.html#89417">&gt;&gt;89417</a><br>That entire explanation you gave is not an answer to how one man can cause a thousand to flee.<br><br>While I could follow your advice and use my paychecks to buy gold and use Monero, the point remains that I still have to earn money from a shitty corporate job - and the vast majority of corporations have jewish CEOs. I would still be in the system. I would still be in the nation kikes run as they hold the highest positions of government, and with no escape as many other countries are ran by them as well. The "white flight" I talked about from those whose minds I freed of jewish programming did not solve their problems. Huge surprise there. They have contacted me to tell me nothing has changed. They can't go anywhere to escape. There is no escape. So. Again, the very solution to how one man can make a thousand flee should be in your mind. After all, you claimed it. Spell it out.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="89419"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-89419">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/16/2022 (Fri) 14:10</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #a82601">a82601</span></span>
+  <a class="linkPreview" href="/pol/preview/89419.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#89419">No.</a><a class="linkQuote" href="/pol/res/89407.html#q89419">89419</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Americans used to hate criminals and the homeless, but now every American is a criminal and soon every American will be homeless.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="89423"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-89423">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/17/2022 (Sat) 03:01</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #2dddb1">2dddb1</span></span>
+  <a class="linkPreview" href="/pol/preview/89423.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#89423">No.</a><a class="linkQuote" href="/pol/res/89407.html#q89423">89423</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/c40b1a4c09b33356e9661026399696d0-imagepng.png">Open File</a>(<span class="sizeLabel">598.74 KB</span>
+  <span class="dimensionLabel">640x640</span> <a class="originalNameLink" href="/.media/c40b1a4c09b33356e9661026399696d0-imagepng.png" download="fbi right now.png">fbi right now.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/c40b1a4c09b33356e9661026399696d0-imagepng.png" data-filewidth="640" data-fileheight="640" data-filemime="image/png"><img src="/.media/t_c40b1a4c09b33356e9661026399696d0-imagepng" loading="lazy" width="255" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/89407.html#89418">&gt;&gt;89418</a><br>Ask yourself why people stay?  It is because shit skins have been provided a 1st world life style on the backs of hardworking white people.  niggers spics slants in the cities need electricity to have their 1st world existence on the white mans back.  I personally do not feel obligated to provide shit skins with a 1st world life style as a white man.  Do you?  Why work in a system where they steal  your labor your life your time and tax you so that non-whites can afford a 1st world life style.  I'm not intersted in that social contract what so ever.  Do you choose to allow the non-whites to have electricity?  Why?  How does that benefit you?  So that shit skins can out breed the white man on the white man's soil?  Fuck that non sense, and fuck non-whites having electricity.  They simply do not deserve it and it doesn't benefit me to have non-whites living a 1st world life style on my back.  So remove their electricity.  <br><br>white ppl can live a 1st world life style without electricity because we are civilized folk.  But these non-whites without the luxurios 1st world life style provided to them by the whites soon realize they have to leave the area because guess what withou whites providing electricity, food, housing etc they go right back to their non-white 3rd world status.  Which is exactly where they should be if the Jew did not cause endless Communist Bailouts and money printing essentially robbing whites of their hard earned labor and giving it to non-whites.  That is white genocide I want no part of it.  I don't want non-whites to have electricity.  Do you?<br><br>One man can take out the electricity for thousands of non-whites.  2-3 men can take out the electricity for 10,000 non-whites.<br><br>This country is ours.  We have a parallel economy to do business and we do not need the Jew Bailout Bucks.  We aren't paying into a system or using a system currency which is only used to cause white genocide.  The lynchpin of the Jews power is his control over the printing press and interest rates which allows him to bribe all political leaders and make all branches of the goverment corrupt.  Notice how we have multiple sanctuary cities chalk full of foreign invaders with a border that no military group can enforce... We have full blown Jewish Communism and White Genocide going on.  All financed by printed Jewish Bailout bucks with Jews choosing who stays in business via gov handouts.  Fuck Jewish Communism!</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="89424"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-89424">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/17/2022 (Sat) 06:51</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7d34c2">7d34c2</span></span>
+  <a class="linkPreview" href="/pol/preview/89424.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#89424">No.</a><a class="linkQuote" href="/pol/res/89407.html#q89424">89424</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/89407.html#89423">&gt;&gt;89423</a><br>At least you answered. Here's the problem though.  What damage one man can do is easily repaired by a larger amount of men. The loss of electricity happens frequently. It's a temporary thing. The grid is always repaired. The lights always come back on. You would inconvenience porch monkeys as they stand outside wailing about their chitlins and fried chicken in the fridge. I know this. They are my next-door neighbors. This has happened. Inconveniencing niggers in a minor way until they get electricity back doesn't concern me. Only pissing off niggers doesn't matter in the slightest. They cannot be removed by force without first dealing with the overwhelming control by jews. The jewish CEOs of entertainment, Homeland Security, the White House and social media all control the mindset and continue to stand to prevent the removal of shitskins. They must first be removed. That takes manpower.<br><br>Now in urban warfare if we had enough numbers for a civil war against kike bastards, attacking the power grid frequently would be a solution. What we lack is those numbers. I have scrutinized many silly suggestions from capeshit to lone shooter public violence to "in minecraft" destruction to spiritual power gaining bullshit to doing mind altering drugs. Nothing has ever made enough sense besides increasing numbers. There is the problem. Fucking white flight every time I free a mind. Those that fled are as good as traitors.<br><br>Which brings me to the question of "who". Who do we have to blame for losing our nations the world across? Jews for acting their double-crossing back-stabbing degenerate nation destroying selves? Niggers for acting like wild animals and flooding nations the jews opened borders for? Or is it traitors to our own kind who allowed this to happen for so long in the first place?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="89433"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-89433">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/18/2022 (Sun) 18:44</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #2dddb1">2dddb1</span></span>
+  <a class="linkPreview" href="/pol/preview/89433.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#89433">No.</a><a class="linkQuote" href="/pol/res/89407.html#q89433">89433</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b6eaf7c66e8fd23649e04af50130131b-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">13.76 KB</span>
+  <span class="dimensionLabel">256x256</span> <a class="originalNameLink" href="/.media/b6eaf7c66e8fd23649e04af50130131b-imagejpeg.jpg" download="Dirlewanger Smiling.jpg">Dirlewanger Smiling.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b6eaf7c66e8fd23649e04af50130131b-imagejpeg.jpg" data-filewidth="256" data-fileheight="256" data-filemime="image/jpeg"><img src="/.media/t_b6eaf7c66e8fd23649e04af50130131b-imagejpeg" loading="lazy" width="255" height="255"></a></figure></div>
+  <div class="divMessage"><span class="greenText">&gt;What damage one man can do is easily repaired by a larger amount of men. The loss of electricity happens frequently. It's a temporary thing. The grid is always repaired. The lights always come back on. </span><br>I agree but you are categorically wrong in regards to how long it takes to repair electrical substations.  Case and point take a look at Ukraine.  Russia has used missiles to destroy their substations.  Take some time and read about how long it took the Satanic Federal Government to get the electricity working in Moore County NC.  It was not an instant fix.  Furthermore the more attacks that occur on these Satanic Governments Electrical Substations the longer it will take for them to repair because eventually the stockpile of transformers will run dry.  Once the Satanic Gov who never enforces a border doesn't have a readily available stockpile of transformers to ship to repair a damaged electrical substation well now it won't be a few days it will be 4 months to a year before a new Transformer is manufactured and shipped and then has to be installed.  Guess what?  If you are a man of your community you can get the skinny on when they will truck in the new massive transformer for the damaged electrical substation.  Meaning that the new large transformer shipped on a truck can get damaged b4 they even have a chance to get the power back on.<br><br>Another fact is that the substations don't even necessarily have to be targeted.  If you want an easier target to deny non-whites a 1st world life style on white peoples back just look for the large electrical transformers in your areas.  They  will look like trashcans and are typically up high on a pole.  Those can easily be destroyed and while not removing electricity for as many people as destruction of a substation would be it will still remove electricity and is a very easy target and completely unguarded.  <br><br>The substations don't have to be destroyed per say just tangled up with wire, helium balloons, or strips of foil like what the USA did to the Baghdad substations littering them with long strips of aluminium foil essentially causing short circuits everywhere which destroyed the substation.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="89434"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-89434">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/18/2022 (Sun) 18:45</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #2dddb1">2dddb1</span></span>
+  <a class="linkPreview" href="/pol/preview/89434.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#89434">No.</a><a class="linkQuote" href="/pol/res/89407.html#q89434">89434</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/89407.html#89424">&gt;&gt;89424</a><br><span class="greenText">&gt;Now in urban warfare if we had enough numbers for a civil war against kike bastards, attacking the power grid frequently would be a solution. What we lack is those numbers. I have scrutinized many silly suggestions from capeshit to lone shooter public violence to "in minecraft" destruction to spiritual power gaining bullshit to doing mind altering drugs. Nothing has ever made enough sense besides increasing numbers. There is the problem. Fucking white flight every time I free a mind. Those that fled are as good as traitors.</span><br><br>We have numbers, but not in the jewish cities.  The people in the jewish cities are for the most part weak, fat, don't know how to fight, will fight each other without their 1st world life style provided to them by whites.  The non-whites are horrible at fighting. they all scatter once loud sounds start occurring lol.  they scatter like vermin.  Our plan is to drive all non-whites south into mexico or force them into labor camps and then drive them south into mexico.  I think you are kind of missing the point.  The reason why jews can attract so many illegal invaders here is because they give them a 1st world life style off of the white man's back.  Without electricity in their demonic Jewish cities this 1st world life style comes crumbling down and so does the jewish racket.  If the Jew can't keep the electricity on, then it becomes very apparent that the 1st world life style is gone and won't be coming back.  Whites don't have a problem living a 1st world life style without electricity but the non-whites get reduced back to their 3rd world living standards because they could never live a 1st world life style without it being on the backs of hard working white men.  <br><br>Remove the electricity from all Jewish Cities and watch them crumble because the quality of life goes right back to their 3rd world status.  <br><br><span class="greenText">&gt;Which brings me to the question of "who". Who do we have to blame for losing our nations the world across? Jews for acting their double-crossing back-stabbing degenerate nation destroying selves? Niggers for acting like wild animals and flooding nations the jews opened borders for? Or is it traitors to our own kind who allowed this to happen for so long in the first place?</span><br><br>Jews and their Usury.  This is what it stems from.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="89440"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-89440">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/19/2022 (Mon) 07:44</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7d34c2">7d34c2</span></span>
+  <a class="linkPreview" href="/pol/preview/89440.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#89440">No.</a><a class="linkQuote" href="/pol/res/89407.html#q89440">89440</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/89407.html#89434">&gt;&gt;89434</a><br><span class="greenText">&gt;I think you are kind of missing the point. The reason why jews can attract so many illegal invaders here is because</span><br><span class="greenText">&gt;they give them a 1st world life style off of the white man's back.</span><br>No, I know that is exactly the point. So substations and transformers to make them flee. Makes sense.<br><a class="quoteLink" href="/pol/res/89407.html#89434">&gt;&gt;89434</a><br><span class="greenText">&gt;Jews and their Usury. This is what it stems from.</span><br>The #1 cause, yes.<br>#2 - Traitors that enabled those jews and let them rise to power through bribery and submitting. I will never defend kikes but the bigger picture is the parasites would not have rose without the race traitors that brought them up.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90198"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-90198">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">04/04/2023 (Tue) 18:49</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #2dddb1">2dddb1</span></span>
+  <a class="linkPreview" href="/pol/preview/90198.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#90198">No.</a><a class="linkQuote" href="/pol/res/89407.html#q90198">90198</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">what will be the next incident to reveal to the world that these national armies are paper tigers?  USA can't enforces it border let alone rangle BLM from destroying small business owners livelihoods.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="90200"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-90200">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">04/05/2023 (Wed) 06:05</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7d34c2">7d34c2</span></span>
+  <a class="linkPreview" href="/pol/preview/90200.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#90200">No.</a><a class="linkQuote" href="/pol/res/89407.html#q90200">90200</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/aa830b5039e92f46fd169e7ad07e0666-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">205.25 KB</span>
+  <span class="dimensionLabel">917x997</span> <a class="originalNameLink" href="/.media/aa830b5039e92f46fd169e7ad07e0666-imagejpeg.jpg" download="21314.jpg">21314.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/aa830b5039e92f46fd169e7ad07e0666-imagejpeg.jpg" data-filewidth="917" data-fileheight="997" data-filemime="image/jpeg"><img src="/.media/t_aa830b5039e92f46fd169e7ad07e0666-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a80fe56cc99da68a581e5fdb8a07bcf9-imagepng.png">Open File</a>(<span class="sizeLabel">481.26 KB</span>
+  <span class="dimensionLabel">632x557</span> <a class="originalNameLink" href="/.media/a80fe56cc99da68a581e5fdb8a07bcf9-imagepng.png" download="1541164268870.png">1541164268870.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a80fe56cc99da68a581e5fdb8a07bcf9-imagepng.png" data-filewidth="632" data-fileheight="557" data-filemime="image/png"><img src="/.media/t_a80fe56cc99da68a581e5fdb8a07bcf9-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/e78392f0f22340de9545cb072da94bbf-imagepng.png">Open File</a>(<span class="sizeLabel">819.77 KB</span>
+  <span class="dimensionLabel">756x824</span> <a class="originalNameLink" href="/.media/e78392f0f22340de9545cb072da94bbf-imagepng.png" download="mixing_pot-1155x627.png">mixing_pot-1155x627.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/e78392f0f22340de9545cb072da94bbf-imagepng.png" data-filewidth="756" data-fileheight="824" data-filemime="image/png"><img src="/.media/t_e78392f0f22340de9545cb072da94bbf-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/3bc86a1672955642bd31aacbce4f2c79-imagepng.png">Open File</a>(<span class="sizeLabel">546.93 KB</span>
+  <span class="dimensionLabel">960x1000</span> <a class="originalNameLink" href="/.media/3bc86a1672955642bd31aacbce4f2c79-imagepng.png" download="655.png">655.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/3bc86a1672955642bd31aacbce4f2c79-imagepng.png" data-filewidth="960" data-fileheight="1000" data-filemime="image/png"><img src="/.media/t_3bc86a1672955642bd31aacbce4f2c79-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/f46ee4229114bbbdb832d09e4cbac5b3-videowebm.webm">Open File</a>(<span class="sizeLabel">11.44 MB</span>
+  <span class="dimensionLabel">854x480</span> <a class="originalNameLink" href="/.media/f46ee4229114bbbdb832d09e4cbac5b3-videowebm.webm" download="All cucks for Israeli lobby money.webm">All cucks for Israeli lobby money.webm</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/f46ee4229114bbbdb832d09e4cbac5b3-videowebm.webm" data-filewidth="854" data-fileheight="480" data-filemime="video/webm"><img src="/.media/t_f46ee4229114bbbdb832d09e4cbac5b3-videowebm" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/89407.html#90198">&gt;&gt;90198</a><br>Border Patrol <em>could</em> enforce the borders if that was their objective. It is not. They're loyal dogs to the U.S. government which are in turn loyal dogs to jewish lobbies such as AIPAC. It is not the United States of America. It's the United Cucks for Israel.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93003"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-93003">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/22/2024 (Fri) 05:31</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #2a62c4">2a62c4</span></span>
+  <a class="linkPreview" href="/pol/preview/93003.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#93003">No.</a><a class="linkQuote" href="/pol/res/89407.html#q93003">93003</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Americans laugh when New York outlaws ketchup, but do you think ketchup bans in New York might lead to ketchup bans in Vermont and Kansas?<br><br>Do you think ketchup bans might lead to mustard bans and toothpick bans?<br><br>Do you think that the Satanists are going wake up and restore the Bill of Rights, decrease the debt, or end the wars?<br><br>Does anyone see what is going on?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93005"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-93005">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/22/2024 (Fri) 06:41</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7d34c2">7d34c2</span></span>
+  <a class="linkPreview" href="/pol/preview/93005.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#93005">No.</a><a class="linkQuote" href="/pol/res/89407.html#q93005">93005</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/89407.html#93003">&gt;&gt;93003</a><br>You can still request ketchup in Jew York. That is far from the worst going on in that state, "Americans this" generating <strong>AIDSkike</strong>.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93018"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-93018">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">03/24/2024 (Sun) 10:42</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #9c5ae6">9c5ae6</span></span>
+  <a class="linkPreview" href="/pol/preview/93018.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#93018">No.</a><a class="linkQuote" href="/pol/res/89407.html#q93018">93018</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/89407.html#89407">&gt;&gt;89407</a><br><span class="greenText">&gt;the removal of electrical substations comes a return to a more basic form of warefare</span><br>Thats just a second step<br>First step is population that is not willing to fight for those who are behind his misery and looking on things and statistics on how many would like to die for their occupied govs has a potential for electricity cutting of yours (altrough dont panic that they have generators for gasoline in bases or in hospitals) as lets say <br>Martial law requires men and lots of them even when cameras are a thing<br><br><br>Also advice to you laddy<br>Electricity sabotages are not the most painful blows you as partisan can impose<br>The most painful blow you can impose as guerilla is assaulting water instalations and water cleaning facilities.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93062"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-93062">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">04/03/2024 (Wed) 19:31</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #15bfa1">15bfa1</span></span>
+  <a class="linkPreview" href="/pol/preview/93062.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#93062">No.</a><a class="linkQuote" href="/pol/res/89407.html#q93062">93062</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/89407.html#89434">&gt;&gt;89434</a><br><span class="youtube_wrapper">https://youtube.com/watch?v=45W5JyNN-80 [<a href="https://youtube.com/watch?v=45W5JyNN-80">Embed</a>]</span></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94133"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-94133">
+  <span class="labelSubject">sage</span>
+  <a class="linkName" href="mailto:sage">sage</a>
+  
+  
+  <span class="labelCreated">07/18/2024 (Thu) 04:52</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #480813">480813</span></span>
+  <a class="linkPreview" href="/pol/preview/94133.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#94133">No.</a><a class="linkQuote" href="/pol/res/89407.html#q94133">94133</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">seeing if endchan is one of the websites banning posting</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94134"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-89407-94134">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/18/2024 (Thu) 05:28</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7d34c2">7d34c2</span></span>
+  <a class="linkPreview" href="/pol/preview/94134.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/89407.html#94134">No.</a><a class="linkQuote" href="/pol/res/89407.html#q94134">94134</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/89407.html#94133">&gt;&gt;94133</a><br>Posting? Depends on what the post is. Familiarize yourself with the rules: <a class="quoteLink" href="/pol/res/92884.html#92884">&gt;&gt;92884</a><br>And no, appeals saying "muh freedom of speech" don't accomplish anything.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/89407.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

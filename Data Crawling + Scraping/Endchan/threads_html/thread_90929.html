@@ -1,0 +1,1319 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - Could Welcome Home be babby’s first redpill into Freegaysonry?</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="90929">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=90929">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/90929.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell multipleUploads" id="90929"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b3fadd8becad1262f97356b3c4bb4ec6-imagepng.png">Open File</a>(<span class="sizeLabel">630.77 KB</span>
+  <span class="dimensionLabel">614x595</span> <a class="originalNameLink" href="/.media/b3fadd8becad1262f97356b3c4bb4ec6-imagepng.png" download="IMG_0193.png">IMG_0193.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b3fadd8becad1262f97356b3c4bb4ec6-imagepng.png" data-filewidth="614" data-fileheight="595" data-filemime="image/png"><img src="/.media/t_b3fadd8becad1262f97356b3c4bb4ec6-imagepng" loading="lazy" width="255" height="247"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/be54a0c85e308ea2402cdc46a4a8cf1f-imagegif.gif">Open File</a>(<span class="sizeLabel">48.70 KB</span>
+  <span class="dimensionLabel">560x482</span> <a class="originalNameLink" href="/.media/be54a0c85e308ea2402cdc46a4a8cf1f-imagegif.gif" download="IMG_0187.gif">IMG_0187.gif</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/be54a0c85e308ea2402cdc46a4a8cf1f-imagegif.gif" data-filewidth="560" data-fileheight="482" data-filemime="image/gif"><img src="/.media/t_be54a0c85e308ea2402cdc46a4a8cf1f-imagegif" loading="lazy" width="296" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6066e2932dadb6f8b2cf7f2eafe460e4-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">185.27 KB</span>
+  <span class="dimensionLabel">960x1200</span> <a class="originalNameLink" href="/.media/6066e2932dadb6f8b2cf7f2eafe460e4-imagejpeg.jpg" download="IMG_0188.jpeg">IMG_0188.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6066e2932dadb6f8b2cf7f2eafe460e4-imagejpeg.jpg" data-filewidth="960" data-fileheight="1200" data-filemime="image/jpeg"><img src="/.media/t_6066e2932dadb6f8b2cf7f2eafe460e4-imagejpeg" loading="lazy" width="204" height="255"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-90929">
+    <span class="labelSubject">Could Welcome Home be babby’s first redpill into Freegaysonry?</span>
+    <a class="linkName noEmailName">OP</a>
+    <img class="imgFlag" src="/pol/flags/5d558a62dd38cd54dea31b24" title="Fascism">
+    
+    <span class="labelCreated">08/17/2023 (Thu) 22:13</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #7e5779">7e5779</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/90929.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/90929.html#90929">No.</a>
+    <a class="linkQuote" href="/pol/res/90929.html#q90929">90929</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">Is Welcome Home accidentally redpilling the TikTok LGBTQ+ zoomers on Freemasonry/secret societies? <br><br>Basically, to sum it up quick, it’s your standard, flavor-of-the-mouth faggot FNaF/Undertale-tier, horror YouTuber bait, that is for sure, but, if you dig into it, it’s full of a ton of occult references and the whole neighbor/neighborhood thing is clearly inspired by the whole brotherhood motif of secret societies/cults like the Masons and the like. There’s even a picture of ones of the characters posing like Baphomet and the neighborhood structure is similar to the Sefirot (someone on the comment section of the Gay Theory video even noticed this). Lots of kids are getting into it.<br><br>I’m pretty sure the person making it is familiar to these occult symbols (they had a picture of the Wally character posing as Baphomet). Their name is literally Clown, which may or may not be intentionally a reference to the Shriners.<br><br>Reminds me of when 4chan’s /co/ connected the dots and realized (((Steven Universe))) was satanic. Maybe some retarded purple-haired zoomer will connect the references back to Freemasonry and go down the rabbit until they reach the Jewish aspect of it.<br><br>Kind of faggy but I highly recommend Matpat’s theory on it, which touches on the whole neighbor/brotherhood aspect of it but doesn’t really tie it into Freemasonry. I also recommend Night Mind’s video on it. There’s specific videos hidden that NM finds that allude to human sacrifice subtly.<br><br>Night Mind’s videos: <span class="youtube_wrapper">https://youtube.com/watch?v=vBgFxv5n_WA [<a href="https://youtube.com/watch?v=vBgFxv5n_WA">Embed</a>]</span><br><span class="youtube_wrapper">https://youtube.com/watch?v=_-_BvkzoShE [<a href="https://youtube.com/watch?v=_-_BvkzoShE">Embed</a>]</span><br><br>Matpat’s videos: <span class="youtube_wrapper">https://youtube.com/watch?v=kaKa6bnoXa8 [<a href="https://youtube.com/watch?v=kaKa6bnoXa8">Embed</a>]</span><br><span class="youtube_wrapper">https://youtube.com/watch?v=QuVHuJdRioQ [<a href="https://youtube.com/watch?v=QuVHuJdRioQ">Embed</a>]</span><br><br>This wasn’t targeted for children but, through shit like Matpat (whose audience is mostly impressionable CHILDREN). This is what your kids are watching in Weimerica, BTW. God, I hate the Antichrist.<br><br>One of the pics related is a hidden secret screen someone found on the Welcome Home website. The file was titled "SoBelow", an obvious reference to the phrase, "As Above, So Below". The site itself is full of eyes to reinforce the feeling of something watching you, something all-seeing. Really creepy shit.</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="90930"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90930">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">08/18/2023 (Fri) 00:25</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #6b6ca1">6b6ca1</span></span>
+  <a class="linkPreview" href="/pol/preview/90930.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90930">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90930">90930</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90929">&gt;&gt;90929</a><br><span class="greenText">&gt;but, if you dig into it, it’s full of a ton of occult references and the whole neighbor/neighborhood thing is clearly inspired by the whole brotherhood motif of secret societies/cults like the Masons and the like. There’s even a picture of ones of the characters posing like Baphomet and the neighborhood structure is similar to the Sefirot (someone on the comment section of the Gay Theory video even noticed this). Lots of kids are getting into it.</span><br>Altrough i am not denying that the game has the legend of zelda masonic bullshitery tier of masonic references i highly doubt thr kids will ever in their life recognize them<br><br>I know no child from 2000s era knowing in his adolescence that the legend of zelda ocarina of time wqs masonic opera for 911<br>I know no child who knows about stevens universe hidden messages<br><br>More likely the game is yet another case of to hook someone on kabbalah and masonry like was not enough to see the corruption of ancient times into masonic mental gymnastics of self drstruction brcause muh khazaria and stuff</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90934"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90934">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/18/2023 (Fri) 12:48</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #af21dd">af21dd</span></span>
+  <a class="linkPreview" href="/pol/preview/90934.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90934">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90934">90934</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90930">&gt;&gt;90930</a><br>Zelda totally has Masonic shit written all over. I have a few actually good info graphs that are separate from the usual ones posted all over. A guy on 4chan’s /x/ had a theory that Majora’s Mask is about stopping the resurrection, which sounds crazy but if you read his theory, it actually makes a ton of sense.<br><br>Also, Freemasons are into hermeticism, which explains Mario being Hermes/Mercury in 64.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90935"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90935">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/18/2023 (Fri) 15:58</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #921f67">921f67</span></span>
+  <a class="linkPreview" href="/pol/preview/90935.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90935">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90935">90935</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90930">&gt;&gt;90930</a><br>Been a few hours since you’ve posted here, so I’m going to assume you’re at work or whatever but I’ll leave these two info graphs for you to read. They’re a bit more accurate to the more pagan aspects of Freegaysonry. They were created by a pretty pro-Catholic guy on /x/ (Freemasons seem to be extremely anti-Catholic Church, judging by the excerpt from the Alta Vendita document), so if you’re not into the Catholic views (which I personally believe has been subverted by (((them))) ), then I’d suggest ignoring the more pro-Catholic stuff. The info is very interesting however and is worth researching/looking into.<a class="quoteLink" href="/pol/res/90929.html#90930">&gt;&gt;90930</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90936"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90936">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/18/2023 (Fri) 16:01</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #4826eb">4826eb</span></span>
+  <a class="linkPreview" href="/pol/preview/90936.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90936">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90936">90936</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90935">&gt;&gt;90935</a><br>WTF. I attempted uploading those two info graphs and they’re not even uploading. I wonder (((why))).</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="90937"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90937">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/18/2023 (Fri) 16:03</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #4826eb">4826eb</span></span>
+  <a class="linkPreview" href="/pol/preview/90937.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90937">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90937">90937</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/66001b2b6863af892f3474551972583d-imagepng.png">Open File</a>(<span class="sizeLabel">1.64 MB</span>
+  <span class="dimensionLabel">1000x1658</span> <a class="originalNameLink" href="/.media/66001b2b6863af892f3474551972583d-imagepng.png" download="IMG_0205.png">IMG_0205.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/66001b2b6863af892f3474551972583d-imagepng.png" data-filewidth="1000" data-fileheight="1658" data-filemime="image/png"><img src="/.media/t_66001b2b6863af892f3474551972583d-imagepng" loading="lazy" width="154" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/1cf661327e570e66f3d16fecdb5acb49-imagepng.png">Open File</a>(<span class="sizeLabel">1.52 MB</span>
+  <span class="dimensionLabel">1500x1073</span> <a class="originalNameLink" href="/.media/1cf661327e570e66f3d16fecdb5acb49-imagepng.png" download="IMG_0206.png">IMG_0206.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/1cf661327e570e66f3d16fecdb5acb49-imagepng.png" data-filewidth="1500" data-fileheight="1073" data-filemime="image/png"><img src="/.media/t_1cf661327e570e66f3d16fecdb5acb49-imagepng" loading="lazy" width="255" height="182"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90934">&gt;&gt;90934</a><br>Didn’t upload the images for some (((reason))).</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90938"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90938">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/18/2023 (Fri) 16:11</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #4826eb">4826eb</span></span>
+  <a class="linkPreview" href="/pol/preview/90938.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90938">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90938">90938</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/ba50109a46f7031d8dfc632527af7ade-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">187.30 KB</span>
+  <span class="dimensionLabel">960x960</span> <a class="originalNameLink" href="/.media/ba50109a46f7031d8dfc632527af7ade-imagejpeg.jpg" download="IMG_3428.jpeg">IMG_3428.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/ba50109a46f7031d8dfc632527af7ade-imagejpeg.jpg" data-filewidth="960" data-fileheight="960" data-filemime="image/jpeg"><img src="/.media/t_ba50109a46f7031d8dfc632527af7ade-imagejpeg" loading="lazy" width="255" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90930">&gt;&gt;90930</a><br>100% true. I agree. (((Nintendo))) is definitely free Masonic and in bed with Jews, like (((Universal))) and even an animation studio known for producing crappy Illuminati kiddie movie propaganda called… (((ILLUMINATION))). How can these people not see it yet and continue to shill for this garbage is beyond me. Nintendo were literally in bed with the mob as well. It’s 100% Jewish subversion of Japanese culture. From what I heard, Japan’s birth rates have been dropping, so I assume this is all some sort of satanic humiliation ritual for them allying with NatSoc during WWII. Pump the modern generations with Masonic/Kabbalah propaganda, make them forget their roots, they obsess over these games and make them part of their modern Jewified culture.<br><br>A post from the Catholic anon above who made the info graphs: “Nintendo was founded as a company that made playing cards. This much is common knowledge, but what people don't know is that 1. hanafuda were used extensively as a form of Japanese tarot, the name meaning "big-nose demon," and 2. they were used for gambling, though this was illegal at the time. However, this wasn't a problem for Nintendo's founder, who was granted a monopoly over cardmaking by the government, indicating that he was both favored by the mob and by the state, which I suspect dovetailed. One of the decks Nintendo made was illustrated with paintings of Napoleon, a very popular symbol for Freemasons as it flourished under his rule. Fusajiro, the founder, also rose to the top of a concrete factory extremely quickly, almost as if he was connected. Obviously, civil construction trade unions are very intertwined with Freemasonry. After Mario Bros. but before Super Mario Bros., you had Mario Concrete Factory, in honor of Fusajiro.”</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90939"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90939">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/18/2023 (Fri) 16:38</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #4826eb">4826eb</span></span>
+  <a class="linkPreview" href="/pol/preview/90939.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90939">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90939">90939</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/777de3b217e18df91ee0e00b01b3b8c7-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">20.50 KB</span>
+  <span class="dimensionLabel">260x194</span> <a class="originalNameLink" href="/.media/777de3b217e18df91ee0e00b01b3b8c7-imagejpeg.jpg" download="IMG_0207.jpeg">IMG_0207.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/777de3b217e18df91ee0e00b01b3b8c7-imagejpeg.jpg" data-filewidth="260" data-fileheight="194" data-filemime="image/jpeg"><img src="/pol/custom.spoiler" loading="lazy" width="255" height="190"></a></figure></div>
+  <div class="divMessage">I think the very fact YouTube is making this SJW globohomo quasi-Masonic garbage trend is very showing of the time we’re living in.<br><br>May not look like much now, but keep in mind, young people are impressionable. They see (((occult))) images such as the ones shown in some of the images (Don’t count the Baphomet pic as canon - the creator DIDN’T use it in the ARG but the rest is still canon) and videos and think that it’s cool. Soon they start simping for Satan. I’ve had a friend who liked Nintendo, Super Mason BROTHERS and MaSonic the Hedgehog shit, started off fairly innocent, went down the rabbit hole a bit further and became a full-on faggot EXTREMELY LEFT-LEANING liberal and literally wears pentagram earrings, is into occult shit, and watches garbage like Hazbin Hotel/Helluva Boss (which is basically this generation’s Invader Zim even, imo, Zim was clearly not glorifying evil, it’s literally about a subversive invader and a pol/x schizo warning people).<br><br>I remember talking to her about religion and she starts going on about how Lucifer is misunderstood and that God is the bad guy. Constantly rambling about how Nazism is controlling the country (it’s not) and how communism/socialism is the only way.<br><br>Fuck anyone who simps for any of this Nintendo/Sonic/occult garbage. It’s ruining our generation and making them into an occultist communist consoomer hybrid. Imagine being a total faggot and thinking anything promoted by the Jewish media is Aryan. Anyone who defends Jewtendo or Masonic the Hebrewhog, go jump into the volcano with the rest of the Judeo-Masonic elite and libcucks/conservichuds.<br><br>Sorry for the schizo-tier rant but I had to let this all out. Maybe someone will at least agree that this vidya shit is a bad influence, at least for normies like my libtard friend.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90943"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90943">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/18/2023 (Fri) 18:15</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #716d2b">716d2b</span></span>
+  <a class="linkPreview" href="/pol/preview/90943.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90943">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90943">90943</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/45e6b57e7a942488a9692526c2acbace-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">22.53 KB</span>
+  <span class="dimensionLabel">171x295</span> <a class="originalNameLink" href="/.media/45e6b57e7a942488a9692526c2acbace-imagejpeg.jpg" download="IMG_0210.jpeg">IMG_0210.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/45e6b57e7a942488a9692526c2acbace-imagejpeg.jpg" data-filewidth="171" data-fileheight="295" data-filemime="image/jpeg"><img src="/.media/t_45e6b57e7a942488a9692526c2acbace-imagejpeg" loading="lazy" width="148" height="255"></a></figure></div>
+  <div class="divMessage">This shit is so weird though. Watching a theory video on it now. Creepy.<br><br>Interesting to note is that a quasi-Masonic group known as the “Rotary” exist and rotary phones are a reoccurring theme in the Welcome Home ARG.<br><br><span class="youtube_wrapper">https://youtube.com/watch?v=BH62RF8GNVQ [<a href="https://youtube.com/watch?v=BH62RF8GNVQ">Embed</a>]</span></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90944"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90944">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/18/2023 (Fri) 20:11</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #716d2b">716d2b</span></span>
+  <a class="linkPreview" href="/pol/preview/90944.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90944">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90944">90944</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Continuing on the post here: <a class="quoteLink" href="/pol/res/90929.html#90943">&gt;&gt;90943</a><br><br>The main theme of Welcome Home so far is infection by black goo and being trapped inside a red house - said red house having upside down crosses for eyes and is shown with one giant all-seeing eye. Infection is a very specific theme to take this ARG in, considering the whole Coronavirus hoopla.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90948"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90948">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/19/2023 (Sat) 05:16</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7966b6">7966b6</span></span>
+  <a class="linkPreview" href="/pol/preview/90948.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90948">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90948">90948</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/fbc87bed11f4215f506850fd081eaef8-imagepng.png">Open File</a>(<span class="sizeLabel">1018.94 KB</span>
+  <span class="dimensionLabel">1373x960</span> <a class="originalNameLink" href="/.media/fbc87bed11f4215f506850fd081eaef8-imagepng.png" download="1691050617360585.png">1691050617360585.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/fbc87bed11f4215f506850fd081eaef8-imagepng.png" data-filewidth="1373" data-fileheight="960" data-filemime="image/png"><img src="/.media/t_fbc87bed11f4215f506850fd081eaef8-imagepng" loading="lazy" width="255" height="178"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90935">&gt;&gt;90935</a><br><span class="greenText">&gt;so I’m going to assume you’re at work</span><br>Was killing time at work because of employers factors preventing to carry on to be precise <br><br><a class="quoteLink" href="/pol/res/90929.html#90934">&gt;&gt;90934</a><br><span class="greenText">&gt;if you read his theory, it actually makes a ton of sense</span><br>It can sort of considering that ending which occured there and as a man who saw trough Evangelion anime (yes i know shinji refused to do merging of man a woman which is again a masonic concept) the hidden message of the ending well<br>Someone doesnt want to wake up the giant <br><br><span class="greenText">&gt;They’re a bit more accurate to the more pagan aspects of Freegaysonry. </span><br>Still to this day egyptology and nag hammadi scripts never recovered after masonrys shenanigans and i exclude muddying of waters by robert sepehr about aryan migrations from present southern ukraine making the khazaria myth alive again</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90949"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90949">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">08/19/2023 (Sat) 05:47</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7966b6">7966b6</span></span>
+  <a class="linkPreview" href="/pol/preview/90949.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90949">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90949">90949</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/da49709f4de553e91522f8a0378ce587-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">11.91 KB</span>
+  <span class="dimensionLabel">180x413</span> <a class="originalNameLink" href="/.media/da49709f4de553e91522f8a0378ce587-imagejpeg.jpg" download="01600.jpg">01600.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/da49709f4de553e91522f8a0378ce587-imagejpeg.jpg" data-filewidth="180" data-fileheight="413" data-filemime="image/jpeg"><img src="/.media/t_da49709f4de553e91522f8a0378ce587-imagejpeg" loading="lazy" width="111" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90938">&gt;&gt;90938</a><br><span class="greenText">&gt;How can these people not see it yet and continue to shill for this garbage is beyond me.</span><br>Its a lack of esoteric knowledge and the knowledge of enemies esoteric symbolism anon, how one can see the for example this here which is not a videogame but good warmup to emphasize the lack of knowledge in many not noticing masonic messages into that another layer of zog onion<br><span class="youtube_wrapper">https://youtube.com/watch?v=ZsAubawvWdg [<a href="https://youtube.com/watch?v=ZsAubawvWdg">Embed</a>]</span><br>The first red flag can be seen as<br><span class="greenText">&gt;Orange colour which in numerology is 33rd colour</span><br>Then<br><span class="greenText">&gt;An due guard of entered apprentice around 3 times</span><br>And then<br><span class="greenText">&gt;A bloody checkred floor </span><br>And maybe at the end<br><span class="greenText">&gt;Unification of sexes theme maybe</span><br><br><span class="greenText">&gt;From what I heard, Japan’s birth rates have been dropping, so I assume this is all some sort of satanic humiliation ritual for them allying with NatSoc during WWII. Pump the modern generations with Masonic/Kabbalah propaganda, make them forget their roots, they obsess over these games and make them part of their modern Jewified culture.</span><br><br>Hikomokori or how they are called arent an issue they are an symptom of issue that is there which is a really messed up corporate morale code and etiquette code in corps, the consequences of lost decades era ie the great depression but in asia combined with how people are pushing themselves beyond their limits to prove they are worthy to be used as a cog and deserve that paycheck ie that legendary overcompetetivness<br>Japans birth rate problem is caused by forced workoholism, misery forcing people to toil more and work burnouts where basically family creation is a financial and mental suicide. Yes there are also a bad factors like porn (and japs are especially sick in this matter as a consumers) and ehm hentai porn but the shekel jew and economic jew is the biggest factor which makes life in japan to be a literal wagie in cagie meme but with sick humor, combine that with misused social norms of theirs into that and you have a recipie for death simmilar to gulag death by overworking.<br>For example in japan its an common thing that you should arrive into work an hour earlier to "prepare" for work<br>It is common to do an unhealthy amount of overtimes in order to prove you are valuable while being concious to not have it payed often<br>Its common there that despite some factors you wont finish your work quota you finnish it on unpaid overtime etc.<br>Its dishonorable there to refuse to go on drinking night after work<br>It is common there pretty much to view your boss in work as a god and so on and so on<br>I think this is a still a thing (verification recommended) but it is a dishonorable to point out the hypocrisy of your superiors when they violate something</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90950"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90950">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">08/19/2023 (Sat) 06:03</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7966b6">7966b6</span></span>
+  <a class="linkPreview" href="/pol/preview/90950.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90950">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90950">90950</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90939">&gt;&gt;90939</a><br><span class="greenText">&gt;Sorry for the schizo-tier rant but I had to let this all out</span><br>No one should be ever sorry when showing the faggotry of nintendo and segas masonic intelectual properties (not published franchises as a publisher btw) which are overhyped and not interesting when also MOSTLY EXCLUSIVE TO A SPECIFIC HARDWARE<br>Do these soyboys want some rpg adventure game? There was baldurs gate and is in remastered coat, there is divinity original sin, old diablos despite those being also suspicious, system shock etc.<br>Do these want linear platformer experience? There is an oversaturated section in steam on it from rayman if its there to the destroy all humans<br>Do they want fighting games <br>There are better ones like soulcalibur mortal kombat etc or even yakuza games if someone likes open world<br>Do they want some shooters?<br>A bloody boomer shooters are on rise again etc. why to stick into metroids etc?<br><br>Nintendo and sega are obsolete masonic failures of a entertainment and no matter how much of useless crap they release it wont help them that one is obsolete masonic beacon and second an failure of publisher and failure of pedofile masonic beacon</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90951"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90951">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">08/19/2023 (Sat) 06:04</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7966b6">7966b6</span></span>
+  <a class="linkPreview" href="/pol/preview/90951.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90951">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90951">90951</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90950">&gt;&gt;90950</a><br><span class="greenText">&gt;failure of pedofile</span><br>Failed pedofile</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90953"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90953">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/19/2023 (Sat) 10:33</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cc5ee5">cc5ee5</span></span>
+  <a class="linkPreview" href="/pol/preview/90953.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90953">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90953">90953</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Neither Nintendo nor Sega have released anything I've been interested in playing since the original Super Mario Bros or Sonic the Hedgehog. Even then, that side-scrolling platform bullshit was a mind numbing waste of time. Despite gamers being as obsessed with it as girls were with Harry the jew Potter, I have never had any interest in The Legend of Zelda. I'd rather play a post apocalypse (Fallout series) or an entirely different fantasy world but coupled with realism (Skyrim), if the dumb fucks who made those didn't release a buggy mess that seems intentionally pre-programmed to instantly crash when it could've just been a temporary freeze state. In the end, it's all a waste of time. Escapism as you blow your life away like ashes in the wind.<br><br>But what if you're wasting your life in a "steady job" fulfilling your "commitment" as society forces you to trade the majority of your time in service to ZOG? That is: jew owned industries. Kikes own so many companies, and Blackrock plus it's partner company Vanguard own shares in vastly more. <strong>Chances are you'll find it very difficult to survive without working under jew owned industries.</strong> What's the moral of the story and the alternative solution to all this misery of slaving for jew interests until we die? I have no fucking clue.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90954"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90954">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/19/2023 (Sat) 10:40</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #97bc25">97bc25</span></span>
+  <a class="linkPreview" href="/pol/preview/90954.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90954">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90954">90954</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/eac8030e1428ae0fb7f7430be48415fe-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">116.48 KB</span>
+  <span class="dimensionLabel">605x807</span> <a class="originalNameLink" href="/.media/eac8030e1428ae0fb7f7430be48415fe-imagejpeg.jpg" download="Fi8dz2lacAEVwMC.jpg">Fi8dz2lacAEVwMC.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/eac8030e1428ae0fb7f7430be48415fe-imagejpeg.jpg" data-filewidth="605" data-fileheight="807" data-filemime="image/jpeg"><img src="/.media/t_eac8030e1428ae0fb7f7430be48415fe-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90955"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90955">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/19/2023 (Sat) 11:47</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #af21dd">af21dd</span></span>
+  <a class="linkPreview" href="/pol/preview/90955.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90955">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90955">90955</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90948">&gt;&gt;90948</a><br><a class="quoteLink" href="/pol/res/90929.html#90949">&gt;&gt;90949</a><br><a class="quoteLink" href="/pol/res/90929.html#90950">&gt;&gt;90950</a><br><a class="quoteLink" href="/pol/res/90929.html#90951">&gt;&gt;90951</a><br><br>Thanks, dude. I thought I honestly was a schizo for thinking this so-called "Aryan" Zelda/Nintendo shit was absolute phooey. <br><br>To continue on with my schizo rant, who the fuck thinks a game that has a 33 encoded into its name, is full of Kabbalah and Masonic shit, has all-seeing eye shit everywhere, creepy undertones, weird fixation on demonology (possibly goetia), and has a (((SECRET SOCIETY))) as a reoccurring theme is "Aryan" just because one of the first couple games had crosses and him worshiping Jesus. How tf is Link a Christian if he is siding with a secret society and performing magic rituals? (I think. I haven’t touched this shit in a while). There’s no proof that Ganondorf is a Jewish name at all besides baseless, outdated sourced claims. Dorf is literally a Germanic name, not a kike name and honestly Gerudo culture is literally just Arabic culture, not kike culture.<br><br>Okay, I’m done ranting. Kek. Sorry about that.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90956"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90956">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/19/2023 (Sat) 11:48</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #af21dd">af21dd</span></span>
+  <a class="linkPreview" href="/pol/preview/90956.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90956">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90956">90956</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/38ba80049299c8e7fa6b390cedcb91c4-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">72.36 KB</span>
+  <span class="dimensionLabel">750x600</span> <a class="originalNameLink" href="/.media/38ba80049299c8e7fa6b390cedcb91c4-imagejpeg.jpg" download="IMG_0220.jpeg">IMG_0220.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/38ba80049299c8e7fa6b390cedcb91c4-imagejpeg.jpg" data-filewidth="750" data-fileheight="600" data-filemime="image/jpeg"><img src="/.media/t_38ba80049299c8e7fa6b390cedcb91c4-imagejpeg" loading="lazy" width="255" height="204"></a></figure></div>
+  <div class="divMessage">This is what Nintendo and Sega look like if you put on the They Live glasses. Kek.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90957"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90957">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/19/2023 (Sat) 11:54</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #78f82c">78f82c</span></span>
+  <a class="linkPreview" href="/pol/preview/90957.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90957">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90957">90957</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/674ced078c3e4e9adba06460a4edcb44-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">1000.85 KB</span>
+  <span class="dimensionLabel">1284x1742</span> <a class="originalNameLink" href="/.media/674ced078c3e4e9adba06460a4edcb44-imagejpeg.jpg" download="IMG_3425.jpeg">IMG_3425.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/674ced078c3e4e9adba06460a4edcb44-imagejpeg.jpg" data-filewidth="1284" data-fileheight="1742" data-filemime="image/jpeg"><img src="/.media/t_674ced078c3e4e9adba06460a4edcb44-imagejpeg" loading="lazy" width="188" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90954">&gt;&gt;90954</a><br>Tfw you realize Muslim schizos were right back in fucking 2012/13.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90958"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90958">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/19/2023 (Sat) 12:52</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #af21dd">af21dd</span></span>
+  <a class="linkPreview" href="/pol/preview/90958.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90958">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90958">90958</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/10e7dbd6f64a07ccca1af78fd531a98a-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">122.44 KB</span>
+  <span class="dimensionLabel">1290x249</span> <a class="originalNameLink" href="/.media/10e7dbd6f64a07ccca1af78fd531a98a-imagejpeg.jpg" download="IMG_0223.jpeg">IMG_0223.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/10e7dbd6f64a07ccca1af78fd531a98a-imagejpeg.jpg" data-filewidth="1290" data-fileheight="249" data-filemime="image/jpeg"><img src="/.media/t_10e7dbd6f64a07ccca1af78fd531a98a-imagejpeg" loading="lazy" width="255" height="49"></a></figure></div>
+  <div class="divMessage">Fun fact: The author of this ARG (not sure if it’s supposed to be an ARG or not or an art project that YouTube horror milkers thought was an "ARG") literally is a Splatoon fan.<br><br>Gee, I wonder if all the occult imagery was inspired from their favorite Yidtendo games like The Kvetching of (((Zelda))): Shoah of Time or Super Homo-Feminist Mason Brotherhood.<br><a class="quoteLink" href="/pol/res/90929.html#90950">&gt;&gt;90950</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90959"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90959">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/19/2023 (Sat) 12:57</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #af21dd">af21dd</span></span>
+  <a class="linkPreview" href="/pol/preview/90959.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90959">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90959">90959</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90958">&gt;&gt;90958</a><br>Adding onto this, Splatoon has a huge troon fandom and (honestly) I’m not surprised - the game is full of anarcho-communist propaganda from what I’ve seen (could be wrong so correct if I am).<br><br>Example: <span class="youtube_wrapper">https://youtube.com/watch?v=3XuvHvdRT9Q [<a href="https://youtube.com/watch?v=3XuvHvdRT9Q">Embed</a>]</span></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90960"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90960">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/19/2023 (Sat) 14:14</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #af21dd">af21dd</span></span>
+  <a class="linkPreview" href="/pol/preview/90960.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90960">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90960">90960</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90956">&gt;&gt;90956</a><br> <a class="quoteLink" href="/pol/res/90929.html#90950">&gt;&gt;90950</a><br>Actually, I just thought something. I heard someone mention how blue lodge masonry is like surface level shit, isn’t exactly occult, and is viewed as a normal boy’s club to the outside while red lodge masonry (Scottish rite) is where the real shit - full-on horrible shit, sacrifices, satanic rituals, etc.<br><br>What if this is how the Nintendo/Sega shit functions? Sega is the blue lodge masonry while Nintendo is pretty accurate to what masonry really is - demons, rituals, etc. Just a theory.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="90961"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90961">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/20/2023 (Sun) 04:19</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cc5ee5">cc5ee5</span></span>
+  <a class="linkPreview" href="/pol/preview/90961.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90961">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90961">90961</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b6489ff0ce9d04d45984b9445a6b3223-imagepng.png">Open File</a>(<span class="sizeLabel">725.70 KB</span>
+  <span class="dimensionLabel">1399x1121</span> <a class="originalNameLink" href="/.media/b6489ff0ce9d04d45984b9445a6b3223-imagepng.png" download="5716a75ead9cca2c3eebf5887da2e9ac-imagepng.png">5716a75ead9cca2c3eebf5887da2e9ac-imagepng.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b6489ff0ce9d04d45984b9445a6b3223-imagepng.png" data-filewidth="1399" data-fileheight="1121" data-filemime="image/png"><img src="/.media/t_b6489ff0ce9d04d45984b9445a6b3223-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/de124743ef2ba9ff04dc0352cdba6f45-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">180.53 KB</span>
+  <span class="dimensionLabel">622x586</span> <a class="originalNameLink" href="/.media/de124743ef2ba9ff04dc0352cdba6f45-imagejpeg.jpg" download="c1063a7218721971bc6f3ca38698b3e2-imagejpeg.jpg">c1063a7218721971bc6f3ca38698b3e2-imagejpeg.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/de124743ef2ba9ff04dc0352cdba6f45-imagejpeg.jpg" data-filewidth="622" data-fileheight="586" data-filemime="image/jpeg"><img src="/.media/t_de124743ef2ba9ff04dc0352cdba6f45-imagejpeg" loading="lazy" width="255" height="240"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a402e042f955784c962a87cea785eec1-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">409.62 KB</span>
+  <span class="dimensionLabel">1600x1555</span> <a class="originalNameLink" href="/.media/a402e042f955784c962a87cea785eec1-imagejpeg.jpg" download="masonic temple.jpg">masonic temple.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a402e042f955784c962a87cea785eec1-imagejpeg.jpg" data-filewidth="1600" data-fileheight="1555" data-filemime="image/jpeg"><img src="/.media/t_a402e042f955784c962a87cea785eec1-imagejpeg" loading="lazy" width="255" height="248"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/bd7b9f717b33ad7b7c8117f84734c1ee-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">92.83 KB</span>
+  <span class="dimensionLabel">245x367</span> <a class="originalNameLink" href="/.media/bd7b9f717b33ad7b7c8117f84734c1ee-imagejpeg.jpg" download="RoyalArchMasonJewel.jpg">RoyalArchMasonJewel.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/bd7b9f717b33ad7b7c8117f84734c1ee-imagejpeg.jpg" data-filewidth="245" data-fileheight="367" data-filemime="image/jpeg"><img src="/.media/t_bd7b9f717b33ad7b7c8117f84734c1ee-imagejpeg" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/872a40526ff5b1b2888ffade35770c2f-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">432.69 KB</span>
+  <span class="dimensionLabel">693x1459</span> <a class="originalNameLink" href="/.media/872a40526ff5b1b2888ffade35770c2f-imagejpeg.jpg" download="Venzi.jpg">Venzi.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/872a40526ff5b1b2888ffade35770c2f-imagejpeg.jpg" data-filewidth="693" data-fileheight="1459" data-filemime="image/jpeg"><img src="/.media/t_872a40526ff5b1b2888ffade35770c2f-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90960">&gt;&gt;90960</a><br>Doubtful. Most lodges in the U.S. are Blue Lodges (besides New Orleans). Scots aren't to blame despite the name. That is just where the rite began. Ritual human sacrifice is jewish. That's why jews have been exiled from many countries and the parasites always return. Non-jewish freemasons are merely loyal servants for jewish Grand Masters which change hands every July. The York Rite Royal Arch Degree is what Blue Masons have to take to become GMs. Red Lodges, or Scottish Rite, are only extensions of Blue Lodges (they call them a "craft" lodge) to indoctrinate the GM more on Masonic philosophies.<br><a rel="nofollow" target="_blank" href="https://www.stichtingargus.nl/vrijmetselarij/ovoo_en.html">https://www.stichtingargus.nl/vrijmetselarij/ovoo_en.html</a><br><a rel="nofollow" target="_blank" href="https://www.scottishritechicago.org/what-is-the-scottish-rite/">https://www.scottishritechicago.org/what-is-the-scottish-rite/</a><br>This board had a freemason years ago whom kept trying to insist he was not ruled by jewish Grand Masters. But then the Star of Kikes kept showing up everywhere in Masonic symbology, defended by Masons, and that particular freemason kept trying to insist it's an entirely different star (but is the same exact fucking star). He shared a site back then that's 404ed now, likely because they caught on. At the time it was hard to navigate and find GMs. After hours of searching, I did eventually. Every time except for the black lodges, the GM was a hook nosed jew.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90962"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90962">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">08/20/2023 (Sun) 04:52</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #87b99c">87b99c</span></span>
+  <a class="linkPreview" href="/pol/preview/90962.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90962">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90962">90962</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/0115e82c92db6b67860354cc6342b1a6-imagepng.png">Open File</a>(<span class="sizeLabel">71.48 KB</span>
+  <span class="dimensionLabel">255x143</span> <a class="originalNameLink" href="/.media/0115e82c92db6b67860354cc6342b1a6-imagepng.png" download="An ominous expression.png">An ominous expression.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/0115e82c92db6b67860354cc6342b1a6-imagepng.png" data-filewidth="255" data-fileheight="143" data-filemime="image/png"><img src="/.media/t_0115e82c92db6b67860354cc6342b1a6-imagepng" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90955">&gt;&gt;90955</a><br>Konnichiwa goy, it's all just a great big coincidence. You <em>will</em> play Nintendo and you will eat teh bugs.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90965"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90965">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/21/2023 (Mon) 02:39</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #319b92">319b92</span></span>
+  <a class="linkPreview" href="/pol/preview/90965.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90965">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90965">90965</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90961">&gt;&gt;90961</a><br><br><span class="greenText">&gt;Five/six-point stars prominent in Masonic symbolism</span><br><span class="greenText">&gt;The entire motif of Mario is stars</span><br><br>Just a coincidence, goyim.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90966"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90966">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/21/2023 (Mon) 02:44</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #319b92">319b92</span></span>
+  <a class="linkPreview" href="/pol/preview/90966.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90966">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90966">90966</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90962">&gt;&gt;90962</a><br>This.<br><br>Exactly. Nintendo is beloved by liberals on kike-run echo chambers like Twitter and Reddit.<br><br>It all starts to make sense once you realize it’s being pushed by the Jewish media to promote Freemasonry and the occult to the goyim to turn them into obedient kike drones.<br><br>Video breaking down the symbolism of Super Mario Bros. 3 in a similar style to Owen Broadcast’s Mario 64 thread: <span class="youtube_wrapper">https://youtube.com/watch?v=O-KZ-1DTY2E [<a href="https://youtube.com/watch?v=O-KZ-1DTY2E">Embed</a>]</span></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90969"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90969">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">08/21/2023 (Mon) 08:33</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7966b6">7966b6</span></span>
+  <a class="linkPreview" href="/pol/preview/90969.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90969">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90969">90969</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/23206690515c04046909737de3eb3f56-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">316.15 KB</span>
+  <span class="dimensionLabel">625x510</span> <a class="originalNameLink" href="/.media/23206690515c04046909737de3eb3f56-imagejpeg.jpg" download="fbde4649961d72959941e36621e2bf6c6a8f8effabce2064cf0ad9e4e9eb1e18_11481.jpg">fbde4649961d72959941e36621e2bf6c6a8f8effabce2064cf0ad9e4e9eb1e18_11481.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/23206690515c04046909737de3eb3f56-imagejpeg.jpg" data-filewidth="625" data-fileheight="510" data-filemime="image/jpeg"><img src="/.media/t_23206690515c04046909737de3eb3f56-imagejpeg" loading="lazy" width="255" height="208"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90955">&gt;&gt;90955</a><br><span class="greenText">&gt;I honestly was a schizo for thinking this so-called "Aryan" Zelda/Nintendo shit was absolute phooey</span><br>Esoteric knowledge is not schizophrenia anon, you dont have voices inside you or personality disorder when you are aware of symbolism, no matter how much kosher people will muddy that term or sham you by "you have too much time to waste to search for bullshit" <br><br><span class="greenText">&gt;is full of Kabbalah and Masonic shit, has all-seeing eye shit everywhere, creepy undertones, weird fixation on demonology (possibly goetia), and has a (((SECRET SOCIETY))) as a reoccurring theme is "Aryan</span><br>Because dumbfucks associate blond hair and blue eyes of link and zelda as aryans (ignoring the origins of name zelda and oriental face features of both with obsessive usage of blue and red) in magical land or something like that ie only see exoteric not esoteric<br><br>Another exsmple of such dementia is in georgia guidestones.<br>So jew is telling me it was blown up by "far right" but at the same time when i just look on time where its situated the iconography of the blow up and date when it happens that speaker for that group who made it and his name which stone got demolished position of stones content of the stones decode the names in it and stolen deist ideas as orea linda says "turned into their twisted tasks" its obvious it was masonic ritual oficially ending agenda 21 ie white genocide<br><a class="quoteLink" href="/pol/res/90929.html#90961">&gt;&gt;90961</a><br><span class="greenText">&gt;whom kept trying to insist he was not ruled by jewish Grand Masters</span><br>What mental gymnastics he employed when faced with Hertzl and bnai briith for example?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90976"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-90976">
+  
+  <a class="linkName noEmailName">OP</a>
+  
+  
+  <span class="labelCreated">08/21/2023 (Mon) 20:14</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #319b92">319b92</span></span>
+  <a class="linkPreview" href="/pol/preview/90976.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#90976">No.</a><a class="linkQuote" href="/pol/res/90929.html#q90976">90976</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90969">&gt;&gt;90969</a><br><br>Interesting.<br><br>Also, I thought of something regarding Mario 64. <br><br>Apparently, Hermes/Mercury is actually a popular symbol in Freemasonry and one of the symbols associated with him is the tortoise.<br><br>People who call the Mario 64 Masonic ritual theory "schizo" don’t actually realize that Mario being Hermes actually makes sense, as lots of Masonic sources say that he is one of the founders of Freemasonry.<br><br>Quoted from a Masonic website: "In all the old manuscript records which contain the Legend of the Craft, mention is made of Hermes as one of the founders of Freemasonry. Thus, in the Grand Lodge Manuscript, No. 1, whose date is 1583 and the statement is substantially and almost verbally the same in all the others that "The great Hermarines that was Cubys sonne, the which Cubye was Semmes sonne, that was Noes sonne. This same Hermarines was afterwards called Hernes the father of Wysdome; he found one of the two pillars of stone, and found the science written therein, and he taught it to other men."<br><br>Albert Pike even talks about this in his book, Morals &amp; Dogma, about how Hermes and Hermetic doctrine are "critical to understanding Freemasonry."<br><br>Hermes has even thought to be the founder of alchemy, so Mario turning into quicksilver (Mercury) makes sense in a alchemist esoteric way.<br><br>One of the playing card brands Nintendo created was named Napoleon after the French emperor Napoleon Bonaparte, and Napoleon is very popular symbol for Masons as Freemasonry flourished under his rule.<br><br>The founder of Nintendo also worked at a cement factory and later became the owner. It’s very possible he was a Freemason. The shit they put in these games is way too accurate to the esotericism of Masonry.<br><br>Sources: <a rel="nofollow" target="_blank" href="https://masonicshop.com/encyclopedia/topics/entry/?i=3437">https://masonicshop.com/encyclopedia/topics/entry/?i=3437</a><br><br><a rel="nofollow" target="_blank" href="http://sanmarcoslodge342.org/wp-content/uploads/2019/02/Emerald-Tablet-Issue-Seven-2014.pdf">http://sanmarcoslodge342.org/wp-content/uploads/2019/02/Emerald-Tablet-Issue-Seven-2014.pdf</a><br><br><a rel="nofollow" target="_blank" href="https://oginski.by/en/napoleon-imperator-masonov/">https://oginski.by/en/napoleon-imperator-masonov/</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91043"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-91043">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/07/2023 (Thu) 03:18</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #68ea71">68ea71</span></span>
+  <a class="linkPreview" href="/pol/preview/91043.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#91043">No.</a><a class="linkQuote" href="/pol/res/90929.html#q91043">91043</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/4f8239f4e8af03d0c2d4c52d712bf4d3-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">202.48 KB</span>
+  <span class="dimensionLabel">2048x1480</span> <a class="originalNameLink" href="/.media/4f8239f4e8af03d0c2d4c52d712bf4d3-imagejpeg.jpg" download="beberbeb.jpeg">beberbeb.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/4f8239f4e8af03d0c2d4c52d712bf4d3-imagejpeg.jpg" data-filewidth="2048" data-fileheight="1480" data-filemime="image/jpeg"><img src="/.media/t_4f8239f4e8af03d0c2d4c52d712bf4d3-imagejpeg" loading="lazy" width="255" height="184"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90955">&gt;&gt;90955</a><br><span class="greenText">&gt;Thanks, dude. I thought I honestly was a schizo for thinking this so-called "Aryan" Zelda/Nintendo shit was absolute phooey. </span><br><br><br>We already had a thread about this topic a while ago OP. You can read through it and learn more <a class="quoteLink" href="/pol/res/76630.html#76630">&gt;&gt;76630</a><br><br>It's over 250+ posts long though</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91083"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-91083">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/16/2023 (Sat) 13:56</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #319b92">319b92</span></span>
+  <a class="linkPreview" href="/pol/preview/91083.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#91083">No.</a><a class="linkQuote" href="/pol/res/90929.html#q91083">91083</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#91043">&gt;&gt;91043</a><br>I’ve seen the thread and I think he doesn’t go into more interesting, more convincing points about Nintendo specifically.<br><br>Like, for instance, their original mascot was Napoleon - while, courtesy to popular belief, he wasn’t a mason, the emperor is a popular symbol for Freemasons. The man who started Nintendo worked as a concrete mason with ties to the mob.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91084"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-91084">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/16/2023 (Sat) 13:59</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #319b92">319b92</span></span>
+  <a class="linkPreview" href="/pol/preview/91084.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#91084">No.</a><a class="linkQuote" href="/pol/res/90929.html#q91084">91084</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#91083">&gt;&gt;91083</a><br>Oops. Forgot to link my other post. I tried posting about this on /x/ on 4chuds and the thread suddenly was filled with people calling me a schizo.<br><br><a class="quoteLink" href="/pol/res/90929.html#90976">&gt;&gt;90976</a><br><br>Just trying to wake up the masses to this idea.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91085"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-91085">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">09/16/2023 (Sat) 17:25</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #e47584">e47584</span></span>
+  <a class="linkPreview" href="/pol/preview/91085.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#91085">No.</a><a class="linkQuote" href="/pol/res/90929.html#q91085">91085</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/4747ed18a09292f89ffaafe2cc3101d4-applicationpdf.pdf">Open File</a>(<span class="sizeLabel">2.53 MB</span>
+   <a class="originalNameLink" href="/.media/4747ed18a09292f89ffaafe2cc3101d4-applicationpdf.pdf" download="1944 - Freemasonry - Dieter Schwarz.pdf">1944 - Freemasonry - Dieter Schwarz.pdf</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/4747ed18a09292f89ffaafe2cc3101d4-applicationpdf.pdf" data-filemime="application/pdf"><img src="/genericThumb.png" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#91083">&gt;&gt;91083</a><br><span class="greenText">&gt; courtesy to popular belief, he wasn’t a mason</span><br>yes he wasnt but however that doesnt redeem him much from his fall and yet another lecture that you cannot coexist with people that hate you (like that one sentence where he didnt wanted to understand his servant in saint helena that jewish conspiracy undermined him and still coped by military mistakes which were made) as he was giving concessions to them (and sending his generals to lodges to get more popular with them) because of his fatal mistake in internal politics to merge old with new and to be liked by everyone.<br><br>from freemasonry ideology organization and politics 1944 by dieter schwartz page 21<br><span class="greenText">&gt;In his attempts to make the lodges work for him, Napoleon</span><br>made the mistake of failing to take international Freemasonry<br>into account in his calculations. Thus, a determined enemy<br>•rose against him in the English branch of Freemasonry, an<br>enemy which furthermore received support from the Freema¬<br>sons of all countries oppressed by the Corsican</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91086"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-91086">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/16/2023 (Sat) 17:52</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #319b92">319b92</span></span>
+  <a class="linkPreview" href="/pol/preview/91086.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#91086">No.</a><a class="linkQuote" href="/pol/res/90929.html#q91086">91086</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/ad6745a383c1ae9fbc92b2bdb824717d-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">742.19 KB</span>
+  <span class="dimensionLabel">1978x2048</span> <a class="originalNameLink" href="/.media/ad6745a383c1ae9fbc92b2bdb824717d-imagejpeg.jpg" download="IMG_0395.jpeg">IMG_0395.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/ad6745a383c1ae9fbc92b2bdb824717d-imagejpeg.jpg" data-filewidth="1978" data-fileheight="2048" data-filemime="image/jpeg"><img src="/.media/t_ad6745a383c1ae9fbc92b2bdb824717d-imagejpeg" loading="lazy" width="246" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#91085">&gt;&gt;91085</a><br>I agree with all that, anon.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92784"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-92784">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/01/2024 (Fri) 15:56</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #55def7">55def7</span></span>
+  <a class="linkPreview" href="/pol/preview/92784.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#92784">No.</a><a class="linkQuote" href="/pol/res/90929.html#q92784">92784</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#90929">&gt;&gt;90929</a><br><span class="greenText">&gt;TikTok LGBTQ+ zoomers</span><br><span class="greenText">&gt;flavor-of-the-mouth faggot FNaF/Undertale-tier</span><br><span class="greenText">&gt;retarded purple-haired zoomer</span><br><span class="greenText">&gt;Steven Universe</span><br><br>Everything about that makes me hurl. I really grieve for today's teenagers that grew up on UnderTale, Steven Universe, We Bare Bears, Five Nights at Freddy's, and other totally cucked and are currently obsessed with TikTok. When I was a young teenager the hot thing was Vine, Instagram, and Kik, and smartphones actually fit in your pocket and didn't take over every aspect of our lives like they do now. I hated UnderTale when it was new. All of this 2010s junk has the same art style to it and most promote some sexual degeneracy like the constant shipping of Undyne and Alphys in UnderTale or the queer tranny messages in Steven Universe I found out about from some video. I don't mean to sound like an elitist, but I'm glad to have grown up in the 2000s and remember a world without smartphones. Even when I was 11 you pretty much had a 50/50 chance of seeing either someone still carrying a slider, flip, or BlackBerry or Palm device instead of an iPhone or Samsung Galaxy. I'd imagine there's a big difference between these young folks born during the 2008 recession and the twenty-somethings that were born before 9/11. There was no such thing as "Zoomer" until I was about to wrap up high school I think, so I was always considered Millennial, but now I'm lumped in with TikTokers with the broccoli haircut who are just now getting their driver's licenses.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92788"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90929-92788">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/02/2024 (Sat) 05:00</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #cc5ee5">cc5ee5</span></span>
+  <a class="linkPreview" href="/pol/preview/92788.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90929.html#92788">No.</a><a class="linkQuote" href="/pol/res/90929.html#q92788">92788</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90929.html#92784">&gt;&gt;92784</a><br>Friend, I was watching your generation slowly take the pollution when I hit adulthood. Emos. Screamo. Body glitter. Shitty ipods with even shittier repetitive pop music. Garbage graffiti became thought of as "art". Everyone around me thought they were Liberals because of (((Jonathan Stuart Leibowitz's))) The Daily Show. Shit hop bad negro music skyrocketed in popularity. <em>Fucking blogs</em>. Hipsters. Brokeback Assfucking Mountain. Paris Hilton and Lindsey Lohan. The stupid fucking Wii. Jersey Shore. (((Amy Winehouse))). More people obsessed with Britney Spears than in the 90s and Gwen Stefani realized she was a nigger.<br><br>90s. We had Cheers. Tim Allen before the drugs. Arnold Schwarzenegger wasn't a National-Socialist-father betraying cuck to the the Simon Wiesenthal Center. The genie in Aladdin wasn't a blue nigger. The good Jurassic Park. Jews were either creepy (Ross) or stupid (Phoebe) in Friends. Ice Cube called out kikes for their depraved greed. Black shows where just a bunch of silly niggers. Rosanne and Peggy Bundy where a warning to all men not to marry shrill, obnoxious jewesses. The Sopranos beat the shit out of a kike and told him the Romans are still here. We had all white grunge. All white rock music. Maybe one starkly obvious black guy in a few insane bands like Prodigy. I was a teen in high school. I was a white guy surrounded by white girls. It was a pick whomever you want once in a lifetime experience. I have never experienced that since. Thanks to diversity and immigration pushing jews.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/90929.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

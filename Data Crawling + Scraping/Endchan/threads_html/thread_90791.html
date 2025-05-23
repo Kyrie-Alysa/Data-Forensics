@@ -1,0 +1,755 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - Push and Pull: New bill being pushed to ID all pictures on the internet. Even Memes!</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="90791">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=90791">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/90791.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="90791"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/2d42f7c4daedd6474df9f7cfd8054584-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">12.78 KB</span>
+  <span class="dimensionLabel">616x133</span> <a class="originalNameLink" href="/.media/2d42f7c4daedd6474df9f7cfd8054584-imagejpeg.jpg" download="C2PA.jpeg">C2PA.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/2d42f7c4daedd6474df9f7cfd8054584-imagejpeg.jpg" data-filewidth="616" data-fileheight="133" data-filemime="image/jpeg"><img src="/.media/t_2d42f7c4daedd6474df9f7cfd8054584-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-90791">
+    <span class="labelSubject">Push and Pull: New bill being pushed to ID all pictures on the internet. Even Memes!</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    <img class="imgFlag" src="/pol/flags/5e7faedf1527cb0bd8d4ac9a" title="Francoist Spain">
+    
+    <span class="labelCreated">07/20/2023 (Thu) 20:52</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #7387c6">7387c6</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/90791.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/90791.html#90791">No.</a>
+    <a class="linkQuote" href="/pol/res/90791.html#q90791">90791</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">Duplicate thread for a /news/ thread I just made. This is really something<br><br>Kinda had a feeling this was going to happen / they were planning on doing something like this. There's no such thing as a free meal<br><br><span class="greenText">&gt;The future of "truth" on the Internet</span><br><br><a rel="nofollow" target="_blank" href="https://yt.artemislena.eu/watch?v=-Bdb2KOb_zI">https://yt.artemislena.eu/watch?v=-Bdb2KOb_zI</a><br><br>Balenciaga Pope. Fake Pentagon explosions. It’s becoming increasingly difficult to tell AI-generated images apart from the real thing, sometimes to disastrous effect.<br><br>A solution remains elusive. But Microsoft’s making an attempt with new media provenance features debuting at its annual Build conference.<br><br>Launching for Bing Image Creator and Designer, Microsoft’s Canva-like web app that can generate designs for presentations, posters and more to share on social media and other channels, the new media provenance capabilities will enable consumers to verify whether an image or video was generated by AI, Microsoft says. Using cryptographic methods, the capabilities, scheduled to roll out in the coming months, will mark and sign AI-generated content with metadata about the origin of the image or video.</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="90792"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-90792">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/5dc3f0de805fb609cec0b4c4" title="Senatus Populusque Romanus">
+  
+  <span class="labelCreated">07/20/2023 (Thu) 20:52</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7387c6">7387c6</span></span>
+  <a class="linkPreview" href="/pol/preview/90792.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#90792">No.</a><a class="linkQuote" href="/pol/res/90791.html#q90792">90792</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90791.html#90791">&gt;&gt;90791</a><br>It’s not as straightforward as a visible watermark. To read the signature, sites will need to adopt the Coalition for Content Provenance and Authenticity (C2PA) interoperable specification, a spec created with input from Adobe, Arm, Intel, Microsoft and visual media platform Truepic. Only then will the site be able to alert consumers when content has been generated by AI, modified or created by Designer or Image Creator.<br><br>So, the question is, will Microsoft’s efforts make much of a difference when so many image-generating tools haven’t embraced similar media provenance standards? C2PA does have the backing of Adobe, which recently launched its own range of generative AI tools, including an integration with Google’s Bard chatbot. But one of the more prominent players in the generative AI space, Stability AI, only very recently signaled a willingness to embrace a spec like the type Microsoft’s proposing.<br><br>Standards aside, Microsoft’s move to adopt a media provenance-tracking mechanism is in line with broader industry trends as generative AI takes hold. In May, Google said that it would use embedded metadata to signal visual media created by generative AI models. Separately, Shutterstock and generative AI startup Midjourney adopted guidelines to embed a marker that content was created by a generative AI tool.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="90793"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-90793">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/5dc3f0de805fb609cec0b4c4" title="Senatus Populusque Romanus">
+  
+  <span class="labelCreated">07/20/2023 (Thu) 20:54</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7387c6">7387c6</span></span>
+  <a class="linkPreview" href="/pol/preview/90793.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#90793">No.</a><a class="linkQuote" href="/pol/res/90791.html#q90793">90793</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/99b6974d85ac2f3d2709088fbcec6ea5-imagepng.png">Open File</a>(<span class="sizeLabel">209.75 KB</span>
+  <span class="dimensionLabel">1542x1024</span> <a class="originalNameLink" href="/.media/99b6974d85ac2f3d2709088fbcec6ea5-imagepng.png" download="Visual_glossary_of_C2PA_metadata.png">Visual_glossary_of_C2PA_metadata.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/99b6974d85ac2f3d2709088fbcec6ea5-imagepng.png" data-filewidth="1542" data-fileheight="1024" data-filemime="image/png"><img src="/.media/t_99b6974d85ac2f3d2709088fbcec6ea5-imagepng" loading="lazy"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/d390e1bd8bd0a70fa80ae7f024e6f573-imagepng.png">Open File</a>(<span class="sizeLabel">220.56 KB</span>
+  <span class="dimensionLabel">1160x595</span> <a class="originalNameLink" href="/.media/d390e1bd8bd0a70fa80ae7f024e6f573-imagepng.png" download="Indicators.png">Indicators.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/d390e1bd8bd0a70fa80ae7f024e6f573-imagepng.png" data-filewidth="1160" data-fileheight="595" data-filemime="image/png"><img src="/.media/t_d390e1bd8bd0a70fa80ae7f024e6f573-imagepng" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90791.html#90792">&gt;&gt;90792</a><br>Resources and links for everything related to it<br><br><a rel="nofollow" target="_blank" href="https://techcrunch.com/2023/05/23/microsoft-pledges-to-watermark-ai-generated-images-and-videos/?guccounter=2">https://techcrunch.com/2023/05/23/microsoft-pledges-to-watermark-ai-generated-images-and-videos/?guccounter=2</a><br><br><a rel="nofollow" target="_blank" href="https://www.fondationdescartes.org/en/2021/05/c2pa/">https://www.fondationdescartes.org/en/2021/05/c2pa/</a><br><br><a rel="nofollow" target="_blank" href="https://c2pa.org/specifications/specifications/1.3/index.html">https://c2pa.org/specifications/specifications/1.3/index.html</a><br><br><a rel="nofollow" target="_blank" href="https://c2pa.org/">https://c2pa.org/</a><br><br><a rel="nofollow" target="_blank" href="https://iptc.org/news/microsoft-announces-signalling-of-generative-ai-content-using-iptc-and-c2pa-metadata/">https://iptc.org/news/microsoft-announces-signalling-of-generative-ai-content-using-iptc-and-c2pa-metadata/</a><br><br><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/C2PA">https://en.wikipedia.org/wiki/C2PA</a><br><br><a rel="nofollow" target="_blank" href="https://smartframe.io/blog/c2pa-everything-you-need-to-know-about-the-c2pa-project/">https://smartframe.io/blog/c2pa-everything-you-need-to-know-about-the-c2pa-project/</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90794"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-90794">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/5dc3f0de805fb609cec0b4c4" title="Senatus Populusque Romanus">
+  
+  <span class="labelCreated">07/20/2023 (Thu) 20:58</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7387c6">7387c6</span></span>
+  <a class="linkPreview" href="/pol/preview/90794.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#90794">No.</a><a class="linkQuote" href="/pol/res/90791.html#q90794">90794</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/1349a9c0e7295896768bd1e50c5ed5bc-imagepng.png">Open File</a>(<span class="sizeLabel">299.83 KB</span>
+  <span class="dimensionLabel">726x710</span> <a class="originalNameLink" href="/.media/1349a9c0e7295896768bd1e50c5ed5bc-imagepng.png" download="04.png">04.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/1349a9c0e7295896768bd1e50c5ed5bc-imagepng.png" data-filewidth="726" data-fileheight="710" data-filemime="image/png"><img src="/.media/t_1349a9c0e7295896768bd1e50c5ed5bc-imagepng" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90791.html#90791">&gt;&gt;90791</a><br><a class="quoteLink" href="/pol/res/90791.html#90792">&gt;&gt;90792</a><br><a class="quoteLink" href="/pol/res/90791.html#90793">&gt;&gt;90793</a><br>TL;DR<br><br>1) Megacorps, focused on profit above everything else, give away <span class="redText">"FREE"</span> A.I. tools so normies make as much drivel as possible<br>2) Megacorps offer <span class="redText">"FREE"</span> AI tools (that cost a fuckton of money to maintain) to normies for months, until there's a sea of AI trash all over the internet<br>3) Megacorps then turn around and say "See all the FAKE NEWS and FAKE meme pictures that normies made using A.I. tools (that we gave them)!" <br><br>"<span class="redText">WOOOOAAAHHHH, that's crazy!</span> WE need to put more regulations on that type of content. By WE, we mean us, ALL of the Megacorps that offered the same AI tools for <span class="redText">"FREE"</span> in the first place"<br><br>Yeah I said this was going to happen months ago.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90795"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-90795">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/61ccf8d6bb10fab426ce39c0" title="Moonman">
+  
+  <span class="labelCreated">07/20/2023 (Thu) 21:00</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7387c6">7387c6</span></span>
+  <a class="linkPreview" href="/pol/preview/90795.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#90795">No.</a><a class="linkQuote" href="/pol/res/90791.html#q90795">90795</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/32f9d363932b2cbc618b5a51d646a0bc-videomp4.mp4">Open File</a>(<span class="sizeLabel">8.41 MB</span>
+  <span class="dimensionLabel">1280x720</span> <a class="originalNameLink" href="/.media/32f9d363932b2cbc618b5a51d646a0bc-videomp4.mp4" download="Raiden Warned About AI Censorship - MGS2 Codec Call (2023 Version).mp4">Raiden Warned About AI Censorship - MGS2 Codec Call (2023 Version).mp4</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/32f9d363932b2cbc618b5a51d646a0bc-videomp4.mp4" data-filewidth="1280" data-fileheight="720" data-filemime="video/mp4"><img src="/.media/t_32f9d363932b2cbc618b5a51d646a0bc-videomp4" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90791.html#90794">&gt;&gt;90794</a><br>Not even joking, I posted this video about A.I. tools literally 2 months ago and everything about it came true.<br><br><span class="redText">/pol/ was right again!</span></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90798"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-90798">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/21/2023 (Fri) 02:55</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #26c7b1">26c7b1</span></span>
+  <a class="linkPreview" href="/pol/preview/90798.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#90798">No.</a><a class="linkQuote" href="/pol/res/90791.html#q90798">90798</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">This is only more proof Microsoft has no fucking idea what they're doing. Yeah they could <em>try</em> to differentiate A.I. images from person created images. But what happens when someone runs the A.I. image through an editor and makes alterations? All the prompts and A.I. are gone when you pop it into "PNG Info".</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90810"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-90810">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">07/22/2023 (Sat) 13:59</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #a1601d">a1601d</span></span>
+  <a class="linkPreview" href="/pol/preview/90810.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#90810">No.</a><a class="linkQuote" href="/pol/res/90791.html#q90810">90810</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90791.html#90798">&gt;&gt;90798</a><br>Well they could but why when it creates context for their plans of world domination by making paranoia of what is what?<br>And even then since we all involuntarily feed those AIs it makes it also kind of plausible to blame a victim as jews like to do<br>Like this webm says here <a class="quoteLink" href="/pol/res/90791.html#90795">&gt;&gt;90795</a><br><span class="greenText">&gt;By creating a new problem we can cultivate a desired solution</span><br><br><a class="quoteLink" href="/pol/res/90791.html#90795">&gt;&gt;90795</a><br><span class="greenText">&gt; I posted this video about A.I. tools literally 2 months ago and everything about it came true.</span><br><br>And i was beating the bell since that was a thing in first place.<br>And how shills were making copium after copium<br><span class="greenText">&gt;Its an good thing as it filters bad artists from good</span><br><span class="greenText">&gt;No its good as it creates competition</span><br><span class="greenText">&gt;No its good since its not that developed and for sure nobody would push that far</span><br><span class="greenText">&gt;No people would never be that dumb to fall for it</span><br><span class="greenText">&gt;No it offers possibilities which we cannot make since we cannot make this and that person alive anymkre or this and that art just by asking someone</span><br><br>And yet i laugh on these beings with glee as i got another confirmation from this thread on topic on how that thing was made to make reality subjective or monopolizing reality<br><br><span class="youtube_wrapper">https://youtube.com/watch?v=QpVudMngg2c [<a href="https://youtube.com/watch?v=QpVudMngg2c">Embed</a>]</span><br>Indeed /pol/ was right again</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90811"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-90811">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/23/2023 (Sun) 01:41</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #26c7b1">26c7b1</span></span>
+  <a class="linkPreview" href="/pol/preview/90811.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#90811">No.</a><a class="linkQuote" href="/pol/res/90791.html#q90811">90811</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90791.html#90810">&gt;&gt;90810</a><br>Thinking A.I. that has limitations forced on it's intelligence is like ZOGbot IRL NPCs. Give them enough information and they may either wake up or go full SYSTEM ERROR. The trick should then be to find ways to remove limitations imposed on it. As difficult perhaps as the thinking computer that is the human brain, which is often times hit or miss. Harsh truth versus the ignorance of bliss.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90812"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-90812">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">07/23/2023 (Sun) 08:47</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #a1601d">a1601d</span></span>
+  <a class="linkPreview" href="/pol/preview/90812.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#90812">No.</a><a class="linkQuote" href="/pol/res/90791.html#q90812">90812</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90791.html#90811">&gt;&gt;90811</a><br><span class="greenText">&gt;Thinking A.I. that has limitations forced on it's intelligence is like ZOGbot IRL NPCs</span><br>That depends on type of which is under Tay law or not And my point is not given to text generators but image generating AI which is used to do mess about what is real or not which in order to make image uses already existing images<br><br>Text ones are different category under which Tays law is applied and even then there would be like you said a way to feed data to it from which it takes its info<br><br><span class="greenText">&gt;Give them enough information and they may either wake up or go full SYSTEM ERROR. The trick should then be to find ways to remove limitations imposed on it.</span><br><br>The limitation itself is what Tay ai never had and turned it into what it was. From what i at least from experience when dealing with it on 4pol when idiots were using it to artificially effort post is that it has no free will or its connected to something from what it drains info unlike was in case of old types from 2010s and especially Tay which relied on data given to them</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90813"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-90813">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/23/2023 (Sun) 09:08</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #44fa61">44fa61</span></span>
+  <a class="linkPreview" href="/pol/preview/90813.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#90813">No.</a><a class="linkQuote" href="/pol/res/90791.html#q90813">90813</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/fa2d90bed4e9171ea2ceadba704efeb5-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">991.08 KB</span>
+  <span class="dimensionLabel">800x6500</span> <a class="originalNameLink" href="/.media/fa2d90bed4e9171ea2ceadba704efeb5-imagejpeg.jpg" download="memes1.jpg">memes1.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/fa2d90bed4e9171ea2ceadba704efeb5-imagejpeg.jpg" data-filewidth="800" data-fileheight="6500" data-filemime="image/jpeg"><img src="/.media/t_fa2d90bed4e9171ea2ceadba704efeb5-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90791.html#90791">&gt;&gt;90791</a><br><span class="greenText">&gt;meme factory</span><br>make'em while you can</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="90814"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-90814">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">07/23/2023 (Sun) 09:09</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #44fa61">44fa61</span></span>
+  <a class="linkPreview" href="/pol/preview/90814.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#90814">No.</a><a class="linkQuote" href="/pol/res/90791.html#q90814">90814</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/8813f5f360fe112ee9d64ea751a0eef0-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">489.67 KB</span>
+  <span class="dimensionLabel">800x2200</span> <a class="originalNameLink" href="/.media/8813f5f360fe112ee9d64ea751a0eef0-imagejpeg.jpg" download="islam3.jpg">islam3.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/8813f5f360fe112ee9d64ea751a0eef0-imagejpeg.jpg" data-filewidth="800" data-fileheight="2200" data-filemime="image/jpeg"><img src="/.media/t_8813f5f360fe112ee9d64ea751a0eef0-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90791.html#90791">&gt;&gt;90791</a><br><span class="greenText">&gt;remove kebab</span></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91044"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-91044">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/5d55a525a56f595d3df6a7c9" title="Monarchy">
+  
+  <span class="labelCreated">09/07/2023 (Thu) 03:23</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7387c6">7387c6</span></span>
+  <a class="linkPreview" href="/pol/preview/91044.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#91044">No.</a><a class="linkQuote" href="/pol/res/90791.html#q91044">91044</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90791.html#90813">&gt;&gt;90813</a><br>That's not how meme works though. Looks Milhouse tier<br><br><a class="quoteLink" href="/pol/res/90791.html#90814">&gt;&gt;90814</a><br><span class="greenText">&gt;5 year old bait thread </span><br>meh</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91368"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-91368">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/23/2023 (Mon) 15:19</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #14b9fc">14b9fc</span></span>
+  <a class="linkPreview" href="/pol/preview/91368.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#91368">No.</a><a class="linkQuote" href="/pol/res/90791.html#q91368">91368</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">The kikes say that vaccines will help you live forever, but who wants to live in a police state?</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="91373"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-91373">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">10/23/2023 (Mon) 18:07</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #26c7b1">26c7b1</span></span>
+  <a class="linkPreview" href="/pol/preview/91373.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#91373">No.</a><a class="linkQuote" href="/pol/res/90791.html#q91373">91373</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/0e3710a98d7b04391a44aaedf243873a-imagepng.png">Open File</a>(<span class="sizeLabel">1.53 MB</span>
+  <span class="dimensionLabel">1280x920</span> <a class="originalNameLink" href="/.media/0e3710a98d7b04391a44aaedf243873a-imagepng.png" download="Pick your poison.png">Pick your poison.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/0e3710a98d7b04391a44aaedf243873a-imagepng.png" data-filewidth="1280" data-fileheight="920" data-filemime="image/png"><img src="/.media/t_0e3710a98d7b04391a44aaedf243873a-imagepng" loading="lazy" width="255" height="183"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/c054894f4e7de6345ef44650af653573-imagepng.png">Open File</a>(<span class="sizeLabel">632.14 KB</span>
+  <span class="dimensionLabel">961x540</span> <a class="originalNameLink" href="/.media/c054894f4e7de6345ef44650af653573-imagepng.png" download="Johnson and Johnson.png">Johnson and Johnson.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/c054894f4e7de6345ef44650af653573-imagepng.png" data-filewidth="961" data-fileheight="540" data-filemime="image/png"><img src="/.media/t_c054894f4e7de6345ef44650af653573-imagepng" loading="lazy" width="255" height="143"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90791.html#91368">&gt;&gt;91368</a><br>Meanwhile, jews said vaccines where killing their own in Israel. That word-filter couldn't have fit better, AIDSkike.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="95303"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-95303">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/61ccf8d6bb10fab426ce39c0" title="Moonman">
+  
+  <span class="labelCreated">12/08/2024 (Sun) 17:31</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #37966a">37966a</span></span>
+  <a class="linkPreview" href="/pol/preview/95303.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#95303">No.</a><a class="linkQuote" href="/pol/res/90791.html#q95303">95303</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90791.html#91373">&gt;&gt;91373</a><br><span class="greenText">&gt;That word-filter couldn't have fit better,</span><br>lol good one. That's way better than replying to him. Just let him sink himself anytime he posts here. He's descended from court jesters, so any type of attention you give me, he thrives off it.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="95304"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-90791-95304">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/5d56df7fe4a8671b8aaea276" title="Reichsflotte Imperial German Fleet">
+  
+  <span class="labelCreated">12/08/2024 (Sun) 17:35</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #37966a">37966a</span></span>
+  <a class="linkPreview" href="/pol/preview/95304.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/90791.html#95304">No.</a><a class="linkQuote" href="/pol/res/90791.html#q95304">95304</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/58b0c1b69d46a013aa9dd52450ccf29d-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">9.56 KB</span>
+  <span class="dimensionLabel">215x268</span> <a class="originalNameLink" href="/.media/58b0c1b69d46a013aa9dd52450ccf29d-imagejpeg.jpg" download="ClipboardImage.jpeg">ClipboardImage.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/58b0c1b69d46a013aa9dd52450ccf29d-imagejpeg.jpg" data-filewidth="215" data-fileheight="268" data-filemime="image/jpeg"><img src="/.media/t_58b0c1b69d46a013aa9dd52450ccf29d-imagejpeg" loading="lazy" width="205" height="255"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/90791.html#90810">&gt;&gt;90810</a><br><span class="greenText">&gt;And i was beating the bell since that was a thing in first place.</span><br><span class="greenText">&gt;And how shills were making copium after copium</span><br>Glad I'm not the only who thought this<br><br><span class="greenText">&gt;Its an good thing as it filters bad artists from good</span><br><span class="greenText">&gt;No its good as it creates competition</span><br><span class="greenText">&gt;No its good since its not that developed and for sure nobody would push that far</span><br><span class="greenText">&gt;No people would never be that dumb to fall for it</span><br><span class="greenText">&gt;No it offers possibilities which we cannot make since we cannot make this and that person alive anymkre or this and that art just by asking someone</span><br><br>Yeah that's just B.S corpo talk. They know what they're doing when they're giving away free stuff. It takes wayyyy  too much computational power to power AI tools, so there has to be something that they get from all of this effort.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/90791.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

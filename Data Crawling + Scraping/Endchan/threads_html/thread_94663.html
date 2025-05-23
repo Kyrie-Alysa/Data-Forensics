@@ -1,0 +1,529 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - Who do you know or suspect was a jew among ancient figures?
+It would be valuable to focus on those historical figures whose are getting popularized by the current (((mass medias))) and (((social medias))), you just know there is something fishy when somet</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="94663">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=94663">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/94663.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="94663"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/b3f1996225a299244897fd2efb876400-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">1.96 MB</span>
+  <span class="dimensionLabel">1558x2419</span> <a class="originalNameLink" href="/.media/b3f1996225a299244897fd2efb876400-imagejpeg.jpg" download="Sabbatai Zevi.jpg">Sabbatai Zevi.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/b3f1996225a299244897fd2efb876400-imagejpeg.jpg" data-filewidth="1558" data-fileheight="2419" data-filemime="image/jpeg"><img src="/.media/t_b3f1996225a299244897fd2efb876400-imagejpeg" loading="lazy" width="164" height="255"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-94663">
+    
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">09/10/2024 (Tue) 18:51</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #fc093f">fc093f</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/94663.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/94663.html#94663">No.</a>
+    <a class="linkQuote" href="/pol/res/94663.html#q94663">94663</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">Who do you know or suspect was a jew among ancient figures?
+<br>It would be valuable to focus on those historical figures whose are getting popularized by the current (((mass medias))) and (((social medias))), you just know there is something fishy when something gets pushed by the current anti-european propaganda system</div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="94664"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94663-94664">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/10/2024 (Tue) 19:01</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #65dde8">65dde8</span></span>
+  <a class="linkPreview" href="/pol/preview/94664.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94663.html#94664">No.</a><a class="linkQuote" href="/pol/res/94663.html#q94664">94664</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/dc81c2b5f7f15d1430ee7e4a66defdd6-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">1.52 MB</span>
+  <span class="dimensionLabel">1471x1706</span> <a class="originalNameLink" href="/.media/dc81c2b5f7f15d1430ee7e4a66defdd6-imagejpeg.jpg" download="Diogenes_and_Plato_1649_by_Mattia_Preti.jpg">Diogenes_and_Plato_1649_by_Mattia_Preti.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/dc81c2b5f7f15d1430ee7e4a66defdd6-imagejpeg.jpg" data-filewidth="1471" data-fileheight="1706" data-filemime="image/jpeg"><img src="/.media/t_dc81c2b5f7f15d1430ee7e4a66defdd6-imagejpeg" loading="lazy" width="220" height="255"></a></figure></div>
+  <div class="divMessage">Diogenes (Anatolia-Greece, around 400 to 300 BC)
+<br>
+<br>This guy is pushed relatively a lot, compared to the normal average chaos where fads last only 2 weeks, you see veiled memes about him surfacing sometimes, with the implied sense that he was some sort of philosopher and big thinker of antiquity.
+<br>Two of the most frequent memes are: the man living into the big jar, and the guy saying a chicken is a man because it fits the description of a featherless biped.
+<br>After reading something about this guy to know what was the deal with him, it was a surprise to notice how many things about him sounds kikerish.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94665"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94663-94665">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/10/2024 (Tue) 19:25</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #64bb66">64bb66</span></span>
+  <a class="linkPreview" href="/pol/preview/94665.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94663.html#94665">No.</a><a class="linkQuote" href="/pol/res/94663.html#q94665">94665</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/8415934c034569bc7e8bb6edba663656-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">162.53 KB</span>
+  <span class="dimensionLabel">1163x654</span> <a class="originalNameLink" href="/.media/8415934c034569bc7e8bb6edba663656-imagejpeg.jpg" download="Diogenes with Lantern.jpg">Diogenes with Lantern.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/8415934c034569bc7e8bb6edba663656-imagejpeg.jpg" data-filewidth="1163" data-fileheight="654" data-filemime="image/jpeg"><img src="/.media/t_8415934c034569bc7e8bb6edba663656-imagejpeg" loading="lazy"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94663.html#94664">&gt;&gt;94664</a>
+<br><span class="greenText">&gt;Diogenes, was a Greek philosopher and one of the founders of Cynicism. He was born in Sinope, an Ionian colony on the Black Sea coast of Anatolia, in 412 or 404 BC and died at Corinth in 323 BC.</span>
+<br>said jewpedia
+<br>
+<br>List of suspicious informations about Diogenes:
+<br>
+<br>- He was a banker or the son of a banker, in the town of Sinope, on the southern coast of the black sea
+<br>- He or his dad caused financial crimes in Sinope by the devaluation of coins by falsification (lowering the share of valuable metals inside the coins, by replacing the valuable metals with duds)
+<br>- Expelled by Sinope
+<br>Sinope apparently was also a contested town between the greeks and the persians, and the actions of diogenes and his banker dad may have played into a  bigger scheme run by the persians to damage the greeks and their control of the town. This will become relevant later, as diogenes may have been a persian agent since the start.
+<br>- He resettles in Athens, which is very far from Sinope, far enough no one should have heard about his previous crimes
+<br>- He in Athens starts right away by attacking and mocking the greek customs and culture
+<br>- He makes a show of living like a repellent hobo, claiming his repellence to ve a virtue
+<br>This is the typical jewish "reversal of morals" tactic to create confusion and social disgregation
+<br>- He dogmatically claims to be the only virtuous man and that everyone else by default are corrupt (said the money fraudster, again typical jewish hypocrisy and open faced deceitfulness)
+<br>- He claims to be a cosmopolitan and a citizen of the world
+<br>An other frequent jewish trait, cause they constantly need many places where to run away to once they get expelled, being "citizens of the world" is their cope for being detestable parasited of everywhere they lay their feet, and in fact, this is an other lie, the jews are citizens of nowhere, they have loyalty to nowhere, never had any.
+<br>- He spends all his time by going around stirring confusion and by subverting the local customs
+<br>This again may have been his role since the start, as an agent of the persians to culturally corrupt the greeks.
+<br>
+<br>Diogenes
+<br><span class="greenText">&gt;He traveled to Athens and made it his life's goal to challenge established customs and values.</span>
+<br><span class="greenText">&gt;It was contrary to Athenian customs to eat within the marketplace, and still he would eat there, </span>
+<br><span class="greenText">&gt;for, as he explained when rebuked, it was during the time he was in the marketplace that he felt hungry. </span>
+<br>cultural subversion
+<br><span class="greenText">&gt;He scorned not only family and socio-political organization, but also property rights and reputation.</span>
+<br>cultural subversion
+<br><span class="greenText">&gt;He even rejected traditional ideas about human decency. </span>
+<br><span class="greenText">&gt;In addition to eating in the marketplace,[26] Diogenes is said to have urinated on some people who insulted him,</span>
+<br><span class="greenText">&gt;defecated in the theatre, masturbated in public, and pointed at people with his middle finger, which was considered insulting.</span>
+<br>exhibitionism of depravity
+<br>remember all the faggot parades? notice anything similar here?
+<br><span class="greenText">&gt;Diogenes Laërtius also relates that Diogenes would spit and fart in public.</span>
+<br>being a nuisance for the sake of it, hating all people by his own nature
+<br><span class="greenText">&gt;Diogenes shared Socrates's belief that he could function as doctor to men's souls and improve them morally, while at the same time holding contempt for their obtuseness.</span>
+<br>hypocrisy
+<br>the thief and fraudster who thinks to be morally superior to others
+<br>the only thing jews and this proto-jew can teach others is their own corrupted and repellent nature
+<br>
+<br>
+<br>The greek people of ancient Athens were just too nice to not having just kicked him off for only his repellence.
+<br>Though it is stated he died in Corinth and not Athens, so it still unknown if he was also expelled from Athens.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94666"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94663-94666">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/10/2024 (Tue) 19:32</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #64bb66">64bb66</span></span>
+  <a class="linkPreview" href="/pol/preview/94666.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94663.html#94666">No.</a><a class="linkQuote" href="/pol/res/94663.html#q94666">94666</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/94663.html#94663">&gt;&gt;94663</a>
+<br>The thread is about cryptojews btw,
+<br>meaning those jews who purposely don't make it clear they are jews, as a way to infiltrate and better subvert a society from within.
+<br>Less known crypto jews would be more interesting to see.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94668"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94663-94668">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/10/2024 (Tue) 23:34</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #7dd909">7dd909</span></span>
+  <a class="linkPreview" href="/pol/preview/94668.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94663.html#94668">No.</a><a class="linkQuote" href="/pol/res/94663.html#q94668">94668</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Jews tend to admire ancient Greeks, especially many "philosophers" because quite a few of their beliefs were fucking degenerate. To understand what I mean, look up the term "Erastes". Primarily, it's those philosophers whom challenged decency and morality that kikes prefer to admire.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="94675"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-94663-94675">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/11/2024 (Wed) 14:41</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #e71180">e71180</span></span>
+  <a class="linkPreview" href="/pol/preview/94675.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/94663.html#94675">No.</a><a class="linkQuote" href="/pol/res/94663.html#q94675">94675</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/8b53c7146bf01511e88a02786c31fc60-imagepng.png">Open File</a>(<span class="sizeLabel">289.49 KB</span>
+  <span class="dimensionLabel">1000x584</span> <a class="originalNameLink" href="/.media/8b53c7146bf01511e88a02786c31fc60-imagepng.png" download="kunst.png">kunst.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/8b53c7146bf01511e88a02786c31fc60-imagepng.png" data-filewidth="1000" data-fileheight="584" data-filemime="image/png"><img src="/.media/t_8b53c7146bf01511e88a02786c31fc60-imagepng" loading="lazy" width="255" height="149"></a></figure></div>
+  <div class="divMessage">Relevant
+<br>
+<br><span class="greenText">&gt;Degenerate art was defined as works that</span>
+<br><span class="greenText">&gt;"insult German feeling, or destroy or confuse natural form or simply reveal an absence of adequate manual and artistic skill"</span>
+<br>
+<br><span class="greenText">&gt;    Insolent mockery of the Divine under Centrist rule</span>
+<br><span class="greenText">&gt;    Revelation of the Jewish racial soul</span>
+<br><span class="greenText">&gt;    An insult to German womanhood</span>
+<br><span class="greenText">&gt;    The ideal — cretin and whore</span>
+<br><span class="greenText">&gt;    Deliberate sabotage of national defence</span>
+<br><span class="greenText">&gt;    German farmers — a Yiddish view</span>
+<br><span class="greenText">&gt;    The Jewish longing for the wilderness reveals itself — in Germany the Negro becomes the racial ideal of a degenerate art</span>
+<br><span class="greenText">&gt;    Madness becomes method</span>
+<br><span class="greenText">&gt;    Nature as seen by sick minds</span>
+<br><span class="greenText">&gt;    Even museum bigwigs called this the "art of the German people"</span></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/94663.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>

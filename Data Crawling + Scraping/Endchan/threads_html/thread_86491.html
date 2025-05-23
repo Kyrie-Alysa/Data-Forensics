@@ -1,0 +1,958 @@
+<!DOCTYPE html><html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' end.chan wss: endchan.net:8080; img-src 'self' data:; child-src 'self' 4chan.endchan.net *.youtube.com youtube.com *.bitchute.com bitchute.com *.nicovideo.jp *.tiktok.com *.youtube-nocookie.com;">
+  <!-- link to your CSS here -->
+  <link href="../../.static/global.css" type="text/css" rel="stylesheet">
+  <link href="../../.static/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/.static/css/PenumbraLynx/watcher.css" type="text/css" rel="stylesheet">
+  <!-- don't add a title, the engine already does that for you -->
+  <!-- link to any scripts you need here -->
+  <script src="../../.static/switcher.js"></script>
+  <script src="../../.static/settings.js" defer=""></script>
+  <script src="../../.static/api.js" defer=""></script>
+  <script src="../../.static/crypt.js" defer=""></script>
+  <script src="../../.static/upload.js" defer=""></script>
+  <script src="../../.static/thread.js" defer=""></script>
+  <script src="../../.static/posting.js" defer=""></script>
+  <script src="../../.static/captcha.js" defer=""></script>
+
+  <script src="../../.static/favorites.js" defer=""></script>
+  <script src="../../.static/embed.js" defer=""></script>
+  <script src="../../.static/flagPreview.js" defer=""></script>
+  <script src="../../.static/oekaki.js" defer=""></script>
+  <script src="../../.static/showHide.js" defer=""></script>
+  <script src="../../.static/delPost.js" defer=""></script>
+  <script src="../../.static/filenameFix.js" defer=""></script>
+  <script src="../../.static/wPaint/lib/jquery.1.10.2.min.js" defer=""></script>
+  <script src="../../.static/js/jquery-timeago/jquery.timeago.js" defer=""></script>
+  <script src="../../.static/adjTimezone.js" defer=""></script>
+  <script src="../../.static/js/announcements.js" defer=""></script>
+  <script src="../../.static/megud/class.pdu.js" defer=""></script>
+  <script src="../../.static/megud/class.protocolManager.js" defer=""></script>
+  <script src="../../.static/megud/protocol.megud.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.defaults.js" defer=""></script>
+  <script src="../../.static/megud/megud.lynxchan.js" defer=""></script>
+  <script src="../../.static/megud/megud.config.js" defer=""></script>
+  <script src="../../.static/megud/megud.js" defer=""></script>
+  <script src="/.static/js/PenumbraLynx/watcher.js" defer=""></script>
+  <script src="/.static/js/disableImageSpoilers.js" defer=""></script>
+
+  <!-- thread specific -->
+  <script src="../../.static/expandAll.js" defer=""></script>
+  <script src="../../.static/controlUpdate.js" defer=""></script>
+<title>/pol/ - Why Hitler Put jews in Camps</title></head>
+<body>
+
+  <!-- top of page navigation bar -->
+  <nav>
+    <span>[</span>
+    <a href="../../." id="navLinkHome">home</a>
+    <span>/</span>
+    <a href="../../boards.js" id="navBoardList">boards</a>
+    <span>/</span>
+    <a href="../../overboard" id="navOverboard">overboard</a>
+    <span>/</span>
+    <a href="../../account.js" id="linkAccount">account</a>
+    <span>/</span>
+    <a href="../../.static/posting.html" id="navPosting">help</a>
+    <span>]</span>
+    <span>[</span>
+    <a rel="nofollow" target="_blank" href="https://qchat.rizon.net/?channels=endchan"><i class="fa fa-quote-right" title="Chat"></i> irc</a>
+    <span>/</span>
+    <a rel="nofollow" target="_blank" href="https://twitter.com/endchanxyz"><i class="fa fa-twitter" title="Twitter"></i></a>
+    <span>]</span>
+  </nav>
+
+
+  <!-- board header -->
+  <header class="boardHeader">
+    <a href=".."><img id="bannerImage" src="/randomBanner.js?boardUri=pol"></a><br>
+    <a href=".."><p id="labelName">/pol/ - Politically Incorrect</p></a>
+    <p id="labelDescription">Political discussion of ideology, history, and [current] events.</p>
+  </header>
+
+  <div id="modeBanner">
+    <h3>Posting mode: Reply</h3>
+  </div>
+
+  <!-- new thread box -->
+  <div id="postBox">
+    <form class="form-post" action="/replyThread.js" enctype="multipart/form-data" method="post">
+    <div class="hField">
+      <input type="checkbox" name="iAmNotARobot">Check to confirm you're not a robot
+    </div>
+    <table>
+
+      <tbody><tr id="divName">
+        <th>Name</th>
+        <td>
+          <div>
+            <input type="text" id="fieldName" name="name">
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Email</th>
+        <td>
+          <input type="text" id="fieldEmail" name="email">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Subject</th>
+        <td>
+          <input type="text" id="fieldSubject" name="subject" autocomplete="off">
+          <button type="submit" id="formButton">
+            New Reply
+          </button>
+          <button type="button" onclick="postReply()" id="jsButton" class="hidden">
+            New Reply
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Comment</th>
+        <td>
+          <textarea id="fieldMessage" name="message" col="50" rows="8"></textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <th>Password</th>
+        <td>
+          <input type="password" name="password" id="fieldPostingPassword" autocomplete="off">
+        </td>
+      </tr>
+
+      <tr>
+        <th>Drawing</th>
+        <td>
+          <input type="number" placeholder="width" size="4" maxsize="4" id="oekakiWidth" value="300"> x
+          <input type="number" placeholder="height" size="4" maxsize="4" id="oekakiHeight" value="300">
+          <a href="#" onclick="Draw()">size canvas</a>
+          <div id="wPaint" style="position:relative;"></div>
+        </td>
+      </tr>
+
+      <tr id="divUpload">
+        <th>File(s)</th>
+          <td>
+            <div style="display: none;" id="dragAndDropDiv">
+              <div id="dropzone">Drag files to upload or click here to select
+                them</div>
+              <div id="selectedDiv"></div>
+            </div>
+            <input type="file" name="files" id="files" multiple="">
+          </td>
+      </tr>
+
+      <tr>
+        <td class="options" colspan="2">
+          <label class="spoilerCheckbox">
+            <input type="checkbox" name="spoiler" id="checkboxSpoiler">
+              Spoiler
+          </label>
+          <div id="flagsDiv">
+          <select name="flag" id="flagCombobox">
+            <option value="">No flag</option><option value="5d5587e0c8491e54e32120b1">4chon Loyalist</option><option value="5d55ac4a7340c26c15087554">8chan refugee</option><option value="5d558806bcb86854ebfd5cae">Afrikaner</option><option value="5d55886cc8491e54e32120cc">Alois Irlmaier</option><option value="5d55b09066eeca7526be158b">Alt Right kike</option><option value="5d5588cfbcb86854ebfd5d0e">Anarcho-Autism</option><option value="58c81c2d4fbba89846d341e6">Anarchy</option><option value="60a9ea0d79c84424286bde96">Asatru</option><option value="60a9e858fd758c0200f8eac2">Atomwaffen Fedposting retard</option><option value="5d80a574661af06bf158ef20">Autism</option><option value="67319cc6707c10df1b9cebca">Azad Hind</option><option value="58c81c3cca6f7c8646f9fd08">Azov</option><option value="5d5588e8c8491e54e32120ea">BUoF</option><option value="5d55a9587f5356618bc88c0e">Black pilled</option><option value="5d55b20c8f8e8a75214e1874">British Union of Fascists</option><option value="5d55894edd38cd54dea31ac4">Capitalism</option><option value="5d558979dd38cd54dea31adf">Christianity</option><option value="5d55899cf1323954e9ecceb9">Confederacy</option><option value="652a4e167bfddc0b837a20d0">Croatian Ustaše</option><option value="5d5589b0f1323954e9ecced1">Degenerate</option><option value="5d5589cac8491e54e3212108">Democrat</option><option value="5d55c4d2587ae41c97adccbb">Emerald Pill [Fusion of Green Pill and Iron Pill]</option><option value="5d55a8da7f5356618bc88be4">Environmentalism</option><option value="5e7faf790b2a43124188f14c">Falangist Spain</option><option value="5d558a62dd38cd54dea31b24">Fascism</option><option value="5d55abb27340c26c15087532">Feminism (penises make you really angry)</option><option value="5e7faedf1527cb0bd8d4ac9a">Francoist Spain</option><option value="6433b13686a4fb1eb8d2034d">Gaddafi Loyalist</option><option value="5d558a92dd38cd54dea31b2a">Gadsden</option><option value="5d558aa3dd38cd54dea31b38">German Empire</option><option value="5d558ac5dd38cd54dea31b4a">Green Pill</option><option value="5d558ae0bcb86854ebfd5da5">Heathen</option><option value="622fd577df0c7a156743a528">Hlinkova Garda</option><option value="5dc3f045cbe9862cdd6c9062">Holy Roman Empire</option><option value="5d558af5dd38cd54dea31b59">ISIS</option><option value="5d55a8667f5356618bc88bcc">Illuminati are jews</option><option value="5e7fadb8724ac800cf75496d">Imperial Japanese Army</option><option value="5d558b2dc8491e54e321217d">Indigo Pill</option><option value="5d55b36bda05957abb3bb2dd">Info Warrior (nightly jews with Alex Jonestein)</option><option value="5ec7c0207ecca2f0d1cea1f6">Iron Cross</option><option value="5d55a442658c0f5d3ba2a5c9">Iron March</option><option value="5d558bcfbcb86854ebfd5ddb">Iron Pill</option><option value="5d55a457658c0f5d3ba2a5d5">Islam</option><option value="5d55a79957bdee6197798310">JIDF kike</option><option value="5d55afe9c0bfeb752c61260c">Journalist (independent media)</option><option value="5d55affbc0bfeb752c612618">Journalist (jewish owned mainstream media)</option><option value="5d55a7add99e19618cdfd66c">Lehi kike</option><option value="5d55a8837f5356618bc88bd2">Libertarian retard</option><option value="5d55ab7df702896c1a110fa7">MGTOW (vaginas make you really angry)</option><option value="5d55a8b0d99e19618cdfd6ae">Marxist kikery</option><option value="5d55a512c7e6915d30dda611">Meandros (Golden Dawn)</option><option value="5d55a525a56f595d3df6a7c9">Monarchy</option><option value="61ccf8d6bb10fab426ce39c0">Moonman</option><option value="5d55a80057bdee619779832e">Mossad kike</option><option value="5d55a577c7e6915d30dda651">National Action</option><option value="5d55a562ba35ab5d350bc855">National Socialist</option><option value="5d55a543a56f595d3df6a7e1">National Wildlife Federation</option><option value="5dc3ef86805fb609cec0b430">Nationalist Spain</option><option value="5fe4fae2293aaccd0d83921f">Nyilaskeresztes Párt Hungarista</option><option value="60a9e9a7cc36a150b8caa6bf">Odin</option><option value="5d55e46c40dd904bff28f9b3">Pirate</option><option value="5d55a590a56f595d3df6a7ed">Prussian Socialist</option><option value="5d55a6715f602061921239bd">Red pill</option><option value="5d56dfcbb6d3bd1b85f98186">Reichsadler</option><option value="5d56df7fe4a8671b8aaea276">Reichsflotte Imperial German Fleet</option><option value="5d56df6ab6d3bd1b85f98177">Reichskriegsminister</option><option value="5d55a6855f602061921239c3">Renegade Tribune</option><option value="5d55a695d99e19618cdfd624">Republican</option><option value="5d55a6acd99e19618cdfd627">Rope awaiter</option><option value="60a9e6f2b772d2027b06642b">Russian Liberation Army / Русская освободительная армия</option><option value="5dc3f0de805fb609cec0b4c4">Senatus Populusque Romanus</option><option value="643233a8e7bdba180f7e5071">Silver Legion of America</option><option value="5d55a6c5d99e19618cdfd633">Social Democrat</option><option value="5d55a6e17f5356618bc88b70">Strasserist traitor</option><option value="5d55a7087f5356618bc88b7f">Technocracy</option><option value="62213abe260940f27d28db02">The Church of Christian Hitler</option><option value="60a9eadaef8e29de3e4d2c03">The Silver Legion of America</option><option value="5d55b1948f8e8a75214e1838">Trumptard MIGApede</option></select>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <div id="captchaDiv">
+      <img src="/captcha.js" class="captchaImage" id="captchaImage">
+      <div>
+      <input name="captcha" type="text" id="fieldCaptcha" placeholder="Answer">
+      <input type="button" onclick="reloadCaptcha()" value="Reload" id="reloadCaptchaButton" class="hidden">
+      <a href="/noCookieCaptcha.js" class="small" target="_blank">No cookies?</a>
+      </div>
+    </div>
+    <input type="hidden" name="boardUri" id="boardIdentifier" value="pol">
+    <input type="hidden" name="threadId" id="threadIdentifier" value="86491">
+    <p><a href="../rules.html">Board Rules</a></p>
+    <p class="small">Max file size: <span id="labelMaxFileSize">350.00 MB</span></p>
+    <p class="small">Max files: <span id="labelMaxFiles">5</span></p>
+    <p style="display: none">Max message length: <span id="labelMessageLength">4096</span></p>
+    <p><a id="linkManagement" class="small" rel="noindex" href="/boardManagement.js?boardUri=pol">Manage Board</a> |
+    <a id="linkMod" class="small" rel="noindex" href="/mod.js?boardUri=pol&amp;threadId=86491">Moderate Thread</a></p>
+    <p class="topNav">
+      <!-- .. doesn't work in mod.js -->
+      <a class="returnLink" href="..">Return</a> |
+      <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/86491.html">Magrathea</a> |
+      <a class="catalogLink" href="../catalog.html">Catalog</a> |
+      <a class="bottomLink" href="#bottom">Bottom</a>
+    </p>
+    </form>
+  </div>
+
+  <!-- controls for managing thread -->
+  
+
+  <!-- thread transfer controls -->
+  <div id="transferControls">
+    
+  </div>
+
+  <!-- ip deletion controls -->
+  <div id="ipDelete">
+    
+  </div>
+
+  <!-- message panel -->
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><span class="redText">ALL THREADS HAVE BEEN UNLOCKED. IF CAPTCHA ERRORS, GOOGLE HOW TO HARD REFRESH</span><br>Logs can be found here: https://endchan.org/logs.js<br><span class="redText">Insulting National Socialism or Hitler or promoting jews will be banned immediately.</span></div>
+    <hr>
+  </div>
+
+  <p align="right">
+    <a id="expandAll" href="#">Expand All Images</a>
+  </p>
+
+  <!-- posts, much of the naming is shared with the thread list from the board page -->
+  <div id="threadList">
+    <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+      <!-- this is actually where the posts are -->
+      <div id="divThreads">
+      <div data-boarduri="pol" class="opCell" id="86491"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6f167604f703f583ee6e0a70ad15cb4b-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">116.34 KB</span>
+  <span class="dimensionLabel">790x439</span> <a class="originalNameLink" href="/.media/6f167604f703f583ee6e0a70ad15cb4b-imagejpeg.jpg" download="800x445.jpg">800x445.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6f167604f703f583ee6e0a70ad15cb4b-imagejpeg.jpg" data-filewidth="790" data-fileheight="439" data-filemime="image/jpeg"><img src="/.media/t_6f167604f703f583ee6e0a70ad15cb4b-imagejpeg" loading="lazy" width="255" height="142"></a></figure></div>
+  <div class="opHead">
+    <input type="checkbox" class="deletionCheckBox" name="pol-86491">
+    <span class="labelSubject">Why Hitler Put jews in Camps</span>
+    <a class="linkName noEmailName">Anonymous</a>
+    
+    
+    <span class="labelCreated">02/15/2022 (Tue) 03:14</span>
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #8e44bd">8e44bd</span></span>
+    
+    
+    
+    
+    <a class="linkPreview" href="/pol/preview/86491.html">[Preview]</a>
+    <a class="linkSelf" href="/pol/res/86491.html#86491">No.</a>
+    <a class="linkQuote" href="/pol/res/86491.html#q86491">86491</a>
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  <div>
+    
+  </div>
+  <div class="divMessage">Jewish “Holocaust” historian Yehuda Bauer writes: "<em>Part of the Nazi propaganda effort was to persuade non-Jews that the ghettoes were necessary to protect them from the Jews. Jews were said to be carriers of epidemic illnesses while non-Jews were immune to them.</em>" [Sidenote: What is wrong with this kike's brain? Unable to see the glaring flaw in his lie.] In reality, Jews were interned in camps and ghettos during World War II because Jews were generally hostile toward Germany, and many Jewish partisans were actively killing German troops. In addition to ghetto fighters, Jewish civilians fled to the forests and enlisted in partisan units, carrying out sabotage and intelligence missions.[3] The authorities of the Third Reich reasoned that Jews had to be interned to protect against these sabotage and intelligence operations. This article documents some of the Jewish civilians and groups who actively fought against the Third Reich during World War II. <br><br><strong>Jewish Female Assassins</strong><br>Jewish historian Dr. Judy Batalion, in her book <em>The Light of Days</em>, states that Jewish women who resisted the Third Reich were far more numerous than she had ever imagined. She writes: "<em>At first, I imagined that the several dozen resistance operatives mentioned in Freuen comprised the total amount. But as soon as I touched on the topic, extraordinary tales of female fighters crawled out from every corner: archives, catalogues, strangers who emailed me their family stories. I found dozens of women’s memoirs published by small presses, and hundreds of testimonies in Polish, Russian, Hebrew, Yiddish, German, French, Dutch, Danish, Greek, Italian, and English, from the 1940s to today.</em>" Many Jewish women used stealth and disguises to murder Germans. For example, 24-year-old Niuta Teitelbaum, from the Communist group Spartacus, wore her flaxen hair in braids, appearing like a young 16-year-old—an innocent disguise that hid her role as an assassin. She walked into the office of a high-ranking Gestapo officer, and shot him in cold blood at his desk. Teitelbaum pulled the trigger on yet another German officer while he was in bed in his own home. In another operation, she killed two Gestapo agents and wounded a third who was taken to a hospital. Disguising herself as a doctor, Teitelbaum entered the wounded Gestapo agent’s room, and murdered both him and his guard.[5]<br><br>In another instance, Teitelbaum dressed like a Polish farm girl with a kerchief in her blond hair. She walked into a German command post, smiled, and then shot an SS soldier with her pistol. Another time, Teitelbaum strolled up to the guards outside Szucha, and said she needed to speak to a certain officer about a “personal matter.” The guards showed her the way to her “boyfriend’s office,” where she pulled out a concealed pistol with a silencer and shot him in the head. She smiled meekly at the guards on her way out.[6] For these and other acts of lethal resistance, the Gestapo nicknamed Teitelbaum “Little Wanda with the Braids,” and put her on all of its most-wanted lists. She survived the Warsaw Ghetto Uprising, but was eventually hunted down and executed a few months later.[7] The lethal nature of the Jewish female assassins caused the Germans to take extreme measures against them. German SS commander Jürgen Stroop wrote:[8] "''They were not human, perhaps devils or goddesses. Calm. As nimble as circus performers. They often fired simultaneously with pistols in both hands. Fierce in combat, right to the end. Approaching them was dangerous. One captured Haluzzenmädel looked timid. Completely resigned. And then suddenly, when a group of our men got within a few steps of her, she pulls a hand grenade out from under her skirt or her breeches and slaughters the SS while showering them with curses to the 10th generation—your hair stands on end! [continued]<br><br><a rel="nofollow" target="_blank" href="http://www.renegadetribune.com/why-hitler-put-jews-in-camps-and-ghettos/">http://www.renegadetribune.com/why-hitler-put-jews-in-camps-and-ghettos/</a><br><a rel="nofollow" target="_blank" href="https://archive.is/z0mFN">https://archive.is/z0mFN</a></div>
+  
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<div class="divPosts"><div class="postCell" data-boarduri="pol" id="86492"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-86492">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">02/15/2022 (Tue) 03:19:56</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8e44bd">8e44bd</span></span>
+  <a class="linkPreview" href="/pol/preview/86492.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#86492">No.</a><a class="linkQuote" href="/pol/res/86491.html#q86492">86492</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/f94bfa3806197f8210fa5d21968c43d5-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">224.05 KB</span>
+  <span class="dimensionLabel">800x596</span> <a class="originalNameLink" href="/.media/f94bfa3806197f8210fa5d21968c43d5-imagejpeg.jpg" download="pack of fat liberated kikes.jpg">pack of fat liberated kikes.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/f94bfa3806197f8210fa5d21968c43d5-imagejpeg.jpg" data-filewidth="800" data-fileheight="596" data-filemime="image/jpeg"><img src="/.media/t_f94bfa3806197f8210fa5d21968c43d5-imagejpeg"></a></figure></div>
+  <div class="divMessage">"<em>We suffered losses in those situations, and so I gave orders not to take girls prisoner, not to let them get too close, but to finish them off with submachine guns from a distance.</em>"<br><br><strong>Other Jewish Female Resistance Activities</strong><br>Because of their gender and ability to camouflage their Jewishness, women were uniquely suited to engage in important and life-threatening tasks such as couriers. As fighter Chaika Grossman said: "<em>The Jewish girls were the nerve-centers of the movement.</em>" Historian Emanuel Ringelblum, a Warsaw Ghetto chronicler, wrote about the Jewish courier girls at the time: "<em>Without a murmur, without a second’s hesitation, they accept and carry out the most dangerous missions. How many times have they looked death in the eyes? The story of the Jewish woman will be a glorious page in the history of Jewry during the present war.</em>" The courier girls’ psychological skills were especially important in the most dangerous task of smuggling weapons and ammunition to ghettos and camps. For example, Jewish courier Bronka Klibanski was smuggling a revolver and two hand grenades inside a loaf of country bread in her suitcase. A German policeman at the train station asked her what she was carrying. She managed to avoid having to open her bag by “confessing” that she was smuggling food. Klibanski’s “honest confession” evoked a protective response from the policeman, who instructed the train conductor to make sure no one bothered her or her suitcase.[11]<br><br>Jewish courier Hela Schüpper, who was sent to Warsaw to buy guns, knew she would be spending 20 hours undercover on trains. She dressed stylishly so that she looked like she was on her way to an afternoon at the theater. Schüpper flirted shamelessly on the train, flashing her provocative smile, giving the impression that she might be going on a vacation. Instead, she met a People’s Army contact at the gate of a clinic. Schüpper received five weapons, four pounds of explosives, and clips of cartridges. These weapons were later used against German forces.[12] Jewish courier Chasia Bielicka worked with 18 other Jewish girls in Bialystok to arm the local resistance. They leased rooms from Polish peasants and held day jobs in German homes, hotels and restaurants. While working as a maid for an SS man who had an armoire filled with handguns, Bielicka periodically grabbed a few bullets and dropped them into her coat pocket. The courier girls passed machine-gun bullets and other ammo to the ghetto through the window of a latrine that bordered the ghetto wall. This courier ring continued to supply intelligence and arms to numerous partisans after the Bialystok Ghetto’s liquidation.[13] <br><br><strong>Soviet Jewish Partisans</strong><br>Partisan warfare has traditionally been considered illegal, since it undermines the convention of uniformed armies directing violence against each other rather than against civilian populations. Soviet partisan warfare was extremely brutal and capable of severely disrupting German military planning. Because German forces were always limited and always in demand at the front, German military and civilian authorities were all the more fearful of the disruption partisans could bring. Consequently, German army officers were trained to take a severe line against partisan activity in the Soviet Union.[14] The combat of Soviet partisans in forests and swamps was regarded by German troops as the most dangerous of all types of warfare—favoring the hunted rather than the hunter. The partisans almost always killed captured German soldiers, frequently after inflicting brutal torture. The German anti-partisan forces operated in an extremely unpleasant environment that made the German units resent the partisans whose activities had caused them to be there. In summer huge swarms of flies and mosquitos made life miserable; in winter frostbite and trench foot were rampant.[15] Letters from German soldiers reveal the danger of partisan warfare. [continued]</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86493"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-86493">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">02/15/2022 (Tue) 03:26:27</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8e44bd">8e44bd</span></span>
+  <a class="linkPreview" href="/pol/preview/86493.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#86493">No.</a><a class="linkQuote" href="/pol/res/86491.html#q86493">86493</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/a9d9781effaab68866b1bf4aa95259cb-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">51.17 KB</span>
+  <span class="dimensionLabel">400x359</span> <a class="originalNameLink" href="/.media/a9d9781effaab68866b1bf4aa95259cb-imagejpeg.jpg" download="so many theres no room.jpg">so many theres no room.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/a9d9781effaab68866b1bf4aa95259cb-imagejpeg.jpg" data-filewidth="400" data-fileheight="359" data-filemime="image/jpeg"><img src="/.media/t_a9d9781effaab68866b1bf4aa95259cb-imagejpeg"></a></figure></div>
+  <div class="divMessage">A letter from German Cpl. Hans Brüning illustrates how the wooded areas of the Soviet Union were especially effective locations for partisan warfare: "<em>(The forests are teeming with danger.) Any snipers who fall into our hands are of course shot; their bodies lie everywhere. Sadly, though, many of our own comrades have been lost to their dirty methods. We’re losing more men to the bandits than in the fighting itself. Hardly any sleep to be had. We’re awake and alert almost every night; you have to be in case they attack suddenly. If the sentry drops his guard just once it could be over for all of us. Traveling alone is out of the question.</em>" German Cpl. Erich Stahl wrote: "<em>These are dangerous swine, and no soldier is safe from them. The danger is there wherever you go and wherever you stay…and you only breathe out when you’ve come back from your post unhurt. If the moon’s not out, you stay awake at your post like an ox.</em>" German Pvt. Hans Schröder described how Soviet partisan activity killed two Germans on June 19, 1942: "<em>Two of our comrades in first company tragically lost their lives. Though we kept watch, a partisan still was able to creep up to one of our houses. A grenade chucked in through the window, and it was done. We took revenge straight away, and rightly. I used to think one should act humanely, but this subhumanity just isn’t worth it.</em>"<br><br>Germany established numerous ghettos in an effort to contain or eliminate Soviet partisan activities. In Belorussia alone, hundreds of thousands of Jews were imprisoned in more than 100 ghettos and camps. The largest ghetto was in Minsk (100,000 people); other ghettos were in Brest (34,000 people), Bobruisk (20,000 people), Vitebsk (20,000 people), Borisov (10,000 people), Slonim (24,000 people), Novogrodek (6,500 people) and so on.[19] Specifically Jewish partisan units were usually frowned upon. The Soviet command preferred to mix nationalities in so-called territorial (e.g., Belorussian, Ukrainian, etc.) units. However, a few entirely Jewish units nevertheless survived. These include those of the brothers Tuvia, Zusia, and Asael Belski in the Naliboki forests; the unit of Misha Gildenman near Korzec in western Belorussia; Dr. Yehezkel Atlas’s unit in the same general area; and the large unit commanded by Abba Kovner in the Rudniki forests in Lithuania.[20] Soviet partisan warfare against Germany became increasingly barbaric and murderous. In February 1943, 596 German prisoners were killed and many of them mutilated by Soviet partisans at Grischino. A German judge who interrogated witnesses and survivors of this atrocity remembers:[21] "<em>You have no idea how much trouble the commanders and company chiefs had […] to restrain the German soldiers from killing every Russian prisoner of war of the Popov Army. The troop was very bitter and angry. You cannot imagine the vehemence of the soldiers after they had seen what had happened.</em>"<br><br>However, the Soviet partisans’ sabotage operations effectively tied up increasing numbers of German troops and prevented the Germans from ever feeling secure on Russian soil. By the time the bulk of Russian territory had been liberated in early 1944, a large and effective Soviet guerilla movement had emerged. Stalin’s support had allowed the Soviet partisans to survive the German anti-partisan reprisals and grow into an effective fighting force that helped the Soviet Union win the war.[22] <br><br><strong>European Jewish Partisans</strong><br>Jews actively participated in the anti-German underground movement in France. After Germany attacked Russia in June 1941, French Jewish communists discovered their anti-German patriotism. Numerous French Jews joined underground resistance organizations, or Jewish groups that actively maintained links with such organizations.[23] French resistance activity began to increase toward the end of the war. Since Allied leaders planned to invade Europe on the coast of France, French partisans received substantial weaponry and supplies to aid the Allied invasion. [continued]</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell multipleUploads" data-boarduri="pol" id="86494"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-86494">
+  <span class="labelSubject">The Partisans were real kikes massacring Germans</span>
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">02/15/2022 (Tue) 03:33:07</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8e44bd">8e44bd</span></span>
+  <a class="linkPreview" href="/pol/preview/86494.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#86494">No.</a><a class="linkQuote" href="/pol/res/86491.html#q86494">86494</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/fec1de5db78ea500178a2bfaacf33a8b-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">36.85 KB</span>
+  <span class="dimensionLabel">633x650</span> <a class="originalNameLink" href="/.media/fec1de5db78ea500178a2bfaacf33a8b-imagejpeg.jpg" download="more and more survivors.jpg">more and more survivors.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/fec1de5db78ea500178a2bfaacf33a8b-imagejpeg.jpg" data-filewidth="633" data-fileheight="650" data-filemime="image/jpeg"><img src="/.media/t_fec1de5db78ea500178a2bfaacf33a8b-imagejpeg"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/7b9453dbac1d68ae0852bbc46e1ff3c8-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">270.83 KB</span>
+  <span class="dimensionLabel">788x1489</span> <a class="originalNameLink" href="/.media/7b9453dbac1d68ae0852bbc46e1ff3c8-imagejpeg.jpg" download="Citations.jpg">Citations.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/7b9453dbac1d68ae0852bbc46e1ff3c8-imagejpeg.jpg" data-filewidth="788" data-fileheight="1489" data-filemime="image/jpeg"><img src="/.media/t_7b9453dbac1d68ae0852bbc46e1ff3c8-imagejpeg" width="135" height="255"></a></figure><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/3fe6775fcf9063a5bcdaf49ccef15fb6-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">136.95 KB</span>
+  <span class="dimensionLabel">563x520</span> <a class="originalNameLink" href="/.media/3fe6775fcf9063a5bcdaf49ccef15fb6-imagejpeg.jpg" download="partisans-again.jpg">partisans-again.jpg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/3fe6775fcf9063a5bcdaf49ccef15fb6-imagejpeg.jpg" data-filewidth="563" data-fileheight="520" data-filemime="image/jpeg"><img src="/.media/t_3fe6775fcf9063a5bcdaf49ccef15fb6-imagejpeg"></a></figure></div>
+  <div class="divMessage">By June 6, 1944, French partisans had received enough arms through airdrops to fully equip 20,000 resisters, and partially equip another 50,000. Large stocks of guns, ammunition and explosives were in the hands of the partisans for a do-or-die effort to assist the Allied invasion.[24] Italian partisan activity also assumed impressive proportions in the northern part of Italy after Mussolini’s collapse in 1943. However, this Italian partisan activity, which included many Jews, developed at a time and place where the Germans were well positioned to contest its growth. In March 1944, for example, a partisan attack on a German column marching through Rome caused many German casualties. Germans were confronted by armed resistance groups in at least 24 ghettoes in western and central Poland: Warsaw, Krakow, Czestochowa, Wlodawa, Sosnowice, Tomaszow Lubelski, Kielce, Iwaniska, Chmielnik, Sandomierz, Jozefow, Opatow, Kalwaria, Ozialoszica, Markuszew, Rzeszow, Miedzyrzec Podlaski, Opoczno, Tarnow, Pilica, Radom, Radzyn, Sokolow Podlaski, and Zelechow. In northeastern Poland, there were 63 armed underground groups in 110 ghettoes or other Jewish concentrations. The existence of some form of organization is also indicated by armed actions in another 30 ghettoes.[26]<br><br>In August 1944, an estimated 2,500 Jewish fighters participated in a national uprising in Slovakia. After the defeat of this uprising, some 2,000 Jewish fighters joined 15,000 partisans in the Tatra mountains. Jews participated in underground activities in Bulgaria, in the Greek partisan movement, and about 6,000 Jews also fought with the Tito partisans in Yugoslavia.[27] German anti-partisan reprisals were usually effective in reducing partisan activity in Western Europe during the war. German reprisals against partisan activity frequently prevented opposition from surfacing over much of occupied Europe, and broke up opposition when it became visible. There were few places in Western Europe where the Germans were overwhelmed by partisan activities for very long. Only in the Soviet Union did German anti-partisan reprisals fail.[28]<br><br><strong>Conclusion</strong><br>Judy Batalion writes concerning the extensive involvement of Jewish women in resistance efforts against Germany during World War II:[29] "<em>Despite years of Jewish education, I’d never read accounts like these, astonishing in their details of the quotidian and extraordinary work of woman’s combat. I had no idea how many Jewish women were involved in the resistance effort, nor to what degree. Why, I kept asking myself, had I never heard these stories? Why had I not heard about the hundreds, even thousands, of Jewish women who were involved in every aspect of this rebellion, often at its helm?</em>" It is this author’s opinion that Judy Batalion had never heard of the extensive involvement of Jewish women in resistance efforts against Germany because such involvement has intentionally been kept quiet. If the extensive murderous female participation in these resistance organizations were widely known, then people would get closer to understanding one reason why Hitler interned Jews in camps and ghettos. Jews were not interned because Hitler hated Jews. Rather, Jews were interned in camps and ghettoes to a large degree because the German authorities considered Jewish civilians, both male and female, a serious threat to German military operations during World War II. -  John Wear of Inconvenient History reports.<br><br><a rel="nofollow" target="_blank" href="https://www.inconvenienthistory.com/14/1/8184">https://www.inconvenienthistory.com/14/1/8184</a><br><a rel="nofollow" target="_blank" href="https://archive.is/Jci2d">https://archive.is/Jci2d</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86948"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-86948">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/28/2022 (Mon) 09:05:10</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #d00f60">d00f60</span></span>
+  <a class="linkPreview" href="/pol/preview/86948.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#86948">No.</a><a class="linkQuote" href="/pol/res/86491.html#q86948">86948</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/6079b70c26aa0ce0c4c1f6218ede6a36-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">173.26 KB</span>
+  <span class="dimensionLabel">1024x683</span> <a class="originalNameLink" href="/.media/6079b70c26aa0ce0c4c1f6218ede6a36-imagejpeg.jpg" download="stiahnuť (29).jpeg">stiahnuť (29).jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/6079b70c26aa0ce0c4c1f6218ede6a36-imagejpeg.jpg" data-filewidth="1024" data-fileheight="683" data-filemime="image/jpeg"><img src="/.media/t_6079b70c26aa0ce0c4c1f6218ede6a36-imagejpeg" width="255" height="170"></a></figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/86491.html#86494">&gt;&gt;86494</a><br><span class="greenText">&gt;In August 1944, an estimated 2,500 Jewish fighters participated in a national uprising in Slovakia. After the defeat of this uprising, some 2,000 Jewish fighters joined 15,000 partisans in the Tatra mountains. </span><br><br>And people sometimes wonder why Alexander Mach wanted to ship them out from our camps or expell from state...<br>So much for our regulations on who was eligible to camp in Novaky or Sereď and who could walk freely</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86950"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-86950">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/29/2022 (Tue) 07:00:54</span>
+  
+  <a class="linkPreview" href="/pol/preview/86950.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#86950">No.</a><a class="linkQuote" href="/pol/res/86491.html#q86950">86950</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9a92817d84ce3bea8272b1304419c995-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">11.28 KB</span>
+  <span class="dimensionLabel">325x155</span> <a class="originalNameLink" href="/.media/9a92817d84ce3bea8272b1304419c995-imagejpeg.jpg" download="rtgrthth.jpeg">rtgrthth.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9a92817d84ce3bea8272b1304419c995-imagejpeg.jpg" data-filewidth="325" data-fileheight="155" data-filemime="image/jpeg"><img src="/.media/t_9a92817d84ce3bea8272b1304419c995-imagejpeg" width="255" height="122"></a></figure></div>
+  <div class="divMessage">The correct response to the Jews trying to guilt trip Whites is to ask, 
+<br>
+<br><span class="greenText">&gt;"Why should anyone care about the Jews? What did Jews do for us?"</span>
+<br>
+<br>It's a mistake to engage in a lengthy debate about an event that happened nearly a century ago with a group known to shamelessly lie and deny facts.
+<br>
+<br>Instead you can undermine that whole discussion by asking, "Why should Whites care about Jews? Have they ever stood up for us? Would they go to war to save us?"
+<br>
+<br>Because when you ask that question it becomes clear that kindness and concern for Jews is never reciprocated and there is no reason at all why any group of people should care about the Jews.
+<br>
+<br>The Boomers loved the Jews and in response the Jews plotted to genocide their children and grand children with economics, state terror, a totalitarian censorship regime obstructing communications, and waves of immigrants to replace the bloodlines killed by Jewish economics.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86960"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-86960">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/29/2022 (Tue) 21:35:52</span>
+  
+  <a class="linkPreview" href="/pol/preview/86960.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#86960">No.</a><a class="linkQuote" href="/pol/res/86491.html#q86960">86960</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/d1bfd281463268b86a6f6c3adac45640-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">15.61 KB</span>
+  <span class="dimensionLabel">201x251</span> <a class="originalNameLink" href="/.media/d1bfd281463268b86a6f6c3adac45640-imagejpeg.jpg" download="fgfgjj.jpeg">fgfgjj.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/d1bfd281463268b86a6f6c3adac45640-imagejpeg.jpg" data-filewidth="201" data-fileheight="251" data-filemime="image/jpeg"><img src="/.media/d1bfd281463268b86a6f6c3adac45640-imagejpeg.jpg"></a></figure></div>
+  <div class="divMessage">Another tactic is "whataboutism". 
+<br>
+<br>You have to understand these Jews have a culture of lying and manipulating goyim, you are never going to convince them that Jews were the bad guys,they already know that and the purpose of their talking isn't to come to a consensus about history, it's about trying to get people to attack and demote and fire White people so they can have control over Western institutions.
+<br>
+<br>And the people that they are usually trying to rally to be hostile to Whites do not have a significant attention span. If you give them a book to read about the subject that proves the Holocaust as presented by Jews is fictional propaganda, they are not going to read it.
+<br>
+<br>When talking with most people you have maybe 15 seconds to make a point that will wreck the arguments of the anti-Whites. 
+<br>
+<br>So another way to do that, using "Whataboutism", you just inject, "Well, what about the apartheid against the Palestinians and stealing their land?" Then if anyone wants to refute that, they have to talk about Jews killing Palestinians, keeping them in concentration camp cities, testing weapons and crowd control strategies on them, building walls, white phosphorous attacks on Palestinians, etc. and as long as the discussion is about that, they have already lost the debate.
+<br>
+<br>I think the internet exposing the inconsistencies of the Jews story is wonderful because it shows they are liars. 
+<br>
+<br>But when you are on the defensive like that, you are presenting yourself from a defensive position and you only appear as the good guy if your audience has the attention span to understand that you are presenting proof the Jews lied.
+<br>
+<br>If you want to be effective in a sphere of information you have to use arguments that are appropriate for the people you're talking about.
+<br>
+<br>In online communities where you have high attention span people that can dig into material, exposing the lies of the Holocaust in great detail is wonderful because it convinces the high IQ people that without a doubt they have been lied to by the Jews. But in most settings you've  got 15 seconds of attention to flip the Jews' anti-White rhetoric on its head and you need something simple enough to remember that everyone that hears you say it can pull it out of their pocket over the dinner table or with their co-workers to change minds. 
+<br>
+<br>Online we have the ability to combine different degrees of information to cater to the entire range of attention spans. You can have an image that tells someone in 5 seconds about the Jewish hypocrisy and malice, you can have a post that takes a minute to read, and you can have a link to more comprehensive material and you can change the mind of anyone that comes across it that isn't a Jew.
+<br>
+<br><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/King_David_Hotel_bombing">https://en.wikipedia.org/wiki/King_David_Hotel_bombing</a>
+<br>
+<br><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Deir_Yassin_massacre">https://en.wikipedia.org/wiki/Deir_Yassin_massacre</a>
+<br>
+<br><a rel="nofollow" target="_blank" href="https://en.wikipedia.org/wiki/Sabra_and_Shatila_massacre">https://en.wikipedia.org/wiki/Sabra_and_Shatila_massacre</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86965"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-86965">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/30/2022 (Wed) 00:23:22</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #8e44bd">8e44bd</span></span>
+  <a class="linkPreview" href="/pol/preview/86965.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#86965">No.</a><a class="linkQuote" href="/pol/res/86491.html#q86965">86965</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/86491.html#86960">&gt;&gt;86960</a><br>Anon, you'll never win arguments against either jews or the fools who fell for hostility against Europeans and deserve nothing but traitors' deaths. Success does not result either by revealing the kike holocaust as the fraud it is or mentioning apartheid against Palestinians when your audience are retards. I've done this for over 20 years and have had mixed results. Simply don't go after idiots and try to change their minds. They're stupid because they fell for bullshit in the first place. I'm not saying to change your tactics. <strong>Change your targets.</strong> Those you should seek must have intelligence, not blind stubborn ignorance. Sheep will always follow. The first goal should be to remove jewish influence so the sheep stop running behind the kike shepherd leading them off a cliff.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86967"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-86967">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/30/2022 (Wed) 05:58:06</span>
+  
+  <a class="linkPreview" href="/pol/preview/86967.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#86967">No.</a><a class="linkQuote" href="/pol/res/86491.html#q86967">86967</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/86491.html#86965">&gt;&gt;86965</a>
+<br>
+<br>You might be right. 
+<br>
+<br>I think possibly an outcome of this situation will be the good Whites form their own parallel communities in secret and extract the good Whites from this madness as they find them and can convert them into being reliable members of their community, then use the economic and organizational power of cohesive smart communities to gradually buy up everything out from underneath everyone else.
+<br>
+<br>Buy property, build a wall around it, invite good Whites in, and gradually just keep buying up more and more until the the wall surrounds the entire country.
+<br>
+<br>The only thing preventing this is the Feds using terrorism and the politicians simply passing laws to seize property, but we can probably get them to stop that if we recognize that this is a lawless country where they don't follow the Constitution anyway. The Feds and politicians eventually will not want to be party to the civilization they sabotaged for foreign groups and if they want into our communities they'll have to use their institutional power for our interests. The USA is clearly collapsing and everyone wants to kill them for what they've already done, they must all be feeling really nervous right now.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86970"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-86970">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">03/30/2022 (Wed) 07:40:48</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #d00f60">d00f60</span></span>
+  <a class="linkPreview" href="/pol/preview/86970.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#86970">No.</a><a class="linkQuote" href="/pol/res/86491.html#q86970">86970</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/86491.html#86965">&gt;&gt;86965</a><br><span class="greenText">&gt;the kike holocaust as the fraud it is or mentioning apartheid against Palestinians when your audience are retards.</span><br>Can relate just by starting the bullshit regarding of zyklon B does not kill someone within 20min by using that lets say 30g degesh can in room that is not heated circa 35°C for start of vaporizing but it would require 10s of kilos of it and room with full sealing without windows and special light switches heavy sealing doors etc combined that by liquid hydrogen cyianide the body would have large cherry red stains still it was pointless for them it happened period <br>And regarding of palestine occupation i dont need to expand it almost every time it goes into<br>"But israel is in defensive war since its creation"<br><br><a class="quoteLink" href="/pol/res/86491.html#86967">&gt;&gt;86967</a><br><span class="greenText">&gt;Buy property, build a wall around it, invite good Whites in, and gradually just keep buying up more and more until the the wall surrounds the entire country.</span><br><br>That sounds virtuos but then i remembered waco</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="86971"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-86971">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">03/30/2022 (Wed) 09:49:40</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #d00f60">d00f60</span></span>
+  <a class="linkPreview" href="/pol/preview/86971.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#86971">No.</a><a class="linkQuote" href="/pol/res/86491.html#q86971">86971</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/86491.html#86970">&gt;&gt;86970</a><br><span class="greenText">&gt;starting the bullshit</span><br>I meant starting the mess in dis usion</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91051"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-91051">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/08/2023 (Fri) 18:20</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #f7da1d">f7da1d</span></span>
+  <a class="linkPreview" href="/pol/preview/91051.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#91051">No.</a><a class="linkQuote" href="/pol/res/86491.html#q91051">91051</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/81fd8bc80aef2e1dc2abbfddb7415677-imagepng.png">Open File</a>(<span class="sizeLabel">785.40 KB</span>
+  <span class="dimensionLabel">750x747</span> <a class="originalNameLink" href="/.media/81fd8bc80aef2e1dc2abbfddb7415677-imagepng.png" download="image-5.png">image-5.png</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/81fd8bc80aef2e1dc2abbfddb7415677-imagepng.png" data-filewidth="750" data-fileheight="747" data-filemime="image/png"><img src="/.media/t_81fd8bc80aef2e1dc2abbfddb7415677-imagepng" loading="lazy" width="255" height="254"></a></figure></div>
+  <div class="divMessage">Despite that being an vololo work of "only christians exclusivley were in axis and so on" i think this should be mentioned while its still surviving as it dives also on same conclusion that partisans were either jews, jews and few genitles holding an position in soviet controlled area or hooligans <br><br><a rel="nofollow" target="_blank" href="https://youtu.be/cxeIP22lQGI?si=hRUc47PGEfP0EwPY">https://youtu.be/cxeIP22lQGI?si=hRUc47PGEfP0EwPY</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91052"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-91052">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/09/2023 (Sat) 12:15</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #67f8d2">67f8d2</span></span>
+  <a class="linkPreview" href="/pol/preview/91052.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#91052">No.</a><a class="linkQuote" href="/pol/res/86491.html#q91052">91052</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/86491.html#91051">&gt;&gt;91051</a><br>I don't believe anyone here thinks only Christians exclusively were in the AXIS powers. Hitler was Christian and kikes despise Christianity. Those are the two major factors to realize.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91147"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-91147">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/27/2023 (Wed) 05:22</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #0f6819">0f6819</span></span>
+  <a class="linkPreview" href="/pol/preview/91147.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#91147">No.</a><a class="linkQuote" href="/pol/res/86491.html#q91147">91147</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/86491.html#91052">&gt;&gt;91052</a><br><span class="greenText">&gt;don't believe anyone here thinks only Christians exclusively were in the AXIS powers</span><br>That was on margo of the work and not an imageboard <br><br>Anyway Dirlewanger brigade veterans POV on partisan hunts confirming yet again jewish key role in guerilla insurgencies in ww2<br><a rel="nofollow" target="_blank" href="https://youtu.be/l3hAn6UAlD8?si=wJne9L5UaqR-54J0">https://youtu.be/l3hAn6UAlD8?si=wJne9L5UaqR-54J0</a></div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91148"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-91148">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">09/27/2023 (Wed) 19:27</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #67f8d2">67f8d2</span></span>
+  <a class="linkPreview" href="/pol/preview/91148.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#91148">No.</a><a class="linkQuote" href="/pol/res/86491.html#q91148">91148</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/86491.html#91147">&gt;&gt;91147</a><br>Yes, and it is many times impossible to get through to someone who has been brainwashed by the lies. Over 77 years now. They don't question why the number 6 million is so round. So impossible. I have bombarded many with information and with some, all their minds do is shut down. What people need is a shock to their system to wake up. They'll only fight back if the jew boot is physically on their necks.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="91166"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-91166">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">09/29/2023 (Fri) 18:43</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #0f6819">0f6819</span></span>
+  <a class="linkPreview" href="/pol/preview/91166.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#91166">No.</a><a class="linkQuote" href="/pol/res/86491.html#q91166">91166</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/86491.html#91148">&gt;&gt;91148</a><br><span class="greenText">&gt;What people need is a shock to their system to wake up.</span><br>Better would be an rotting of system assaulting their little bohemian (a person not nationality just to say) island which they take so in dearest with their aspirations of eternal beer and football<br>Like what they will change when they hear that uncomfortable truth of our eternal dept and poverty by constant ignoring of it<br>What will change when at least in my personal experience they result in physical violence toward that sad truth and that hitler was right <br><span class="greenText">&gt;They'll only fight back if the jew boot is physically on their necks.</span><br>Depends on individum<br>If that man believes in some sort of messiah in shining armor who will fix everything while he sits confortably or everything can be settled down in some jolly political game then even then he wont fight and MAGA faggots are biggest evidence<br><span class="greenText">&gt;</span><br>Yes, and it is many times impossible to get through to someone who has been brainwashed by the lies<br>An cycle that never ends<br><span class="greenText">&gt;Im immune to propaganda of establishment</span><br><span class="greenText">&gt;Okay here you have then material showing how much they lie about anyone</span><br><span class="greenText">&gt;After a while</span><br><span class="greenText">&gt;No the establishment is right and believe what they say</span><br><span class="greenText">&gt;But you said you dont believe them</span><br><span class="greenText">&gt;But why they would lie we would disagree with them then</span><br><br>Indeed that its an massive demoralizing fuel</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92501"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-92501">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">02/06/2024 (Tue) 12:32</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #c59114">c59114</span></span>
+  <a class="linkPreview" href="/pol/preview/92501.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#92501">No.</a><a class="linkQuote" href="/pol/res/86491.html#q92501">92501</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Americans scream swimming pools must be banned or everyone will die.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="92506"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-92506">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">02/06/2024 (Tue) 12:54</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #f484a2">f484a2</span></span>
+  <a class="linkPreview" href="/pol/preview/92506.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#92506">No.</a><a class="linkQuote" href="/pol/res/86491.html#q92506">92506</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/86491.html#92501">&gt;&gt;92501</a><br>Nice "Americans" word generator Schlomo</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93620"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-93620">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">05/08/2024 (Wed) 19:19</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #2dd3a0">2dd3a0</span></span>
+  <a class="linkPreview" href="/pol/preview/93620.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#93620">No.</a><a class="linkQuote" href="/pol/res/86491.html#q93620">93620</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"><figure class="uploadCell"><div class="uploadDetails">
+  <a class="nameLink" target="blank" style="display: none" href="/.media/9245611b8891c038e10ed5f0146214a5-imagejpeg.jpg">Open File</a>(<span class="sizeLabel">269.86 KB</span>
+  <span class="dimensionLabel">1278x696</span> <a class="originalNameLink" href="/.media/9245611b8891c038e10ed5f0146214a5-imagejpeg.jpg" download="Screenshot_2024-05-08-21-03-34-759.jpeg">Screenshot_2024-05-08-21-03-34-759.jpeg</a>)
+</div>
+
+<a class="imgLink" target="_blank" href="/.media/9245611b8891c038e10ed5f0146214a5-imagejpeg.jpg" data-filewidth="1278" data-fileheight="696" data-filemime="image/jpeg"><img src="/.media/t_9245611b8891c038e10ed5f0146214a5-imagejpeg" loading="lazy" width="255" height="139"></a></figure></div>
+  <div class="divMessage">Info on the reasons why partisan repressal actions were needed in yugoslavia<br>These fucks commited vilest attrocities against civilians</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="93621"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-93621">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  <img class="imgFlag" src="/pol/flags/622fd577df0c7a156743a528" title="Hlinkova Garda">
+  
+  <span class="labelCreated">05/08/2024 (Wed) 19:19</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #2dd3a0">2dd3a0</span></span>
+  <a class="linkPreview" href="/pol/preview/93621.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#93621">No.</a><a class="linkQuote" href="/pol/res/86491.html#q93621">93621</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/86491.html#93620">&gt;&gt;93620</a><br>Can also reupload the links for archival reasons if necceseary</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="95450"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-95450">
+  
+  <a class="linkName noEmailName">Anonymous</a>
+  
+  
+  <span class="labelCreated">12/12/2024 (Thu) 05:44</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #f7c6ab">f7c6ab</span></span>
+  <a class="linkPreview" href="/pol/preview/95450.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#95450">No.</a><a class="linkQuote" href="/pol/res/86491.html#q95450">95450</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage">Maybe no one trust cops anymore because the Stasi have decided to work for the JEWs now instead of respecting the Bill of Rights.</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div><div class="postCell" data-boarduri="pol" id="95453"><!-- start post.html -->
+<div class="innerPost">
+  <input type="checkbox" class="deletionCheckBox" name="pol-86491-95453">
+  <span class="labelSubject">sage</span>
+  <a class="linkName" href="mailto:sage">sage</a>
+  
+  
+  <span class="labelCreated">12/12/2024 (Thu) 07:07</span>
+  <span class="spanId"> Id: <span class="labelId" style="background-color: #67f8d2">67f8d2</span></span>
+  <a class="linkPreview" href="/pol/preview/95453.html">[Preview]</a>
+  <a class="linkSelf" href="/pol/res/86491.html#95453">No.</a><a class="linkQuote" href="/pol/res/86491.html#q95453">95453</a>
+  <a class="delLink" href="#bottom" onclick="delPost(this)">del</a>
+  
+  <span class="panelBacklinks"></span>
+  <div>
+    <span class="panelBacklinks"> </span> 
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"><a class="quoteLink" href="/pol/res/86491.html#95450">&gt;&gt;95450</a><br>lol</div>
+  
+  
+  
+</div>
+<br class="textBrowserBreaks">
+<br class="textBrowserBreaks">
+<!-- end post.html -->
+</div></div>
+</div></div>
+      <hr>
+      <a name="bottom"></a>
+      <p class="bottomNav">
+        <a class="topLink" href="#">Top</a> |
+        <!-- .. doesn't work in mod.js -->
+        <a class="catalogLink" href="../catalog.html">Catalog</a> |
+        <a class="replyLink" href="#" onclick="show_quick_reply(); return false;">Post a reply</a> |
+        <a class="magratheaLink" title="Future site frontend" href="https://magrathea.endchan.net/pol/thread/86491.html">Magrathea</a> |
+        <a class="returnLink" href="..">Return</a>
+      </p>
+
+      <div class="divRefresh hidden">
+        <label><input type="checkbox" checked="" onchange="changeRefresh()">
+          Auto <span id="labelRefresh"></span>
+        </label>
+        <input type="button" id="refreshButton" onclick="refreshPosts(true)" value="Refresh">
+      </div>
+      <br>
+      <br>
+
+      <select name="switchlayoutcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'layout')"></select>
+      <select name="switchcolorcontrol" size="1" onchange="chooseStyle(this.options[this.selectedIndex].value, 'color')"></select>
+
+      <!-- ban/report/delete/transfer controls -->
+      <div class="contentAction">
+        <label>Reason:<input type="text" id="reportFieldReason" name="reason">
+        </label>
+        
+        <label>Password:<input type="password" id="deletionFieldPassword" name="password">
+        </label>
+        <label><input type="checkbox" id="checkboxGlobal" name="global">
+          Global
+        </label>
+        <label><input type="checkbox" id="checkboxOnlyFiles" name="deleteUploads">
+          Remove media from post
+        </label>
+        <label><input type="checkbox" id="checkboxMediaDeletion" name="deleteMedia">
+          Scrub media (remove image from site)
+        </label>
+        <img id="captchaImageReport" class="captchaImage" src="/captcha.js">
+        <div class="buttonBox">
+          <input type="button" class="hidden" id="reloadCaptchaButtonReport" onclick="reloadCaptcha()" value="Reload">
+          <input name="captcha" type="text" id="fieldCaptchaReport" placeholder="Answer">
+          <a class="small" href="/noCookieCaptcha.js" target="_blank">No cookies?</a>
+        </div>
+        <div class="buttonBox">
+          <input type="submit" id="deleteFormButton" value="Delete" name="action">
+          <input type="button" class="hidden" id="deleteJsButton" onclick="deletePosts()" value="Delete">
+          <input type="submit" id="reportFormButton" value="Report" name="action">
+          <input type="button" class="hidden" id="reportJsButton" onclick="reportPosts()" value="Report">
+        </div>
+      </div>
+    </form>
+    <script src="/.static/qr.js" defer=""></script>
+  </div>
+
+
+
+</body></html>
