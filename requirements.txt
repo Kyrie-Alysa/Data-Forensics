@@ -1,0 +1,8 @@
+beautifulsoup4==4.13.4
+fake_useragent==2.2.0
+matplotlib==3.10.3
+pandas==2.2.3
+playwright==1.52.0
+Requests==2.32.3
+seaborn==0.13.2
+streamlit==1.45.1
