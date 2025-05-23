@@ -27,11 +27,37 @@ def load_data(dataset_name):
 def merge_with_topics(posts_df, topics_df):
     return posts_df.merge(topics_df[['thread_id', 'tweetnlp_topic']], on='thread_id', how='left')
 
-def plot_label_vs_label(df, x_col, hue_col):
+def plot_label_vs_label(df, x_col, hue_col, percent=False):
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+
     fig, ax = plt.subplots(figsize=(8, 5))
-    sns.countplot(data=df, x=x_col, hue=hue_col, ax=ax)
+
+    if percent:
+        # Calculate normalized percentage per group
+        count_data = (
+            df.groupby([x_col, hue_col])
+              .size()
+              .reset_index(name='count')
+        )
+        total_per_x = count_data.groupby(x_col)['count'].transform('sum')
+        count_data['percent'] = count_data['count'] / total_per_x * 100
+
+        sns.barplot(
+            data=count_data,
+            x=x_col,
+            y='percent',
+            hue=hue_col,
+            ax=ax
+        )
+        ax.set_ylabel("Percentage (%)")
+    else:
+        sns.countplot(data=df, x=x_col, hue=hue_col, ax=ax)
+        ax.set_ylabel("Count")
+
     ax.set_title(f"Distribution of {x_col} against {hue_col}")
     return fig
+
 
 def filter_and_rank_comments(
     df, 

@@ -56,7 +56,8 @@ st.dataframe(cross.style.format("{:.1f}%"))
 
 # Barplot
 st.subheader("Display crosstab as barplot")
-st.pyplot(plot_label_vs_label(df, col_label, row_label))
+show_percent = st.checkbox("Show as percentage", value=False)
+st.pyplot(plot_label_vs_label(df, col_label, row_label, percent=show_percent))
 
 # Filter and display top comments with scores and labels
 st.subheader("Top 5 comments using filters")
