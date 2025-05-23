@@ -2,6 +2,7 @@
 import streamlit as st
 import pandas as pd
 import ast
+import os
 from utils import (
     load_data,
     merge_with_topics,
@@ -27,7 +28,7 @@ if 'top_df' not in st.session_state:
     st.session_state.top_df = None
 
 # Load and merge corresponding thread files with the topics
-topic_path = f"../Data/{dataset}_threads_tweetnlp.csv"
+topic_path = os.path.join("Data", f"{dataset}_threads_tweetnlp.csv")
 topics_df = pd.read_csv(topic_path)
 
 # Deduplicate by thread_id

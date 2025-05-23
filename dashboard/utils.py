@@ -3,10 +3,11 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import streamlit as st
+import os
 
 @st.cache_data
 def load_data(dataset_name):
-    path = f"../Data/{dataset_name}_posts_tweetnlp.csv"
+    path = os.path.join("Data", f"{dataset_name}_posts_tweetnlp.csv")
     df = pd.read_csv(path)
 
     # Filter out empty content
