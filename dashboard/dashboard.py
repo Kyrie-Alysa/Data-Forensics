@@ -28,7 +28,8 @@ if 'top_df' not in st.session_state:
     st.session_state.top_df = None
 
 # Load and merge corresponding thread files with the topics
-topic_path = os.path.join("Data", f"{dataset}_threads_tweetnlp.csv")
+base_dir = os.path.dirname(__file__)  # gets the path to dashboard/
+topic_path = os.path.abspath(os.path.join(base_dir, "..", "Data", f"{dataset}_threads_tweetnlp.csv"))
 topics_df = pd.read_csv(topic_path)
 
 # Deduplicate by thread_id

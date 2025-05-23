@@ -7,7 +7,9 @@ import os
 
 @st.cache_data
 def load_data(dataset_name):
-    path = os.path.join("Data", f"{dataset_name}_posts_tweetnlp.csv")
+    base_dir = os.path.dirname(__file__)  # This gets dashboard/
+    path = os.path.join(base_dir, "..", "Data", f"{dataset_name}_posts_tweetnlp.csv")
+    path = os.path.abspath(path)
     df = pd.read_csv(path)
 
     # Filter out empty content
