@@ -7,7 +7,7 @@ import os
 
 @st.cache_data
 def load_data(dataset_name):
-    base_dir = os.path.dirname(__file__)  # This gets dashboard/
+    base_dir = os.path.dirname(__file__)  
     path = os.path.join(base_dir, "..", "Data", f"{dataset_name}_posts_tweetnlp.csv")
     path = os.path.abspath(path)
     df = pd.read_csv(path)
@@ -28,8 +28,6 @@ def merge_with_topics(posts_df, topics_df):
     return posts_df.merge(topics_df[['thread_id', 'tweetnlp_topic']], on='thread_id', how='left')
 
 def plot_label_vs_label(df, x_col, hue_col, percent=False):
-    import seaborn as sns
-    import matplotlib.pyplot as plt
 
     fig, ax = plt.subplots(figsize=(8, 5))
 
@@ -58,19 +56,17 @@ def plot_label_vs_label(df, x_col, hue_col, percent=False):
     ax.set_title(f"Distribution of {x_col} against {hue_col}")
     return fig
 
-
 def filter_and_rank_comments(
     df, 
     emotion=None, 
     hate=None, 
     irony=None, 
     offensive=None,
-    sentiment=None,  # optioneel als je sentiment hebt
+    sentiment=None,  
     top_n=5
 ):
     filtered = df.copy()
 
-    # Dynamische filtering
     if emotion:
         filtered = filtered[filtered['emotion_label'] == emotion]
     if hate:
@@ -82,11 +78,11 @@ def filter_and_rank_comments(
     if sentiment and 'sentiment_label' in df.columns:
         filtered = filtered[filtered['sentiment_label'] == sentiment]
 
-    # Combineer zekerheidsscores
+    # Combine the scores
     score_cols = [col for col in ['emotion_score', 'hate_score', 'irony_score', 'offensive_score', 'sentiment_score'] if col in df.columns]
     filtered['combined_score'] = filtered[score_cols].mean(axis=1)
 
-    # Top N
+    # Select the top N comments
     top_comments = filtered.sort_values('combined_score', ascending=False).head(top_n)
 
     columns_to_return = ['content', 'thread_id'] + score_cols + \

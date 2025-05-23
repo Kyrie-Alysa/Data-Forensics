@@ -28,7 +28,7 @@ if 'top_df' not in st.session_state:
     st.session_state.top_df = None
 
 # Load and merge corresponding thread files with the topics
-base_dir = os.path.dirname(__file__)  # gets the path to dashboard/
+base_dir = os.path.dirname(__file__) 
 topic_path = os.path.abspath(os.path.join(base_dir, "..", "Data", f"{dataset}_threads_tweetnlp.csv"))
 topics_df = pd.read_csv(topic_path)
 
@@ -76,7 +76,7 @@ if st.button("Show Top 5 comments"):
 if st.session_state.show_top_5 and st.session_state.top_df is not None:
     top_df = st.session_state.top_df
 
-    # ➤ Show top 5 comments
+    # Show top 5 comments
     for _, row in top_df.iterrows():
         st.markdown(f"**Comment:** {row['content']}")
 
