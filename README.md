@@ -1,51 +1,66 @@
-### Installed Packages
+==============================
+README: Sentiment Analysis on Dark Web forums
+==============================
 
-| Package               | Version     |
-|-----------------------|-------------|
-| asttokens             | 3.0.0       |
-| beautifulsoup4        | 4.13.3      |
-| certifi               | 2025.1.31   |
-| charset-normalizer    | 3.4.1       |
-| comm                  | 0.2.2       |
-| debugpy               | 1.8.13      |
-| decorator             | 5.2.1       |
-| executing             | 2.2.0       |
-| fake-useragent        | 2.1.0       |
-| greenlet              | 3.1.1       |
-| idna                  | 3.10        |
-| ipykernel             | 6.29.5      |
-| ipython               | 9.0.2       |
-| ipython_pygments_lexers | 1.1.1     |
-| jedi                  | 0.19.2      |
-| jupyter_client        | 8.6.3       |
-| jupyter_core          | 5.7.2       |
-| matplotlib-inline     | 0.1.7       |
-| nest-asyncio          | 1.6.0       |
-| numpy                 | 2.2.4       |
-| packaging             | 24.2        |
-| pandas                | 2.2.3       |
-| parso                 | 0.8.4       |
-| pexpect               | 4.9.0       |
-| pip                   | 24.0        |
-| platformdirs          | 4.3.7       |
-| playwright            | 1.51.0      |
-| prompt_toolkit        | 3.0.50      |
-| psutil                | 7.0.0       |
-| ptyprocess            | 0.7.0       |
-| pure_eval             | 0.2.3       |
-| pyee                  | 12.1.1      |
-| Pygments              | 2.19.1      |
-| PySocks               | 1.7.1       |
-| python-dateutil       | 2.9.0.post0 |
-| pytz                  | 2025.1      |
-| pyzmq                 | 26.3.0      |
-| requests              | 2.32.3      |
-| six                   | 1.17.0      |
-| soupsieve             | 2.6         |
-| stack-data            | 0.6.3       |
-| tornado               | 6.4.2       |
-| traitlets             | 5.14.3      |
-| typing_extensions     | 4.12.2      |
-| tzdata                | 2025.1      |
-| urllib3               | 2.3.0       |
-| wcwidth               | 0.2.13      |
+Authors: Kyrie-Alysa van IJsselmuide (2136942) & Kim van Kemenade
+Assignment: Data Forensics - Scientific Report
+Goal: Analyze the sentiment of posts and threads on 4chan and Endchan
+Submission: forensics-group3.zip
+
+------------------------------
+File Structure in ZIP package:
+------------------------------
+
+1. model_training.ipynb          - The main neural network training notebook containing the final model and plotting the loss curve
+2. helper.py                     - Contains the neural network class, dataset class, and early stopping class
+3. predict_rings.ipynb           - Notebook for running inference on the test dataset
+4. best_model.pt                 - Saved model weights from the best model
+5. train.csv                     - Original training dataset provided
+6. test.csv                      - Original test dataset provided
+7. test_with_predictions.csv     - Test set with an added column 'Rings' containing predicted ages
+8. DL2025IAreport_2136942.pdf    - Short report summarizing the model
+9. README.txt                    - This instruction file
+
+------------------------------
+Packages overview:
+------------------------------
+- Python 3.10.16
+- matplotlib         3.10.1
+- matplotlib-inline  0.1.7
+- numpy              2.1.2
+- pandas             2.2.3
+- scikit-learn       1.6.1
+- scipy              1.15.2
+- seaborn            0.13.2
+- torch              2.5.1+cu121
+- torchaudio         2.5.1+cu121
+- torchvision        0.20.1+cu121
+
+------------------------------
+Run instructions for test data:
+------------------------------
+
+1. Make sure you have the packages and package versions installed as instructed above.
+
+2. Place the following files in the same directory:
+   - `helper.py`
+   - `best_model.pt`
+   - `test.csv`
+   - `predict_rings.ipynb`
+
+3. Run the notebook:
+   - For notebook (`predict_rings.ipynb`), run all cells in order
+
+4. The notebook will:
+   - Load the test dataset and apply the same preprocessing as for the training dataset
+   - Load the saved model weights from `best_model.pt`
+   - Run inference to predict the number of rings (age) using a multi-classification deep learning model
+   - Save a new file `test_with_predictions.csv` with the predictions in the `Rings` column
+
+------------------------------
+Notes:
+------------------------------
+- Make sure you have GPU enabled if using a CUDA environment.
+- If any package is missing, install it using pip
+
+
