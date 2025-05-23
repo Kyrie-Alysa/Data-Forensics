@@ -6,7 +6,7 @@ import streamlit as st
 
 @st.cache_data
 def load_data(dataset_name):
-    path = f"data/{dataset_name}_posts_tweetnlp.csv"
+    path = f"../Data/{dataset_name}_posts_tweetnlp.csv"
     df = pd.read_csv(path)
 
     # Filter out empty content
