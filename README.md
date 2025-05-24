@@ -1,4 +1,3 @@
-==============================
 README: Sentiment Analysis on Imageboard Forums
 ==============================
 
@@ -7,33 +6,40 @@ Assignment: Data Forensics - Scientific Report
 Goal: Analyze the sentiment and emotional tone of posts on politically incorrect boards of 4chan (surface web) and Endchan (dark web)
 Submission: forensics-group3.zip
 
-------------------------------
 File Structure Overview:
 ------------------------------
 
 1. dashboard/
+   
    ├── dashboard.py            - Streamlit app for exploring and visualizing sentiment data.
+   
    └── utils.py                - Helper functions used by the dashboard.
 
-2. Data/
+3. Data/
+   
    ├── chan4_posts_tweetnlp.csv         - Preprocessed TweetNLP output for 4chan posts.
+   
    ├── chan4_threads_tweetnlp.csv       - Preprocessed TweetNLP output for 4chan threads.
+   
    ├── endchan_posts_tweetnlp.csv       - Preprocessed TweetNLP output for Endchan posts.
+   
    └── endchan_threads_tweetnlp.csv     - Preprocessed TweetNLP output for Endchan threads.
 
-3. Data Crawling + Scraping/
+5. Data Crawling + Scraping/
+   
    ├── 4chan/                 - Raw data and scraping scripts for 4chan.
+   
    └── Endchan/               - Raw data and scraping scripts for Endchan.
 
-4. DataExploration.ipynb      - Jupyter notebook for exploratory data analysis and visualization.
+7. DataExploration.ipynb      - Jupyter notebook for exploratory data analysis and visualization.
 
-5. TweetNLP.ipynb             - Notebook applying TweetNLP models for sentiment, emotion, hate speech, irony, and offensive classification.
+8. TweetNLP.ipynb             - Notebook applying TweetNLP models for sentiment, emotion, hate speech, irony, and offensive classification.
 
-6. access_token.txt           - Token required for protected dataset access, required for running the DARKBert model within the DataExploration.ipynb notebook.
+9. access_token.txt           - Token required for protected dataset access, required for running the DARKBert model within the DataExploration.ipynb notebook.
 
-7. requirements.txt           - List of required Python packages for running the project.
+10. requirements.txt           - List of required Python packages for running the project.
 
-8. README.md                  - This instruction file.
+11. README.md                  - This instruction file.
 
 ------------------------------
 Packages Overview:
