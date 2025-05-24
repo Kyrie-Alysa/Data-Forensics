@@ -1,7 +1,7 @@
 README: Sentiment Analysis on Imageboard Forums
 ==============================
 
-Authors: Kyrie-Alysa van IJsselmuide (2136942) & Kim van Kemenade (2047891)  
+Authors: Kyrie-Alysa van IJsselmuide & Kim van Kemenade 
 Assignment: Data Forensics - Scientific Report  
 Goal: Analyze the sentiment and emotional tone of posts on politically incorrect boards of 4chan (surface web) and Endchan (dark web)
 Submission: forensics-group3.zip
@@ -39,7 +39,9 @@ File Structure Overview:
 
 10. requirements.txt           - List of required Python packages for running the project.
 
-11. README.md                  - This instruction file.
+11. Report.pdf                 - Scientific Report
+
+12. README.md                  - This instruction file.
 
 ------------------------------
 Packages Overview:
