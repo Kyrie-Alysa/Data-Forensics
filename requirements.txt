@@ -1,8 +1,16 @@
 beautifulsoup4==4.13.4
+bertopic==0.17.0
 fake_useragent==2.2.0
 matplotlib==3.10.3
+nltk==3.9.1
+numpy==2.2.6
 pandas==2.2.3
 playwright==1.52.0
 Requests==2.32.3
+scikit_learn==1.6.1
 seaborn==0.13.2
+spacy==3.8.5
 streamlit==1.45.1
+tqdm==4.67.1
+transformers==4.51.3
+tweetnlp==0.4.5

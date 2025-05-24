@@ -1,66 +1,81 @@
 ==============================
-README: Sentiment Analysis on Dark Web forums
+README: Sentiment Analysis on Imageboard Forums
 ==============================
 
-Authors: Kyrie-Alysa van IJsselmuide (2136942) & Kim van Kemenade
-Assignment: Data Forensics - Scientific Report
-Goal: Analyze the sentiment of posts and threads on 4chan and Endchan
+Authors: Kyrie-Alysa van IJsselmuide (2136942) & Kim van Kemenade (2047891)  
+Assignment: Data Forensics - Scientific Report  
+Goal: Analyze the sentiment and emotional tone of posts on politically incorrect boards of 4chan (surface web) and Endchan (dark web)
 Submission: forensics-group3.zip
 
 ------------------------------
-File Structure in ZIP package:
+File Structure Overview:
 ------------------------------
 
-1. model_training.ipynb          - The main neural network training notebook containing the final model and plotting the loss curve
-2. helper.py                     - Contains the neural network class, dataset class, and early stopping class
-3. predict_rings.ipynb           - Notebook for running inference on the test dataset
-4. best_model.pt                 - Saved model weights from the best model
-5. train.csv                     - Original training dataset provided
-6. test.csv                      - Original test dataset provided
-7. test_with_predictions.csv     - Test set with an added column 'Rings' containing predicted ages
-8. DL2025IAreport_2136942.pdf    - Short report summarizing the model
-9. README.txt                    - This instruction file
+1. dashboard/
+   ├── dashboard.py            - Streamlit app for exploring and visualizing sentiment data.
+   └── utils.py                - Helper functions used by the dashboard.
+
+2. Data/
+   ├── chan4_posts_tweetnlp.csv         - Preprocessed TweetNLP output for 4chan posts.
+   ├── chan4_threads_tweetnlp.csv       - Preprocessed TweetNLP output for 4chan threads.
+   ├── endchan_posts_tweetnlp.csv       - Preprocessed TweetNLP output for Endchan posts.
+   └── endchan_threads_tweetnlp.csv     - Preprocessed TweetNLP output for Endchan threads.
+
+3. Data Crawling + Scraping/
+   ├── 4chan/                 - Raw data and scraping scripts for 4chan.
+   └── Endchan/               - Raw data and scraping scripts for Endchan.
+
+4. DataExploration.ipynb      - Jupyter notebook for exploratory data analysis and visualization.
+
+5. TweetNLP.ipynb             - Notebook applying TweetNLP models for sentiment, emotion, hate speech, irony, and offensive classification.
+
+6. access_token.txt           - Token required for protected dataset access, required for running the DARKBert model within the DataExploration.ipynb notebook.
+
+7. requirements.txt           - List of required Python packages for running the project.
+
+8. README.md                  - This instruction file.
 
 ------------------------------
-Packages overview:
+Packages Overview:
 ------------------------------
+
 - Python 3.10.16
-- matplotlib         3.10.1
-- matplotlib-inline  0.1.7
-- numpy              2.1.2
+- beautifulsoup4     4.13.4
+- bertopic           0.17.0
+- fake_useragent     2.2.0
+- matplotlib         3.10.3
+- nltk               3.9.1
+- numpy              2.2.6
 - pandas             2.2.3
+- playwright         1.52.0
+- requests           2.32.3
 - scikit-learn       1.6.1
-- scipy              1.15.2
 - seaborn            0.13.2
-- torch              2.5.1+cu121
-- torchaudio         2.5.1+cu121
-- torchvision        0.20.1+cu121
+- spacy              3.8.5
+- streamlit          1.45.1
+- tqdm               4.67.1
+- transformers       4.51.3
+- tweetnlp           0.4.5
 
 ------------------------------
-Run instructions for test data:
+Run Instructions:
 ------------------------------
 
-1. Make sure you have the packages and package versions installed as instructed above.
+1. Set up the environment:
+   - Install required packages using: `pip install -r requirements.txt`
 
-2. Place the following files in the same directory:
-   - `helper.py`
-   - `best_model.pt`
-   - `test.csv`
-   - `predict_rings.ipynb`
+2. To run the Streamlit dashboard:
+   - Navigate to the project root directory in your terminal.
+   - Run the app with: `streamlit run dashboard/dashboard.py`
+   - Or access the app directly via: https://dataforensics-3-sentimentforums.streamlit.app/ 
 
-3. Run the notebook:
-   - For notebook (`predict_rings.ipynb`), run all cells in order
-
-4. The notebook will:
-   - Load the test dataset and apply the same preprocessing as for the training dataset
-   - Load the saved model weights from `best_model.pt`
-   - Run inference to predict the number of rings (age) using a multi-classification deep learning model
-   - Save a new file `test_with_predictions.csv` with the predictions in the `Rings` column
+3. To run sentiment analysis or preprocessing:
+   - Open `TweetNLP.ipynb` to apply the TweetNLP models
+   - Open `DataExploration.ipynb` to explore the initial data exploration and modeling, and visualize results
 
 ------------------------------
 Notes:
 ------------------------------
-- Make sure you have GPU enabled if using a CUDA environment.
-- If any package is missing, install it using pip
-
+- If the streamlit app is inaccesible due to inactivity, you can run it locally as described above.
+- Ensure you have the necessary access token in `access_token.txt` for running the DARKBert model.
 
