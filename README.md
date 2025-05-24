@@ -1,10 +1,10 @@
 README: Sentiment Analysis on Imageboard Forums
 ==============================
 
-Authors: Kyrie-Alysa van IJsselmuide & Kim van Kemenade 
-Assignment: Data Forensics - Scientific Report  
-Goal: Analyze the sentiment and emotional tone of posts on politically incorrect boards of 4chan (surface web) and Endchan (dark web)
-Submission: forensics-group3.zip
+Authors: Kyrie-Alysa van IJsselmuide & Kim van Kemenade <br>
+Assignment: Data Forensics - Scientific Report  <br>
+Goal: Analyze the sentiment and emotional tone of posts on politically incorrect boards of 4chan (surface web) and Endchan (dark web) <br>
+Submission: forensics-group3.zip <br>
 
 File Structure Overview:
 ------------------------------
